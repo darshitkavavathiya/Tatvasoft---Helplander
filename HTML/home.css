@@ -1,0 +1,394 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+html,body
+{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*header*/
+
+
+.header{
+    background: url(assets/Landing-Page-background-image.png);
+    height: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    color: white;
+}
+
+.nav-logo{
+    margin-left: 17px;
+}
+
+.nav-book-btn{
+    margin-right: 5px;
+     font-size: 17px; 
+     width: 161px ; 
+     height: 40px;
+}
+
+.nav-log-btn{
+    margin-right: 10px;
+     margin-left: 5px ; 
+     width: 97px ; 
+     height: 40px;
+     font-size: 17px; 
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-become-btn{
+    margin-right: 10px;
+     margin-left: 5px ;
+      width: 161px ;
+       height: 40px;
+       font-size: 17px;
+}
+
+.btn{
+    padding: 0px, 5px;
+    background: #00607200 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF80;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+.text{
+    margin-top: 150px;
+    margin-left: 55px;
+}
+
+.bookbtn{
+    margin: 0;
+    width: 225px;
+    height: 54px;
+    color: white;
+    border: 1px solid #FFFFFF;
+    border-radius: 27px;
+    opacity: 1;
+    text-align: center;
+    background-color: #2f6a71;
+    opacity: 0.8;
+}
+
+.process{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10%;
+}
+
+.process-card{
+    max-height: 119px;
+    text-align: center;
+    margin: 2px;
+}
+
+.process-text{
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    font-size: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.down-arrow{
+    max-height: 55px;
+    margin-bottom: 2%;
+}
+
+
+/*why helper*/
+
+
+.helper-title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 45px;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 82.5px;
+    font-weight: bold;
+}
+
+.helper-text-title{
+    text-align: center; 
+    font-size: 30px; 
+    font-weight: bold;
+}
+
+.helper-text{
+ text-align: center;
+ font-size: 17px;
+}
+
+.helper-row{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 169px;
+}
+
+.helper-col{
+    margin: 3%;
+}
+
+
+/*info-blog*/
+
+
+.info {
+   margin-bottom: 10%;
+}
+
+.info-img{
+    margin-bottom: 50px;
+}
+
+.info-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-align: left;
+    margin-right: 10%;
+}
+
+.info-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    text-align: center;
+    text-align: left;
+    margin-right: 10%;
+}
+
+.info-blog-title {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+
+.info-blog-col-title{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #3D4046;
+    opacity: 1;
+}
+
+.info-blog-col-date{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    color: #A3A3A3;
+    opacity: 1;
+    font-size: 13px;
+}
+
+.info-blog-col-text{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    color: #565656;
+    opacity: 1;
+    font-size: 16px;
+}
+
+.info-blog-col-extra{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 18px;
+}
+
+
+/*customer*/
+
+
+.cust{
+    background-color:  #F4F5F8;
+}
+
+.cust-title{
+    padding-top: 5%;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.cust-row{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.cust-card{
+    background-color: white;
+    margin: 2%;
+    color: #565656;
+    box-shadow: 0px 0px 30px #E4EBF0;
+    margin: 2%;
+    padding: 2%;
+    border-left: solid green;
+    opacity: 1;  
+}
+
+.cust-card-img{
+    max-height: 70px;
+}
+
+.cust-card-name{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cust-card-city{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 13px;
+    margin-top: -20px;
+    color: #8E8E8E;
+}
+
+.cust-card-content{
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 16px;
+}
+
+.cust-card-link{
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 18px;
+}
+
+.contact-row{
+    margin-top: 3%;
+    padding-bottom: 2%;
+}
+
+.contact-col-top{   
+    text-align: center;
+}
+
+.contact-col-email{
+    text-align: center;
+}
+
+.contact-col-faq{
+    text-align: center;
+}
+
+.contact-text{
+    font-family: 'Roboto', sans-serif;
+    font-size: 17.99px;
+    font-weight: bold;
+}
+
+.contact-email-col{
+    text-align: right;
+}
+
+.contact-submit-col{
+    text-align: left;
+}
+
+.contact-col-top-image{
+    max-height: 48px;
+}
+
+.contact-col-faq-image{
+    max-height: 63px;
+}
+
+.contact-email-textbox{
+    background: #F4F5F8 0% 0% no-repeat padding-box;
+border: 1px solid #565656;
+border-radius: 20px;
+}
+
+.contact-submit-button{
+    background: #FF7B6D 0% 0% no-repeat padding-box;
+border-radius: 20px;
+opacity: 1;
+color: white;
+border-color:  #FF7B6D;
+}
+
+
+/*footer*/
+
+
+.footer-container{
+    background-color: black;
+}
+
+.footer-logo-col{
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.footer-nav-col{
+    text-align: center;
+    margin-top: 3%;   
+}
+
+.footer-link {
+    color: white;
+    font-size: 13.99;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    margin-right: 2%;
+}
+
+.footer-social-col{
+    text-align: center;
+    margin-top: 3%;
+}
+
+.footer-social{
+    margin-right: 2%;
+}
+
+.footer-logo{
+    max-height: 92px;
+}
+
+
+/*privacy*/
+
+
+.privacy-row{
+    background: #292929;
+    padding: 0.5%;
+}
+
+.privacy-text-col{
+    text-align: right;
+    margin-top: 0.5%; 
+}
+
+.privacy-text{
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+.privacy-button{
+    background: #EED507 0% 0% no-repeat padding-box;
+    border-radius: 20px;
+    opacity: 1;
+    height: 40px;
+    width: 99px;
+}
