@@ -364,7 +364,9 @@ border-color:  #FF7B6D;
 .footer-logo{
     max-height: 92px;
 }
-
+.footer-social-image{
+    margin: 2%;
+}
 
 /*privacy*/
 
