@@ -78,6 +78,84 @@ html,body
     opacity: 1;
 }
 
+.faq-title{
+    margin-top: 36px;
+    text-align: center;
+letter-spacing: 0px;
+color: #4F4F4F;
+opacity: 1;
+font-size: 36px;
+font-family: 'Roboto', sans-serif;
+font-weight: bold;
+}
+
+.for-customer{
+    background-color: #1D7A8C;
+    height: auto; 
+    color: white; 
+    padding-top: 1.5%; 
+    font-size: 24px; 
+    padding-bottom: 1.5%;
+}
+
+.for-service-provider{
+    background-color:#f6f6f6; 
+    height: auto; 
+    padding-top: 1.5%;
+    Padding: bottom 1.5%;  
+    font-size: 24px;  
+}
+
+main{
+    align-content: center;
+   
+}
+
+.title-text{
+    margin-top: 34px;
+    margin-bottom: 34px;
+    text-align: center;
+    letter-spacing: 0px;
+    color: #646464;
+    opacity: 1;
+    font-size: 18px;
+}
+
+.for-title{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.sepretor{
+    max-width: 300px;
+}
+
+.collapse-padding{
+     padding-top: 40px;
+}
+
+.collapse-title{
+    color: #646464;
+    font-size: 16px; 
+    font-weight: bold; 
+    font-family: Roboto-Bold;
+}
+
+.collapse-text{
+    font-family: Roboto-Regular;
+     font-size: 16px; 
+     margin-left: 38px;
+     padding-top: 18px;
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,14 +201,17 @@ html,body
 .footer-social-image{
     margin: 2%;
 }
+
 .footer-term-row{
     margin-left: 8%;
     margin-right: 10%;
     text-align: center;
 }
+
 .footer-hr{
    color:  #b9b6b6 ;   
 }
+
 .footer-text{
     color: #9BA0A3; 
     font-size: 14px;     
