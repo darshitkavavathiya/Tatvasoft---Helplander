@@ -13,7 +13,10 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
-  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="js/home.js"></script>
+
 
   <title>Helperland</title>
 
@@ -183,7 +186,7 @@
 
     <div class="row helper-row">
 
-      <div class="col helper-col ">
+      <div class="col-sm helper-col ">
 
         <img src="assets/helper-img-1.png" class="img-fluid" alt="">
         <p class="helper-text-title">Experience & Vetted
@@ -193,7 +196,7 @@
 
       </div>
 
-      <div class="col helper-col ">
+      <div class="col-sm helper-col ">
 
         <img src="assets/group-23.png" class="img-fluid " alt="">
         <p class="helper-text-title">Secure Online Payment</p>
@@ -203,7 +206,7 @@
 
       </div>
 
-      <div class="col helper-col">
+      <div class="col-sm helper-col">
 
         <img src="assets/group-24.png" class="img-fluid " alt="">
         <p class="helper-text-title">Dedicated Customer
@@ -271,7 +274,7 @@
         <div class="row ">
 
 
-          <div class="col ">
+          <div class="col-md mt-4">
 
             <div class="card h-100">
 
@@ -291,7 +294,7 @@
           
           </div>
 
-          <div class="col">
+          <div class="col-md mt-4">
 
             <div class="card h-100">
 
@@ -311,7 +314,7 @@
 
           </div>
 
-          <div class="col">
+          <div class="col-md mt-4">
 
             <div class="card h-100">
 
@@ -360,7 +363,7 @@
 
     <div class="row cust-row">
 
-      <div class="col-lg cust-card">
+      <div class="col-md cust-card">
 
         <div class="row">
 
@@ -396,7 +399,7 @@
 
       </div>
 
-      <div class="col-lg cust-card">
+      <div class="col-md cust-card">
 
         <div class="row">
 
@@ -431,7 +434,7 @@
 
       </div>
 
-      <div class="col-lg cust-card">
+      <div class="col-md cust-card">
 
         <div class="row">
 
@@ -473,7 +476,7 @@
     <div class="row contact-row">
 
       <div class="col-sm-2 contact-col-top">
-        <img src="assets/top-arrow.png" class="img-fluid contact-col-top-image">
+        <img src="assets/top-arrow1.png" class="img-fluid contact-col-top-image">
       </div>
 
       <div class="col-sm-8 contact-col-email">
@@ -510,6 +513,7 @@
 
 
 
+
   <div class=" footer-container">
 
     <div class="row">
@@ -518,7 +522,7 @@
         <img src="assets/footer-logo.png" class="img-fluid footer-logo-image">
       </div>
 
-    
+
       <div class="col-sm-6 footer-nav-col">
 
         <a class="footer-link " href="Home.html"> &nbsp;HOME</a>
@@ -532,13 +536,24 @@
 
       <div class="col-sm-3 footer-social-col">
         <img src="assets/ic-facebook.png" class="img-fluid footer-social-image">
-        <img src="assets/ic-instagram.png" class="img-fluid footer-social-image">
 
+        <img src="assets/ic-instagram.png" class="img-fluid footer-social-image">
       </div>
+
+
+    </div>
+    <div class="row footer-term-row">
+      <hr class="fluid footer-hr">
+      <p class="footer-text">
+        ©2018 Helperland. All rights reserved.&nbsp;&nbsp; &nbsp;&nbsp; <a>Terms and Conditions </a>|<a>&nbsp;Privacy
+          Policy</a>
+      </p>
 
     </div>
 
   </div>
+
+
 
 
 
@@ -559,7 +574,7 @@
 
     <div class="col-sm-3 privacy-button-col">
 
-      <button class="privacy-button">
+      <button class="privacy-button" id="button">
         OK!
       </button>
 

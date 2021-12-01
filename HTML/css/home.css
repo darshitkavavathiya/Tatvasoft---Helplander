@@ -14,7 +14,7 @@ html,body
 
 
 .header{
-    background: url(assets/Landing-Page-background-image.png);
+    background: url(../assets/Landing-Page-background-image.png);
     height: auto;
     background-position: center center;
     background-repeat: no-repeat;
@@ -393,4 +393,20 @@ border-color:  #FF7B6D;
     opacity: 1;
     height: 40px;
     width: 99px;
+}
+.footer-term-row{
+    margin-left: 8%;
+    margin-right: 10%;
+    text-align: center;
+    
+}
+
+.footer-hr{
+   color:  #b9b6b6 ;   
+}
+
+.footer-text{
+    color: #9BA0A3; 
+    font-size: 14px;     
+    font-family: 'Roboto', sans-serif;     
 }
