@@ -12,7 +12,7 @@ html,body
 /*header*/
 
 
-.header{
+.header-navbar{
     background: url(../assets/become-a-pro-banner.png);
     height: auto;
     background-position: center center;
@@ -67,70 +67,161 @@ img.navbar-brand.nav-logo {
 }
 
 
+.register-form{
+        margin-top: 38px;
+        margin-left: 36%;
+        margin-right: 36%;
+        width: 430px;
+        height: 664px;
+        padding: 23px 35px 19px 36px;
+        border-radius: 4px;
+        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
+        background-color: white;
+       
+}
+
+
+h1 {
+    font-size: 24px;
+    color: #4F4F4F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 19px;
+    padding-bottom: 24px
+  }
+
+  ::placeholder{
+      font-size: 16px;
+      color: #A0A0A0;
+      line-height: 1.5;
+      font-weight:400;
+  }
+.border-btn{
+    background-color: #1D7A8C;
+    border-radius: 23px;
+    height: 46px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #F1F1F1;
+    align-self: center;
+   
+}
+.form-control{
+    margin-bottom: 15px;
+}
+.form-check .form-check-label{
+    font-size: 16px;
+}
+  .not-a-robot{
+    
+        width: 302px;
+        height: 76px;
+        margin-bottom: 20px;
+      
+  }
+
+ .down-arrow {
+    margin-top: 44px;
+    margin-bottom: 30px;
+}
 
 
 
 
 
+.how-it-works {
+    background-image: url(../assets/blog-left-bg.png), url(../assets/blog-right-bg.png);
+    background-position: left, right;
+    background-repeat: no-repeat, no-repeat;
+    height: auto;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.how-it-works h2 {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #4F4F4F;
+    font-family: 'Roboto', sans-serif;
+}
+
+.how-it-works h3 {
+    font-size: 30px;
+    color: #4F4F4F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding-left: 20px;
+    padding-top: 80px;
+}
+
+.how-it-works p {
+
+    font-size: 18px;
+    color: #4F4F4F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+     padding-left: 20px ;
+}
+
+.how-it-works a {
+    font-size: 18px;
+    color: #4F4F4F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    padding-left: 20px ;
+
+}
+
+.how-it-works .our-news-letter {
+    padding-top: 48px;
+    padding-bottom: 55px;
+}
+
+.how-it-works .our-news-letter h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.how-it-works .our-news-letter .form-control {
+    border-radius: 20px;
+    border: solid 1px #565656;
+    background-color: #f4f5f8;
+    color: #565656;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 22px;
+}
+
+.how-it-works .our-news-letter .btn-submit {
+    margin-left: 11px;
+    background-color: #FF7B6D;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    line-height: 37px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    color: #fff;
+    width: 88px;
+}
 
 
 
 /*footer*/
 
 
-
-.contact-row{
-    margin-top: 3%;
-    padding-bottom: 2%;
-}
-
-.contact-col-top{   
-    text-align: center;
-}
-
-.contact-col-email{
-    text-align: center;
-}
-
-.contact-col-faq{
-    text-align: center;
-}
-
-.contact-text{
-    font-family: 'Roboto', sans-serif;
-    font-size: 17.99px;
-    font-weight: bold;
-}
-
-.contact-email-col{
-    text-align: right;
-}
-
-.contact-submit-col{
-    text-align: left;
-}
-
-.contact-col-top-image{
-    max-height: 48px;
-}
-
-.contact-col-faq-image{
-    max-height: 63px;
-}
-
-.contact-email-textbox{
-    background: #F4F5F8 0% 0% no-repeat padding-box;
-border: 1px solid #565656;
-border-radius: 20px;
-}
-
-.contact-submit-button{
-    background: #FF7B6D 0% 0% no-repeat padding-box;
-border-radius: 20px;
-opacity: 1;
-color: white;
-border-color:  #FF7B6D;
-}
 .footer-container{
     background-color: #111111;
 }
