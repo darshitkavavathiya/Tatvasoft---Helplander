@@ -56,6 +56,28 @@ div.user-icon {
     line-height: 1.4;
 
 }
+.collapse .nav-item a:hover {
+    background-color: #29626D;
+    border-radius: 20px;
+    border: 1px solid #FFFFFF;
+}
+
+.collapse .nav-item a:active {
+    background-color: #29626D;
+    border-radius: 20px;
+    border: 1px solid #FFFFFF;
+}
+.collapse a:hover {
+    background-color: #29626D;
+    border-radius: 20px;
+    border: 1px solid #FFFFFF;
+}
+
+.collapse a:active {
+    background-color: #29626D;
+    border-radius: 20px;
+    border: 1px solid #FFFFFF;
+}
 
 
 h1 {
