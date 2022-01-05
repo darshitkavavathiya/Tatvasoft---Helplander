@@ -78,19 +78,6 @@ span img span{
     font-weight: 700;
 }
 
-
-@media(max-width:720px) {
-    .table {
-        display: none;
-    }
-}
-
-@media(min-width:720px) {
-    .mobileview {
-        display: none;
-    }
-}
-
 .dropdown{
    
     border: 1px solid #E1E1E1;
@@ -125,7 +112,7 @@ span img span{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    /* padding: 16px 21px 15px 16px; */
+  
 }
 
 .pagenum-btn{
@@ -141,4 +128,17 @@ span img span{
 }
 .transform_btn{
     transform: rotate(180deg);
+}
+
+
+@media(max-width:720px) {
+    .table {
+        display: none;
+    }
+}
+
+@media(min-width:720px) {
+    .mobileview {
+        display: none;
+    }
 }
