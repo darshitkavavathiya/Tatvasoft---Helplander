@@ -1,0 +1,77 @@
+.cap-icon {
+    width: 44px;
+    height: 44px;
+   margin-right: 5px;
+    padding: 7px 7px;
+    border: solid 1px #aaa;
+    background-color: var(--white);
+    border-radius: 50%;
+    float: left;
+  }
+  
+.completed {
+    border: 1px solid #67b644;
+    background-color: #67b644;
+    color: #ffffff;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.rate {
+    border: 1px solid #6DA9B5;
+    border-radius: 17px;
+    background-color: #6DA9B5;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 8px 0;
+}
+.checked {
+    color: #ECB91C;
+  }
+.cancelled {
+    border: 1px solid #ff6b6b;
+    background-color: #ff6b6b;
+    color: #ffffff;
+    font-size: 13px;
+    margin: 10px 0;
+}
+.price {
+    font-size: 20px;
+    color: #1d7a8c;
+    font-weight: 700;
+    margin: 10px 0;
+}
+.service-time{
+    margin-bottom: 0;
+}
+.alignleft {
+    float: left;
+    padding-left: 10px;
+    font-size: 22px;
+    color: #646464;
+    font-weight: 700;
+}
+
+.alignright {
+    float: right;
+    background-color: #146371;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 17px;
+    border: 1px solid #146371;
+    margin-right: 10px;
+    padding: 5px 12px;
+}
+
+@media(max-width:720px) {
+    .table {
+        display: none;
+    }
+}
+
+@media(min-width:720px) {
+    .mobileview {
+        display: none;
+    }
+}

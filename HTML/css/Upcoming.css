@@ -136,7 +136,7 @@ h1 span {
     background-color: #146371;
 }
 
-.tab-contant {
+.table {
     float: left;
     padding: 0px 0px;
     border: 1px solid #ccc;
@@ -159,8 +159,8 @@ td{
 td div{
     font-weight: 700;
 }
-p{
-    margin: 15px 0px;
+p.margin{
+    margin: 10px 0px;
 }
 
 
@@ -242,7 +242,7 @@ p{
         border: 1px;
         width: 100%;
     }
-
+    
     table thead {
         border: none;
         clip: rect(0 0 0 0);
@@ -287,20 +287,17 @@ p{
     }
 
     .tab {
-        position: fixed;
-        left: -100%;
+        display: none;
         gap: 0;
         background-color: #146371;
         width: 100%;
         text-align: center;
         transition: 0.2s;
-        
-
     }
 
     .tab.active {
-        left: 0;
-        position: relative;
+        display: block;
+        
     }
 }
 

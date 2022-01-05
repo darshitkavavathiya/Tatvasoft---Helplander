@@ -1,0 +1,434 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="css/Upcoming.css" />
+	<link rel="stylesheet" href="css/customer.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<title>Customer Service-history</title>
+
+
+</head>
+
+<body>
+
+	<!-- nav-bar -->
+	
+
+	<nav class="navbar navbar-expand-lg navbar-dark">
+
+
+		<div class="container-fluid">
+
+			<a class="navbar-brand" href="Home.html">
+				<img src="assets/logo-small.png" class=" navbar-brand nav-logo ">
+			</a>
+
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+				<div class="navbar-nav ms-auto">
+
+					<a href="#" class="nav-link  rounded-pill ">Prices & services</a>
+					<a href="#" class="nav-link  rounded-pill">Warranty</a>
+					<a href="#" class="nav-link  rounded-pill">Blog</a>
+					<a href="#" class="nav-link  rounded-pill ">Contact</a>
+
+					<div class="notification position-relative nav-item">
+
+						<img src="assets/icon-notification.png" alt="">
+						<span class="badge rounded-circle position-absolute">2</span>
+					</div>
+
+					<div class="user-icon nav-item">
+						<img src="assets/user.png" alt="...">
+						<img src="assets/sp-arrow-down.png" class="img-fluid" alt="...">
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+	</nav>
+
+	<h1>Welcome <span>Gaurang</span></h1>
+
+	<section class="main_service clearfix">
+
+		<!-- tab -->
+
+		<div class="hamburger">
+			<span class="v-menu"></span>
+			<span class="v-menu"></span>
+			<span class="v-menu"></span>
+		</div>
+		<div class="tab" id="verticaltab">
+
+
+			<button class="tablinks" onclick="upcoming_service(event, 'dashboard')">Dashboard</button>
+
+
+			<button class="tablinks" onclick="upcoming_service(event, 'service_history')" id="defaultOpen">Service
+				History</button>
+			<button class="tablinks" onclick="upcoming_service(event, 'service_schedule')">Service
+				Schedule</button>
+
+			<button class="tablinks" onclick="upcoming_service(event, 'favourite_pros')"> Favourite Pros </button>
+			<button class="tablinks" onclick="upcoming_service(event, 'invoices')" >Invoices</button>
+			<button class="tablinks" onclick="upcoming_service(event, 'notification')"> Notifications</button>
+			
+
+		</div>
+
+		<!-- table -->
+
+
+
+		<div id="dashboard" class="tab-contant">
+			<h3>-----------------Dashboard-----------------</h3>
+		</div>
+		<div id="service_schedule" class="tab-contant">
+			<h3>-----------------Service Schedule-----------------</h3>
+		</div>
+		<div id="service_history" class="tab-contant">
+			<div>
+				<p class="alignleft">   Service History </p>
+				<button class="alignright">Export</button>
+			</div>
+			<table class="table">
+				<thead class="table-light">
+					<tr>
+						<th scope="col">  Service Details   <img src="assets/sort.png" alt="..."></th>
+						<th scope="col">  Service Provider  <img src="assets/sort.png" alt="..."></th>
+						<th scope="col">  Payment  <img src="assets/sort.png" alt="..."></th>
+						<th scope="col">  Status  <img src="assets/sort.png" alt="..."></th>
+						<th scope="col"> Rate SP </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  31/03/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="completed">completed</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  15/03/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="completed">completed</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  10/03/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="completed">completed</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  28/02/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="cancelled">cancelled</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  15/02/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="completed">completed</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  11/02/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="cancelled">cancelled</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  31/01/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="completed">completed</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  19/01/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+							<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="completed">completed</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  05/01/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="cancelled">cancelled</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+					<tr>
+						<td data-label="Service Details">
+							<div> <img src="assets/calendar.png" alt="calender">  01/01/2018</div> 
+							<p class="service-time">12:00-18:00</p>
+	
+						</td>
+						<td data-label="Service Provider">
+							<div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
+							<div>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>4</div>
+						</td>
+						<td data-label="Payment">
+							<p class="price">€63 </p>
+						</td>
+						<td data-label="Status"> <button class="cancelled">cancelled</button></td>
+						<td data-label="Rate SP"><button class="rate">Rate SP</button></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="card mobileview" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+		</div>
+		<div id="favourite_pros" class="tab-contant">
+			<h3>---------------New Service Request--------------</h3>
+
+		</div>
+
+		<div id="invoices" class="tab-contant">
+			<h3>---------------Invoice--------------</h3>
+		</div>
+	
+		<div id="notification" class="tab-contant">
+			<h3>-----------------Block Customers-----------------</h3>
+		</div>
+	</section>
+
+
+
+
+
+
+
+	<!--footer-->
+
+
+
+	<section class=" footer-container">
+
+		<div class="row">
+
+			<div class="col-sm-3 footer-logo-col">
+				<img src="assets/footer-logo.png" class="img-fluid footer-logo-image">
+			</div>
+
+
+			<div class="col-sm-6 footer-nav-col">
+
+				<a class="footer-link " href="Home.html"> &nbsp;HOME</a>
+				<a class="footer-link "> &nbsp;ABOUT</a>
+				<a class="footer-link "> &nbsp;TESTIMONIALS</a>
+				<a class="footer-link " href="FAQ.html"> &nbsp;FAQ</a>
+				<a class="footer-link "> &nbsp;INSURANCE</a>
+				<a class="footer-link "> &nbsp;IMPRESSUM</a>
+
+			</div>
+
+			<div class="col-sm-3 footer-social-col">
+				<img src="assets/ic-facebook.png" class="img-fluid footer-social-image">
+
+				<img src="assets/ic-instagram.png" class="img-fluid footer-social-image">
+			</div>
+
+
+		</div>
+		<div class="row footer-term-row">
+			<hr class="fluid footer-hr">
+			<p class="footer-text">
+				©2018 Helperland. All rights reserved.&nbsp;&nbsp; &nbsp;&nbsp; <a>Terms and Conditions
+				</a>|<a>&nbsp;Privacy
+					Policy</a>
+			</p>
+
+		</div>
+
+	</section>
+
+
+
+
+
+
+	<!-- script -->
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/upcoming.js"></script>
+
+</body>
+
+</html>
