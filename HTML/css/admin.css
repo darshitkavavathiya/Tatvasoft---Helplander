@@ -1,0 +1,276 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;500;700&display=swap');
+html,body
+{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+nav.admin{
+    background-color: #1FB6FF;
+    padding: 0%;
+}
+.admin .navbar-brand{
+    width: 172px;
+    height: 37px;
+    font-size: 35.9px;
+  font-weight: lighter;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.65;
+ margin: 14.5px 0px 8.64px 14.97px;
+}
+div.user-icon {
+    padding-right: 20px;
+    padding-left: 20px;
+    line-height: 1.4;
+
+}
+.copyright{
+    color: #A2A6A8;
+    font-size: 14px;
+    margin-left: 10px; ;
+    padding: 20px 0px 0px 10px;
+}
+.user-icon .admin-name{
+    width: 94px;
+    height: 19px;
+    font-size: 16px;
+    color: white;
+    padding: 20px 17px 21px 7px;
+}
+
+.admin .nav-item{
+    padding: 0px 20px 0px 0px;
+}
+
+.nav-col{
+    padding: 0;
+    height: 100%;
+}
+
+
+.nav-col p{
+
+    font-weight: 400;
+    margin-left: 20px;
+
+    
+
+}
+
+h4{
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #646464;
+}
+.nav-col p:hover{
+    color: blue;
+}
+.nav-col .button{
+    border: 1px solid #0000001A;
+    
+    padding-top: 10px;
+
+}
+
+.table-col{
+    background-color: #0000001A;
+    padding: 20px;
+   
+}
+.table-col p{
+    font-size: 22px;
+}
+
+.adduser{
+    background-color: #1FB6FF;
+    color: white;
+    border: 0px;
+    padding: 10px;
+    margin-right: 12px;
+}
+.adduser span{
+    border: 2px solid white;
+    border-radius: 50%;
+    padding:  0px 5px;
+    margin-right: 5px;
+}
+.form{
+    background-color: white;
+    margin-right: 5px;
+    margin-left: 2px;
+    padding: 15px;
+   
+    
+}
+
+.form-clear{
+    background-color: white;
+    color: black;
+    border: 1px solid #DEDDDD;
+
+}
+.form-search{
+    background-color: #1FB6FF;
+    border: 1px solid #DEDDDD;
+
+}
+td button{
+    margin-left: 25px;
+}
+.popup img{
+    margin-left: 50px;
+}
+
+
+
+
+.active {
+    border: 1px solid #67B644;
+    background-color: #67B644;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 4px 11px 5px 11px;
+}
+
+.inactive {
+    border: 1px solid #FF6B6B;
+    background-color: #FF6B6B;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 4px 11px 5px 11px;
+}
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.popup .popuptext {
+    visibility: hidden;
+    background-color: white;
+    opacity: 1;
+    width: 160px;
+    color: #646464;
+    border-radius: 4px;
+    text-align: left;
+    padding: 5px 5px;
+    position: absolute;
+    margin-left: -100px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 1px 0;
+    z-index: 1;
+}
+
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    margin-left: -5px;
+    border-width: 5px;
+}
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+.dropdown {
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.admin-pagenumber {
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #777777;
+    flex-wrap: wrap;
+}
+
+.admin-pagenumber-left {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 1%;
+}
+
+.admin-pagenumber-left p {
+    margin-bottom: 10px;
+    margin-top: 8px;
+}
+
+.admin-pagenumber-right {
+    padding-right: 1%;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.admin-pagenumber-btn {
+    padding: 10px 15.33px 10px 15px;
+    border: 1px solid #E1E1E1;
+    font-size: 14px;
+}
+
+.admin-pagenumber-right .active {
+    background-color: #646464;
+    color: white
+}
+
+.transform_btn {
+    transform: rotate(180deg);
+}
+
+
+
+.admin-table {
+    margin-top: 20px;
+    
+    border: 1px solid #ccc;
+    margin-left: 10px;
+    
+    color: #646464;
+    font-size: 16px;
+    font-weight: 400;
+    
+    background-color: white;
+
+}
+
+.table{
+    margin-right: 12px;
+}
+
+.admin-table tr{
+    border: 1px solid #ccc;
+
+
+}
+.admin-table thead th{
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px;
+    margin: 0%;
+    color: #646464;
+
+}
+.admin-table tbody p{
+    font-size: 16px;
+    font-weight: 400;
+    padding: 12px;
+    margin: 0%;
+}
