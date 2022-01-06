@@ -109,6 +109,7 @@ h1 span {
     background-color: #1d7a8c;
     width: 23%;
     font-weight: 400;
+    height: 800px;
     
 }
 .hamburger {
@@ -309,6 +310,7 @@ p.margin{
     }
 
     .tab {
+        height: 100%;
         display: none;
         gap: 0;
         background-color: #146371;
