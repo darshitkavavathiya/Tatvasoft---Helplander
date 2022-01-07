@@ -33,7 +33,7 @@ div.user-icon {
     color: #A2A6A8;
     font-size: 14px;
     margin-left: 10px; ;
-    padding: 20px 0px 0px 10px;
+    padding: 20px 0px 20px 10px;
 }
 .user-icon .admin-name{
     width: 94px;
@@ -80,7 +80,7 @@ h4{
 
 .table-col{
     background-color: #0000001A;
-    padding: 20px;
+    padding: 20px 20px 50px 20px;
    
 }
 .table-col p{
@@ -124,7 +124,7 @@ td button{
     margin-left: 25px;
 }
 .popup img{
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 
