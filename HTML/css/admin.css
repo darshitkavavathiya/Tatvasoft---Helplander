@@ -53,13 +53,15 @@ div.user-icon {
 }
 
 
-.nav-col p{
+div.button a{
 
     font-weight: 400;
-    margin-left: 20px;
-
+    margin: 0px 0px 100px 30px;
     
 
+}
+.nav-col div.button{
+    padding: 5%;
 }
 
 h4{

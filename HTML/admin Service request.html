@@ -5,583 +5,669 @@
 <head>
 
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+		crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/admin.css" />
-    <link rel="stylesheet" href="css/admin-service-request.css" />
+	<link rel="stylesheet" href="css/admin.css" />
+	<link rel="stylesheet" href="css/admin-service-request.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-    <title>Admin panal</title>
+	<title>Admin panal</title>
 
 
 </head>
 
 <body>
 
-    <!-- nav-bar -->
+	<!-- nav-bar -->
+	<section class="header">
+	<nav class="navbar navbar-expand-md navbar-dark admin">
+		<a class="navbar-brand" href="#"> helplander</a>
 
-    <nav class="navbar navbar-expand-md navbar-dark admin">
-        <a class="navbar-brand" href="#"> helplander</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav ms-auto">
 
-            <div class="navbar-nav ms-auto">
+				<div class="user-icon nav-item">
+					<img src="assets/user.png" alt="...">
+					<span class="admin-name">James Smith</span>
+					<img src="assets/logout.png" alt="" id="logout" class="logout">
+				</div>
 
-                <div class="user-icon nav-item">
-                    <img src="assets/user.png" alt="...">
-                    <span class="admin-name">James Smith</span>
-                    <img src="assets/logout.png" alt="" id="logout" class="logout">
-                </div>
+			</div>
+
+		</div>
+
+	</nav>
+
+
+</section>
+
+
+
+	<!-- navbar-end -->
+	<section class="main">
+	<div class="row" style="height:auto">
+		<div class="col-2  nav-col">
+            <div class="button" >
+                <a href="admin Service request.html">Service Request</a>
 
             </div>
+
+            <div class="button" >
+                <a href="admin user management.html">User management</a>
+
+            </div>
+
+
+
 
         </div>
+		<div class="col-10  table-col">
 
-    </nav>
-
-
-
+			<div class="row">
 
 
+				<div class="col">
+					<h4>Service Request</h4>
 
-    <!-- navbar-end -->
-    <div class="row" style="height:auto">
-        <div class="col-2  nav-col">
-            <div class="button">
-                <p>Service Request</p>
-
-            </div>
-
-            <div class="button">
-                <p>User management</p>
-
-            </div>
+				</div>
 
 
 
 
-        </div>
-        <div class="col-10  table-col">
+			</div>
+			<br>
+			<div class="row  form">
+				<form action="#">
+					<div class="row">
+						<div class="col-2">
+							<input type="text" class="form-control  "
+								placeholder="Service ID">
 
-            <div class="row">
+						</div>
 
+						<div class="col-2">
+							<select class="form-select" aria-label="Default select example">
+								<option selected>Customer</option>
+								<option value="1">Lyum Watso</option>
+								<option value="2">John Smith</option>
+								<option value="3">Wil Smith</option>
+							</select>
+						</div>
 
-                <div class="col">
-                    <h4>Service Request</h4>
+						<div class="col-2">
+							<select class="form-select" aria-label="">
+								<option selected>Service provider</option>
+								<option value="1">Neymar Junior</option>
+								<option value="2">Two</option>
+								<option value="3">anna Smit</option>
+							</select>
+						</div>
 
-                </div>
+						<div class="col-2">
+							<select class="form-select" aria-label="">
+								<option selected>Status</option>
+								<option value="1">One</option>
+								<option value="2">Two</option>
+								<option value="3">Three</option>
+							</select>
+						</div>
 
+						<div class="col-1">
 
-
-
-            </div>
-            <br>
-            <div class="row  form">
-                <form action="#">
-                    <div class="row">
-                        <div class="col-2">
-                            <input type="text" class="form-control  " placeholder="Service ID">
-
-                        </div>
-                        
-                        <div class="col-2">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Customer</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-
-                        <div class="col-2">
-                            <select class="form-select" aria-label="">
-                                <option selected>Service provider</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-
-                        <div class="col-2">
-                            <select class="form-select" aria-label="">
-                                <option selected>Status</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-
-                        <div class="col-1">
-
-                            <input type="date" class="form-control   " placeholder="Service ID" >
-                            
-
-                        </div>
-                        <div class="col-1">
-
-                            <input type="date" class="form-control   " placeholder="Service ID" >
-                            
-
-                        </div>
-                        <div class="col-1">
-                            <a class="btn btn-primary form-search">Serach</a>
-
-                        </div>
-                        <div class="col-1">
-                            <a class="btn btn-primary form-clear">Clear</a>
-
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="row  table">
-
-                <table class="admin-table">
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col">Service Id<img src="assets/sort.png" alt="..."></th>
-                            <th scope="col"> Service date   <img src="assets/sort.png" alt="..."> </th>
-                            <th scope="col">Customer details<img src="assets/sort.png" alt="..."></th>
-                            <th scope="col">Service provider<img src="assets/sort.png" alt="..."></th>
-                            <th scope="col">Status<img src="assets/sort.png" alt="..."></th>
-                            <th scope="col">Actions</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Service ID"><p>323436</p> </td>
-                            <td data-label="Service date">
-                               <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018 <br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td data-label="Customers details">
-                               <p> David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn</p>
-                            </td>
-                            <td data-label="Service Provider">
-                            </td>
-                            <td data-label="User Status"> <button class="new">New</button></td>
-                            <td data-label="Actions">
-                                <div class="popup" onclick="reply_click(this.id)" id="a"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="a_popup">
-                                        <p>Edit & Reschedule </p>
-                                        <p>Refund</p>
-                                        <p>Cancel </p>
-                                        <p>Change SP</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <button class="new">New</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply_click(this.id)" id="b"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="b_popup">
-                                        <p>Edit & Reschedule </p>
-                                        <p>Refund</p>
-                                        <p>Cancel </p>
-                                        <p>Change SP</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                                <div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span></div>
-                            </td>
-
-                            <td>
-                                <button class="pending">Pending</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply_click(this.id)" id="c"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="c_popup">
-                                        <p>Edit & Reschedule </p>
-                                        <p>Refund</p>
-                                        <p>Cancel </p>
-                                        <p>Change SP</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                                <div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span></div>
-                            </td>
-                            <td>
-                                <button class="pending">Pending</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply_click(this.id)" id="d"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="d_popup">
-                                        <p>Edit & Reschedule </p>
-                                        <p>Refund</p>
-                                        <p>Cancel </p>
-                                        <p>Change SP</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                                <div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span></div>
-                            </td>
-
-                            <td>
-                                <button class="completed">Completed</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply(this.id)" id="e"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="e_popup">
-                                        <p>Refund</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                                <div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span></div>
-                            </td>
-                            <td>
-                                <button class="completed">Completed</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply(this.id)" id="f"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="f_popup">
-                                        <p>Refund</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                                <div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span></div>
-                            </td>
-
-                            <td>
-                                <button class="cancelled">Cancelled</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply(this.id)" id="g"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="g_popup">
-                                        <p>Refund</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                                <div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span></div>
-                            </td>
-                            <td>
-                                <button class="completed">Completed</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply(this.id)" id="h"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="h_popup">
-                                        <p>Refund</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                                <div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span></div>
-                            </td>
-
-                            <td>
-                                <button class="cancelled">Cancelled</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply(this.id)" id="i"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="i_popup">
-                                        <p>Refund</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p>323436</p>
-
-                            </td>
-                            <td>
-                                <p><img src="assets/calendar2.png" alt="calender"> 09/04/2018<br>
-                                <img src="assets/layer-14.png" alt="clock"> 12:00-18:00</p>
-                            </td>
-                            <td>
-                                David Bough <br>
-                                <img src="assets/layer-15.png" alt="home">musterstrabe 5,12345 Bonn
-                            </td>
-                            <td>
-                                <div class="cap-icon"><img src="assets/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span></div>
-                            </td>
-
-                            <td>
-                                <button class="completed">Completed</button>
-                            </td>
-                            <td>
-                                <div class="popup" onclick="reply(this.id)" id="j"><img src="assets/group-38.png" alt="...">
-                                    <div class="popuptext" id="j_popup">
-                                        <p>Refund</p>
-                                        <p>Escalate</p>
-                                        <p>History Log </p>
-                                        <p>Download Invoice</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="8">
-                                <div class="admin-pagenumber">
-                                    <div class="admin-pagenumber-left">
-                                        <p>Show</p>
-                                        <div class="dropdown">
-                                            10 <img src="assets/keyboard-right-arrow-button.png" alt="..">
-                                        </div>
-                                        <p>Entries</p>
-                                    </div>
-                                    <div class="admin-pagenumber-right">
-                                        <div class="admin-pagenumber-btn">
-                                            <img src="assets/polygon-1-copy-5.png" alt="">
-                                        </div>
-                                        <div class="admin-pagenumber-btn active">
-                                            1
-                                        </div>
-                                        <div class="admin-pagenumber-btn">
-                                            2
-                                        </div>
-                                        <div class="admin-pagenumber-btn">
-                                            3
-                                        </div>
-                                        <div class="admin-pagenumber-btn">
-                                            4
-                                        </div>
-                                        <div class="admin-pagenumber-btn">
-                                            <img class="transform_btn" src="assets/polygon-1-copy-5.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-               <span class="copyright"> ©2018 Helperland. All rights reserved.
-               </span>
-
-            </div>
-
-        </div>
-    </div>
-    
-    <!-- script -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+							<input type="date" class="form-control   "
+								placeholder="Service ID">
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/admin.js"></script>
+						</div>
+						<div class="col-1">
+
+							<input type="date" class="form-control   "
+								placeholder="Service ID">
+
+
+						</div>
+						<div class="col-1">
+							<a class="btn btn-primary form-search">Serach</a>
+
+						</div>
+						<div class="col-1">
+							<a class="btn btn-primary form-clear">Clear</a>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="row  table">
+
+				<table class="admin-table">
+					<thead class="table-light">
+						<tr>
+							<th scope="col">Service Id<img src="assets/sort.png" alt="...">
+							</th>
+							<th scope="col"> Service date <img src="assets/sort.png"
+									alt="..."> </th>
+							<th scope="col">Customer details<img src="assets/sort.png"
+									alt="..."></th>
+							<th scope="col">Service provider<img src="assets/sort.png"
+									alt="..."></th>
+							<th scope="col">Status<img src="assets/sort.png" alt="..."></th>
+							<th scope="col">Actions</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-label="Service ID">
+								<p>323436</p>
+							</td>
+							<td data-label="Service date">
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018 <br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td data-label="Customers details">
+								<p> David Bough <br>
+									<img src="assets/layer-15.png"
+										alt="home">musterstrabe 5,12345 Bonn
+								</p>
+							</td>
+							<td data-label="Service Provider">
+							</td>
+							<td data-label="User Status"> <button class="new">New</button>
+							</td>
+							<td data-label="Actions">
+								<div class="popup" onclick="reply_click(this.id)"
+									id="a"><img src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="a_popup">
+										<p>Edit & Reschedule </p>
+										<p>Refund</p>
+										<p>Cancel </p>
+										<p>Change SP</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+							</td>
+							<td>
+								<button class="new">New</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply_click(this.id)"
+									id="b"><img src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="b_popup">
+										<p>Edit & Reschedule </p>
+										<p>Refund</p>
+										<p>Cancel </p>
+										<p>Change SP</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+								<div class="cap-icon"><img src="assets/cap.png"
+										alt=".."></div>Lyum Watson
+								<div>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
+									<span>4</span>
+								</div>
+							</td>
+
+							<td>
+								<button class="pending">Pending</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply_click(this.id)"
+									id="c"><img src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="c_popup">
+										<p>Edit & Reschedule </p>
+										<p>Refund</p>
+										<p>Cancel </p>
+										<p>Change SP</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+								<div class="cap-icon"><img src="assets/cap.png"
+										alt=".."></div>Lyum Watson
+								<div>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
+									<span>4</span>
+								</div>
+							</td>
+							<td>
+								<button class="pending">Pending</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply_click(this.id)"
+									id="d"><img src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="d_popup">
+										<p>Edit & Reschedule </p>
+										<p>Refund</p>
+										<p>Cancel </p>
+										<p>Change SP</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+								<div class="cap-icon"><img src="assets/cap.png"
+										alt=".."></div>Lyum Watson
+								<div>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
+									<span>4</span>
+								</div>
+							</td>
+
+							<td>
+								<button class="completed">Completed</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply(this.id)" id="e"><img
+										src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="e_popup">
+										<p>Refund</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+								<div class="cap-icon"><img src="assets/cap.png"
+										alt=".."></div>Lyum Watson
+								<div>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
+									<span>4</span>
+								</div>
+							</td>
+							<td>
+								<button class="completed">Completed</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply(this.id)" id="f"><img
+										src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="f_popup">
+										<p>Refund</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+								<div class="cap-icon"><img src="assets/cap.png"
+										alt=".."></div>Lyum Watson
+								<div>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
+									<span>4</span>
+								</div>
+							</td>
+
+							<td>
+								<button class="cancelled">Cancelled</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply(this.id)" id="g"><img
+										src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="g_popup">
+										<p>Refund</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+								<div class="cap-icon"><img src="assets/cap.png"
+										alt=".."></div>Lyum Watson
+								<div>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
+									<span>4</span>
+								</div>
+							</td>
+							<td>
+								<button class="completed">Completed</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply(this.id)" id="h"><img
+										src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="h_popup">
+										<p>Refund</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+								<div class="cap-icon"><img src="assets/cap.png"
+										alt=".."></div>Lyum Watson
+								<div>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
+									<span>4</span>
+								</div>
+							</td>
+
+							<td>
+								<button class="cancelled">Cancelled</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply(this.id)" id="i"><img
+										src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="i_popup">
+										<p>Refund</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p>323436</p>
+
+							</td>
+							<td>
+								<p><img src="assets/calendar2.png" alt="calender">
+									09/04/2018<br>
+									<img src="assets/layer-14.png" alt="clock">
+									12:00-18:00
+								</p>
+							</td>
+							<td>
+								David Bough <br>
+								<img src="assets/layer-15.png" alt="home">musterstrabe
+								5,12345 Bonn
+							</td>
+							<td>
+								<div class="cap-icon"><img src="assets/cap.png"
+										alt=".."></div>Lyum Watson
+								<div>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star checked"></span>
+									<span class="fa fa-star"></span>
+									<span>4</span>
+								</div>
+							</td>
+
+							<td>
+								<button class="completed">Completed</button>
+							</td>
+							<td>
+								<div class="popup" onclick="reply(this.id)" id="j"><img
+										src="assets/group-38.png" alt="...">
+									<div class="popuptext" id="j_popup">
+										<p>Refund</p>
+										<p>Escalate</p>
+										<p>History Log </p>
+										<p>Download Invoice</p>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="8">
+								<div class="admin-pagenumber">
+									<div class="admin-pagenumber-left">
+										<p>Show</p>
+										<div class="dropdown">
+											10 <img src="assets/keyboard-right-arrow-button.png"
+												alt="..">
+										</div>
+										<p>Entries</p>
+									</div>
+									<div class="admin-pagenumber-right">
+										<div class="admin-pagenumber-btn">
+											<img src="assets/polygon-1-copy-5.png"
+												alt="">
+										</div>
+										<div
+											class="admin-pagenumber-btn active">
+											1
+										</div>
+										<div class="admin-pagenumber-btn">
+											2
+										</div>
+										<div class="admin-pagenumber-btn">
+											3
+										</div>
+										<div class="admin-pagenumber-btn">
+											4
+										</div>
+										<div class="admin-pagenumber-btn">
+											<img class="transform_btn"
+												src="assets/polygon-1-copy-5.png"
+												alt="">
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+				<span class="copyright"> ©2018 Helperland. All rights reserved.
+				</span>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+	<!-- script -->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="js/admin.js"></script>
 
 </body>
 
