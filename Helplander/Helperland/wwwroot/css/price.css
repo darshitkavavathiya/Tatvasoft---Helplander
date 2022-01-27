@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.prices-title{
+    color: #4F4F4F; 
+    font: size 35.95px;     
+    font-family: 'Roboto', sans-serif;        
+    margin-bottom: 0%;
+    margin-top: 31px;
+}
+
+.price-container{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #B0C9CE;
+    opacity: 1;
+}
+
+.price-container-title{
+   
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    color: #FFFFFF;
+    background-color: #1D7A8C;
+}
+
+.price-price{
+    color: #646464; 
+    font-size: 45px; 
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.price-container-text{
+    color: #646464;
+    font-size: 16px; 
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    padding-left: 15%;
+}
+
+.service-btn {
+    display: inline-block;
+    text-decoration: none;
+    width: 108px;
+    height: 108px;
+    line-height: 90px;
+    border-radius: 50%;
+    border: solid 1px#B0C9CE;
+    margin-top: 10px;
+}
+
+.service {
+    letter-spacing: 0px;
+    color: #646464;
+    opacity: 1;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0%;
+    margin-top: 10px;
+}
+
+.service-time {
+    letter-spacing: 0px;
+    color: #1D7A8C;
+    opacity: 1;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0%;
+    font-weight: bolder;
+
+}
+
+.include{
+    background-color: #F6F6F6;
+    margin-top: 56px;
+}
+
+.include-row{
+    padding-bottom: 81px;
+}
+
+.include-lable{
+    font-size: 20px;
+    color: #4F4F4F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    margin-top: 20px;
+    text-align: left;
+    margin-left: 18px;
+    margin-bottom: 20px;
+}
+
+.include-text{
+    text-align: left;
+    margin-left: 18px;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    
+    color: #4F4F4F;
+    font-size: 16px;
+}
+
+
+
+.col-left {
+    text-align: end;
+}
+
+.col-right {
+    text-align: start;
+}
+
+.why-lable{
+    letter-spacing: 0px;
+    color: #646464;
+    opacity: 1;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 9.5px;
+}
+
+.why-text {
+    letter-spacing: 0px;
+    color: #646464;
+    opacity: 1;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+.contact-row{
+    margin-top: 3%;
+    padding-bottom: 2%;
+}
+
+.contact-col-top{   
+    text-align: center;
+}
+
+.contact-col-email{
+    text-align: center;
+}
+
+.contact-col-faq{
+    text-align: center;
+}
+
+.contact-text{
+    font-family: 'Roboto', sans-serif;
+    font-size: 17.99px;
+    font-weight: bold;
+}
+
+.contact-email-col{
+    text-align: right;
+}
+
+.contact-submit-col{
+    text-align: left;
+}
+
+.contact-col-top-image{
+    max-height: 48px;
+}
+
+.contact-col-faq-image{
+    max-height: 63px;
+}
+
+.contact-email-textbox{
+    background: #F4F5F8 0% 0% no-repeat padding-box;
+border: 1px solid #565656;
+border-radius: 20px;
+}
+
+.contact-submit-button{
+    background: #FF7B6D 0% 0% no-repeat padding-box;
+border-radius: 20px;
+opacity: 1;
+color: white;
+border-color:  #FF7B6D;
+}

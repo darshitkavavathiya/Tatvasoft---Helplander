@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+.contact-us-container {
+    max-width: 73%;
+    margin-left:13.5% ;
+    margin-right: 13.5%;
+}
+.contact-us-title{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 500;
+    color: #4F4F4F;
+    padding-top: 31px;
+    font-size: 35.95px;
+    margin-bottom: 0%;
+}
+.contact-us-row{
+    padding-top: 52.72px;
+    margin-bottom: 50px;
+}
+.contact-us-text{
+    font-family: 'Roboto',sans-serif;
+    font-weight:400;
+    color: #4F4F4F;
+    font-size:16px;
+
+    padding-top: 20.9px;
+}
+.contact-us-form{
+   max-width: 614px;
+}
+.contact-form-title{
+    font-family: 'Roboto',sans-serif;
+    font-weight:700;
+    color: #4F4F4F;
+    font-size: 28px;
+    padding-top: 74px;
+}
+.contact-us-form{
+    margin: 0%,10%;
+}
+.contact-form-input{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+border: 1px solid #C8C8C8;
+border-radius: 4px;
+opacity: 1;
+height: 46px;
+color: #A0A0A0;
+font-family: 'Roboto',sans-serif;
+    font-weight:400;
+    color: #4F4F4F;
+    font-size:16px;
+    margin-top: 15px;
+
+}
+.contact-form-inputbox{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #C8C8C8;
+    border-radius: 4px;
+    opacity: 1;
+    height: 146px;
+    color: #A0A0A0;
+    font-family: 'Roboto',sans-serif;
+        font-weight:400;
+        color: #4F4F4F;
+        font-size:16px;
+        margin-top: 15px;
+}
+.contact-form-input-select{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #C8C8C8;
+    border-radius: 4px;
+    opacity: 1;
+    height: 46px;
+    color: #A0A0A0;
+    font-family: 'Roboto',sans-serif;
+        font-weight:400;
+        color: #4F4F4F;
+        font-size:16px;
+}
+.form-row-1{
+    margin-top: 8px;
+}
+.btn-primary{
+    width: 163px;
+height: 46px;
+background-color: #1D7A8C;
+
+  font-size: 20px;
+  font-family: 'Roboto',sans-serif;
+  font-weight:700;
+    color: white;
+    border: 1px solid #FFFFFF;
+    border-radius: 23px;
+    margin-top: 15px;
+    
+
+}
+.map{
+    margin-top: 92px;
+}
+
+
+.contact-row{
+    margin-top: 3%;
+    padding-bottom: 2%;
+}
+
+.contact-col-top{   
+    text-align: center;
+}
+
+.contact-col-email{
+    text-align: center;
+}
+
+.contact-col-faq{
+    text-align: center;
+}
+
+.contact-text{
+    font-family: 'Roboto', sans-serif;
+    font-size: 17.99px;
+    font-weight: bold;
+}
+
+.contact-email-col{
+    text-align: right;
+}
+
+.contact-submit-col{
+    text-align: left;
+}
+
+.contact-col-top-image{
+    max-height: 48px;
+}
+
+.contact-col-faq-image{
+    max-height: 63px;
+}
+
+.contact-email-textbox{
+    background: #F4F5F8 0% 0% no-repeat padding-box;
+border: 1px solid #565656;
+border-radius: 20px;
+}
+
+.contact-submit-button{
+    background: #FF7B6D 0% 0% no-repeat padding-box;
+border-radius: 20px;
+opacity: 1;
+color: white;
+border-color:  #FF7B6D;
+}
