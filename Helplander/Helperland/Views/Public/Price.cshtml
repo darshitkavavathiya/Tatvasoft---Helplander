@@ -46,7 +46,7 @@
           <div class="navbar-nav ms-auto">
 
             <button type="button" class="btn btn-outline-light  nav-book-btn">Book now</button>
-            <button type="button" class="btn btn-outline-light nav-price-btn" href="price.html">Prices & services</button>
+            <button type="button" class="btn btn-outline-light nav-price-btn" asp-controller="Public" asp-action="Price">Prices & services</button>
             <a class="nav-link ">&nbsp;Warranty&nbsp;</a>
             <a class="nav-link ">&nbsp;Blog&nbsp;</a>
             <a class="nav-link ">&nbsp;Contact&nbsp; </a>
@@ -401,12 +401,13 @@
 
         <div class="col-sm-6 footer-nav-col">
 
-          <a class="footer-link " href="Home.html"> &nbsp;HOME</a>
-          <a class="footer-link " href="#"> &nbsp;ABOUT</a>
-          <a class="footer-link " href="#"> &nbsp;TESTIMONIALS</a>
-          <a class="footer-link " href="faq.html"> &nbsp;FAQ</a>
-          <a class="footer-link " href="#"> &nbsp;INSURANCE</a>
-          <a class="footer-link " href="#"> &nbsp;IMPRESSUM</a>
+         
+        <a class="footer-link " asp-controller="Public" asp-action="Index"> &nbsp;HOME</a>
+        <a class="footer-link " asp-controller="Public" asp-action="About"> ABOUT</a>
+        <a class="footer-link "> &nbsp;TESTIMONIALS</a>
+        <a class="footer-link " asp-controller="Public" asp-action="Faq"> &nbsp;FAQ</a>
+        <a class="footer-link "> &nbsp;INSURANCE</a>
+        <a class="footer-link "> &nbsp;IMPRESSUM</a>
 
         </div>
 

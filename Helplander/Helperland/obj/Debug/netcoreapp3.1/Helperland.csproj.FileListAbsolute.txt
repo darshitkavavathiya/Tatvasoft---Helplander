@@ -380,3 +380,6 @@ E:\dsdasd\Tatvasoft\Helplander\Helperland\obj\Debug\netcoreapp3.1\Helperland.pdb
 E:\dsdasd\Tatvasoft\Helplander\Helperland\obj\Debug\netcoreapp3.1\Helperland.genruntimeconfig.cache
 E:\dsdasd\Tatvasoft\Helplander\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Public\Index.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helplander\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Public\Price.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helplander\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Public\About.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helplander\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Public\Contact.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helplander\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Public\Faq.cshtml.g.cs
