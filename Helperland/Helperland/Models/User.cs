@@ -25,10 +25,8 @@ namespace Helperland.Models
         public string Password { get; set; }
         public string Mobile { get; set; }
         public int UserTypeId { get; set; }
-        public int? RoleId { get; set; }
         public int? Gender { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public string WebSite { get; set; }
         public string UserProfilePicture { get; set; }
         public bool IsRegisteredUser { get; set; }
         public string PaymentGatewayUserRef { get; set; }
@@ -36,7 +34,6 @@ namespace Helperland.Models
         public bool WorksWithPets { get; set; }
         public int? LanguageId { get; set; }
         public int? NationalityId { get; set; }
-        public string ResetKey { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public int ModifiedBy { get; set; }
@@ -44,7 +41,6 @@ namespace Helperland.Models
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public int? Status { get; set; }
-        public bool IsOnline { get; set; }
         public string BankTokenId { get; set; }
         public string TaxNo { get; set; }
 

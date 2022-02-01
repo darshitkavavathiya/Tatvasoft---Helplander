@@ -14,8 +14,6 @@ namespace Helperland.Models
         public decimal Ratings { get; set; }
         public string Comments { get; set; }
         public DateTime RatingDate { get; set; }
-        public bool? IsApproved { get; set; }
-        public bool VisibleOnHomeScreen { get; set; }
         public decimal OnTimeArrival { get; set; }
         public decimal Friendly { get; set; }
         public decimal QualityOfService { get; set; }

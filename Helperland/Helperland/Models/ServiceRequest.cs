@@ -19,7 +19,6 @@ namespace Helperland.Models
         public int ServiceId { get; set; }
         public DateTime ServiceStartDate { get; set; }
         public string ZipCode { get; set; }
-        public byte? ServiceFrequency { get; set; }
         public decimal? ServiceHourlyRate { get; set; }
         public double ServiceHours { get; set; }
         public double? ExtraHours { get; set; }
@@ -29,7 +28,6 @@ namespace Helperland.Models
         public string Comments { get; set; }
         public string PaymentTransactionRefNo { get; set; }
         public bool PaymentDue { get; set; }
-        public byte? JobStatus { get; set; }
         public int? ServiceProviderId { get; set; }
         public DateTime? SpacceptedDate { get; set; }
         public bool HasPets { get; set; }
