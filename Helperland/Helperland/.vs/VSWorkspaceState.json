@@ -5,7 +5,10 @@
     "\\obj",
     "\\Properties",
     "\\Views",
-    "\\Views\\Public"
+    "\\Views\\Public",
+    "\\Views\\Shared",
+    "\\wwwroot",
+    "\\wwwroot\\css"
   ],
   "SelectedNode": "\\Helperland.sln",
   "PreviewInSolutionExplorer": false
