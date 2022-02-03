@@ -14,6 +14,7 @@
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
   <link rel="stylesheet" href="~/css/index.css" />
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="~/js/home.js"></script>
 
@@ -49,8 +50,8 @@
             <a class="nav-link ">Our Guarantee</a>
             <a class="nav-link ">Blog</a>
             <a class="nav-link " asp-controller="Public" asp-action="Contact"> Contact us </a>
-            <button type="button" class="btn btn-outline-light nav-log-btn">Login</button>
-            <button type="button" class="btn btn-outline-light nav-become-btn">Become aHelper</button>
+            <a  class="btn btn-outline-light nav-log-btn">Login</button>
+            <a    asp-controller="UserManagement"  asp-action="BecomeAProvider" class="btn btn-outline-light nav-become-btn">Become aHelper</a>
            
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -70,104 +71,7 @@
 
     </nav>
 
-    <!--Text-->
-
-    <div class="text-center text-lg-start ps-lg-5 col-lg-5 text">
-
-      <h1 class="mb-3">Lorem ipsum text</h1>
-
-      <div>
-        <img class="me-2 mb-0" src="~/Images/ic-check.png" alt="">
-        <p class="d-inline mb-0"> Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
-      </div>
-
-      <div>
-        <img class="me-2 my-0" src="~/Images/ic-check.png" alt="">
-        <p class="d-inline my-0">Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
-      </div>
-
-      <div>
-        <img class="me-2" src="~/Images/ic-check.png" alt="">
-        <p class="d-inline">Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
-      </div>
-
-    </div>
-
-    <!--Button-->
-
-    <div class=" text-center mt-5 ">
-      
-      <button type="button" class="btn bookbtn">Let's Book a Cleaner</button>
-
-    </div>
-
-    <!-- process tab -->
-
-    <div class="row process">
-
-
-      <div class="col-md process-card">
-
-        <img src="~/Images/step-1.png" class="img-fluid" alt="..."><br>
-        <p class="process-text">Enter your postcode</p>
-
-      </div>
-
-      <div class="col-md d-none d-lg-block process-card">
-
-        <img src="~/Images/step-arrow-1.png" class="img-fluid" alt="..."><br>
-
-      </div>
-
-      <div class="col-md process-card">
-
-        <img src="~/Images/step-2.png" class="img-fluid" alt="..."><br>
-        <p class="process-text">Select your plan</p>
-
-      </div>
-
-      <div class="col-md d-none d-lg-block process-card">
-
-        <img src="~/Images/step-arrow-1-copy.png" class="img-fluid" alt="..."><br>
-
-      </div>
-
-      <div class="col-md process-card">
-
-        <img src="~/Images/step-3.png" class="img-fluid" alt="..."><br>
-        <p class="process-text">Pay securely online</p>
-
-      </div>
-
-      <div class="col-md d-none d-lg-block process-card">
-
-        <img src="~/Images/step-arrow-1.png" class="img-fluid" alt="..."><br>
-
-      </div>
-
-      <div class="col-md process-card">
-
-        <img src="~/Images/step-4.png" class="img-fluid" alt="..."><br>
-        <p class="process-text">Enjoy amazing service</p>
-
-      </div>
-
-
-    </div><br><br>
-
-    
-
-    <div class="row">
-
-      <div class="col text-center">
-
-        <img src="~/Images/group-18_5 - Copy.png" class="img-fluid down-arrow" alt="...">
-
-      </div>
-    </div>
-
-  </div>
-
+   
 
 
 

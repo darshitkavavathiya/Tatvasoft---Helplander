@@ -410,3 +410,9 @@ border-color:  #FF7B6D;
     font-size: 14px;     
     font-family: 'Roboto', sans-serif;     
 }
+
+.Validation-Error {
+    color: red;
+    font-size: 12px;
+}
+

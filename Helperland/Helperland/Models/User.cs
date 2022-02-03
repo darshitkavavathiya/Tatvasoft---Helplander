@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -17,12 +19,26 @@ namespace Helperland.Models
             ServiceRequestUsers = new HashSet<ServiceRequest>();
             UserAddresses = new HashSet<UserAddress>();
         }
-
+        
         public int UserId { get; set; }
+        [Required(ErrorMessage ="Please Enter First Name")]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "Please Enter Last Name")]
         public string LastName { get; set; }
+        [Required(ErrorMessage = "Please Enter Email")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Please Enter Password")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,14}$",ErrorMessage ="Please enter Stronge Password")]
         public string Password { get; set; }
+        [NotMapped] // Does not effect with your database
+        [Required(ErrorMessage = "Please Enter Confirm Password")]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Phone No")]
+        [StringLength(10, ErrorMessage = "Please Enter Valid Phone No")]
+        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Please Enter Valid Phone No")]
         public string Mobile { get; set; }
         public int UserTypeId { get; set; }
         public int? Gender { get; set; }

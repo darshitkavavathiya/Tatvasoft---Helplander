@@ -48,14 +48,13 @@ html,body
 }
 
 
-.header-become-a-pro{
-    background: url(../assets/become-a-pro-banner.png);
+.header-become-a-pro {
+    background: url(../Images/become-a-pro-banner.png);
     height: auto;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    
 }
 
 
@@ -108,7 +107,7 @@ img.navbar-brand.nav-logo {
         margin-left: auto;
         margin-right: auto;
         width: 430px;
-        height: 664px;
+        height: auto;
         padding: 23px 35px 19px 36px;
         border-radius: 4px;
         box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
@@ -144,7 +143,11 @@ h1 {
     align-self: center;
    
 }
-.form-control{
+span.Validation-Error{
+    color:red;
+    font-size: 12px;
+}
+.form-control {
     margin-bottom: 15px;
 }
 .form-check .form-check-label{
