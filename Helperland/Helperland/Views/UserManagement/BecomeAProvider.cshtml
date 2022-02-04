@@ -102,7 +102,10 @@
 				<h1>
 					Register Now!
 				</h1>
-
+				   <div class="@TempData["add"] alert-danger alert-dismissible fade" role="alert" id="loginFailAlert">
+                    @TempData["msg"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
 				 <span asp-validation-for="FirstName" class="Validation-Error"></span>
 				<input class="form-control" asp-for="FirstName" placeholder="First Name" />
 				 <span asp-validation-for="LastName" class="Validation-Error"></span>
@@ -140,6 +143,7 @@
 							policy</a>
 					</label>
 				</div>
+				<div class="Validation-Error">  @TempData["message"] </div>
 				<div class="text-center">
 					<button type="submit" class="btn border-btn">Get Started <img
 							src="~/Images/arrow-white.png" alt=".."></button>

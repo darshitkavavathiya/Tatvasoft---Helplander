@@ -1,0 +1,47 @@
+﻿@model Helperland.Models.LoginUser 
+
+<!-- Modal -->
+    <div class="modal fade  " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login to your account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                 <div class="@TempData["add"] alert-danger alert-dismissible fade" role="alert" id="loginFailAlert">
+                    @TempData["fail"]
+                    @TempData["msg"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+               
+
+                <form asp-controller="UserManagement" asp-action="Login" method='post' method='post'>
+                    <div class="modal-body ">
+
+                        <input type="text" asp-for="username" class="form-control" placeholder="Email address">
+                         
+                        <br />
+                        <input type="password" asp-for="password" class="form-control" placeholder="Password">
+                         
+                        <div class="form-check" style="text-align:left">
+                            <input type="checkbox" asp-for="remember" class="form-check-input" id="">
+                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <Button type="submit"  class="btn btn-outline-light nav-become-btn mx-auto">Login</Button>
+
+
+
+                    </div>
+                </form>
+                <a data-bs-toggle="modal" data-bs-target="#forgetPwdModal">Forgot password?</a>
+                <p>Don't have and account? <a asp-controller="UserManagement" asp-action="CustomerSignUp">Register Now</a></p>
+            </div>
+
+
+        </div>
+    </div>

@@ -1,79 +1,85 @@
-﻿@{
+﻿@model Helperland.Models.User
+
+@{
     ViewData["Title"] = "Customer Signup";
-    
+
 }
- @model Helperland.Models.User
 
-    <section class="text-center container-fluid contact-us-form">
-        
-            <h2 class="contact-form-title"> Create an account</h2>
+<section class="text-center container-fluid contact-us-form">
 
+    <h2 class="contact-form-title"> Create an account</h2>
 
 
 
 
 
 
-    <form asp-controller="UserManagement" asp-action="CustomerSignUp" method='post' >
-      <div class="row">
-        <div class=" col-sm-6">
-            <span asp-validation-for="FirstName" class="Validation-Error"></span>
-          <input  asp-for="FirstName"  type="text" class="form-control" placeholder="First name">
-        </div>
-        <div class=" col-sm-6">
-            <span asp-validation-for="LastName" class="Validation-Error"></span>
-          <input type="text"  asp-for="LastName" class="form-control" placeholder="Last name">
-        </div>
-      </div>
-      <br>
-
-      <div class="row">
-        <div class="col-sm-6">
-             <span asp-validation-for="Email" class="Validation-Error"></span>
-          <input type="text" asp-for="Email" class="form-control" placeholder="Email address">
-        </div>
-        <div class=" col-sm-6">
-            <span asp-validation-for="LastName" class="Validation-Error"></span>
-          <div class="input-group mb-3">
-               
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">+91</span>
+       <div class="@TempData["add"] alert-danger alert-dismissible fade" role="alert" id="loginFailAlert">
+                    @TempData["msg"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+    <form asp-controller="UserManagement" asp-action="CustomerSignUp" method='post'>
+        <div class="row">
+            <div class=" col-sm-6">
+                <span asp-validation-for="FirstName" class="Validation-Error"></span>
+                <input asp-for="FirstName" type="text" class="form-control" placeholder="First name">
             </div>
-            <input type="text" asp-for="Mobile" class="form-control" placeholder="Mobile number">
-          </div>
-
+            <div class=" col-sm-6">
+                <span asp-validation-for="LastName" class="Validation-Error"></span>
+                <input type="text" asp-for="LastName" class="form-control" placeholder="Last name">
+            </div>
         </div>
-      </div>
+        <br>
 
-     
-   
+        <div class="row">
+            <div class="col-sm-6">
+                <span asp-validation-for="Email" class="Validation-Error"></span>
+                <input type="text" asp-for="Email" class="form-control" placeholder="Email address">
+            </div>
+            <div class=" col-sm-6">
+                <span asp-validation-for="LastName" class="Validation-Error"></span>
+                <div class="input-group mb-3">
 
-     <div class="row">
-        <div class=" col-sm-6">
-            <span asp-validation-for="Password" class="Validation-Error"></span>
-          <input type="password" asp-for="Password" class="form-control" placeholder="Password">
-        </div>
-        <div class=" col-sm-6">
-            <span asp-validation-for="LastName" class="Validation-Error"></span>
-          <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password">
-        </div>
-      </div>
-      <br />
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">+91</span>
+                    </div>
+                    <input type="text" asp-for="Mobile" class="form-control" placeholder="Mobile number">
+                </div>
 
-       <div class="form-check" style="text-align:left">
-          <input type="checkbox" class="form-check-input" id="">
-          <label class="form-check-label" for="exampleCheck1" >I have read the privacy policy</label>
+            </div>
         </div>
-     
-       <br />
-                 <Button type="Submit" class="btn btn-outline-light nav-become-btn" >Register</Button>
+
+
+
+
+        <div class="row">
+            <div class=" col-sm-6">
+                <span asp-validation-for="Password" class="Validation-Error"></span>
+                <input type="password" asp-for="Password" class="form-control" placeholder="Password">
+            </div>
+            <div class=" col-sm-6">
+                <span asp-validation-for="LastName" class="Validation-Error"></span>
+                <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password">
+            </div>
+        </div>
+        <br />
+
+        <div class="form-check" style="text-align:left">
+            <input type="checkbox" class="form-check-input" id="">
+            <label class="form-check-label" for="exampleCheck1">I have read the privacy policy</label>
+        </div>
+
+             
+                
+        <br />
+        <Button type="Submit" class="btn btn-outline-light nav-become-btn">Register</Button>
 
 
     </form>
-    <br/>
-     <br/>
-      <br/>
-    
-   </section>
+    <br />
+    <br />
+    <br />
+
+</section>
 
 

@@ -816,3 +816,10 @@ E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\bundleconfig.j
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout1.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\UserManagement\BecomeAProvider.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\UserManagement\CustomerSignUp.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\CustomerServiceHistory.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Loginpopup.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\MailKit.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\MimeKit.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ForgetPwd.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ResetPassword.cshtml.g.cs
