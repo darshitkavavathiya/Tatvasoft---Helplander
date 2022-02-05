@@ -154,7 +154,7 @@ namespace Helperland.Controllers
 
                 BodyBuilder bodyBuilder = new BodyBuilder();
                 bodyBuilder.HtmlBody = "<h1>Reset your password by click below link</h1>" +
-                    "<a href='" + Url.Action("ResetPassword", "UserManagement", new { userId = user.UserId }, "https") + "'>Reset Password</a>";
+                    "<a href='" + Url.Action("ResetPassword", "UserManagement", new { userId = user.UserId }, "http") + "'>Reset Password</a>";
                 
 
                 message.Body = bodyBuilder.ToMessageBody();
@@ -181,14 +181,16 @@ namespace Helperland.Controllers
         [HttpPost]
         public IActionResult ResetPassword(ResetPassword rp)
         {
-            var user = new User() { UserId = rp.userId, Password = rp.password, ModifiedDate = DateTime.Now };
-            _db.Users.Attach(user);
-            _db.Entry(user).Property(x => x.Password).IsModified = true;
-            _db.Entry(user).Property(x => x.Password).IsModified = true;
-            _db.SaveChanges();
+            
+                var user = new User() { UserId = rp.userId, Password = rp.password, ModifiedDate = DateTime.Now };
+                _db.Users.Attach(user);
+                _db.Entry(user).Property(x => x.Password).IsModified = true;
+                _db.Entry(user).Property(x => x.Password).IsModified = true;
+                _db.SaveChanges();
 
 
-            return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                return RedirectToAction("Index", "Public", new { loginModal = "true" });
+         
         }
     } 
 }
