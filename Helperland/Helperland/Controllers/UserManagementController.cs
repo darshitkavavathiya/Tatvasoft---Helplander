@@ -69,6 +69,7 @@ namespace Helperland.Controllers
 
                     _db.Users.Add(user);
                     _db.SaveChanges();
+
                     TempData["add"] = "alert show";
                     TempData["msg"] = "Account created, Please Login";
                     return RedirectToAction("Index", "Public", new { loginModal = "true" });
@@ -144,7 +145,7 @@ namespace Helperland.Controllers
                 MimeMessage message = new MimeMessage();
 
                 MailboxAddress from = new MailboxAddress("Helperland",
-                "vedantjotangiya@gmail.com");
+                "darshit2669@gmail.com");
                 message.From.Add(from);
 
                 MailboxAddress to = new MailboxAddress(user.FirstName, email);
@@ -153,7 +154,7 @@ namespace Helperland.Controllers
                 message.Subject = "Reset Password";
 
                 BodyBuilder bodyBuilder = new BodyBuilder();
-                bodyBuilder.HtmlBody = "<h1>Reset your password by click below link</h1>" +
+                bodyBuilder.HtmlBody = "<h1> You can Reset your password by click below link</h1>" +
                     "<a href='" + Url.Action("ResetPassword", "UserManagement", new { userId = user.UserId }, "http") + "'>Reset Password</a>";
                 
 
@@ -161,7 +162,7 @@ namespace Helperland.Controllers
 
                 SmtpClient client = new SmtpClient();
                 client.Connect("smtp.gmail.com", 587, false);
-                client.Authenticate("vedantjotangiya@gmail.com", "Vedantjot@123"); 
+                client.Authenticate("darshitbkavathiya@gmail.com", "Dar@1234");
                 client.Send(message);
                 client.Disconnect(true);
                 client.Dispose();
@@ -184,7 +185,6 @@ namespace Helperland.Controllers
             
                 var user = new User() { UserId = rp.userId, Password = rp.password, ModifiedDate = DateTime.Now };
                 _db.Users.Attach(user);
-                _db.Entry(user).Property(x => x.Password).IsModified = true;
                 _db.Entry(user).Property(x => x.Password).IsModified = true;
                 _db.SaveChanges();
 
