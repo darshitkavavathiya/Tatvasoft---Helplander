@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<title>Book service</title>
+	<link rel="stylesheet" href="css/book-Service.css">
+
+	<style>
+
+	</style>
+</head>
+
+<body>
+
+
+	<section class="header">
+		<div class="container-fluid" style="background-color: #A3A3A3;">
+			<nav class="navbar navbar-expand-lg navbar-light text-center">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#"><img src="assets/logo-large.png" class="header-img" alt="" ;></a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+						aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<div class="navbar-nav ms-auto">
+							<ul class="navbar-nav">
+								<li class="nav-item navborder">
+									<a class="nav-link  text-white" aria-current="page" href="#">Book now</a>
+								</li>
+								<li class="nav-item navonlyborder">
+									<a class="nav-link text-white" href="#">Prices & Services</a>
+								</li>
+								<li class="nav-item ">
+									<a class="nav-link text-white " href="#">Warrenty</a>
+								</li>
+								<li class="nav-item ">
+									<a class="nav-link text-white " href="#">Blog</a>
+								</li>
+								<li class="nav-item ">
+									<a class="nav-link text-white " href="#">Contact</a>
+								</li>
+								<li class="nav-item navborder">
+									<a class="nav-link text-white ">Login</a>
+								</li>
+								<li class="nav-item navborder">
+									<a class="nav-link text-white " href="#">Become a Helper</a>
+								</li>
+
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</section>
+
+	<div>
+		<img src="assets/calculator-banner.png" class="img-fluid" alt="...">
+	</div>
+
+	<section class="prices-services">
+		<div>
+			<h1 class="title text-center">Set up your cleaning services</h1>
+
+		</div>
+
+		<div class="text-center">
+			<img src="assets/faq-seprator.png" class="img-fluid image-seprator" alt="...">
+		</div>
+	</section>
+
+	<section class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-12 clearfix">
+
+				<div class="tab">
+					<button class="tablinks" onclick="set_service(event, 'setup_service')"><img
+							src="assets/setup-service.png" alt=".."> Setup service</button>
+					<button class="tablinks" onclick="set_service(event, 'schedule')"><img src="assets/schedule.png"
+							alt=".."> Schedule & Plan</button>
+					<button class="tablinks" onclick="set_service(event, 'your_details')"><img src="assets/details.png"
+							alt=".."> Your Details</button>
+					<button class="tablinks" onclick="set_service(event, 'make_payment')" id="defaultOpen"><img
+							src="assets/payment.png" alt=".."> Make Payment</button>
+				</div>
+
+
+
+				<div id="setup_service" class="tabcontent">
+					<h2>Enter Your Postal code</h2>
+					<row>
+
+						<input placeholder="Enter Your Postal code">
+						<button type="submit" class="continue">Check Availability</button>
+					</row>
+				</div>
+
+
+
+				<div id="your_details" class="tabcontent">
+                    <p>Please select your age:</p>
+                    <div class="radiobutton">
+                        <input type="radio" id="address1" name="address" value="1" />
+                        <label for="address1"><span>ADDRESS:</span><span>xyx</span> <br />
+							<span>PHONE NUMBER:</span> <span>9898989898</span></label>
+                    </div>
+                    <div class="radiobutton">
+                        <input type="radio" id="address2" name="address" value="2" />
+                        <label for="address2"><span>ADDRESS:</span><span>abc</span> <br />
+							<span>PHONE NUMBER:</span> <span>9898989898</span></label>
+                    </div>
+                    <button class="btn add_address" id="add_address" onclick="toggleText()">+ Add New
+						Address</button>
+                    <form action="" class="address_form">
+                        <div class="row mb-3">
+                            <div class="col-md-6 col-sm-12">
+                                <label for="streetname" class="form-label">Street name</label>
+                                <input type="text" class="form-control" name="streetname" placeholder="Street name" />
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <label for="housenumber" class="form-label">House number</label>
+                                <input type="text" class="form-control" name="housenumber" placeholder="House number" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 col-sm-12">
+                                <label for="postalcode" class="form-label">Postal Code</label>
+                                <input type="text" class="form-control" name="postalcode" placeholder="Postal Code" />
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <label for="city" class="form-label">City</label>
+                                <input type="text" class="form-control" name="city" placeholder="City" />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6 col-sm-12">
+                                <label for="phonenumber" class="form-label">Phone number</label>
+                                <div class="input-group">
+                                    <div class="input-group-text">+49</div>
+                                    <input type="text" class="form-control" name="phonenumber" placeholder="Mobile Number" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn save">Save</button>
+                            <button type="reset" class="btn cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+				<div id="make_payment" class="tabcontent make_payment">
+					<h2>Pay Secuerly with Helperland Payment Gateway! </h2>
+					<label>Promo code (Optional)</label>
+					<br>
+					<br>
+					<row>
+
+						<input placeholder="Promo code (Optional)">
+						<button type="submit" class="apply-btn">apply</button>
+					</row>
+					<hr>
+					<input type="checkbox"> I accepted terms and conditions, the cancellation policy and the privacy
+					policy. I confirm that Helperland starts to execute the contract before the expiry of the withdrawal
+					period and I lose my right of withdrawal as a consumer with full performance of the contract.
+					<hr>
+					<button class="continue" type="submit">
+						Complete Booking
+					</button>
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<div id="schedule" class="tabcontent schedule">
+					<h2>Select number of rooms and bath</h2>
+					<div class="row">
+						<div class="col-2">
+							<select class="form-select" aria-label="Default select example">
+								<option selected>1 bed</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+						</div>
+						<div class="col-2">
+							<select class="form-select" aria-label="Default select example">
+								<option selected>1 bath</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+						</div>
+					</div>
+					<hr>
+
+					<div class="row">
+						<div class="col-6">
+							<h2>when do you need cleaner?</h2>
+							<div class="row">
+								<div class="col-4">
+									<input type="date" class="form-control " placeholder="canlender">
+								</div>
+								<div class="col-4">
+									<select class="form-select" aria-label="Default select example">
+										<option selected>2:00 PM</option>
+										<option value="1">2:00 PM</option>
+										<option value="2">3:00 PM</option>
+										<option value="3">4:00 PM</option>
+									</select>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-6">
+							<h2>how longer do you need your cleaner to stay? </h2>
+							<div class="col-4">
+								<select class="form-select" aria-label="Default select example">
+									<option selected>3.0 hrs</option>
+									<option value="3">3.0 hrs</option>
+									<option value="2">2.0 hrs</option>
+									<option value="1">1.0 hrs</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<hr>
+
+					<h2>Extra services</h2>
+					<div class="container extra_services">
+						<div class="row text-center">
+							<div class="col-sm">
+								<a href="#" class="btn"><img src="assets/3-green.png" alt="..."></a>
+								<p class="service">Inside cabinets</p>
+
+							</div>
+							<div class="col-sm">
+								<a href="#" class="btn"><img src="assets/5-green.png" alt="..."></a>
+								<p class="service">Inside fridge</p>
+
+							</div>
+							<div class="col-sm">
+
+								<a href="#" class="btn"><img src="assets/4-green.png" alt="..."></a>
+								<p class="service">Inside oven</p>
+
+							</div>
+							<div class="col-sm">
+								<a href="#" class="btn"><img src="assets/2-green.png" alt="..."></a>
+								<p class="service">Laundry wash & dry</p>
+
+							</div>
+							<div class="col-sm">
+
+								<a href="#" class="btn"><img src="assets/1-green.png" alt="..."></a>
+								<p class="service">Interior windows</p>
+
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="comments">
+						<label for="comments" class="form-label">Comments</label>
+						<textarea class="form-control" id="comments" rows="3"></textarea>
+					</div>
+
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+						<label class="form-check-label" for="flexCheckDefault">
+							I have pets at home
+						</label>
+					</div>
+					<hr>
+					<button class="continue" type="submit">
+						Continue
+					</button>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-12">
+
+				<div class="card">
+					<div class="card-header">
+						Payment Summary
+					</div>
+					<div class="card-body">
+						<p class="card-text">01/01/2018 @ 4:00 pm <br> 1 bed, 1 bath.</p>
+
+						<h3 class="card-text">
+							Duration
+						</h3>
+						<div class="row">
+							<div class="col">
+								<p class="card-text">
+									Basic
+								</p>
+							</div>
+							<div class="col">
+								<p class="card-text text-end">
+									3 Hrs
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<p class="card-text">
+									Inside cabinets (extra)
+								</p>
+							</div>
+							<div class="col">
+								<p class="card-text text-end">
+									30 Min
+								</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col">
+								<p class="card-text total_time">
+									Total Service Time
+								</p>
+							</div>
+							<div class="col">
+								<p class="card-text text-end price">
+									3.5Hrs
+								</p>
+							</div>
+						</div>
+
+						<hr>
+						<div class="row">
+							<div class="col">
+								<p class="card-text">
+									Per cleaning
+								</p>
+							</div>
+							<div class="col">
+								<p class="card-text text-end price">
+									$87
+								</p>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col">
+								<p class="card-text">
+									Discount
+								</p>
+							</div>
+							<div class="col">
+								<p class="card-text text-end price">
+									-$27
+								</p>
+							</div>
+						</div>
+
+						<hr>
+						<div class="row">
+							<div class="col">
+								<p class="card-text total_payment">
+									Total Payment
+								</p>
+							</div>
+							<div class="col">
+								<p class="card-text text-end total_price">
+									$63
+								</p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<p class="card-text">
+									Effective Price
+								</p>
+							</div>
+							<div class="col">
+								<p class="card-text text-end effective_price">
+									$50.4
+								</p>
+							</div>
+						</div>
+						<p class="card-text saving">*You will save 20% according to §35a EStG.</p>
+					</div>
+					<div class="card-footer">
+						<img src="assets/smiley.png" alt=".."> See what is always included
+					</div>
+				</div>
+
+				<div class="suggestion">
+					<h3 class="text-center">
+						Questions?
+					</h3>
+					<div class="que">
+						<a class="large-content" data-bs-toggle="collapse" href="#collapseExample1" role="button"
+							aria-expanded="false" aria-controls="collapseExample">
+							<img src="assets/right-arrow.png" alt=""> Which Helperland professional will come to my
+							place?
+						</a>
+						<div class="collapse" id="collapseExample1">
+							<div class="small-content">
+								ans.
+							</div>
+						</div>
+					</div>
+					<div class="que">
+						<a class="large-content" data-bs-toggle="collapse" href="#collapseExample2" role="button"
+							aria-expanded="false" aria-controls="collapseExample">
+							<img src="assets/right-arrow.png" alt=""> Which Helperland professional will come to my
+							place?
+						</a>
+						<div class="collapse" id="collapseExample2">
+							<div class="small-content">
+								ans.
+							</div>
+						</div>
+					</div>
+					<div class="que">
+
+						<a class="large-content" data-bs-toggle="collapse" href="#collapseExample3" role="button"
+							aria-expanded="false" aria-controls="collapseExample">
+							<img src="assets/right-arrow.png" alt=""> Which Helperland professional will come to my
+							place?
+						</a>
+						<div class="collapse" id="collapseExample3">
+							<div class="small-content">
+								ans.
+							</div>
+						</div>
+					</div>
+					<div class="que">
+
+						<a class="large-content" data-bs-toggle="collapse" href="#collapseExample4" role="button"
+							aria-expanded="false" aria-controls="collapseExample">
+							<img src="assets/right-arrow.png" alt=""> Which Helperland professional will come to my
+							place?
+						</a>
+						<div class="collapse" id="collapseExample4">
+							<div class="small-content">
+								ans.
+							</div>
+						</div>
+					</div>
+					<div class="que">
+
+						<a class="large-content" data-bs-toggle="collapse" href="#collapseExample5" role="button"
+							aria-expanded="false" aria-controls="collapseExample">
+							<img src="assets/right-arrow.png" alt=""> Which Helperland professional will come to my
+							place?
+						</a>
+						<div class="collapse" id="collapseExample5">
+							<div class="small-content">
+								ans.
+							</div>
+						</div>
+					</div>
+					<div class="more">
+
+						<a href="#"> For more help</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="our-news-letter">
+		<div class="container text-center">
+			<h2>GET OUR NEWSLETTER</h2>
+			<div class="form-row d-flex justify-content-center align-items-center">
+				<div class="form-group">
+					<label for="email" style="display: none;">YOUR EMAIL</label>
+					<input type="text" placeholder="YOUR EMAIL" id="email" class="form-control">
+				</div>
+				<div class="btn-wrapper">
+					<button class="submit">Submit</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="footer">
+		<div class="container">
+			<div class="row footer-start justify-content-center d-flex align-content-center">
+				<div class="col-lg-2 text-center">
+					<img src="assets/footer-logo.png" alt="">
+				</div>
+				<div class="col-lg-8">
+					<div class="footer-navbar text-center p-4">
+						<a class="footer-menu" href="#">HOME</a>
+						<a class="footer-menu" href="#">ABOUT</a>
+						<a class="footer-menu" href="#">TESTIMONIALS</a>
+						<a class="footer-menu" href="#">FAQS</a>
+						<a class="footer-menu" href="#">INSURANCE</a>
+						<a class="footer-menu" href="#">POLICY</a>
+						<a class="footer-menu" href="#">IMPRESSUM</a>
+					</div>
+				</div>
+				<div class="col-lg-2 text-center">
+					<a href="#"><img src="assets/ic-facebook.png" alt="fb" class="fb"></a>
+					<a href="#"><img src="assets/ic-instagram.png" alt="insta" class="insta"></a>
+				</div>
+			</div>
+			<div class="row">
+				<hr>
+				<div class="text-center footer-end">
+
+					<p>©2018 Helperland. All rights reserved. Terms and Conditions | Privacy Policy</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/book-service.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

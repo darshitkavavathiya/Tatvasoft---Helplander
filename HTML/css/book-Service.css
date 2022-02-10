@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.header-img {
+    max-height: 54px;
+    padding: 0;
+}
+
+.nav-item {
+    margin-left: 15px;
+}
+
+.navonlyborder {
+    padding: 0px 5px 0px 5px;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+}
+
+.navborder {
+    padding: 0px 5px 0px 5px;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+    background-color: #29626D;
+}
+
+.title {
+    color: #4F4F4F;
+    opacity: 1;
+    font-weight: 500;
+    font-size: 36px;
+    margin-top: 31px;
+}
+
+.image-seprator {
+    max-height: 60px;
+    margin-bottom: 30px;
+}
+
+.tab button {
+    margin: 0;
+    background-color: #F3F3F3;
+    color: #646464;
+    padding: 24px 10px;
+    width: 24%;
+    border: 1px solid #F3F3F3;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+.tab button.active {
+    background-color: #1D7A8C;
+    color: #FFFFFF;
+}
+
+ h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4F4F4F;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.schedule hr {
+    margin-top: 30px;
+}
+
+.schedule .extra_services p {
+    color: #646464;
+    font-size: 16px;
+}
+
+.schedule .comments {
+    font-size: 16px;
+    font-weight: 700;
+    color: #4F4F4F;
+}
+
+.schedule .form-check label {
+    font-size: 16px;
+    color: #4F4F4F;
+}
+
+.schedule .btn {
+    display: inline-block;
+    text-decoration: none;
+    width: 108px;
+    height: 108px;
+    line-height: 90px;
+    border-radius: 50%;
+    border: solid 1px#B0C9CE;
+}
+
+.schedule .continue {
+    padding: 6px 18px 6px 18px;
+    border: 1px solid #1D7A8C;
+    border-radius: 23px;
+    background-color: #1D7A8C;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+    float: right;
+    margin-bottom: 10px;
+}
+.make_payment h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4F4F4F;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.radiobutton {
+    border: 1px solid #4F4F4F;
+    vertical-align: middle;
+    padding: 10px;
+    margin: 10px;
+}
+
+.add_address {
+    border: 2px solid #1D7A8C;
+    color: #1D7A8C;
+    border-radius: 23px;
+}
+
+.save {
+    color: #FFFFFF;
+    background-color: #1D7A8C;
+    border-radius: 23px;
+}
+
+.cancel {
+    color: #9BA0A3;
+    border: 1px solid #9BA0A3;
+    border-radius: 23px;
+    margin: 10px;
+}
+
+.address_form {
+    border: 1px solid #9BA0A3;
+    padding: 15px;
+    margin: 10px;
+    background-color: #ebf2f3;
+
+}
+
+.apply-btn{
+    padding: 20px, 5px;
+    background: #00607200 0% 0% no-repeat padding-box;
+    border: 1px solid #2f6a71;
+    border-radius: 20px;
+    opacity: 1;
+    width: 100px;
+    height: 35px;
+    margin-left: 20px;
+}
+
+.continue {
+    padding: 6px 18px 6px 18px;
+    border: 1px solid #1D7A8C;
+    border-radius: 23px;
+    background-color: #1D7A8C;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+    
+    margin-bottom: 10px;}
+
+.make_payment continue {
+        padding: 6px 18px 6px 18px;
+        border: 1px solid #1D7A8C;
+        border-radius: 23px;
+        background-color: #1D7A8C;
+        color: #FFFFFF;
+        font-size: 20px;
+        font-weight: 700;
+        float: right;
+        margin-bottom: 10px;}
+
+.card .card-header {
+    padding: 21px;
+    color: #FFFFFF;
+    background-color: #1D7A8C;
+    font-size: 18px;
+}
+
+.card .card-body h3 {
+    color: #646464;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.card .card-body p {
+    color: #4F4F4F;
+    font-size: 16px;
+}
+
+.card .card-body .total_time {
+    font-weight: 700;
+}
+
+.card .card-body .price {
+    color: #646464;
+    font-weight: 700;
+}
+
+.card .card-body .total_payment {
+    color: #1D7A8C;
+    font-size: 20px;
+}
+
+.card .card-body .total_price {
+    color: #1D7A8C;
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.card .card-body .effective_price {
+    font-weight: 700;
+    font-size: 20px;
+    color: #646464;
+}
+
+.card .card-body .saving {
+    font-size: 14px;
+    color: #646464;
+}
+
+.card .card-footer {
+    font-size: 14px;
+    color: #8D8D8D;
+}
+
+.our-news-letter {
+    padding-bottom: 55px;
+}
+
+.suggestion h3 {
+    color: #4F4F4F;
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 26px;
+}
+
+.suggestion .large-content {
+    font-size: 14px;
+    font-weight: 700;
+    color: #646464;
+    text-align: left;
+    letter-spacing: 0px;
+}
+
+.suggestion .small-content {
+    font-size: 16px;
+    color: #646464;
+    text-align: left;
+    letter-spacing: 0px;
+}
+
+.suggestion .que {
+    border-bottom: 1px solid #646464;
+    padding: 5px;
+}
+
+.suggestion .que a {
+    text-decoration: none;
+}
+
+.suggestion .more a {
+    text-decoration: none;
+    color: #1D7A8C;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.our-news-letter .container {
+    position: relative;
+    max-width: 1420px;
+}
+
+.our-news-letter h2 {
+    color: #353548;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 50px;
+    margin-bottom: 16px;
+}
+
+.our-news-letter .form-row .form-control {
+    border-radius: 20px;
+    border: solid 1px #565656;
+    background-color: #f4f5f8;
+    color: #565656;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 22px;
+}
+
+.our-news-letter .btn-wrapper {
+    margin-left: 11px;
+}
+
+.submit {
+    background-color: #FF7B6D;
+    font-size: 14px;
+    line-height: 37px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    color: #fff;
+    width: 88px;
+    transition: 0.3s all;
+}
+
+.footer {
+    background-color: #111111;
+    padding-top: 20px;
+}
+
+.footer .footer-menu {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #F1F1F1;
+    font-size: 14px;
+}
+
+.footer .fb {
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
+.footer-start {
+    margin-bottom: 20px;
+}
+
+.footer .insta {
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
+.footer-end {
+    color: #9BA0A3;
+    font-size: 14px;
+    padding-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+

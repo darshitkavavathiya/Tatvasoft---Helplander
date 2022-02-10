@@ -154,7 +154,7 @@ namespace Helperland.Controllers
                 message.Subject = "Reset Password";
 
                 BodyBuilder bodyBuilder = new BodyBuilder();
-                bodyBuilder.HtmlBody = "<h1> You can Reset your password by click below link</h1>" +
+                bodyBuilder.HtmlBody = "<h1>Reset your password by click below link</h1>" +
                     "<a href='" + Url.Action("ResetPassword", "UserManagement", new { userId = user.UserId }, "http") + "'>Reset Password</a>";
                 
 
@@ -162,7 +162,7 @@ namespace Helperland.Controllers
 
                 SmtpClient client = new SmtpClient();
                 client.Connect("smtp.gmail.com", 587, false);
-                client.Authenticate("darshitbkavathiya@gmail.com", "Dar@1234");
+                client.Authenticate("vedantjotangiya@gmail.com", "Vedantjot@123");
                 client.Send(message);
                 client.Disconnect(true);
                 client.Dispose();
