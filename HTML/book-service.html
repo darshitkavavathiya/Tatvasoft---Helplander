@@ -81,13 +81,13 @@
 			<div class="col-lg-8 col-md-12 clearfix">
 
 				<div class="tab">
-					<button class="tablinks" onclick="set_service(event, 'setup_service')"><img
+					<button class="tablinks" onclick="set_service(event, 'setup_service')" ><img
 							src="assets/setup-service.png" alt=".."> Setup service</button>
-					<button class="tablinks" onclick="set_service(event, 'schedule')"><img src="assets/schedule.png"
+					<button class="tablinks" onclick="set_service(event, 'schedule')" id="defaultOpen"><img src="assets/schedule.png"
 							alt=".."> Schedule & Plan</button>
 					<button class="tablinks" onclick="set_service(event, 'your_details')"><img src="assets/details.png"
 							alt=".."> Your Details</button>
-					<button class="tablinks" onclick="set_service(event, 'make_payment')" id="defaultOpen"><img
+					<button class="tablinks" onclick="set_service(event, 'make_payment')" ><img
 							src="assets/payment.png" alt=".."> Make Payment</button>
 				</div>
 
@@ -265,29 +265,35 @@
 					<div class="container extra_services">
 						<div class="row text-center">
 							<div class="col-sm">
-								<a href="#" class="btn"><img src="assets/3-green.png" alt="..."></a>
+								<input type="checkbox" id="InsideCabinat" class="hidden" onclick="extrabtnclick(id,3)" >
+								<label for="InsideCabinat" class="btn"  ><img src="assets/3.png" id="InsideCabinatImg"alt="..."></label>
 								<p class="service">Inside cabinets</p>
 
 							</div>
 							<div class="col-sm">
-								<a href="#" class="btn"><img src="assets/5-green.png" alt="..."></a>
+								<input type="checkbox" id="InsideFridge" class="hidden" onclick="extrabtnclick(id,5)" >
+								<label for="InsideFridge" class="btn"  ><img src="assets/5.png" id="InsideFridgeImg"alt="..."></label>
+								
 								<p class="service">Inside fridge</p>
 
 							</div>
 							<div class="col-sm">
-
-								<a href="#" class="btn"><img src="assets/4-green.png" alt="..."></a>
+								<input type="checkbox" id="InsideOven" class="hidden" onclick="extrabtnclick(id,4)" >
+								<label for="InsideOven" class="btn"  ><img src="assets/4.png" id="InsideOvenImg"alt="..."></label>
+								
 								<p class="service">Inside oven</p>
 
 							</div>
 							<div class="col-sm">
-								<a href="#" class="btn"><img src="assets/2-green.png" alt="..."></a>
+								<input type="checkbox" id="InsideLaundry" class="hidden" onclick="extrabtnclick(id,2)" >
+								<label for="InsideLaundry" class="btn"  ><img src="assets/2.png" id="InsideLaundryImg"alt="..."></label>
+								
 								<p class="service">Laundry wash & dry</p>
 
 							</div>
 							<div class="col-sm">
-
-								<a href="#" class="btn"><img src="assets/1-green.png" alt="..."></a>
+								<input type="checkbox" id="InsideWindow" class="hidden" onclick="extrabtnclick(id,1)" >
+								<label for="InsideWindow" class="btn"  ><img src="assets/1.png" id="InsideWindowImg"alt="..."></label>
 								<p class="service">Interior windows</p>
 
 							</div>
@@ -336,18 +342,21 @@
 								</p>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col">
-								<p class="card-text">
-									Inside cabinets (extra)
+						<p class="card-text hidden" id="extra3">
+							Inside cabinets <span class="extratime">30 min</span>
+						</p>
+						<p class="card-text hidden" id="extra5">
+							Inside fridge  <span class="extratime"> 30 min </span>  
+						</p>
+							<p class="card-text hidden" id="extra4">
+							Inside oven  <span class="extratime"> 30 min </span>  				
 								</p>
-							</div>
-							<div class="col">
-								<p class="card-text text-end">
-									30 Min
-								</p>
-							</div>
-						</div>
+						<p class="card-text hidden" id="extra2">
+							Laundry wash and dry   <span class="extratime"> 30 min </span>  
+												</p>
+						<p class="card-text hidden" id="extra1">
+							Interior windows  <span class="extratime">  30 min </span>  
+						</p>
 						<hr>
 						<div class="row">
 							<div class="col">
@@ -357,7 +366,8 @@
 							</div>
 							<div class="col">
 								<p class="card-text text-end price">
-									3.5Hrs
+									<span id="total_hours">3</span>
+									Hrs
 								</p>
 							</div>
 						</div>

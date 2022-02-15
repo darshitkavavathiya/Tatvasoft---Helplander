@@ -1,0 +1,348 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.title = "bookservice";
+
+
+}
+
+
+
+
+@section Css
+{
+<link rel="stylesheet" href="~/css/bookService.css" />
+<script src="~/js/bookService.js"></script>
+
+}
+
+
+
+<div>
+    <img src="~/images/calculator-banner.png" class="img-fluid" alt="...">
+</div>
+
+<section class="prices-services">
+    <div>
+        <h1 class="title text-center">Set up your cleaning services</h1>
+
+    </div>
+
+    <div class="text-center">
+        <img src="~/images/faq-star.png" class="img-fluid image-seprator" alt="...">
+    </div>
+</section>
+
+<section class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-12 clearfix">
+
+            <div class="tab">
+                <button class="tablinks" onclick="set_service(event, 'setup_service')" id="defaultOpen">
+                    <img src="~/images/setup-service.png" alt=".."> Setup service
+                </button>
+                <button class="tablinks" onclick="set_service(event, 'schedule')" id="form2Btn">
+                    <img src="~/images/schedule.png"
+                         alt=".."> Schedule & Plan
+                </button>
+                <button class="tablinks" onclick="set_service(event, 'your_details')">
+                    <img src="~/images/details.png"
+                         alt=".."> Your Details
+                </button>
+                <button class="tablinks" onclick="set_service(event, 'make_payment')">
+                    <img src="~/images/payment.png" alt=".."> Make Payment
+                </button>
+            </div>
+
+
+            @await Html.PartialAsync("form1")
+            @await Html.PartialAsync("form2")
+            @await Html.PartialAsync("form3")
+            @await Html.PartialAsync("form4")
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+
+            <div class="card">
+                <div class="card-header">
+                    Payment Summary
+                </div>
+                <div class="card-body">
+                    <p class="card-text">01/01/2018  4:00 pm <br> 1 bed, 1 bath.</p>
+
+                    <h3 class="card-text">
+                        Duration
+                    </h3>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text">
+                                Basic
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text text-end">
+                                3 Hrs
+                            </p>
+                        </div>
+                    </div>
+                    <p class="card-text hidden" id="extra3">
+                        Inside cabinets <span class="extratime">30 min</span>
+                    </p>
+                    <p class="card-text hidden" id="extra5">
+                        Inside fridge  <span class="extratime"> 30 min </span>
+                    </p>
+                    <p class="card-text hidden" id="extra4">
+                        Inside oven  <span class="extratime"> 30 min </span>
+                    </p>
+                    <p class="card-text hidden" id="extra2">
+                        Laundry wash and dry   <span class="extratime"> 30 min </span>
+                    </p>
+                    <p class="card-text hidden" id="extra1">
+                        Interior windows  <span class="extratime">  30 min </span>
+                    </p>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text total_time">
+                                Total Service Time
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text text-end price">
+                                <span id="total_hours">3</span>Hrs
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text">
+                                Per cleaning
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text text-end price">
+                                $<span id="total_price"> 83 </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text">
+                                Discount
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text text-end price">
+                                -$  <span id="discount"> 10 </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text total_payment">
+                                Total Payment
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text text-end total_price">
+                                $ <span id="priceAfterDiscount"> 73</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="card-text">
+                                Effective Price
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="card-text text-end effective_price">
+                                $<span id="priceAfterPromo"> 63 </span>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="card-text saving">*You will save 10$ according to §35a EStG.</p>
+                </div>
+                <div class="card-footer">
+                    <img src="~/images/smiley.png" alt=".."> See what is always included
+                </div>
+            </div>
+
+            <div class="suggestion">
+                <h3 class="text-center">
+                    Questions?
+                </h3>
+                <div class="que">
+                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample1" role="button"
+                       aria-expanded="false" aria-controls="collapseExample">
+                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+                        place?
+                    </a>
+                    <div class="collapse" id="collapseExample1">
+                        <div class="small-content">
+                            ans.
+                        </div>
+                    </div>
+                </div>
+                <div class="que">
+                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample2" role="button"
+                       aria-expanded="false" aria-controls="collapseExample">
+                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+                        place?
+                    </a>
+                    <div class="collapse" id="collapseExample2">
+                        <div class="small-content">
+                            ans.
+                        </div>
+                    </div>
+                </div>
+                <div class="que">
+
+                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample3" role="button"
+                       aria-expanded="false" aria-controls="collapseExample">
+                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+                        place?
+                    </a>
+                    <div class="collapse" id="collapseExample3">
+                        <div class="small-content">
+                            ans.
+                        </div>
+                    </div>
+                </div>
+                <div class="que">
+
+                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample4" role="button"
+                       aria-expanded="false" aria-controls="collapseExample">
+                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+                        place?
+                    </a>
+                    <div class="collapse" id="collapseExample4">
+                        <div class="small-content">
+                            ans.
+                        </div>
+                    </div>
+                </div>
+                <div class="que">
+
+                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample5" role="button"
+                       aria-expanded="false" aria-controls="collapseExample">
+                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+                        place?
+                    </a>
+                    <div class="collapse" id="collapseExample5">
+                        <div class="small-content">
+                            ans.
+                        </div>
+                    </div>
+                </div>
+                <div class="more">
+
+                    <a href="#"> For more help</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    document.getElementById("defaultOpen").click();
+
+    function ClickFunction(id){
+        document.getElementById(id).click();
+
+    }
+
+
+
+
+
+      function postalSubmit() {
+
+        var data = $("#form1").serialize();
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Customer/ValidPostalCode',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: data,
+            success: function (result) {
+                if (result.value == "true") {
+
+                    ClickFunction("form2Btn");
+
+                }
+                else {
+                    alert("zipcode is not valid");
+                }
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+
+                console.log('Failed ');
+            }
+        });
+
+     }
+
+
+
+
+     function scheduleSubmit() {
+        var data = $("#form2").serialize();
+        console.log(data);
+
+        alert(data.toString());
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/Customer/ScheduleService',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: data,
+            success: function (result) {
+                if (result.value == "true") {
+                    form3();
+                }
+                else {
+                    alert("schedule is not valid");
+                }
+            },
+            error: function () {
+                alert('Failed to receive the Data');
+                console.log('Failed ');
+            }
+        });
+    }
+
+
+
+
+
+</script>
+
+
+

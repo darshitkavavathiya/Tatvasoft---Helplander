@@ -20,15 +20,52 @@ namespace Helperland.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+
+
+
+
+
+
         public IActionResult Login(LoginUser user)
         {
+            
             if (ModelState.IsValid)
             {
-                if (_db.Users.Where(x => x.Email == user.username && x.Password == user.password).Count() > 0)
+
+                string password = _db.Users.FirstOrDefault(x => x.Email == user.username).Password;
+
+                bool pass = BCrypt.Net.BCrypt.Verify(user.password, password);
+                if (_db.Users.Where(x => x.Email == user.username && pass).Count() > 0)
                 {
 
                     var U = _db.Users.FirstOrDefault(x => x.Email == user.username);
-                    HttpContext.Session.SetInt32("id", U.UserId);
+
+                    Console.WriteLine("1");
+
+                    if (user.remember == true)
+                    {
+                        CookieOptions cookieRemember = new CookieOptions();
+                        cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
+                        Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
+                    }
+
+
+                    HttpContext.Session.SetInt32("userId", U.UserId);
+
+
+
+                    if (U.UserTypeId == 0)
+                    {
+                        return RedirectToAction("CustomerServiceHistory", "Customer");
+                    }
+                    /* else if (user.UserTypeId == 2)
+                      {
+                          return RedirectToAction("SPUpcomingService", "ServicePro");
+                      }
+                      else if (user.UserTypeId == 3)
+                      {
+                          return RedirectToAction("ServiceRequest", "Admin");
+                      }*/
 
                     return RedirectToAction("CustomerServiceHistory", "Customer");
                 }
@@ -47,9 +84,11 @@ namespace Helperland.Controllers
 
         }
 
+    
 
 
-        public IActionResult CustomerSignUp()
+
+    public IActionResult CustomerSignUp()
         {
             return View();
         }
@@ -66,6 +105,7 @@ namespace Helperland.Controllers
                     user.UserTypeId = 0;
                     user.IsRegisteredUser = true;
                     user.ModifiedBy = 152;
+                    user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
                     _db.Users.Add(user);
                     _db.SaveChanges();
@@ -109,6 +149,7 @@ namespace Helperland.Controllers
                     user.UserTypeId = 1;
                     user.IsRegisteredUser = true;
                     user.ModifiedBy = 152;
+                    user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
                     _db.Users.Add(user);
                     _db.SaveChanges();
@@ -182,8 +223,8 @@ namespace Helperland.Controllers
         [HttpPost]
         public IActionResult ResetPassword(ResetPassword rp)
         {
-            
-                var user = new User() { UserId = rp.userId, Password = rp.password, ModifiedDate = DateTime.Now };
+            rp.password = BCrypt.Net.BCrypt.HashPassword(rp.password);
+            var user = new User() { UserId = rp.userId, Password = rp.password, ModifiedDate = DateTime.Now };
                 _db.Users.Attach(user);
                 _db.Entry(user).Property(x => x.Password).IsModified = true;
                 _db.SaveChanges();

@@ -822,3 +822,9 @@ E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\MimeKit.dll
 E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ForgetPwd.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ResetPassword.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\BCrypt.Net-Next.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\BookService.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\form1.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\form2.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\form3.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\form4.cshtml.g.cs
