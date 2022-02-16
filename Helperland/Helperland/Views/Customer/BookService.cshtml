@@ -11,7 +11,7 @@
 @section Css
 {
 <link rel="stylesheet" href="~/css/bookService.css" />
-<script src="~/js/bookService.js"></script>
+
 
 }
 
@@ -37,18 +37,18 @@
         <div class="col-lg-8 col-md-12 clearfix">
 
             <div class="tab">
-                <button class="tablinks" onclick="set_service(event, 'setup_service')" id="defaultOpen">
+                <button class="tablinks" onclick="set_service(event, 'at1')" id="defaultOpen">
                     <img src="~/images/setup-service.png" alt=".."> Setup service
                 </button>
-                <button class="tablinks" onclick="set_service(event, 'schedule')" id="form2Btn">
+                <button class="tablinks" onclick="set_service(event, 'at2')" id="form2Btn">
                     <img src="~/images/schedule.png"
                          alt=".."> Schedule & Plan
                 </button>
-                <button class="tablinks" onclick="set_service(event, 'your_details')">
+                <button class="tablinks" onclick="set_service(event, 'at3')" id="form3Btn">
                     <img src="~/images/details.png"
                          alt=".."> Your Details
                 </button>
-                <button class="tablinks" onclick="set_service(event, 'make_payment')">
+                <button class="tablinks" onclick="set_service(event, 'at4')" id="form4Btn">
                     <img src="~/images/payment.png" alt=".."> Make Payment
                 </button>
             </div>
@@ -263,83 +263,178 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/js/bookService.js"></script>
 <script>
-    document.getElementById("defaultOpen").click();
 
-    function ClickFunction(id){
-        document.getElementById(id).click();
+        function ClickFunction(id){
+            document.getElementById(id).click();
 
+        }
+
+        function Disable(id){
+            document.getElementById(id).disabled= true;
+        }
+        function Clickable(id){
+            document.getElementById(id).disabled= false;
+        }
+
+
+
+        Disable('form2Btn');
+         Disable('form3Btn');
+          Disable('form4Btn');
+
+          function postalSubmit() {
+
+            var data = $("#form1").serialize();
+
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/Customer/ValidPostalCode',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: data,
+                success: function (result) {
+                    if (result.value == "true") {
+                        Clickable("form2Btn");
+                        ClickFunction("form2Btn");
+
+                    }
+                    else {
+                        alert("zipcode is not valid");
+                    }
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+
+                    console.log('Failed ');
+                }
+            });
+
+         }
+
+
+
+
+         function scheduleSubmit() {
+            var data = $("#form2").serialize();
+            console.log(data);
+
+
+
+
+
+
+
+            $.ajax({
+                type: 'POST',
+                url: '/Customer/ScheduleService',
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                data: data,
+                success: function (result) {
+                    if (result.value == "true") {
+                        Clickable("form3Btn");
+                         ClickFunction("form3Btn");
+                            loadAddress();
+                    }
+                    else {
+                        alert("schedule is not valid");
+                    }
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            });
+        }
+
+
+
+               function loadAddress() {
+                    var data = $("#form1").serialize();
+                     alert("Inside load address")
+                            $.ajax({
+                                type: 'get',
+                                url: '/customer/detailsservice',
+                                contenttype: 'application/x-www-form-urlencoded; charset=utf-8',
+                                 data: data,
+                                success: function (result) {
+                                    var address = $("#address");
+                                    address.empty();
+                                    address.append('<p>Please select your addreee:</p>');
+                                    if(result.length==0)
+                                    {
+                                        ClickFunction("addAddressBtn");
+                                    }
+                                    for (let i = 0; i < result.length; i++) {
+                                        var checked = "";
+                                        if (result[i].isDefault == true) {
+                                            checked = "checked";
+                                        }
+
+
+                                        address.append(' <div class="row radiobutton">'+
+                                                 '<div style="max-width: 10px" class="col-1"><input type="radio" id=" '+ i +' " ' + checked +' name="address" value="'+ result[i].addressId + '" /></div>'+
+                                                ' <div class="col-11"><label for="'+ i +'"><span>Address:</span><br><span>'+ result[i].addressLine1 +'</span>,&nbsp;<span>'+ result[i].addressLine2 +'</span><br><span>'+ result[i].city +'</span>&nbsp;<span>'+ result[i].postalCode +'</span>'+
+                                                '<br><span>PHONE NUMBER:</span> ' + result[i].mobile + ' <span></span></label></div> </div>');
+
+                                        checked = "";
+                                    }
+                                    console.log(result);
+                                },
+                                error: function () {
+                                    alert('failed to receive the data');
+                                    console.log('failed ');
+                                }
+                            });
+                    }
+                function addAddressdiv() {
+                    document.getElementById('addAddressBtn').style.display = "none";
+                    document.getElementById('addNewaddressDiv').style.display = "block";
+                    document.getElementById('addAddressPostalCode').value=document.getElementById("postalcode").value;
+                    document.getElementById('addAddressPostalCode').disabled=true;
+
+
+                }
+                    function saveAddress() {
+                        alert("in save address 1")
+                        var data = {};
+                        data.AddressLine1 = document.getElementById("AddressLine1").value;
+                        data.AddressLine2 = document.getElementById("AddressLine2").value;
+                        data.PostalCode = document.getElementById("addAddressPostalCode").value;
+                        data.City = document.getElementById("City").value;
+                        data.Mobile = document.getElementById("Mobile").value;
+                        alert("in save address 2")
+
+
+                            $.ajax({
+                                type: 'POST',
+                                url: '/Customer/AddNewAddress',
+                                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                data: data,
+                                success: function (result) {
+                                    if (result.value == "true") {
+
+                                         ClickFunction("addressCancelBtn");
+                                         loadAddress();
+
+                                    }
+                                    else {
+                                        $("#detailServiceAlert").removeClass("d-none").text("Sorry! Something went wrong please try again later.");
+                                    }
+                                },
+                                error: function () {
+                                    alert('Failed to receive the Data');
+                                    console.log('Failed ');
+                                }
+                            });
+                        }
+
+    function cancelAddress() {
+        document.getElementById("addNewaddressDiv").style.display = "none";
+        document.getElementById('addAddressBtn').style.display = "block";
     }
-
-
-
-
-
-      function postalSubmit() {
-
-        var data = $("#form1").serialize();
-
-
-
-        $.ajax({
-            type: 'POST',
-            url: '/Customer/ValidPostalCode',
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            data: data,
-            success: function (result) {
-                if (result.value == "true") {
-
-                    ClickFunction("form2Btn");
-
-                }
-                else {
-                    alert("zipcode is not valid");
-                }
-            },
-            error: function () {
-                alert('Failed to receive the Data');
-
-                console.log('Failed ');
-            }
-        });
-
-     }
-
-
-
-
-     function scheduleSubmit() {
-        var data = $("#form2").serialize();
-        console.log(data);
-
-        alert(data.toString());
-
-
-
-
-
-        $.ajax({
-            type: 'POST',
-            url: '/Customer/ScheduleService',
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            data: data,
-            success: function (result) {
-                if (result.value == "true") {
-                    form3();
-                }
-                else {
-                    alert("schedule is not valid");
-                }
-            },
-            error: function () {
-                alert('Failed to receive the Data');
-                console.log('Failed ');
-            }
-        });
-    }
-
-
-
 
 
 </script>

@@ -383,4 +383,9 @@ p.hidden{
 
 
 
+#addNewaddressDiv {
+    display: none;
+    background-color: beige;
+}
+
 

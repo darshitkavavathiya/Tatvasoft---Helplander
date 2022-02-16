@@ -55,7 +55,7 @@ namespace Helperland
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=UserManagement}/{action=CustomerSignUp}/{id?}");
+                    pattern: "{controller=Customer}/{action=BookService}/{id?}");
             });
         }
     }

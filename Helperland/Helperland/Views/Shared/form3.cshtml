@@ -1,59 +1,63 @@
-﻿<form id="form3">
-    <div id="your_details" class="tabcontent">
-        <p>Please select your age:</p>
-        <div class="radiobutton">
-            <input type="radio" id="address1" name="address" value="1" />
-            <label for="address1">
-                <span>ADDRESS:</span><span>xyx</span> <br />
-                <span>PHONE NUMBER:</span> <span>9898989898</span>
-            </label>
-        </div>
-        <div class="radiobutton">
-            <input type="radio" id="address2" name="address" value="2" />
-            <label for="address2">
-                <span>ADDRESS:</span><span>abc</span> <br />
-                <span>PHONE NUMBER:</span> <span>9898989898</span>
-            </label>
-        </div>
-        <button class="btn add_address" id="add_address" onclick="toggleText()">
-            + Add New
-            Address
-        </button>
-        <form action="" class="address_form">
-            <div class="row mb-3">
-                <div class="col-md-6 col-sm-12">
-                    <label for="streetname" class="form-label">Street name</label>
-                    <input type="text" class="form-control" name="streetname" placeholder="Street name" />
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <label for="housenumber" class="form-label">House number</label>
-                    <input type="text" class="form-control" name="housenumber" placeholder="House number" />
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6 col-sm-12">
-                    <label for="postalcode" class="form-label">Postal Code</label>
-                    <input type="text" class="form-control" name="postalcode" placeholder="Postal Code" />
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control" name="city" placeholder="City" />
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-md-6 col-sm-12">
-                    <label for="phonenumber" class="form-label">Phone number</label>
-                    <div class="input-group">
-                        <div class="input-group-text">+49</div>
-                        <input type="text" class="form-control" name="phonenumber" placeholder="Mobile Number" />
-                    </div>
-                </div>
-            </div>
+﻿@model Helperland.ViewModel.Address;	
+<form id="form3">
+				<div id="at3" class="tabcontent">
+					 
+					<div id="address">
+				   
+					<div class="radiobutton">
+						<input type="radio" id="address1" name="address" value="1" />
+						<label for="address1"><span>ADDRESS:</span><span>xyx</span> <br />
+							<span>PHONE NUMBER:</span> <span>9898989898</span></label>
+					</div>
+					<div class="radiobutton">
+						<input type="radio" id="address2" name="address" value="2" />
+						<label for="address2"><span>ADDRESS:</span><span>abc</span> <br />
+							<span>PHONE NUMBER:</span> <span>9898989898</span></label>
+					</div>
 
-            <div>
-                <button type="submit" class="btn save">Save</button>
-                <button type="reset" class="btn cancel">Cancel</button>
-            </div>
-        </form>
-    </div>
-</form>
+					 </div>
+					<button type="button" class="btn add_address" id="addAddressBtn" onclick="addAddressdiv()">+ Add New
+						Address</button>
+				   
+
+					<div id="addNewaddressDiv" class="container-fluid">
+
+					<form action="" class="address_form">
+						<div class="row mb-3">
+							<div class="col-md-6 col-sm-12">
+								<label for="streetname" class="form-label">Street name</label>
+								<input asp-for="AddressLine1"     type="text" class="form-control" name="streetname" placeholder="Street name"  />
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<label for="housenumber" class="form-label">House number</label>
+								<input  asp-for="AddressLine2"  type="text" class="form-control" name="housenumber" placeholder="House number" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-6 col-sm-12">
+								<label for="postalcode" class="form-label">Postal Code</label>
+								<input  asp-for="PostalCode"  id="addAddressPostalCode" type="text" class="form-control" name="postalcode" placeholder="Postal Code" />
+							</div>
+							<div class="col-md-6 col-sm-12">
+								<label for="city" class="form-label">City</label>
+								<input asp-for="City" type="text" class="form-control" name="city" placeholder="City" />
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-6 col-sm-12">
+								<label for="phonenumber" class="form-label">Phone number</label>
+								<div class="input-group">
+									<div class="input-group-text">+49</div>
+									<input  asp-for="Mobile"  type="text" class="form-control" name="phonenumber" placeholder="Mobile Number" />
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<button type="button" class="btn save" onclick='saveAddress()'>Save</button>
+							<button id="addressCancelBtn" type="reset" class="btn cancel" onclick='cancelAddress()'>Cancel</button>
+						</div>
+					</form>
+				</div>
+				</form>
+				</div>
