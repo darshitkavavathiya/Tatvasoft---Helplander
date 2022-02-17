@@ -1,96 +1,130 @@
 ﻿@model Helperland.ViewModel.ScheduleService;
-
+@{
+	String Today = DateTime.Now.ToString("yyyy-MM-dd");
+}
 <form id="form2">
-    <div id="at2" class="tabcontent schedule">
+	<div id="at2" class="tabcontent schedule">
 
 
-        <div class="row">
-            <div class="col-6">
-                <h2>when do you need cleaner?</h2>
-                <div class="row">
-                    <div class="col-4">
-                        <input type="date" asp-for="Date" class="form-control " placeholder="canlender">
-                    </div>
-                    <div class="col-4">
-                        <select class="form-select" asp-for="Time" aria-label="Default select example">
+		<div class="row">
+			<div class="col-6">
+				<h2>when do you need cleaner?    </h2>
+				<div class="row">
+					<div class="col-4">
+						<input type="date" asp-for="Date" class="form-control ForDate " placeholder="canlender" min=@Today >
+					</div>
+					<div class="col-4">
+						<select class="form-select ForTime" asp-for="Time" aria-label="Default select example">
 
-                            <option selected value="1">2:00 PM</option>
-                            <option value="2">3:00 PM</option>
-                            <option value="3">4:00 PM</option>
-                        </select>
-                    </div>
-                </div>
+										<option selected value="08:00:00">8:00 </option>
+										<option value="08:30:00">8:30 </option>
+										<option value="09:00:00">9:00 </option>
+										<option value="09:30:00">9:30 </option>
+										<option value="10:00:00">10:00 </option>
+										<option value="10:30:00">10:30 </option>
+										<option value="11:00:00">11:00 </option>
+										<option value="11:30:00">11:30 </option>
+										<option value="12:00:00"> 12:00  </option>
+										<option value="12:30:00">12:30 </option>
+										<option value="13:00:00"> 13:00  </option>
+										<option value="13:30:00">13:30 </option>
+										<option value="14:00:00"> 14:00  </option>
+										<option value="14:30:00">14:30 </option>
+										<option value="15:00:00"> 15:00  </option>
+										<option value="15:30:00">15:30 </option>
+										<option value="16:00:00"> 16:00  </option>
+										<option value="16:30:00">16:30 </option>
+										<option value="17:00:00"> 17:00  </option>
+										<option value="17:30:00">17:30 </option>
+										<option value="18:00:00"> 18:00  </option>
 
-            </div>
-            <div class="col-6">
-                <h2>how longer do you need your cleaner to stay? </h2>
-                <div class="col-4">
-                    <select class="form-select" asp-for="Duration" aria-label="Default select example">
+						</select>
+					</div>
+				</div>
 
-                        <option selected value="3">3.0 hrs</option>
-                        <option value="2">2.0 hrs</option>
-                        <option value="1">1.0 hrs</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+			</div>
+			<div class="col-6">
+				<h2>how longer do you need your cleaner to stay? </h2>
+				<div class="col-4">
+					<select class="form-select ForDuration " asp-for="Duration" aria-label="Default select example">
 
-        <hr>
+						<option selected value="3">3.0 hrs</option>
+						<option value="3.5">3.5 hrs</option>
+						<option value="4">4.0 hrs</option>
+						<option value="4.5">4.5 hrs</option>
+						<option value="5">5.0 hrs</option>
+						<option value="5.5">5.5 hrs</option>
+						<option value="6">6.0 hrs</option>
+						<option value="6.5">6.5 hrs</option>
+						<option value="7">7.0 hrs</option>
+						<option value="7.5">7.5 hrs</option>
+						<option value="8">8.0 hrs</option>
+						<option value="8.5">8.5 hrs</option>
+						<option value="9">9.0 hrs</option>
+						<option value="9.5">9.5 hrs</option>
+						<option value="10">10 hrs</option>
+					 
+					</select>
+				</div>
+			</div>
+		</div>
 
-        <h2>Extra services</h2>
-        <div class="container extra_services">
-            <div class="row text-center">
-                <div class="col-sm">
-                    <input type="checkbox" asp-for="extra.Cabinet" id="InsideCabinat" class="hidden" onclick="extrabtnclick(id,3)">
-                    <label for="InsideCabinat" class="btn"><img src="~/images/3.png" id="InsideCabinatImg" alt="..."></label>
-                    <p class="service">Inside cabinets</p>
+		<hr>
 
-                </div>
-                <div class="col-sm">
-                    <input type="checkbox" id="InsideFridge" asp-for="extra.Fridge" class="hidden" onclick="extrabtnclick(id,5)">
-                    <label for="InsideFridge" class="btn"><img src="~/images/5.png" id="InsideFridgeImg" alt="..."></label>
+		<h2>Extra services</h2>
+		<div class="container extra_services">
+			<div class="row text-center">
+				<div class="col-sm">
+					<input type="checkbox" asp-for="extra.Cabinet" id="InsideCabinat" class="hidden" onclick="extrabtnclick(id,3)">
+					<label for="InsideCabinat" class="btn"><img src="~/images/3.png" id="InsideCabinatImg" alt="..."></label>
+					<p class="service">Inside cabinets</p>
 
-                    <p class="service">Inside fridge</p>
+				</div>
+				<div class="col-sm">
+					<input type="checkbox" id="InsideFridge" asp-for="extra.Fridge" class="hidden" onclick="extrabtnclick(id,5)">
+					<label for="InsideFridge" class="btn"><img src="~/images/5.png" id="InsideFridgeImg" alt="..."></label>
 
-                </div>
-                <div class="col-sm">
-                    <input type="checkbox" id="InsideOven" asp-for="extra.Oven" class="hidden" onclick="extrabtnclick(id,4)">
-                    <label for="InsideOven" class="btn"><img src="~/images/4.png" id="InsideOvenImg" alt="..."></label>
+					<p class="service">Inside fridge</p>
 
-                    <p class="service">Inside oven</p>
+				</div>
+				<div class="col-sm">
+					<input type="checkbox" id="InsideOven" asp-for="extra.Oven" class="hidden" onclick="extrabtnclick(id,4)">
+					<label for="InsideOven" class="btn"><img src="~/images/4.png" id="InsideOvenImg" alt="..."></label>
 
-                </div>
-                <div class="col-sm">
-                    <input type="checkbox" id="InsideLaundry" asp-for="extra.laundry" class="hidden" onclick="extrabtnclick(id,2)">
-                    <label for="InsideLaundry" class="btn"><img src="~/images/2.png" id="InsideLaundryImg" alt="..."></label>
+					<p class="service">Inside oven</p>
 
-                    <p class="service">Laundry wash & dry</p>
+				</div>
+				<div class="col-sm">
+					<input type="checkbox" id="InsideLaundry" asp-for="extra.laundry" class="hidden" onclick="extrabtnclick(id,2)">
+					<label for="InsideLaundry" class="btn"><img src="~/images/2.png" id="InsideLaundryImg" alt="..."></label>
 
-                </div>
-                <div class="col-sm">
-                    <input type="checkbox" id="InsideWindow" asp-for="extra.window" class="hidden" onclick="extrabtnclick(id,1)">
-                    <label for="InsideWindow" class="btn"><img src="~/images/1.png" id="InsideWindowImg" alt="..."></label>
-                    <p class="service">Interior windows</p>
+					<p class="service">Laundry wash & dry</p>
 
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="comments">
-            <label for="comments" class="form-label">Comments</label>
-            <textarea asp-for="Comments" class="form-control" id="comments" rows="3"></textarea>
-        </div>
+				</div>
+				<div class="col-sm">
+					<input type="checkbox" id="InsideWindow" asp-for="extra.window" class="hidden" onclick="extrabtnclick(id,1)">
+					<label for="InsideWindow" class="btn"><img src="~/images/1.png" id="InsideWindowImg" alt="..."></label>
+					<p class="service">Interior windows</p>
 
-        <div class="form-check">
-            <input class="form-check-input" asp-for="havePet" type="checkbox" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-                I have pets at home
-            </label>
-           
-        </div>
-        <hr>
-        <button class="continue" type="button" onclick="scheduleSubmit()">
-            Continue
-        </button>
-    </div>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="comments">
+			<label for="comments" class="form-label">Comments</label>
+			<textarea asp-for="Comments" class="form-control" id="comments" rows="3"></textarea>
+		</div>
+
+		<div class="form-check">
+			<input class="form-check-input" asp-for="havePet" type="checkbox" id="flexCheckDefault">
+			<label class="form-check-label" for="flexCheckDefault">
+				I have pets at home
+			</label>
+		   
+		</div>
+		<hr>
+		<button class="continue" type="button" onclick="scheduleSubmit()">
+			Continue
+		</button>
+	</div>
 </form>
