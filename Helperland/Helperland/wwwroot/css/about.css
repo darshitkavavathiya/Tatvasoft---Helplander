@@ -1,7 +1,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-html,body
-{
+
+html, body {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -13,95 +13,100 @@ html,body
 /*nav bar*/
 
 
-.faq-nav-bg{
+.faq-nav-bg {
     background-color: #525252;
     padding-top: 0%;
     padding-bottom: 0%;
 }
 
-.nav-logo{
+.nav-logo {
     margin-left: 17px;
 }
 
-.nav-link{
+.nav-link {
     color: white;
 }
 
-.nav-book-btn{
+.nav-book-btn {
     margin-right: 5px;
-     font-size: 17px; 
-     width: 111px ; 
-     height: 40px;
-     padding: 0px, 5px;
+    font-size: 17px;
+    width: 111px;
+    height: 40px;
+    padding: 0px, 5px;
     background: #29626D 0% 0% no-repeat padding-box;
     border: 1px solid #FFFFFF80;
     border-radius: 20px;
     opacity: 1;
 }
 
-.nav-log-btn{
+.nav-log-btn {
     margin-right: 10px;
-     margin-left: 5px ; 
-     width: 83px ; 
-     height: 40px;
-     font-size: 17px;
-     padding: 0px, 5px;
-     background: #29626D 0% 0% no-repeat padding-box;
-     border: 1px solid #FFFFFF80;
-     border-radius: 20px;
-     opacity: 1; 
-}
-
-
-.nav-become-btn{
-    margin-right: 10px;
-     margin-left: 5px ;
-      width: 161px ;
-       height: 40px;
-       font-size: 17px;
-       padding: 0px, 5px;
+    margin-left: 5px;
+    width: 83px;
+    height: 40px;
+    font-size: 17px;
+    padding: 0px, 5px;
     background: #29626D 0% 0% no-repeat padding-box;
     border: 1px solid #FFFFFF80;
     border-radius: 20px;
     opacity: 1;
 }
-.nav-price-btn{
+
+
+.nav-become-btn {
     margin-right: 10px;
-     margin-left: 5px ;
-      width: 161px ;
-       height: 40px;
-       font-size: 17px;
-       padding: 0px, 5px;
-    background:#00607200 0% 0% no-repeat padding-box;
+    margin-left: 5px;
+    width: 161px;
+    height: 40px;
+    font-size: 17px;
+    padding: 0px, 5px;
+    background: #29626D 0% 0% no-repeat padding-box;
     border: 1px solid #FFFFFF80;
     border-radius: 20px;
     opacity: 1;
 }
-.about{
+
+.nav-price-btn {
+    margin-right: 10px;
+    margin-left: 5px;
+    width: 161px;
+    height: 40px;
+    font-size: 17px;
+    padding: 0px, 5px;
+    background: #00607200 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF80;
+    border-radius: 20px;
+    opacity: 1;
+}
+
+.about {
     margin-left: 18%;
     margin-right: 18%;
 }
-.about-title{
-    color: #4F4F4F; 
-    font: size 35.95px;   
-    font-weight: 700;  
-    font-family: 'Roboto', sans-serif;        
+
+.about-title {
+    color: #4F4F4F;
+    font: size 35.95px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
     margin-bottom: 0%;
 }
-.about-text{
+
+.about-text {
     letter-spacing: 0px;
     color: #646464;
-    font-size: 16px;    
-    font-weight: 400; 
-    font-family: 'Roboto', sans-serif;        
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
     margin-bottom: 16px;
-
 }
-.div1{
+
+.div1 {
     margin-top: 32px;
     margin-bottom: 18px;
 }
-.div2{
+
+.div2 {
     margin-top: 40px;
     margin-bottom: 50px;
 }
@@ -119,19 +124,19 @@ html,body
 /*footer*/
 
 
-.footer-container{
+.footer-container {
     background-color: #111111;
 }
 
-.footer-logo-col{
+.footer-logo-col {
     text-align: center;
     margin-top: 1%;
     margin-bottom: 1%;
 }
 
-.footer-nav-col{
+.footer-nav-col {
     text-align: center;
-    margin-top: 3%;   
+    margin-top: 3%;
 }
 
 .footer-link {
@@ -142,35 +147,35 @@ html,body
     margin-right: 2%;
 }
 
-.footer-social-col{
+.footer-social-col {
     text-align: center;
     margin-top: 3%;
 }
 
-.footer-social{
+.footer-social {
     margin-right: 2%;
 }
 
-.footer-logo{
+.footer-logo {
     max-height: 92px;
 }
 
-.footer-social-image{
+.footer-social-image {
     margin: 2%;
 }
 
-.footer-term-row{
+.footer-term-row {
     margin-left: 8%;
     margin-right: 10%;
     text-align: center;
 }
 
-.footer-hr{
-   color:  #b9b6b6 ;   
+.footer-hr {
+    color: #b9b6b6;
 }
 
-.footer-text{
-    color: #9BA0A3; 
-    font-size: 14px;     
-    font-family: 'Roboto', sans-serif;     
+.footer-text {
+    color: #9BA0A3;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
 }

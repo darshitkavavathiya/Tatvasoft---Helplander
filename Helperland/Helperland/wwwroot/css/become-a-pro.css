@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-html,body
-{
+
+html, body {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -14,8 +14,6 @@ html,body
     .header-become-a-pro .register-form {
         width: 30%;
     }
-
-
 }
 
 @media (max-width:900px)and (min-width:500px) {
@@ -23,11 +21,12 @@ html,body
         width: 60%;
     }
 
-    
-    .how-it-works .col-lg-7{
+
+    .how-it-works .col-lg-7 {
         order: 1;
     }
-    .how-it-works .col-lg-7{
+
+    .how-it-works .col-lg-7 {
         order: 2;
     }
 }
@@ -62,38 +61,39 @@ img.navbar-brand.nav-logo {
     width: 156px;
     height: 120px;
 }
-.nav-logo{
+
+.nav-logo {
     margin-left: 17px;
 }
 
-.nav-book-btn{
+.nav-book-btn {
     margin-right: 5px;
-     font-size: 17px; 
-     width: 161px ; 
-     height: 40px;
+    font-size: 17px;
+    width: 161px;
+    height: 40px;
 }
 
-.nav-log-btn{
+.nav-log-btn {
     margin-right: 10px;
-     margin-left: 5px ; 
-     width: 97px ; 
-     height: 40px;
-     font-size: 17px; 
+    margin-left: 5px;
+    width: 97px;
+    height: 40px;
+    font-size: 17px;
 }
 
-.nav-link{
+.nav-link {
     color: white;
 }
 
-.nav-become-btn{
+.nav-become-btn {
     margin-right: 10px;
-     margin-left: 5px ;
-      width: 161px ;
-       height: 40px;
-       font-size: 17px;
+    margin-left: 5px;
+    width: 161px;
+    height: 40px;
+    font-size: 17px;
 }
 
-.btn{
+.btn {
     padding: 0px, 5px;
     background: #00607200 0% 0% no-repeat padding-box;
     border: 1px solid #FFFFFF80;
@@ -102,66 +102,65 @@ img.navbar-brand.nav-logo {
 }
 
 
-.register-form{
-        margin-top: 38px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 430px;
-        height: auto;
-        padding: 23px 35px 19px 36px;
-        border-radius: 4px;
-        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
-        background-color: white;
-       
+.register-form {
+    margin-top: 38px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 430px;
+    height: auto;
+    padding: 23px 35px 19px 36px;
+    border-radius: 4px;
+    box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
+    background-color: white;
 }
 
 
 h1 {
     font-size: 24px;
     color: #4F4F4F;
-     
     font-weight: 700;
     text-align: center;
     padding-top: 19px;
     padding-bottom: 24px
-  }
+}
 
-  ::placeholder{
-      font-size: 16px;
-      color: #A0A0A0;
-      line-height: 1.5;
-      font-weight:400;
-  }
-.border-btn{
+::placeholder {
+    font-size: 16px;
+    color: #A0A0A0;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.border-btn {
     background-color: #1D7A8C;
     border-radius: 23px;
     height: 46px;
     font-size: 16px;
-     
     font-weight: 700;
     color: #F1F1F1;
     align-self: center;
-   
 }
-span.Validation-Error{
-    color:red;
+
+span.Validation-Error {
+    color: red;
     font-size: 12px;
 }
+
 .form-control {
     margin-bottom: 15px;
 }
-.form-check .form-check-label{
+
+.form-check .form-check-label {
     font-size: 16px;
 }
-  .not-a-robot{
-    
-        width: 302px;
-        height: 76px;
-        margin-bottom: 20px;
-      
-  }
 
- .down-arrow {
+.not-a-robot {
+    width: 302px;
+    height: 76px;
+    margin-bottom: 20px;
+}
+
+.down-arrow {
     margin-top: 44px;
     margin-bottom: 30px;
 }
@@ -175,143 +174,131 @@ span.Validation-Error{
     background-position: left, right;
     background-repeat: no-repeat, no-repeat;
     height: auto;
-  
 }
 
-.how-it-works h2 {
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    color: #4F4F4F;
-     
-}
+    .how-it-works h2 {
+        font-size: 40px;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        color: #4F4F4F;
+    }
 
-.how-it-works h3 {
-    font-size: 30px;
-    color: #4F4F4F;
-     
-    font-weight: 700;
-    padding-left: 20px;
-    padding-top: 80px;
-}
+    .how-it-works h3 {
+        font-size: 30px;
+        color: #4F4F4F;
+        font-weight: 700;
+        padding-left: 20px;
+        padding-top: 80px;
+    }
 
-.how-it-works p {
+    .how-it-works p {
+        font-size: 18px;
+        color: #4F4F4F;
+        font-weight: 400;
+        padding-left: 20px;
+    }
 
-    font-size: 18px;
-    color: #4F4F4F;
-     
-    font-weight: 400;
-     padding-left: 20px ;
-}
+    .how-it-works a {
+        font-size: 18px;
+        color: #4F4F4F;
+        font-weight: 400;
+        padding-left: 20px;
+    }
 
-.how-it-works a {
-    font-size: 18px;
-    color: #4F4F4F;
-     
-    font-weight: 400;
-    padding-left: 20px ;
+    .how-it-works .our-news-letter {
+        padding-top: 48px;
+        padding-bottom: 55px;
+    }
 
-}
+        .how-it-works .our-news-letter h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
 
-.how-it-works .our-news-letter {
-    padding-top: 48px;
-    padding-bottom: 55px;
-}
+        .how-it-works .our-news-letter .form-control {
+            border-radius: 20px;
+            border: solid 1px #565656;
+            background-color: #f4f5f8;
+            color: #565656;
+            font-size: 14px;
+            font-weight: 400;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 22px;
+        }
 
-.how-it-works .our-news-letter h2 {
-    font-size: 18px;
-    margin-bottom: 16px;
-     
-    font-weight: 500;
-}
-
-.how-it-works .our-news-letter .form-control {
-    border-radius: 20px;
-    border: solid 1px #565656;
-    background-color: #f4f5f8;
-    color: #565656;
-    font-size: 14px;
-     
-    font-weight: 400;
-    height: 40px;
-    line-height: 40px;
-    padding: 0 22px;
-}
-
-.how-it-works .our-news-letter .btn-submit {
-    margin-left: 11px;
-    background-color: #FF7B6D;
-    font-size: 14px;
-     
-    font-weight: 400;
-    line-height: 37px;
-    height: 40px;
-    border-radius: 20px;
-    border: none;
-    outline: none;
-    color: #fff;
-    width: 88px;
-}
+        .how-it-works .our-news-letter .btn-submit {
+            margin-left: 11px;
+            background-color: #FF7B6D;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 37px;
+            height: 40px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            color: #fff;
+            width: 88px;
+        }
 
 
 
 /*footer*/
 
 
-.footer-container{
+.footer-container {
     background-color: #111111;
 }
 
-.footer-logo-col{
+.footer-logo-col {
     text-align: center;
     margin-top: 1%;
     margin-bottom: 1%;
 }
 
-.footer-nav-col{
+.footer-nav-col {
     text-align: center;
-    margin-top: 3%;   
+    margin-top: 3%;
 }
 
 .footer-link {
     color: #F1F1F1;
     font-size: 13.99;
-     
     text-decoration: none;
     margin-right: 2%;
 }
 
-.footer-social-col{
+.footer-social-col {
     text-align: center;
     margin-top: 3%;
 }
 
-.footer-social{
+.footer-social {
     margin-right: 2%;
 }
 
-.footer-logo{
+.footer-logo {
     max-height: 92px;
 }
 
-.footer-social-image{
+.footer-social-image {
     margin: 2%;
 }
 
-.footer-term-row{
+.footer-term-row {
     margin-left: 8%;
     margin-right: 10%;
     text-align: center;
 }
 
-.footer-hr{
-   color:  #b9b6b6 ;   
+.footer-hr {
+    color: #b9b6b6;
 }
 
-.footer-text{
-    color: #9BA0A3; 
-    font-size: 14px;     
-          
+.footer-text {
+    color: #9BA0A3;
+    font-size: 14px;
 }

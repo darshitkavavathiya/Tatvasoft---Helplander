@@ -30,7 +30,7 @@ namespace Helperland.Controllers
 
         public IActionResult Contact()
         {
-            return View();    
+            return View();
         }
 
         public IActionResult Faq()

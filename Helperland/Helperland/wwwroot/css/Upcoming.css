@@ -24,7 +24,6 @@ nav.navbar {
     height: 54px;
     width: 73px;
     padding: 0;
-
 }
 
 .navbar .nav-link {
@@ -32,7 +31,6 @@ nav.navbar {
     font-size: 17px;
     font-weight: 400;
     line-height: 1.4;
-
 }
 
 
@@ -41,7 +39,6 @@ div.notification {
     border-left: 1px solid #e1e1e1;
     padding: 5px 25px 0 16px;
     max-width: 70px;
-
 }
 
 .notification span {
@@ -54,8 +51,8 @@ div.user-icon {
     padding-right: 20px;
     padding-left: 20px;
     line-height: 1.4;
-
 }
+
 .collapse .nav-item a:hover {
     background-color: #29626D;
     border-radius: 20px;
@@ -67,6 +64,7 @@ div.user-icon {
     border-radius: 20px;
     border: 1px solid #FFFFFF;
 }
+
 .collapse a:hover {
     background-color: #29626D;
     border-radius: 20px;
@@ -89,9 +87,9 @@ h1 {
     padding-bottom: 40px;
 }
 
-h1 span {
-    font-weight: 700;
-}
+    h1 span {
+        font-weight: 700;
+    }
 
 
 
@@ -110,25 +108,24 @@ h1 span {
     width: 23%;
     font-weight: 400;
     height: 800px;
-    
 }
+
 .hamburger {
     display: none;
     cursor: pointer;
     background-color: #1d7a8c;
     width: 35px;
     float: left;
-
 }
 
-.hamburger .v-menu {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    background-color: white;
-    transition: all 0.3s ease-in-out;
-}
+    .hamburger .v-menu {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: white;
+        transition: all 0.3s ease-in-out;
+    }
 
 .tab button {
     display: block;
@@ -140,14 +137,12 @@ h1 span {
     text-align: left;
     cursor: pointer;
     transition: 0.3s;
-
 }
 
 .tab .tablinks {
     font-size: 18px;
     color: white;
     font-weight: 400;
-
 }
 
 .tab button:hover {
@@ -174,15 +169,18 @@ th {
     font-weight: 700;
     padding-left: 5px;
 }
-td{
+
+td {
     font-size: 16px;
     color: #646464;
     font-weight: 400;
 }
-td div{
-    font-weight: 700;
-}
-p.margin{
+
+    td div {
+        font-weight: 700;
+    }
+
+p.margin {
     margin: 10px 0px;
 }
 
@@ -265,49 +263,49 @@ p.margin{
         border: 1px;
         width: 100%;
     }
-    
-    table thead {
-        border: none;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-    }
 
-    table tr {
-        border-bottom: 3px solid #ddd;
-        display: block;
-    }
+        table thead {
+            border: none;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+        }
 
-    table td {
-        border-bottom: 1px solid #ddd;
-        display: block;
-        text-align: left;
-    }
+        table tr {
+            border-bottom: 3px solid #ddd;
+            display: block;
+        }
 
-    table td:last-child {
-        border-bottom: 0;
-        margin-bottom: 10px;
-    }
+        table td {
+            border-bottom: 1px solid #ddd;
+            display: block;
+            text-align: left;
+        }
+
+            table td:last-child {
+                border-bottom: 0;
+                margin-bottom: 10px;
+            }
 
     .hamburger {
         display: block;
     }
 
-    .hamburger.active .v-menu:nth-child(2) {
-        opacity: 0;
-    }
+        .hamburger.active .v-menu:nth-child(2) {
+            opacity: 0;
+        }
 
-    .hamburger.active .v-menu:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
+        .hamburger.active .v-menu:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
 
-    .hamburger.active .v-menu:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+        .hamburger.active .v-menu:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
 
     .tab {
         height: 100%;
@@ -319,10 +317,9 @@ p.margin{
         transition: 0.2s;
     }
 
-    .tab.active {
-        display: block;
-        
-    }
+        .tab.active {
+            display: block;
+        }
 }
 
 @media screen and (min-width: 720px) {

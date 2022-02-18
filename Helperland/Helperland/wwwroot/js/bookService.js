@@ -41,7 +41,7 @@ function extrabtnclick(id, i) {
         document.getElementById("total_price").innerHTML = total_price + 12.5;
         document.getElementById("priceAfterDiscount").innerHTML = total_price + 12.5 - discount;
         document.getElementById("priceAfterPromo").innerHTML = total_price + 12.5 - discount - promo;
-      
+
     } else {
 
         document.getElementById(id + "Img").src = (" ../images/" + i + ".png");
@@ -122,13 +122,15 @@ $(document).ready(function () {
 
     //});
 
+    selected = $(".ForDate").val();
+    document.querySelector('.SIForDate').innerHTML = selected;
 
 
     $(".ForDate").on("change", function () {
         selected = $(this).val();
 
         document.querySelector('.SIForDate').innerHTML = selected;
-       
+
     });
 });
 

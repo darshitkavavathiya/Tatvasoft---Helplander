@@ -1,8 +1,8 @@
 
- 
-  $(document).ready(function() {
-    $('#button').click(function(){
-      $('.privacy-row').hide();
+
+$(document).ready(function () {
+    $('#button').click(function () {
+        $('.privacy-row').hide();
     });
-   
+
 });

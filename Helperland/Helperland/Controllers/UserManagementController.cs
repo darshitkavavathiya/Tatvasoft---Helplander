@@ -28,7 +28,7 @@ namespace Helperland.Controllers
 
         public IActionResult Login(LoginUser user)
         {
-            
+
             if (ModelState.IsValid)
             {
 
@@ -84,11 +84,11 @@ namespace Helperland.Controllers
 
         }
 
-    
 
 
 
-    public IActionResult CustomerSignUp()
+
+        public IActionResult CustomerSignUp()
         {
             return View();
         }
@@ -164,7 +164,7 @@ namespace Helperland.Controllers
                     TempData["add"] = "alert show";
                     TempData["msg"] = "Username Exits!";
                     return View();
-                    
+
 
 
                 }
@@ -197,7 +197,7 @@ namespace Helperland.Controllers
                 BodyBuilder bodyBuilder = new BodyBuilder();
                 bodyBuilder.HtmlBody = "<h1>Reset your password by click below link</h1>" +
                     "<a href='" + Url.Action("ResetPassword", "UserManagement", new { userId = user.UserId }, "http") + "'>Reset Password</a>";
-                
+
 
                 message.Body = bodyBuilder.ToMessageBody();
 
@@ -225,13 +225,13 @@ namespace Helperland.Controllers
         {
             rp.password = BCrypt.Net.BCrypt.HashPassword(rp.password);
             var user = new User() { UserId = rp.userId, Password = rp.password, ModifiedDate = DateTime.Now };
-                _db.Users.Attach(user);
-                _db.Entry(user).Property(x => x.Password).IsModified = true;
-                _db.SaveChanges();
+            _db.Users.Attach(user);
+            _db.Entry(user).Property(x => x.Password).IsModified = true;
+            _db.SaveChanges();
 
 
-                return RedirectToAction("Index", "Public", new { loginModal = "true" });
-         
+            return RedirectToAction("Index", "Public", new { loginModal = "true" });
+
         }
-    } 
+    }
 }

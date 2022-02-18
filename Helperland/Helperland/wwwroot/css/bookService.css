@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 html,
 body {
     width: 100%;
@@ -58,12 +59,12 @@ body {
     font-size: 18px;
 }
 
-.tab button.active {
-    background-color: #1D7A8C;
-    color: #FFFFFF;
-}
+    .tab button.active {
+        background-color: #1D7A8C;
+        color: #FFFFFF;
+    }
 
- h2 {
+h2 {
     font-size: 18px;
     font-weight: 700;
     color: #4F4F4F;
@@ -112,6 +113,7 @@ body {
     float: right;
     margin-bottom: 10px;
 }
+
 .make_payment h2 {
     font-size: 18px;
     font-weight: 700;
@@ -119,6 +121,7 @@ body {
     padding-top: 20px;
     padding-bottom: 10px;
 }
+
 .radiobutton {
     border: 1px solid #4F4F4F;
     vertical-align: middle;
@@ -150,10 +153,9 @@ body {
     padding: 15px;
     margin: 10px;
     background-color: #ebf2f3;
-
 }
 
-.apply-btn{
+.apply-btn {
     padding: 20px, 5px;
     background: #00607200 0% 0% no-repeat padding-box;
     border: 1px solid #2f6a71;
@@ -172,19 +174,20 @@ body {
     color: #FFFFFF;
     font-size: 20px;
     font-weight: 700;
-    
-    margin-bottom: 10px;}
+    margin-bottom: 10px;
+}
 
 .make_payment continue {
-        padding: 6px 18px 6px 18px;
-        border: 1px solid #1D7A8C;
-        border-radius: 23px;
-        background-color: #1D7A8C;
-        color: #FFFFFF;
-        font-size: 20px;
-        font-weight: 700;
-        float: right;
-        margin-bottom: 10px;}
+    padding: 6px 18px 6px 18px;
+    border: 1px solid #1D7A8C;
+    border-radius: 23px;
+    background-color: #1D7A8C;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 700;
+    float: right;
+    margin-bottom: 10px;
+}
 
 .card .card-header {
     padding: 21px;
@@ -271,9 +274,9 @@ body {
     padding: 5px;
 }
 
-.suggestion .que a {
-    text-decoration: none;
-}
+    .suggestion .que a {
+        text-decoration: none;
+    }
 
 .suggestion .more a {
     text-decoration: none;
@@ -328,17 +331,17 @@ body {
     padding-top: 20px;
 }
 
-.footer .footer-menu {
-    margin-left: 5px;
-    margin-right: 5px;
-    color: #F1F1F1;
-    font-size: 14px;
-}
+    .footer .footer-menu {
+        margin-left: 5px;
+        margin-right: 5px;
+        color: #F1F1F1;
+        font-size: 14px;
+    }
 
-.footer .fb {
-    margin-top: 25px;
-    margin-right: 20px;
-}
+    .footer .fb {
+        margin-top: 25px;
+        margin-right: 20px;
+    }
 
 .footer-start {
     margin-bottom: 20px;
@@ -355,7 +358,7 @@ body {
     padding-bottom: 5px;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
@@ -363,21 +366,21 @@ body {
     border: 3px solid #1d7a8c !important;
 }
 
-    label.btn:before {
-        
-        background-color: #1d7a8c;
-        transform: scale(1);
-    }
+label.btn:before {
+    background-color: #1d7a8c;
+    transform: scale(1);
+}
 
-    label.btn img {
-        transform: scale(0.9);
-        z-index: -1;
-    }
+label.btn img {
+    transform: scale(0.9);
+    z-index: -1;
+}
 
-p.hidden{
+p.hidden {
     margin: 0%;
 }
-.extratime{
+
+.extratime {
     float: right;
 }
 
@@ -387,5 +390,3 @@ p.hidden{
     display: none;
     background-color: beige;
 }
-
-

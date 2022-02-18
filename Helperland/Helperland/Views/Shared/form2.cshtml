@@ -1,6 +1,6 @@
 ﻿@model Helperland.ViewModel.ScheduleService;
 @{
-	String Today = DateTime.Now.ToString("yyyy-MM-dd");
+	String TomorrowDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
 }
 <form id="form2">
 	<div id="at2" class="tabcontent schedule">
@@ -8,10 +8,10 @@
 
 		<div class="row">
 			<div class="col-6">
-				<h2>when do you need cleaner?    </h2>
+				<h2>when do you need cleaner?   </h2>
 				<div class="row">
-					<div class="col-4">
-						<input type="date" asp-for="Date" class="form-control ForDate " placeholder="canlender" min=@Today >
+					<div class="col-6">
+						<input type="date" asp-for="Date" class="form-control ForDate " placeholder="canlender" min=@TomorrowDate value=@TomorrowDate   >
 					</div>
 					<div class="col-4">
 						<select class="form-select ForTime" asp-for="Time" aria-label="Default select example">
@@ -21,7 +21,7 @@
 										<option value="09:00:00">9:00 </option>
 										<option value="09:30:00">9:30 </option>
 										<option value="10:00:00">10:00 </option>
-										<option value="10:30:00">10:30 </option>
+										<option value="10:30:00">10:30 </option> 
 										<option value="11:00:00">11:00 </option>
 										<option value="11:30:00">11:30 </option>
 										<option value="12:00:00"> 12:00  </option>
