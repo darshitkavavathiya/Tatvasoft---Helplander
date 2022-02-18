@@ -269,27 +269,19 @@ namespace Helperland.Controllers
                 _db.ServiceRequestExtras.Add(srExtra);
                 _db.SaveChanges();
             }
-            if (complete.Oven == true)
-            {
-                ServiceRequestExtra srExtra = new ServiceRequestExtra();
-                srExtra.ServiceRequestId = result.Entity.ServiceRequestId;
-                srExtra.ServiceExtraId = 3;
-                _db.ServiceRequestExtras.Add(srExtra);
-                _db.SaveChanges();
-            }
-            if (complete.Window == true)
-            {
-                ServiceRequestExtra srExtra = new ServiceRequestExtra();
-                srExtra.ServiceRequestId = result.Entity.ServiceRequestId;
-                srExtra.ServiceExtraId = 5;
-                _db.ServiceRequestExtras.Add(srExtra);
-                _db.SaveChanges();
-            }
             if (complete.Fridge == true)
             {
                 ServiceRequestExtra srExtra = new ServiceRequestExtra();
                 srExtra.ServiceRequestId = result.Entity.ServiceRequestId;
                 srExtra.ServiceExtraId = 2;
+                _db.ServiceRequestExtras.Add(srExtra);
+                _db.SaveChanges();
+            }
+            if (complete.Oven == true)
+            {
+                ServiceRequestExtra srExtra = new ServiceRequestExtra();
+                srExtra.ServiceRequestId = result.Entity.ServiceRequestId;
+                srExtra.ServiceExtraId = 3;
                 _db.ServiceRequestExtras.Add(srExtra);
                 _db.SaveChanges();
             }
@@ -301,6 +293,16 @@ namespace Helperland.Controllers
                 _db.ServiceRequestExtras.Add(srExtra);
                 _db.SaveChanges();
             }
+            if (complete.Window == true)
+            {
+                ServiceRequestExtra srExtra = new ServiceRequestExtra();
+                srExtra.ServiceRequestId = result.Entity.ServiceRequestId;
+                srExtra.ServiceExtraId = 5;
+                _db.ServiceRequestExtras.Add(srExtra);
+                _db.SaveChanges();
+            }
+            
+            
 
             if (result != null && srAddrResult != null)
             {

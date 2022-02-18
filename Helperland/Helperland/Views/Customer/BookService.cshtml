@@ -403,48 +403,50 @@
                                         console.log('failed ');
                                     }
                                 });
-                        }
+                       }
+
+
                     function addAddressdiv() {
                         document.getElementById('addAddressBtn').style.display = "none";
                         document.getElementById('addNewaddressDiv').style.display = "block";
                         document.getElementById('addAddressPostalCode').value=document.getElementById("postalcode").value;
                         document.getElementById('addAddressPostalCode').disabled=true;
-
-
                     }
+
+
                         function saveAddress() {
-                            alert("in save address 1")
-                            var data = {};
-                            data.AddressLine1 = document.getElementById("AddressLine1").value;
-                            data.AddressLine2 = document.getElementById("AddressLine2").value;
-                            data.PostalCode = document.getElementById("addAddressPostalCode").value;
-                            data.City = document.getElementById("City").value;
-                            data.Mobile = document.getElementById("Mobile").value;
-                            alert("in save address 2")
+                    alert("in save address 1")
+                    var data = {};
+                    data.AddressLine1 = document.getElementById("AddressLine1").value;
+                    data.AddressLine2 = document.getElementById("AddressLine2").value;
+                    data.PostalCode = document.getElementById("addAddressPostalCode").value;
+                    data.City = document.getElementById("City").value;
+                    data.Mobile = document.getElementById("Mobile").value;
+                    alert("in save address 2")
 
 
-                                $.ajax({
-                                    type: 'POST',
-                                    url: '/Customer/AddNewAddress',
-                                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                                    data: data,
-                                    success: function (result) {
-                                        if (result.value == "true") {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/Customer/AddNewAddress',
+                            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                            data: data,
+                            success: function (result) {
+                                if (result.value == "true") {
 
-                                             ClickFunction("addressCancelBtn");
-                                             loadAddress();
+                                     ClickFunction("addressCancelBtn");
+                                     loadAddress();
 
-                                        }
-                                        else {
-                                            $("#detailServiceAlert").removeClass("d-none").text("Sorry! Something went wrong please try again later.");
-                                        }
-                                    },
-                                    error: function () {
-                                        alert('Failed to receive the Data');
-                                        console.log('Failed ');
-                                    }
-                                });
+                                }
+                                else {
+                                    $("#detailServiceAlert").removeClass("d-none").text("Sorry! Something went wrong please try again later.");
+                                }
+                            },
+                            error: function () {
+                                alert('Failed to receive the Data');
+                                console.log('Failed ');
                             }
+                        });
+                    }
 
         function cancelAddress() {
             document.getElementById("addNewaddressDiv").style.display = "none";
@@ -539,7 +541,7 @@
                 console.log('failed ');
             }
         });
-    }}
+    }
 
 
 
