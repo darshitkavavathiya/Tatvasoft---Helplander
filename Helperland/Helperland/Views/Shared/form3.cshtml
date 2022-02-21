@@ -32,11 +32,13 @@
 				<div class="row mb-3">
 					<div class="col-md-6 col-sm-12">
 						<label for="streetname" class="form-label">Street name</label>
-						<input asp-for="AddressLine1"  type="text" class="form-control" name="streetname" placeholder="Street name" required  />
+						<input asp-for="AddressLine1"  type="text" class="form-control street" name="streetname" placeholder="Street name" required  />
+						<div class="street-msg"></div>
 					</div>
 					<div class="col-md-6 col-sm-12">
 						<label for="housenumber" class="form-label">House number</label>
-						<input asp-for="AddressLine2" type="text" class="form-control" name="housenumber" placeholder="House number" required  />
+						<input asp-for="AddressLine2" type="text" class="form-control houseno" name="housenumber" placeholder="House number" required  />
+						<div class="house-msg"></div>
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -46,30 +48,32 @@
 					</div>
 					<div class="col-md-6 col-sm-12">
 						<label for="city" class="form-label">City</label>
-						<input asp-for="City" type="text" class="form-control" name="city" placeholder="City" required  />
+						<input asp-for="City" type="text"  class="form-control" name="city" placeholder="City" required  />
 					</div>
 				</div>
 				<div class="row mb-3">
 					<div class="col-md-6 col-sm-12">
-						<label for="phonenumber" class="form-label">Phone number</label>
+						<label for="phonenumber" class="form-label ">Phone number</label>
 						<div class="input-group">
 							<div class="input-group-text">+49</div>
-							<input asp-for="Mobile" type="text" class="form-control" name="phonenumber" placeholder="Mobile Number" required  />
+							<input asp-for="Mobile" maxlength="10"  type="text" class="form-control mobilenum" name="phonenumber" placeholder="Mobile Number" required  />
 						</div>
+						<div class="mobile-msg"></div>
 					</div>
 				</div>
 
 				<div>
-					<button type="button" class="btn save" onclick='saveAddress()'>Save</button>
+					<button type="button" class="btn save" id="addAddressSubmit" onclick='saveAddress()'>Save</button>
 					<button id="addressCancelBtn" type="reset" class="btn cancel" onclick='cancelAddress()'>Cancel</button>
 				</div>
 			</form>
 		</div>
-		 <hr />
+		
 			<br /><br />
-			<button class="continue" type="button" onclick="Clickable('form4Btn');ClickFunction('form4Btn')">
+			<hr />
+	<button class="continue form3-continue" type="button" onclick="Clickable('form4Btn');ClickFunction('form4Btn')">
 						Continue
 					</button>
-	</div>
+					</div>
 </form>
 				
