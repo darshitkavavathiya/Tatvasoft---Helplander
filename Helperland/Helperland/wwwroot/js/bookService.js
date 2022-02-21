@@ -1,6 +1,8 @@
 
 function set_service(evt, level) {
 
+
+    /*  disable tab*/
     var ch = parseInt(level.charAt(2));
 
     for (j = ch + 1; j <= 4; j++) {
@@ -9,7 +11,7 @@ function set_service(evt, level) {
 
     }
 
-
+    /*  tab click*/
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -20,24 +22,36 @@ function set_service(evt, level) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
         var tabImg = "";
         tabImg = tablinks[i].children[0].src;
-        var tabdashindex = imgSrc.lastIndexOf("-");
-        var tabpath = imgSrc.substring(tabdashindex + 1, tabImg.length);
-        alert(tabpath)
-        tablinks[i].children[0].src = "";
-        tablinks[i].children[0].src = (" ../images/"  + tabpath);
+        if (tabImg.includes("-")) {
+
+            var tabdashindex = tabImg.lastIndexOf("-");
+            var tabpath = tabImg.substring(tabdashindex + 1, tabImg.length);
+
+            tablinks[i].children[0].src = "";
+            tablinks[i].children[0].src = (" ../images/" + tabpath);
+
+        }
+
+
     }
+
     document.getElementById(level).style.display = "block";
     evt.currentTarget.className += " active";
+
+
     var imgSrc = evt.currentTarget.children[0].src;
     var slashindex = imgSrc.lastIndexOf("/");
 
-    var path = imgSrc.substring(slashindex+1, imgSrc.length );
-    alert("path"+path);
+    var path = imgSrc.substring(slashindex + 1, imgSrc.length);
+
 
     evt.currentTarget.children[0].src = "";
-    evt.currentTarget.children[0].src = (" ../images/" + "white-" +path );
-   
+    evt.currentTarget.children[0].src = (" ../images/" + "white-" + path);
+
 }
+
+
+
 document.getElementById("defaultOpen").click();
 
 
@@ -125,7 +139,7 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-  
+
     selected = $(".ForDate").val();
     document.querySelector('.SIForDate').innerHTML = selected;
 
@@ -152,60 +166,57 @@ $(document).ready(function () {
 
 /*<script>*/
 
-    function ClickFunction(id){
-        document.getElementById(id).click();
+function ClickFunction(id) {
+    document.getElementById(id).click();
 
-            }
+}
 
 function Disable(id) {
     document.getElementById(id).disabled = true;
-            }
-    function Clickable(id){
-        document.getElementById(id).disabled = false;
-            }
+}
+function Clickable(id) {
+    document.getElementById(id).disabled = false;
+}
 
 
 
-    Disable('form2Btn');
-    Disable('form3Btn');
+Disable('form2Btn');
+Disable('form3Btn');
 Disable('form4Btn');
 
 
-    function postalSubmit() {
-
-                var data = $("#form1").serialize();
+function postalSubmit() {
+    var data = $("#form1").serialize();
 
 
 
     $.ajax({
         type: 'POST',
-    url: '/Customer/ValidPostalCode',
-    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    data: data,
-    success: function (result) {
-                        if (result.value == "true") {
-        Clickable("form2Btn");
-    ClickFunction("form2Btn");
+        url: '/Customer/ValidPostalCode',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+            if (result.value == "true") {
+                Clickable("form2Btn");
+                ClickFunction("form2Btn");
 
-                        }
-    else {
-        alert("zipcode is not valid");
-                        }
-                    },
-    error: function () {
-        alert('Failed to receive the Data');
+            }
+            else if (result.value == "false") {
+                alert("No service avaliable ");
+            }
+            else {
+                alert("Invalid Postal code");
+            }
+        },
+        error: function () {
+            alert('Failed to receive the Data');
 
-    console.log('Failed ');
-                    }
-                });
-
-             }
-
-
-
+            console.log('Failed ');
+        }
+    });
 
 
-
+}
 
 
 
@@ -215,8 +226,14 @@ Disable('form4Btn');
 
 
 
-    function scheduleSubmit() {
-                var data = $("#form2").serialize();
+
+
+
+
+
+
+function scheduleSubmit() {
+    var data = $("#form2").serialize();
     console.log(data);
 
 
@@ -227,171 +244,181 @@ Disable('form4Btn');
 
     $.ajax({
         type: 'POST',
-    url: '/Customer/ScheduleService',
-    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    data: data,
-    success: function (result) {
-                        if (result.value == "true") {
-        Clickable("form3Btn");
-    ClickFunction("form3Btn");
-    loadAddress();
-                        }
-    else {
-        alert("schedule is not valid");
-                        }
-                    },
-    error: function () {
-        alert('Failed to receive the Data');
-    console.log('Failed ');
-                    }
-                });
+        url: '/Customer/ScheduleService',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+            if (result.value == "true") {
+                Clickable("form3Btn");
+                ClickFunction("form3Btn");
+                loadAddress();
             }
+            else {
+                alert("schedule is not valid");
+            }
+        },
+        error: function () {
+            alert('Failed to receive the Data');
+            console.log('Failed ');
+        }
+    });
+}
 
 
 
-    function loadAddress() {
-                        var data = $("#form1").serialize();
+function loadAddress() {
+    var data = $("#form1").serialize();
     alert("Inside load address")
     $.ajax({
         type: 'get',
-    url: '/customer/detailsservice',
-    contenttype: 'application/x-www-form-urlencoded; charset=utf-8',
-    data: data,
-    success: function (result) {
-                                        var address = $("#address");
-    address.empty();
-    address.append('<p>Please select your addreee:</p>');
-    if(result.length==0)
-    {
-        ClickFunction("addAddressBtn");
-                                        }
-    for (let i = 0; i < result.length; i++) {
-                                            var checked = "";
-    if (result[i].isDefault == true) {
-        checked = "checked";
-                                            }
+        url: '/customer/detailsservice',
+        contenttype: 'application/x-www-form-urlencoded; charset=utf-8',
+        data: data,
+        success: function (result) {
+            var address = $("#address");
+            address.empty();
+            address.append('<p>Please select your addreee:</p>');
+            if (result.length == 0) {
+                ClickFunction("addAddressBtn");
+            }
+            var isdefaultaddress = false;
+            for (let i = 0; i < result.length; i++) {
+                var checked = "";
+                if (result[i].isDefault == true) {
+                    checked = "checked";
+                    isdefaultaddress = true;
+                }
 
 
-    address.append(' <div class="row radiobutton">'+
-        '<div style="max-width: 10px" class="col-1"><input type="radio" id=" '+ i +' " ' + checked +' name="address" value="'+ result[i].addressId + '" /></div>'+
-        ' <div class="col-11"><label for="'+ i +'"><span>Address:</span><br><span>'+ result[i].addressLine1 +'</span>,&nbsp;<span>'+ result[i].addressLine2 +'</span><br><span>'+ result[i].city +'</span>&nbsp;<span>'+ result[i].postalCode +'</span>'+
-            '<br><span>PHONE NUMBER:</span> ' + result[i].mobile + ' <span></span></label></div> </div>');
+                address.append(' <div class="row radiobutton">' +
+                    '<div style="max-width: 10px" class="col-1"><input type="radio" id=" ' + i + ' " ' + checked + ' name="address" value="' + result[i].addressId + '" /></div>' +
+                    ' <div class="col-11"><label for="' + i + '"><span>Address:</span><br><span>' + result[i].addressLine1 + '</span>,&nbsp;<span>' + result[i].addressLine2 + '</span><br><span>' + result[i].city + '</span>&nbsp;<span>' + result[i].postalCode + '</span>' +
+                    '<br><span>PHONE NUMBER:</span> ' + result[i].mobile + ' <span></span></label></div> </div>');
 
-            checked = "";
-                                        }
+                checked = "";
+            } if (isdefaultaddress == false) {
+                document.getElementById('0').checked = true;
+            }
             console.log(result);
-                                    },
-            error: function () {
-                alert('failed to receive the data');
+        },
+        error: function () {
+            alert('failed to receive the data');
             console.log('failed ');
-                                    }
-                                });
-                       }
+        }
+    });
+}
 
 
-            function addAddressdiv() {
-                document.getElementById('addAddressBtn').style.display = "none";
-            document.getElementById('addNewaddressDiv').style.display = "block";
-            document.getElementById('addAddressPostalCode').value=document.getElementById("postalcode").value;
-            document.getElementById('addAddressPostalCode').disabled=true;
-                    }
+function addAddressdiv() {
+    document.getElementById('addAddressBtn').style.display = "none";
+    document.getElementById('addNewaddressDiv').style.display = "block";
+    document.getElementById('addAddressPostalCode').value = document.getElementById("postalcode").value;
+    document.getElementById('addAddressPostalCode').disabled = true;
+}
 
 
-            function saveAddress() {
-                alert("in save address 1")
-                    var data = { };
-            data.AddressLine1 = document.getElementById("AddressLine1").value;
-            data.AddressLine2 = document.getElementById("AddressLine2").value;
-            data.PostalCode = document.getElementById("addAddressPostalCode").value;
-            data.City = document.getElementById("City").value;
-            data.Mobile = document.getElementById("Mobile").value;
-            alert("in save address 2")
+function saveAddress() {
+    alert("in save address 1")
+    var data = {};
+    data.AddressLine1 = document.getElementById("AddressLine1").value;
+    data.AddressLine2 = document.getElementById("AddressLine2").value;
+    data.PostalCode = document.getElementById("addAddressPostalCode").value;
+    data.City = document.getElementById("City").value;
+    data.Mobile = document.getElementById("Mobile").value;
+    alert("in save address 2")
 
 
-            $.ajax({
-                type: 'POST',
-            url: '/Customer/AddNewAddress',
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            data: data,
-            success: function (result) {
-                                if (result.value == "true") {
+    $.ajax({
+        type: 'POST',
+        url: '/Customer/AddNewAddress',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+            if (result.value == "true") {
 
                 ClickFunction("addressCancelBtn");
-            loadAddress();
+                loadAddress();
 
-                                }
+            }
             else {
                 $("#detailServiceAlert").removeClass("d-none").text("Sorry! Something went wrong please try again later.");
-                                }
-                            },
-            error: function () {
-                alert('Failed to receive the Data');
+            }
+        },
+        error: function () {
+            alert('Failed to receive the Data');
             console.log('Failed ');
-                            }
-                        });
-                    }
-
-            function cancelAddress() {
-                document.getElementById("addNewaddressDiv").style.display = "none";
-            document.getElementById('addAddressBtn').style.display = "block";
         }
+    });
+}
+
+function cancelAddress() {
+    document.getElementById("addNewaddressDiv").style.display = "none";
+    document.getElementById('addAddressBtn').style.display = "block";
+}
 
 
 
 
 
-            function completeBookService() {
-        var data = { };
-            var extrahour = 0;
-            var cabinet = document.getElementById("InsideCabinat");
-            var window = document.getElementById("InsideWindow");
-            var fridge = document.getElementById("InsideFridge");
-            var oven = document.getElementById("InsideOven");
-            var laundry = document.getElementById("InsideLaundry");
-            if (cabinet.checked == true) {
-                extrahour += 0.5;
+function completeBookService() {
+
+    if (!$('#tac').is(':checked')) {
+        alert("please accept terms and condition");
+    } else {
+
+
+
+        var data = {};
+        var extrahour = 0;
+        var cabinet = document.getElementById("InsideCabinat");
+        var window = document.getElementById("InsideWindow");
+        var fridge = document.getElementById("InsideFridge");
+        var oven = document.getElementById("InsideOven");
+        var laundry = document.getElementById("InsideLaundry");
+        if (cabinet.checked == true) {
+            extrahour += 0.5;
             data.cabinet = true;
         }
-            if (window.checked == true) {
-                extrahour += 0.5;
+        if (window.checked == true) {
+            extrahour += 0.5;
             data.window = true;
         }
-            if (fridge.checked == true) {
-                extrahour += 0.5;
+        if (fridge.checked == true) {
+            extrahour += 0.5;
             data.fridge = true;
         }
-            if (oven.checked == true) {
-                extrahour += 0.5;
+        if (oven.checked == true) {
+            extrahour += 0.5;
             data.oven = true;
         }
-            if (laundry.checked == true) {
-                extrahour += 0.5;
+        if (laundry.checked == true) {
+            extrahour += 0.5;
             data.laundry = true;
         }
-            data.postalCode = document.getElementById("postalcode").value;
-
-           
-
-            var temp=document.getElementById("Date").value;
-            data.serviceStartDate =temp+" "+document.getElementById("Time").value;
+        data.postalCode = document.getElementById("postalcode").value;
 
 
 
-            data.serviceHours=document.getElementById("Duration").value;
-            data.extraHours = extrahour;
-            var duration= parseFloat(document.getElementById("Duration").value);
-            var extra= parseFloat( extrahour);
-            data.subTotal= (extra + duration)*25;
-            data.totalCost =  data.subTotal; //Discount 0(out of scope)
-            data.comments = document.getElementById("comments").value;
-            data.HasPet = document.getElementById("flexCheckDefault").checked;
+        var temp = document.getElementById("Date").value;
+        data.serviceStartDate = temp + " " + document.getElementById("Time").value;
 
-       
-            data.addressId=document.querySelector('input[name="address"]:checked').value;
-            
 
-            $.ajax({
-                type: 'post',
+
+        data.serviceHours = document.getElementById("Duration").value;
+        data.extraHours = extrahour;
+        var duration = parseFloat(document.getElementById("Duration").value);
+        var extra = parseFloat(extrahour);
+        data.subTotal = (extra + duration) * 25;
+        data.totalCost = data.subTotal; //Discount 0(out of scope)
+        data.comments = document.getElementById("comments").value;
+        data.HasPet = document.getElementById("flexCheckDefault").checked;
+
+
+        data.addressId = document.querySelector('input[name="address"]:checked').value;
+
+
+        $.ajax({
+            type: 'post',
             url: '/customer/completebooking',
             contenttype: 'application/x-www-form-urlencoded; charset=utf-8',
             data: data,
@@ -400,30 +427,31 @@ Disable('form4Btn');
                     $('#ModalLabel_SID').text("Opps! Something Went wrong").css("color", "red");
                     $('#Model_SID').text("Please Try again");
                     ClickFunction("complete");
-               
+
                 }
-            else {
-             
-                  
-                    $('#ModalLabel_SID').text("Service Request has been Created Successfully").css("color","Green");
+                else {
+
+
+                    $('#ModalLabel_SID').text("Service Request has been Created Successfully").css("color", "Green");
                     $('#Model_SID').text("Your service id : " + result.value);
-                   ClickFunction("complete");
+                    ClickFunction("complete");
                 }
             },
             error: function () {
                 alert('failed to receive the data');
-            console.log('failed ');
+                console.log('failed ');
             }
         });
     }
+}
 
 
 
 
 
 
-  /*ankit js*/
-  
+/*ankit js*/
+
 $(document).ready(function () {
 
     Counter = 0;
@@ -440,14 +468,14 @@ $(document).ready(function () {
         else if (!validName.test(Streetname)) {
             $('.street-msg').addClass('Validation-Error').text('please enter valid input');
             Disable("addAddressSubmit");
-           
+
         }
         else {
             $('.street-msg').empty();
             Counter = Counter + 1;
             if (Counter == 3) {
                 Clickable("addAddressSubmit")
-            } 
+            }
         }
     });
 
@@ -479,7 +507,7 @@ $(document).ready(function () {
         if (houseNum.length == 0) {
             Disable("addAddressSubmit");
             $('.house-msg').addClass('Validation-Error').text('House Number is required');
-            
+
         }
         else if (!validNumber.test(houseNum)) {
             Disable("addAddressSubmit");
@@ -494,8 +522,9 @@ $(document).ready(function () {
         }
     });
 });
-//</script>
 
+
+//</script>
 
 
 

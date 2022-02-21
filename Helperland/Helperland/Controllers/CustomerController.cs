@@ -82,21 +82,26 @@ namespace Helperland.Controllers
         [HttpPost]
         public IActionResult ValidPostalCode(PostalCode obj)
         {
-
-
-            var list = _db.Users.Where(x => (x.ZipCode == obj.postalcode) && (x.UserTypeId == 1)).ToList();
-
-
-            if (list.Count() > 0)
+            if (ModelState.IsValid)
             {
 
+                var list = _db.Users.Where(x => (x.ZipCode == obj.postalcode) && (x.UserTypeId == 1)).ToList();
 
 
+                if (list.Count() > 0)
+                {
 
-                return Ok(Json("true"));
+
+                    return Ok(Json("true"));
+                }
+                
+                return Ok(Json("false"));
             }
-            TempData["wrongZipCode"] = "service provider is not avilable in this area.";
-            return Ok(Json("false"));
+            else
+            {
+                return Ok(Json("Invalid"));
+            }
+
         }
 
 
