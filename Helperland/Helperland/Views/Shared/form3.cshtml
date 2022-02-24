@@ -4,22 +4,9 @@
 
 		<div id="address">
 
-			<div class="radiobutton">
-				<input type="radio" id="address1" name="address" value="1" />
-				<label for="address1">
-					<span>ADDRESS:</span><span>xyx</span> <br />
-					<span>PHONE NUMBER:</span> <span>9898989898</span>
-				</label>
-			</div>
-			<div class="radiobutton">
-				<input type="radio" id="address2" name="address" value="2"   />
-				<label for="address2">
-					<span>ADDRESS:</span><span>abc</span> <br />
-					<span>PHONE NUMBER:</span> <span>9898989898</span>
-				</label>
-			</div>
-
+			@*loading address from database *@
 		</div>
+
 		<button type="button" class="btn add_address" id="addAddressBtn" onclick="addAddressdiv()">
 			+ Add New
 			Address
@@ -29,7 +16,7 @@
 		<div id="addNewaddressDiv" class="container-fluid">
 
 			<form action="" class="address_form">
-				<div class="row mb-3">
+				<div class="row mb-3 mt-3">
 					<div class="col-md-6 col-sm-12">
 						<label for="streetname" class="form-label">Street name</label>
 						<input asp-for="AddressLine1"  type="text" class="form-control street" name="streetname" placeholder="Street name" required  />
@@ -48,7 +35,8 @@
 					</div>
 					<div class="col-md-6 col-sm-12">
 						<label for="city" class="form-label">City</label>
-						<input asp-for="City" type="text"  class="form-control" name="city" placeholder="City" required  />
+						<input asp-for="City" type="text"  class="form-control addressCity" name="city" placeholder="City" required  />
+						<div class="city-msg"></div>
 					</div>
 				</div>
 				<div class="row mb-3">

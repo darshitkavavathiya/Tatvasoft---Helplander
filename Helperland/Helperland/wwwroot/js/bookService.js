@@ -193,8 +193,8 @@ Disable('form4Btn');
 
 
 function postalSubmit() {
-    var data = $("#form1").serialize();
 
+    var data = $("#form1").serialize();
 
 
     $.ajax({
@@ -203,15 +203,18 @@ function postalSubmit() {
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         data: data,
         success: function (result) {
-            if (result.value == "true") {
+            if (result.value == "true")
+            {
                 Clickable("form2Btn");
                 ClickFunction("form2Btn");
 
             }
-            else if (result.value == "false") {
+            else if (result.value == "false")
+            {
                 alert("No service avaliable ");
             }
-            else {
+            else
+            {
                 alert("Invalid Postal code");
             }
         },
@@ -221,7 +224,6 @@ function postalSubmit() {
             console.log('Failed ');
         }
     });
-
 
 }
 
@@ -241,12 +243,9 @@ function postalSubmit() {
 
 
 function scheduleSubmit() {
+
     var data = $("#form2").serialize();
     console.log(data);
-
-
-
-
 
 
 
@@ -278,7 +277,6 @@ function scheduleSubmit() {
 
 function loadAddress() {
     var data = $("#form1").serialize();
-    alert("Inside load address")
     $.ajax({
         type: 'get',
         url: '/customer/detailsservice',
@@ -287,7 +285,7 @@ function loadAddress() {
         success: function (result) {
             var address = $("#address");
             address.empty();
-            address.append('<p>Please select your addreee:</p>');
+            address.append('<h2>Please select your address:</h2>');
             if (result.length == 0) {
                 ClickFunction("addAddressBtn");
             }
@@ -335,14 +333,12 @@ function addAddressdiv() {
 
 
 function saveAddress() {
-    alert("in save address 1")
     var data = {};
     data.AddressLine1 = document.getElementById("AddressLine1").value;
     data.AddressLine2 = document.getElementById("AddressLine2").value;
     data.PostalCode = document.getElementById("addAddressPostalCode").value;
     data.City = document.getElementById("City").value;
     data.Mobile = document.getElementById("Mobile").value;
-    alert("in save address 2")
 
 
     $.ajax({
@@ -495,7 +491,29 @@ $(document).ready(function () {
         else {
             $('.street-msg').empty();
             Counter = Counter + 1;
-            if (Counter == 3) {
+            if (Counter == 4) {
+                Clickable("addAddressSubmit")
+            }
+        }
+    });
+    // city Validation
+    $('.addressCity').on('focusout', function () {
+        var Streetname = $(this).val();
+        var validName = /^[a-zA-Z ]*$/;
+        if (Streetname.length == 0) {
+            $('.city-msg').addClass('Validation-Error').text("city is required")
+            Disable("addAddressSubmit");
+
+        }
+        else if (!validName.test(Streetname)) {
+            $('.city-msg').addClass('Validation-Error').text('please enter valid input');
+            Disable("addAddressSubmit");
+
+        }
+        else {
+            $('.city-msg').empty();
+            Counter = Counter + 1;
+            if (Counter == 4) {
                 Clickable("addAddressSubmit")
             }
         }
@@ -516,13 +534,13 @@ $(document).ready(function () {
         else {
             $('.mobile-msg').empty();
             Counter = Counter + 1;
-            if (Counter == 3) {
+            if (Counter == 4) {
                 Clickable("addAddressSubmit")
             }
         }
     });
 
-    //   Phone Number validation
+    //   house Number validation
     $('.houseno').on('focusout', function () {
         var houseNum = $(this).val();
         var validNumber = /^\d*$/;
@@ -538,7 +556,7 @@ $(document).ready(function () {
         else {
             $('.house-msg').empty();
             Counter = Counter + 1;
-            if (Counter == 3) {
+            if (Counter == 4) {
                 Clickable("addAddressSubmit")
             }
         }

@@ -148,13 +148,10 @@ namespace Helperland.Controllers
 
 
             string postalcode = obj.postalcode;
-            Console.WriteLine(obj.postalcode);
             var table = _db.UserAddresses.Where(x => x.UserId == Id && x.PostalCode == postalcode).ToList();
-            Console.WriteLine(table.ToString());
 
             foreach (var add in table)
             {
-                Console.WriteLine("1");
                 Address useradd = new Address();
                 useradd.AddressId = add.AddressId;
                 useradd.AddressLine1 = add.AddressLine1;
@@ -166,7 +163,6 @@ namespace Helperland.Controllers
 
                 Addresses.Add(useradd);
             }
-            Console.WriteLine("2");
 
             return new JsonResult(Addresses);
         }
@@ -175,7 +171,6 @@ namespace Helperland.Controllers
         [HttpPost]
         public ActionResult AddNewAddress(UserAddress useradd)
         {
-            Console.WriteLine("Inside Addnew address 1");
             int Id = -1;
 
 
@@ -188,8 +183,7 @@ namespace Helperland.Controllers
                 Id = int.Parse(Request.Cookies["userId"]);
 
             }
-            Console.WriteLine("Inside Addnew address 2");
-            Console.WriteLine(Id);
+           
 
             useradd.UserId = Id;
             useradd.IsDefault = false;
@@ -197,10 +191,8 @@ namespace Helperland.Controllers
             User user = _db.Users.Where(x => x.UserId == Id).FirstOrDefault();
             useradd.Email = user.Email;
             var result = _db.UserAddresses.Add(useradd);
-            Console.WriteLine("Inside Addnew address 3");
             _db.SaveChanges();
 
-            Console.WriteLine("Inside Addnew address 4");
             if (result != null)
             {
                 return Ok(Json("true"));
@@ -243,7 +235,6 @@ namespace Helperland.Controllers
             add.PaymentDone = true;
 
             add.HasPets = complete.HasPet;
-            Console.Write(complete.HasPet);
             add.CreatedDate = DateTime.Now;
             add.ModifiedDate = DateTime.Now;
             add.HasIssue = false;
