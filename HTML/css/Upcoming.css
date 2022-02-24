@@ -256,7 +256,7 @@ p.margin{
 
 
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 992px) {
     .main_service {
         padding-top: 31px;
     }
@@ -325,11 +325,12 @@ p.margin{
     }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 992px) {
     .main_service {
         padding-top: 31px;
         margin-left: 15%;
         margin-right: 15%;
         padding-bottom: 30px;
     }
+  
 }

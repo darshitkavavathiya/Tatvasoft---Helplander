@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.title = "bookservice";
 
 
@@ -38,18 +38,18 @@
 
             <div class="tab">
                 <button class="tablinks" onclick="set_service(event, 'at1')" id="defaultOpen">
-                    <img src="~/images/setupservice.png" alt=".."> Setup service
+                    <img src="~/images/setupservice.png" alt=".."> <span class="tab-text"> Setup service</span>
                 </button>
                 <button class="tablinks" onclick="set_service(event, 'at2')" id="form2Btn">
                     <img src="~/images/schedule.png"
-                         alt=".."> Schedule & Plan
+                         alt=".."> <span class="tab-text">Schedule & Plan</span>
                 </button>
                 <button class="tablinks" onclick="set_service(event, 'at3')" id="form3Btn">
                     <img src="~/images/details.png"
-                         alt=".."> Your Details
+                         alt=".."> <span class="tab-text">Your Details</span>
                 </button>
                 <button class="tablinks" onclick="set_service(event, 'at4')" id="form4Btn">
-                    <img src="~/images/payment.png" alt=".."> Make Payment
+                    <img src="~/images/payment.png" alt=".."><span class="tab-text">Make Payment</span> 
                 </button>
             </div>
 

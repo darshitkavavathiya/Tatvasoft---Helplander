@@ -56,7 +56,7 @@ namespace Helperland.Controllers
 
                     if (U.UserTypeId == 0)
                     {
-                        return RedirectToAction("CustomerServiceHistory", "Customer");
+                        return RedirectToAction("CustomerDashboard", "Customer");
                     }
                     /* else if (user.UserTypeId == 2)
                       {
@@ -67,7 +67,7 @@ namespace Helperland.Controllers
                           return RedirectToAction("ServiceRequest", "Admin");
                       }*/
 
-                    return RedirectToAction("CustomerServiceHistory", "Customer");
+                    return RedirectToAction("CustomerDashboard", "Customer");
                 }
                 else
                 {

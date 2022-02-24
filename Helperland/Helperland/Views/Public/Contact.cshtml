@@ -1,12 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Contact";
 }
-
+@model Helperland.Models.ContactU
 @section Css
 {
-           <link rel="stylesheet" href="~/css/faq.css" />
-          <link rel="stylesheet" href="~/css/contact.css" />
-          
+<link rel="stylesheet" href="~/css/faq.css" />
+<link rel="stylesheet" href="~/css/contact.css" />
+
 }
 
 
@@ -15,9 +15,9 @@
 
 
 
-        <section class="img-section" id="top">
-            <img src="~/Images/group-16_2.png" class="img-fluid">
-        </section>
+<section class="img-section" id="top">
+    <img src="~/Images/group-16_2.png" class="img-fluid">
+</section>
 
 
 
@@ -26,135 +26,128 @@
 
 
 
-    <main>
+<main>
 
 
 
 
-        <!-- contact us section -->
-        <section class=" text-center container-fluid contact-us-container  ">
+    <!-- contact us section -->
+    <section class=" text-center container-fluid contact-us-container  ">
 
-            <h1 class="contact-us-title">Contact us</h1>
+        <h1 class="contact-us-title">Contact us</h1>
 
-            <img src="~/Images/faq-star.png" class="img-fluid col-md-3 " style="max-width: 60%;" alt="">
+        <img src="~/Images/faq-star.png" class="img-fluid col-md-3 " style="max-width: 60%;" alt="">
 
-            <div class="row contact-us-row">
+        <div class="row contact-us-row">
 
-                <div class="col-md contact-us-col">
-                    <img src="~/Images/forma-1_2.png" class="img-fluid" alt="">
-                    <p class="contact-us-text">
-                        1111 Lorem ipsum text 100,<br> Lorem ipsum AB
-                    </p>
-                </div>
-
-                <div class="col-md contact-us-col">
-                    <img src="~/Images/phone-call.png" class="img-fluid" alt="">
-                    <p class="contact-us-text">
-                        +49 (40) 123 56 7890<br> +49 (40) 987 56 0000
-                    </p>
-                </div>
-
-                <div class="col-md contact-us-col">
-                    <img src="~/Images/vector-smart-object.png" style="margin-top: 10px;" class="img-fluid" alt="">
-                    <p class="contact-us-text">
-                        info@helperland.com
-                    </p>
-                </div>
-
-            </div>
-            <hr>
-
-
-
-        </section>
-
-        <!-- contact us form -->
-        <section class="text-center container-fluid contact-us-form">
-            <h2 class="contact-form-title"> Get in touch with us</h2>
-
-            <form action="#">
-
-                <div class="row form-row-1">
-
-                    <div class="col-md-6">
-                        <input type="text" class="form-control contact-form-input" placeholder="First name">
-
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control contact-form-input" placeholder="Last name">
-
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <div class="input-group mb-3 ">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text  contact-form-input" id="basic-addon1">+45</span>
-                            </div>
-                            <input type="text" class="form-control  contact-form-input" placeholder="Mobile number">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control contact-form-input" placeholder="Email address">
-                    </div>
-
-                </div>
-                <select class="form-select contact-form-input-select " aria-label="Default select example">
-                    <option selected>Subject</option>
-                    <option value="1"> Sub One</option>
-                    <option value="2">Sub Two</option>
-                    <option value="3">Sub Three</option>
-                </select>
-
-
-                <div class="form-group">
-
-                    <textarea class="form-control contact-form-inputbox" id="exampleFormControlTextarea1" rows="3"
-                        placeholder="Message"></textarea>
-                </div>
-                <a type="submit" class="btn btn-primary">Submit</a>
-            </form>
-
-
-        </section>
-        <!-- map -->
-        <section class="map">
-
-          <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0"
-                    marginwidth="0"
-                    src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=23.0351369,72.5004217+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-                    <a href="https://www.gps.ie/car-satnav-gps/">sat navs</a></iframe></div>
-        </section>
-        
-        <div class="row contact-row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8 contact-col-email">
-
-                <p class="contact-text">
-                    GET OUR NEWSLETTER
+            <div class="col-md contact-us-col">
+                <img src="~/Images/forma-1_2.png" class="img-fluid" alt="">
+                <p class="contact-us-text">
+                    1111 Lorem ipsum text 100,<br> Lorem ipsum AB
                 </p>
+            </div>
 
-                <div class="row ">
+            <div class="col-md contact-us-col">
+                <img src="~/Images/phone-call.png" class="img-fluid" alt="">
+                <p class="contact-us-text">
+                    +49 (40) 123 56 7890<br> +49 (40) 987 56 0000
+                </p>
+            </div>
 
-                    <div class="col-sm-7 contact-email-col">
-                        <input class="contact-email-textbox" placeholder="  YOUR EMAIL">
+            <div class="col-md contact-us-col">
+                <img src="~/Images/vector-smart-object.png" style="margin-top: 10px;" class="img-fluid" alt="">
+                <p class="contact-us-text">
+                    info@helperland.com
+                </p>
+            </div>
+
+        </div>
+        <hr>
+
+
+
+    </section>
+
+    <!-- contact us form -->
+    <section class="text-center container-fluid contact-us-form">
+        <h2 class="contact-form-title"> Get in touch with us</h2>
+
+        <form asp-action="Contact" asp-controller="Public" method="post" enctype="multipart/form-data">
+
+            <div class="row form-row-1">
+
+                <div class="col-md-6">
+                    <input type="text" asp-for="Name" class="form-control contact-form-input" placeholder="First name">
+                    <span asp-validation-for="Name" class="Validation-Error"></span>
+
+                </div>
+                <div class="col-md-6">
+
+                    <input type="text" asp-for="lastName" class="form-control contact-form-input" placeholder="Last name">
+                    <span asp-validation-for="lastName" class="Validation-Error"></span>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="input-group mb-3 ">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text  contact-form-input" id="basic-addon1">+45</span>
+                        </div>
+                        <input type="text" asp-for="PhoneNumber" class="form-control  contact-form-input" placeholder="Mobile number">
                     </div>
+                    <span asp-validation-for="PhoneNumber" class="Validation-Error"></span>
+                </div>
+                <div class="col-sm-6">
 
-                    <div class="col-sm-5 contact-submit-col">
-                        <button class="contact-submit-button">submit</button>
-                    </div>
-
+                    <input type="text" asp-for="Email" class="form-control contact-form-input" placeholder="Email address">
+                    <span asp-validation-for="Email" class="Validation-Error"></span>
                 </div>
 
             </div>
-            <div class="col-sm-2"></div>
-        </div>
 
-    </main>
+            <select asp-for="Subject" class="form-select contact-form-input-select " aria-label="Default select example">
+
+                <option value="General" selected> General </option>
+                <option value="Inquiry">Inquiry</option>
+                <option value="Renewal">Renewal</option>
+                <option value="Revocation">Revocation</option>
+            </select>
+            <span asp-validation-for="Subject" class="Validation-Error"></span>
 
 
+            <div class="form-group">
+
+
+                <textarea asp-for="Message" class="form-control contact-form-inputbox" id="exampleFormControlTextarea1" rows="3"
+                          placeholder="Message"></textarea>
+                <span asp-validation-for="Message" class="Validation-Error"></span>
+            </div>
+
+            <input asp-for="Attach" class="form-control mt-2" type="file">
+            <span asp-validation-for="Attach" class="Validation-Error"></span>
+            <button class="btn btn-primary" type="submit">Submit</button>
+
+        </form>
+
+
+    </section>
+    <!-- map -->
+    <section class="map">
+
+        <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0"
+                marginwidth="0"
+                src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=23.0351369,72.5004217+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+            <a href="https://www.gps.ie/car-satnav-gps/">sat navs</a>
+        </iframe></div>
+    </section>
+
+    
+
+</main>
 
 
 

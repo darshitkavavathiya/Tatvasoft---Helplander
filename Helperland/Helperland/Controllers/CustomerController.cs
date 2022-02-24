@@ -17,7 +17,7 @@ namespace Helperland.Controllers
         {
             _db = db;
         }
-        public IActionResult CustomerServiceHistory()
+        public IActionResult CustomerDashboard()
         {
 
 

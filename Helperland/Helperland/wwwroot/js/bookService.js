@@ -435,6 +435,7 @@ function completeBookService() {
                     $('#ModalLabel_SID').text("Service Request has been Created Successfully").css("color", "Green");
                     $('#Model_SID').text("Your service id : " + result.value);
                     ClickFunction("complete");
+                   
                 }
             },
             error: function () {
@@ -450,7 +451,6 @@ function completeBookService() {
 
 
 
-/*ankit js*/
 
 $(document).ready(function () {
 

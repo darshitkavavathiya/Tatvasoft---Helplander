@@ -385,3 +385,9 @@ p.hidden{
 
 
 
+@media(min-width:900px){
+.PaymentSummary{
+display: none;
+}}
+
+
