@@ -1,4 +1,4 @@
-
+/*-------------- tab nav control    ----------------------*/
 function set_service(evt, level) {
 
 
@@ -54,7 +54,7 @@ function set_service(evt, level) {
 
 document.getElementById("defaultOpen").click();
 
-
+/*--------extrabtnclick ------------*/
 
 function extrabtnclick(id, i) {
 
@@ -88,7 +88,7 @@ function extrabtnclick(id, i) {
 
 
 
-
+/*---------------- Invoice dynemic start --------------------*/
 
 $(document).ready(function () {
 
@@ -136,8 +136,6 @@ $(document).ready(function () {
 
 
 
-
-
 $(document).ready(function () {
 
     selected = $(".ForDate").val();
@@ -159,12 +157,17 @@ $(document).ready(function () {
 
 
 
+/*---------------- Invoice dynemic end --------------------*/
 
 
 
 
 
-/*<script>*/
+
+
+
+
+
 
 function ClickFunction(id) {
     document.getElementById(id).click();
@@ -178,11 +181,15 @@ function Clickable(id) {
     document.getElementById(id).disabled = false;
 }
 
-
-
 Disable('form2Btn');
 Disable('form3Btn');
 Disable('form4Btn');
+
+
+
+
+
+/*--------- Postalsubmit Function-----------*/
 
 
 function postalSubmit() {
@@ -228,6 +235,7 @@ function postalSubmit() {
 
 
 
+/*--------- scheduleSubmit Function-----------*/
 
 
 
@@ -264,6 +272,8 @@ function scheduleSubmit() {
     });
 }
 
+
+/*--------- loadAddress Function-----------*/
 
 
 function loadAddress() {
@@ -309,12 +319,19 @@ function loadAddress() {
 }
 
 
+/*--------- addAddressdiv Function-----------*/
+
+
 function addAddressdiv() {
     document.getElementById('addAddressBtn').style.display = "none";
     document.getElementById('addNewaddressDiv').style.display = "block";
     document.getElementById('addAddressPostalCode').value = document.getElementById("postalcode").value;
     document.getElementById('addAddressPostalCode').disabled = true;
 }
+
+
+
+/*----------saveAddress Function-----------*/
 
 
 function saveAddress() {
@@ -351,6 +368,10 @@ function saveAddress() {
     });
 }
 
+
+/*----------cancelAddress Function------------*/
+
+
 function cancelAddress() {
     document.getElementById("addNewaddressDiv").style.display = "none";
     document.getElementById('addAddressBtn').style.display = "block";
@@ -358,7 +379,7 @@ function cancelAddress() {
 
 
 
-
+/*-----------completeBookService Function-----------*/
 
 function completeBookService() {
 
@@ -450,6 +471,7 @@ function completeBookService() {
 
 
 
+/*----------------Validation For form-3------------*/
 
 
 $(document).ready(function () {

@@ -4,6 +4,7 @@
     background-color: #525252;
     padding-top: 0%;
     padding-bottom: 0%;
+    opacity:0.8;
 }
 
 
@@ -190,8 +191,17 @@ li#userWelcomeName {
     margin-left: 40%;
     margin-right: 40%;
 }
-
-
+.loginBtn {
+    font-size: 17px;
+    color: white;
+    text-align: center;
+    background: #29626D 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF80;
+    border-radius: 20px;
+    opacity: 1;
+    width: 83px;
+    height: 40px;
+}
 
 
 

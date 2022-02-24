@@ -25,20 +25,21 @@
                         <br />
                         <input type="password" asp-for="password" class="form-control" placeholder="Password">
                          
-                        <div class="form-check" style="text-align:left">
+                        <div class="form-check mt-3" style="text-align:left">
                             <input type="checkbox" asp-for="remember" class="form-check-input" id="">
-                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+
+                            <label class="form-check-label " for="remember">Remember me</label>
                         </div>
                     </div>
                     <div class="modal-footer">
 
-                        <Button type="submit"  class="btn bookbtn mx-auto">Login</Button>
+                        <Button type="submit" style="color:white;" class="loginBtn  mx-auto">Login</Button>
 
 
 
                     </div>
                 </form>
-                <a data-bs-toggle="modal" data-bs-target="#forgetPwdModal">Forgot password?</a>
+                <a data-bs-toggle="modal" data-bs-target="#forgetPwdModal" class="forgetPass">Forgot password?</a>
                 <p>Don't have and account? <a asp-controller="UserManagement" asp-action="CustomerSignUp">Register Now</a></p>
             </div>
 

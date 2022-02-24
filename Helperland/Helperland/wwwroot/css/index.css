@@ -428,3 +428,34 @@ li#userWelcomeName{
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
 }
+a.forgetPass:hover {
+    color: blue;
+}
+.loginBtn {
+    font-size: 17px;
+    color:white;
+    text-align: center;
+    background: #29626D 0% 0% no-repeat padding-box;
+    border: 1px solid #FFFFFF80;
+    border-radius: 20px;
+    opacity: 1;
+    width: 83px;
+    height: 40px;
+}
+
+.Validation-Error {
+    color: red;
+    font-size: 12px;
+}
+
+.modal-content {
+    padding: 5%;
+    margin: 10%;
+    text-align: center;
+}
+
+.Reset-password-form {
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
