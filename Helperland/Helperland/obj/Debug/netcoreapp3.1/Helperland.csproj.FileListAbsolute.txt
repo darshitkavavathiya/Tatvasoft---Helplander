@@ -829,3 +829,4 @@ E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Sh
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\form4.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\navbar.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Customer\CustomerDashboard.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\logout.cshtml.g.cs

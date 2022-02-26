@@ -21,18 +21,14 @@
 
         <!-- tab -->
 
-        <div class="hamburger">
-            <span class="v-menu"></span>
-            <span class="v-menu"></span>
-            <span class="v-menu"></span>
-        </div>
+       
         <div class="tab" id="verticaltab">
 
 
-            <button class="tablinks" onclick="upcoming_service(event, 'dashboard')">Dashboard</button>
+            <button class="tablinks" onclick="upcoming_service(event, 'dashboard')" id="dashboardTabBtn">Dashboard</button>
 
 
-            <button class="tablinks" onclick="upcoming_service(event, 'service_history')" id="defaultOpen">
+            <button class="tablinks" onclick="upcoming_service(event, 'service_history')" id="serviceHistroyTabBtn">
                 
                 
                 Service
@@ -40,7 +36,7 @@
             
             
             </button>
-            <button class="tablinks" onclick="upcoming_service(event, 'service_schedule')">
+            <button class="tablinks" onclick="upcoming_service(event, 'service_schedule')"id="serviceScheduleTabBtn">
                 
                 
                 Service
@@ -49,9 +45,9 @@
             
             </button>
 
-            <button class="tablinks" onclick="upcoming_service(event, 'favourite_pros')"> Favourite Pros </button>
-            <button class="tablinks" onclick="upcoming_service(event, 'invoices')">Invoices</button>
-            <button class="tablinks" onclick="upcoming_service(event, 'notification')"> Notifications</button>
+            <button class="tablinks" onclick="upcoming_service(event, 'favourite_pros')" id="favouriteProsTabBtn"> Favourite Pros </button>
+            <button class="tablinks" onclick="upcoming_service(event, 'invoices')" id="invoiceTabBtn">Invoices</button>
+            <button class="tablinks" onclick="upcoming_service(event, 'notification')" id="notificationTabBtn"> Notifications</button>
 
 
         </div>

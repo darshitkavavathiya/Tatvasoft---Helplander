@@ -1,16 +1,16 @@
 
-const hamburger = document.querySelector(".hamburger");
-const vtab = document.querySelector(".tab");
+//const hamburger = document.querySelector(".hamburger");
+//const vtab = document.querySelector(".tab");
 
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    vtab.classList.toggle("active");
-})
+//hamburger.addEventListener("click", () => {
+//    hamburger.classList.toggle("active");
+//    vtab.classList.toggle("active");
+//})
 
-document.querySelectorAll(".tablinks").forEach(n => n.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    vtab.classList.remove("active");
-}))
+//document.querySelectorAll(".tablinks").forEach(n => n.addEventListener("click", () => {
+//    hamburger.classList.remove("active");
+//    vtab.classList.remove("active");
+//}))
 
 
 
@@ -29,4 +29,16 @@ function upcoming_service(evt, service) {
     document.getElementById(service).style.display = "block";
     evt.currentTarget.className += " active";
 }
-document.getElementById("defaultOpen").click();
+
+
+var vTabId = "dashboardTabBtn";
+
+
+var url1 = new URLSearchParams(window.location.search);
+var urlcust = url1.toString();
+if (urlcust.includes("="))
+{
+    var indexofequl = urlcust.lastIndexOf("=");
+    vTabId = urlcust.substring(indexofequl + 1, urlcust.length);
+}
+document.getElementById(vTabId).click();

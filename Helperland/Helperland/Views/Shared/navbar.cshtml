@@ -4,7 +4,7 @@
 
 
         <a class="navbar-brand" asp-action="Index" asp-controller="Public">
-            <img src="~/Images/logo-small.png" >
+            <img src="~/Images/logo-small.png">
         </a>
 
 
@@ -22,7 +22,7 @@
 
 
 
-            <div class="nav-item dropdown nav-padding order-lg-4 d-lg-block d-none " id="upcomingUser">
+            <div class="nav-item dropdown  order-lg-4 d-lg-block d-none " id="upcomingUser">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="~/Images/user.png" alt="">
                 </a>
@@ -34,7 +34,7 @@
                     </li>
                     <li><a asp-action="CustomerDashboard" asp-controller="Customer" class="dropdown-item">My Dashbord</a></li>
                     <li><a class="dropdown-item">My Setting</a></li>
-                    <li><a class="dropdown-item">Logout</a></li>
+                    <li><a class="dropdown-item" asp-controller="UserManagement" asp-action="Logout" >Logout</a></li>
                 </ul>
             </div>
         }
@@ -53,31 +53,81 @@
                 {
                     if (ViewBag.UserType == 0)
                     {
+
+                        <div class="d-lg-none">
+                        <li class="welcomeNav" >
+                            Welcome,
+                            <span id="UsernameNav">@ViewBag.Name</span>
+                        </li>
+                        
+                        <hr class="d-lg-none">
                         <li class="nav-item">
-                            <a asp-action="BookService" asp-controller="Customer" class="nav-link Btn bookNowBtn">Book now</a>
-                    </li>
+                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="dashboardTabBtn">Dashbord</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="serviceHistroyTabBtn">Service History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link "  asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="serviceScheduleTabBtn">Service Schedule</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link "  asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="favouriteProsTabBtn">Favourite Pros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link "  asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="invoiceTabBtn"> Invoices </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" >My Setting</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="UserManagement" asp-action="Logout">Logout</a>
+                        </li>
+                        <hr class="d-lg-none">
+                </div>
+
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+                @if (ViewBag.Name != null)
+                {
+                    if (ViewBag.UserType == 0)
+                    {
+                <li class="nav-item">
+                    <a asp-action="BookService" asp-controller="Customer" class="nav-link Btn bookNowBtn">Book now</a>
+                </li>
                     }
                 }
                 else
                 {
-                    <li class="nav-item">
-                        <a asp-action="BookService" asp-controller="Customer" class="nav-link Btn bookNowBtn">Book now</a>
-                    </li>
+            <li class="nav-item">
+                <a asp-action="BookService" asp-controller="Customer" class="nav-link Btn bookNowBtn">Book now</a>
+            </li>
                 }
 
 
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Public" asp-action="Price">Prices & services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ">&nbsp;Warranty&nbsp;</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link ">&nbsp;Blog&nbsp;</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " asp-controller="Public" asp-action="Contact">&nbsp;Contact&nbsp; </a>
-                </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Public" asp-action="Price">Prices & services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link ">Warranty</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link ">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " asp-controller="Public" asp-action="Contact">Contact </a>
+        </li>
 
 
 
@@ -85,23 +135,23 @@
                 @if (ViewBag.Name == null)
                 {
 
-                    <li class="nav-item">
-                        <a class="nav-link Btn loginBtn" asp-controller="Public" asp-action="Index" asp-route-loginModal="true">Login</a>
-                    </li>
+            <li class="nav-item">
+                <a class="nav-link Btn loginBtn" asp-controller="Public" asp-action="Index" asp-route-loginModal="true">Login</a>
+            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link Btn becomeAHelperBtn" asp-controller="UserManagement" asp-action="BecomeAProvider">Become a Helper</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img style="vertical-align: baseline;" src="~/Images/ic-flag.png" alt="">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#"><img src="~/Images/ic-flag.png" alt=""> <span>India</span> </a></li>
-                            <li><a class="dropdown-item" href="#"><img src="~/Images/ic-flag.png" alt=""> <span>U.K.</span> </a></li>
-                            <li><a class="dropdown-item" href="#"><img src="~/Images/ic-flag.png" alt=""> <span>U.S.A.</span> </a></li>
-                        </ul>
-                    </li>
+            <li class="nav-item">
+                <a class="nav-link Btn becomeAHelperBtn" asp-controller="UserManagement" asp-action="BecomeAProvider">Become a Helper</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img style="vertical-align: baseline;" src="~/Images/ic-flag.png" alt="">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#"><img src="~/Images/ic-flag.png" alt=""> <span>India</span> </a></li>
+                    <li><a class="dropdown-item" href="#"><img src="~/Images/ic-flag.png" alt=""> <span>U.K.</span> </a></li>
+                    <li><a class="dropdown-item" href="#"><img src="~/Images/ic-flag.png" alt=""> <span>U.S.A.</span> </a></li>
+                </ul>
+            </li>
                 }
 
 
@@ -116,9 +166,9 @@
 
 
 
-            </ul>
+        </ul>
 
-        </div>
+    </div>
 
 
 
@@ -130,5 +180,5 @@
     </div>
 
 </nav>
-<div style=" 
+<div style="
     height: 65px;"></div>

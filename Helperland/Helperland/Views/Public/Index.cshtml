@@ -23,7 +23,20 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="~/js/home.js"></script>
+  <style>
+      div.notification {
+    border-right: 1px solid #e1e1e1;
+    border-left: 1px solid #e1e1e1;
+    padding: 5px 25px 0 16px;
+    max-width: 70px;
+}
 
+    div.notification span {
+        background-color: #ff1616;
+        top: -7px;
+        right: 11px;
+    }
+  </style>
 
   <title>@ViewData["Title"]</title>
 
@@ -42,7 +55,36 @@
           <img src="~/Images/logo-large.png" class=" navbar-brand nav-logo ">
          
         </a>
+         @if (ViewBag.Name != null)
+        {
+            <div class="notification position-relative nav-item order-lg-3 ">
 
+                <img src="~/Images/icon-notification.png" alt="">
+                <span class="badge rounded-circle position-absolute">2</span>
+            </div>
+
+
+
+
+
+            <div class="nav-item dropdown nav-padding order-lg-4 d-lg-block d-none " id="upcomingUser">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="~/Images/user.png" alt="">
+                </a>
+                <ul class="dropdown-menu dropdown dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li id="userWelcomeName">
+                        Welcome,
+                        <br />
+                        <span id="UsernameNav">@ViewBag.Name</span>
+                    </li>
+                    <li><a asp-action="CustomerDashboard" asp-controller="Customer" class="dropdown-item">My Dashbord</a></li>
+                    <li><a class="dropdown-item">My Setting</a></li>
+                    <li><a class="dropdown-item"  asp-controller="UserManagement" asp-action="Logout" >Logout</a></li>
+                                 </ul>
+            </div>
+        }
+
+        <a class="dropdown-item d-none" id="logoutBtn"  data-bs-toggle="modal" data-bs-target="#logoutModel">Logout</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -56,6 +98,9 @@
             <a class="nav-link ">Our Guarantee</a>
             <a class="nav-link ">Blog</a>
             <a class="nav-link " asp-controller="Public" asp-action="Contact"> Contact us </a>
+           
+            @if (ViewBag.Name == null)
+                {    
             <a  class="btn btn-outline-light nav-log-btn" id="login-nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
             <a    asp-controller="UserManagement"  asp-action="BecomeAProvider" class="btn btn-outline-light nav-become-btn">Become aHelper</a>
            
@@ -67,7 +112,10 @@
               <li><a class="dropdown-item" href="#"><img src="img/ic-flag.png" alt=""> <span>Hindi</span> </a></li>
               <li><a class="dropdown-item" href="#"><img src="img/ic-flag.png" alt=""> <span>English</span> </a></li>
               <li><a class="dropdown-item" href="#"><img src="img/ic-flag.png" alt=""> <span>GUj</span> </a></li>
-            </ul>
+            </ul>}
+                
+
+                     
             
           </div>
 
@@ -482,6 +530,8 @@
     </div>
 
 
+
+
     <div class="row contact-row">
 
       <div class="col-sm-2 contact-col-top">
@@ -562,7 +612,7 @@
   </div>
 
 
-
+   @await Html.PartialAsync("logout")
    @await Html.PartialAsync("loginpopup")
    @await Html.PartialAsync("ForgetPwd")
 
@@ -605,6 +655,11 @@
         if (url == "mailSended=true") {
            document.getElementById("mailSendedbtn").click();
         }
+        if (url == "logoutModal=true") {
+           document.getElementById("logoutBtn").click();
+           
+        }
+
     </script>
    
 </body>

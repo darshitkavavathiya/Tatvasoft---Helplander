@@ -75,7 +75,9 @@ namespace Helperland.Controllers
                     return PartialView();
                 }
             }
-            return RedirectToAction("Index", "Public");
+            TempData["add"] = "alert show";
+            TempData["fail"] = "Please Login to book service";
+            return RedirectToAction("Index", "Public", new { loginFail = "true" });
 
         }
 

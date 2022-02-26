@@ -85,6 +85,14 @@ namespace Helperland.Controllers
         }
 
 
+        public IActionResult logout()
+        {
+            HttpContext.Session.Clear();
+          
+            Response.Cookies.Delete("userId");
+            return RedirectToAction("Index", "Public", new { logoutModal = "true" });
+        }
+
 
 
 

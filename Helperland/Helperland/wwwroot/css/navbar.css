@@ -1,10 +1,19 @@
-﻿
+﻿html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+}
 
 .navbar-dark {
     background-color: #525252;
     padding-top: 0%;
     padding-bottom: 0%;
-    opacity:0.8;
+    /* opacity:0.8;*/
+    opacity: 1;
 }
 
 
@@ -18,7 +27,6 @@
     font-size: 17px;
     font-weight: 400;
     line-height: 1.4;
-    color: white;
 }
 
 div.notification {
@@ -34,30 +42,7 @@ div.notification span {
     right: 11px;
 }
 
-.nav-item .bookNowBtn {
-    width: 111px;
-    height: 40px;
-   
-}
-.nav-item .becomeAHelperBtn {
-    width: 161px;
-    height: 40px;
-    
-}
-.nav-item .loginBtn {
-    width: 83px;
-    height: 40px;
-    
-}
 
-.nav-item .Btn {
-    font-size: 17px;
-    text-align: center;
-    background: #29626D 0% 0% no-repeat padding-box;
-    border: 1px solid #FFFFFF80;
-    border-radius: 20px;
-    opacity: 1;
-}
 
 li#userWelcomeName {
     padding-left: 10px;
@@ -65,29 +50,6 @@ li#userWelcomeName {
 
 
 
-
-.menu  .nav-item a:hover {
-   
-    border-radius: 20px;
-    border: 1px solid #FFFFFF;
-   
-}
-
-.menu  .nav-item a:active {
-    background-color: #29626D;
-    border-radius: 20px;
-    border: 1px solid #FFFFFF;
-}
-.menu a:hover {
-    border-radius: 20px;
-    border: 1px solid #FFFFFF;
-}
-
-.menu a:active {
-    background-color: #29626D;
-    border-radius: 20px;
-    border: 1px solid #FFFFFF;
-}
 
 
 
@@ -98,22 +60,89 @@ li#userWelcomeName {
 
 
     .menu {
-        background-color: #565656;
-        padding-left: 5%;
-        max-width: 65%;
+        background-color: gray;
+      
+        width: fit-content;
+        opacity: 1.0;
     }
 
     .navbar-content {
         margin-right: auto !important;
     }
+
+    .nav-link {
+        width: 200px;
+        margin-right: 10px;
+        margin-left: 10%;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.4;
+    }
+    .welcomeNav {
+        font-weight: 500;
+        color: white;
+        font-size: 20px;
+        margin: 7%;
+    }
+    .navbar-dark .navbar-nav .nav-link {
+        color: rgba(255,255,255,.80);
+        /* color: white; */
+    }
+   
+
 }
 
 @media(min-width:992px) {
- 
 
+    .nav-item .bookNowBtn {
+        width: 111px;
+        height: 40px;
+    }
+
+    .nav-item .becomeAHelperBtn {
+        width: 161px;
+        height: 40px;
+    }
+
+    .nav-item .loginBtn {
+        width: 83px;
+        height: 40px;
+    }
+
+    .nav-item .Btn {
+        font-size: 17px;
+        text-align: center;
+        background: #29626D 0% 0% no-repeat padding-box;
+        border: 1px solid #FFFFFF80;
+        border-radius: 20px;
+        opacity: 1;
+    }
     .navbar-content {
         margin-left: auto !important;
     }
+
+    .menu .nav-item a:hover {
+        border-radius: 20px;
+        border: 1px solid #FFFFFF;
+    }
+
+    .menu .nav-item a:active {
+        background-color: #29626D;
+        border-radius: 20px;
+        border: 1px solid #FFFFFF;
+    }
+
+    .menu a:hover {
+        border-radius: 20px;
+        border: 1px solid #FFFFFF;
+    }
+
+    .menu a:active {
+        background-color: #29626D;
+        border-radius: 20px;
+        border: 1px solid #FFFFFF;
+    }
+
 }
 
 
