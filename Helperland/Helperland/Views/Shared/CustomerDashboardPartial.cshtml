@@ -1,0 +1,171 @@
+@model IEnumerable<Helperland.ViewModel.CustomerDashboard>;
+
+
+<div id="dashboard" class="tab-contant">
+    <div class="clearfix">
+        <div>
+            <p class="alignleft d-none d-sm-block"> Customer Service Request </p>
+                        <p class=" d-sm-none ms-2"> Customer Service Request </p>
+
+            <a asp-controller="Customer" asp-action="BookService"> <button class="alignright d-none d-sm-block">Add new request</button></a>
+                        <a asp-controller="Customer" asp-action="BookService"> <button class=" d-sm-none me-2">Add new request</button></a>
+
+        </div>
+        <table class="table">
+            <thead class="table-light">
+                <tr class="text-center">
+                    <th scope="col"> Service ID</th>
+                    <th scope="col"> Service Date </th>
+                    <th scope="col"> Service Provider</th>
+                    <th scope="col"> Payment </th>
+                    <th colspan="2" scope="col"> Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+
+
+                        <tr class="text-center">
+                            <td data-label="Service ID">
+
+                                <p>@item.ServiceRequestId</p>
+
+                            </td>
+                            <td data-label="Service Date">
+                                <div> <img src="~/images/calendar.png" alt="calender"> @item.Date </div>
+                                <p class="service-time"> @item.StartTime - @item.EndTime </p>
+
+                            </td>
+                            @if (item.ServiceProvider != null)
+                            {
+                                <td data-label="Service Provider" class="clearfix">
+                                    <div class="cap-icon"><img src="~/images/cap.png" alt=".."></div> @item.ServiceProvider
+                                    <div>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>4
+                                    </div>
+                                </td>
+                            }
+
+                            <td data-label="Payment">
+                                <p class="price">&euro; @item.TotalCost </p>
+                            </td>
+
+
+                            <td data-label="Reschedule"> <button class="rate" style="float:right" value=@item.ServiceRequestId >Reschedule</button></td>
+                            <td data-label="Cancel"><button class="cancel"  value=@item.ServiceRequestId>Cancel</button></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+        @* mobile View *@
+
+        <div class="card mobileview clearfix" style="width: 100%;">
+            @if (Model.Count() > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="card-body">
+                        <h6 class="d-inline pe-2">Service Id : </h6> @item.ServiceRequestId
+                        <hr/>
+                        <span>
+
+
+                            <img src="~/images/calendar.png" alt="calender"><h6 class="d-inline pe-2 d-sm-none">Service Date:</h6><span class="date mb-0">@item.Date</span><br>
+                           <img src="~/images/clock.png"  alt="calender"><h6 class="pe-2 d-inline d-sm-none ">Service Time:</h6> @item.StartTime - @item.EndTime
+
+
+                        </span>
+                        <hr>
+                        @if (item.ServiceProvider != null)
+                        {
+                            
+
+                              <div class="cap-icon">  <img src="~/images/cap.png" alt="..">   </div>
+                                 @item.ServiceProvider
+                        <div>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span>4</span>
+                        </div>
+                        
+                        <hr/>
+
+
+
+
+                        }
+
+                          
+                        <p class="price"><h6 class="d-inline pe-2">Price:</h6> &euro; @item.TotalCost </p>
+                        <hr> 
+                        <button class="rate ms-2" style="float:left" value=@item.ServiceRequestId >Reschedule</button>
+                        
+                        <button class="cancel me-2"  style="float:right"  value=@item.ServiceRequestId>Cancel</button>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+
+    <div class="pagenum">
+        <div class="pagenum-left">
+            <p>Show</p>
+            <div class="pagenum-drop">
+                10
+            </div>
+            <p>entries</p>
+            <p style="margin-left: 8px;">Total Record: @Model.Count().ToString() </p>
+        </div>
+        <div class="pagenum-right">
+            <div class="pagenum-btn">
+                <img src="~/images/first-page.png" alt="">
+            </div>
+            <div class="pagenum-btn">
+                <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
+            </div>
+            <div class="pagenum-btn active">
+                1
+            </div>
+            <div class="pagenum-btn">
+                2
+            </div>
+            <div class="pagenum-btn">
+                3
+            </div>
+            <div class="pagenum-btn">
+                4
+            </div>
+            <div class="pagenum-btn">
+                <img class="transform_btn" src="~/images/keyboard-right-arrow-button-copy.png" alt="">
+            </div>
+            <div class="pagenum-btn">
+                <img class="transform_btn" src="~/images/first-page.png" alt="">
+            </div>
+        </div>
+    </div>
+
+</div>

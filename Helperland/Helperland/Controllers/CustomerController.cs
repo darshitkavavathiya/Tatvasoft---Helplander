@@ -20,30 +20,74 @@ namespace Helperland.Controllers
         public IActionResult CustomerDashboard()
         {
 
-
-
+            var userTypeId = -1;
+            User user=null;
 
             if (HttpContext.Session.GetInt32("userId") != null)
             {
-                var id = HttpContext.Session.GetInt32("userId");
-                User user = _db.Users.Find(id);
+               
+                 user = _db.Users.Find(HttpContext.Session.GetInt32("userId"));
                 ViewBag.Name = user.FirstName;
                 ViewBag.UserType = user.UserTypeId;
-                if (user.UserTypeId == 0)
-                {
-                    return PartialView();
-                }
+
+                userTypeId = user.UserTypeId;
+
+
+               
             }
             else if (Request.Cookies["userId"] != null)
             {
-                var user = _db.Users.FirstOrDefault(x => x.UserId == Convert.ToInt32(Request.Cookies["userId"]));
+                 user = _db.Users.FirstOrDefault(x => x.UserId == Convert.ToInt32(Request.Cookies["userId"]));
                 ViewBag.Name = user.FirstName;
                 ViewBag.UserType = user.UserTypeId;
-                if (user.UserTypeId == 0)
-                {
-                    return PartialView();
-                }
+                userTypeId = user.UserTypeId;
             }
+            if (userTypeId == 0)
+            {
+                List<CustomerDashboard> dashboard = new List<CustomerDashboard>();
+                var ServiceTable = _db.ServiceRequests.Where(x => (x.UserId == user.UserId) && (x.Status == 1 || x.Status == 2)).ToList();
+                //var ServiceTable = _db.ServiceRequests.Where(x => x.UserId == user.UserId && x.Status == 1 ).ToList();
+
+                //var ServiceTable = _db.ServiceRequests.Where(x=>x.UserId==user.UserId ).ToList();
+                if (ServiceTable.Any())
+               { 
+                    foreach (var service in ServiceTable)
+                    {
+                       
+                        CustomerDashboard dash = new CustomerDashboard();
+                        dash.ServiceRequestId = service.ServiceRequestId;
+                        var StartDate = service.ServiceStartDate.ToString();
+                        //dash.Date = StartDate.Substring(0, 10);
+                        //dash.StartTime = StartDate.Substring(11);
+                        dash.Date= service.ServiceStartDate.ToString("dd/MM/yyyy");
+                        dash.StartTime = service.ServiceStartDate.ToString("HH:mm tt");
+                        var totaltime = (double)(service.ServiceHours + service.ExtraHours);
+                        dash.EndTime = service.ServiceStartDate.AddHours(totaltime).ToString("HH:mm tt");
+
+                        dash.TotalCost = service.TotalCost;
+
+                        if (service.ServiceProviderId != null)
+                        {
+
+                            User sp = _db.Users.Where(x => x.UserId == service.ServiceProviderId).FirstOrDefault();
+
+                            dash.ServiceProvider = sp.FirstName + " " + sp.LastName;
+
+                            //decimal rating = _db.Ratings.Where(x => x.RatingTo == service.ServiceProviderId).Average(x => x.Ratings);
+
+                            //dash.SPRatings = rating;
+
+                        }
+
+                        dashboard.Add(dash);
+
+                    }
+                }
+
+                return PartialView(dashboard);
+            }
+
+
             return RedirectToAction("Index", "Public");
 
 

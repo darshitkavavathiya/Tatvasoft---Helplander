@@ -109,12 +109,23 @@ p.margin {
 
 
 
-.cancel {
+/*.cancel {
     border: 1px solid #FF6B6B;
     border-radius: 17px;
     background-color: #FF6B6B;
     color: #FFFFFF;
     font-size: 16px;
+}
+*/
+
+.cancel {
+    background-color: #FF6B6B;
+    color: #FFFFFF;
+    border: 1px solid #6DA9B5;
+    border-radius: 17px;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 8px 0;
 }
 
 
@@ -391,3 +402,8 @@ span img {
     transform: rotate(180deg);
 }
 
+@media screen and (max-width: 350px){
+    .alignright.addnewRequest{
+        align-self:center;
+    }
+}

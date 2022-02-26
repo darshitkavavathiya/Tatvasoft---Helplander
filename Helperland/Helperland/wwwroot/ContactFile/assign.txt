@@ -1,0 +1,14 @@
+For User 
+0= Customer
+1= ServiceProvider
+2= Admin
+
+For Service Status 
+
+panding /not assigned=1
+assigned	=2
+completed	=3	
+cancled =4
+
+
+
