@@ -60,9 +60,9 @@ namespace Helperland.Controllers
                         //dash.Date = StartDate.Substring(0, 10);
                         //dash.StartTime = StartDate.Substring(11);
                         dash.Date= service.ServiceStartDate.ToString("dd/MM/yyyy");
-                        dash.StartTime = service.ServiceStartDate.ToString("HH:mm tt");
+                        dash.StartTime = service.ServiceStartDate.AddHours(0).ToString("HH:mm ");
                         var totaltime = (double)(service.ServiceHours + service.ExtraHours);
-                        dash.EndTime = service.ServiceStartDate.AddHours(totaltime).ToString("HH:mm tt");
+                        dash.EndTime = service.ServiceStartDate.AddHours(totaltime).ToString("HH:mm ");
 
                         dash.TotalCost = service.TotalCost;
 
@@ -279,7 +279,7 @@ namespace Helperland.Controllers
             add.Comments = complete.Comments;
             add.PaymentDue = false;
             add.PaymentDone = true;
-
+            add.Status = 1;
             add.HasPets = complete.HasPet;
             add.CreatedDate = DateTime.Now;
             add.ModifiedDate = DateTime.Now;

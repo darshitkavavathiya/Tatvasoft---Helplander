@@ -3,12 +3,10 @@
 
 <div id="dashboard" class="tab-contant">
     <div class="clearfix">
-        <div>
-            <p class="alignleft d-none d-sm-block"> Customer Service Request </p>
-                        <p class=" d-sm-none ms-2"> Customer Service Request </p>
+        <div class="d-flex justify-content-between">
+            <p class="alignleft "> Customer Service Request </p>
 
-            <a asp-controller="Customer" asp-action="BookService"> <button class="alignright d-none d-sm-block">Add new request</button></a>
-                        <a asp-controller="Customer" asp-action="BookService"> <button class=" d-sm-none me-2">Add new request</button></a>
+            <a asp-controller="Customer" asp-action="BookService"> <button class="alignright ">Add new request</button></a>
 
         </div>
         <table class="table">
@@ -39,9 +37,11 @@
                                 <p class="service-time"> @item.StartTime - @item.EndTime </p>
 
                             </td>
-                            @if (item.ServiceProvider != null)
-                            {
+                            
                                 <td data-label="Service Provider" class="clearfix">
+                                    @if (item.ServiceProvider != null)
+                                    {
+
                                     <div class="cap-icon"><img src="~/images/cap.png" alt=".."></div> @item.ServiceProvider
                                     <div>
                                         <span class="fa fa-star checked"></span>
@@ -50,8 +50,9 @@
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star"></span>4
                                     </div>
+                                    }
                                 </td>
-                            }
+                            
 
                             <td data-label="Payment">
                                 <p class="price">&euro; @item.TotalCost </p>
@@ -79,7 +80,7 @@
 
         @* mobile View *@
 
-        <div class="card mobileview clearfix" style="width: 100%;">
+        <div class="card mobileview clearfix mx-auto" style="width:100%; padding:0% 5% 0% 5%; ">
             @if (Model.Count() > 0)
             {
                 @foreach (var item in Model)
@@ -90,8 +91,8 @@
                         <span>
 
 
-                            <img src="~/images/calendar.png" alt="calender"><h6 class="d-inline pe-2 d-sm-none">Service Date:</h6><span class="date mb-0">@item.Date</span><br>
-                           <img src="~/images/clock.png"  alt="calender"><h6 class="pe-2 d-inline d-sm-none ">Service Time:</h6> @item.StartTime - @item.EndTime
+                            <img src="~/images/calendar.png" alt="calender"><h6 class="d-inline pe-2 "> <span class="d-none d-sm-block">Service</span>  Date:</h6><span class="date mb-0">@item.Date</span><br>
+                           <img src="~/images/clock.png"  alt="calender"><h6 class="pe-2 d-inline  "><span class="d-none d-sm-block">Service</span> Time:</h6> @item.StartTime - @item.EndTime
 
 
                         </span>
@@ -99,7 +100,7 @@
                         @if (item.ServiceProvider != null)
                         {
                             
-
+                            <h6 class="pe-2 ">Service Provider Name:</h6>
                               <div class="cap-icon">  <img src="~/images/cap.png" alt="..">   </div>
                                  @item.ServiceProvider
                         <div>
@@ -121,9 +122,11 @@
                           
                         <p class="price"><h6 class="d-inline pe-2">Price:</h6> &euro; @item.TotalCost </p>
                         <hr> 
-                        <button class="rate ms-2" style="float:left" value=@item.ServiceRequestId >Reschedule</button>
+                        <div class="d-flex justify-content-around">
+                        <button class="rate ms-2"  value=@item.ServiceRequestId >Reschedule</button>
                         
-                        <button class="cancel me-2"  style="float:right"  value=@item.ServiceRequestId>Cancel</button>
+                        <button class="cancel me-2"    value=@item.ServiceRequestId>Cancel</button>
+                        </div>
                     </div>
                 }
 
