@@ -45,11 +45,15 @@ namespace Helperland.Controllers
             if (userTypeId == 0)
             {
                 List<CustomerDashboard> dashboard = new List<CustomerDashboard>();
-                var ServiceTable = _db.ServiceRequests.Where(x => (x.UserId == user.UserId) && (x.Status == 1 || x.Status == 2)).ToList();
-                //var ServiceTable = _db.ServiceRequests.Where(x => x.UserId == user.UserId && x.Status == 1 ).ToList();
+
+
+
+                //var ServiceTable = _db.ServiceRequests.Where(x => (x.UserId == user.UserId) && (x.Status == 1 || x.Status == 2)).ToList();
+
+                var ServiceTable = _db.ServiceRequests.Where(x => x.UserId == user.UserId).ToList();
 
                 //var ServiceTable = _db.ServiceRequests.Where(x=>x.UserId==user.UserId ).ToList();
-                if (ServiceTable.Any())
+                if (ServiceTable.Any())  /*ServiceTable.Count()>0*/
                { 
                     foreach (var service in ServiceTable)
                     {
@@ -63,7 +67,7 @@ namespace Helperland.Controllers
                         dash.StartTime = service.ServiceStartDate.AddHours(0).ToString("HH:mm ");
                         var totaltime = (double)(service.ServiceHours + service.ExtraHours);
                         dash.EndTime = service.ServiceStartDate.AddHours(totaltime).ToString("HH:mm ");
-
+                        dash.Status = (int)service.Status;
                         dash.TotalCost = service.TotalCost;
 
                         if (service.ServiceProviderId != null)
@@ -88,7 +92,7 @@ namespace Helperland.Controllers
             }
 
 
-            return RedirectToAction("Index", "Public");
+            return RedirectToAction("Index", "Public" , new { loginFail = "true" } );
 
 
         }
@@ -279,6 +283,8 @@ namespace Helperland.Controllers
             add.Comments = complete.Comments;
             add.PaymentDue = false;
             add.PaymentDone = true;
+
+            /*  */
             add.Status = 1;
             add.HasPets = complete.HasPet;
             add.CreatedDate = DateTime.Now;

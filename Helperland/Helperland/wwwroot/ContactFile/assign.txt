@@ -5,7 +5,7 @@ For User
 
 For Service Status 
 
-panding /not assigned=1
+panding /not assigned =1
 assigned	= 2
 completed	= 3	
 cancled  = 4
