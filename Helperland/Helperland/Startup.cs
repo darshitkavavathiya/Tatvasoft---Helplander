@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ReflectionIT.Mvc.Paging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Helperland
 {
@@ -27,6 +30,7 @@ namespace Helperland
             services.AddDbContext<HelperlandContext>();
             services.AddSession();
             services.AddMvc();
+            services.AddPaging();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
