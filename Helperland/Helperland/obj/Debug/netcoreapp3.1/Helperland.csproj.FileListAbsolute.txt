@@ -833,3 +833,9 @@ E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Sh
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CustomerDashboardPartial.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CustomerServiceHistoryPartial.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CustomerSettingsPartial.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\PagedList.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\PagedList.Mvc.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.Views.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.dll

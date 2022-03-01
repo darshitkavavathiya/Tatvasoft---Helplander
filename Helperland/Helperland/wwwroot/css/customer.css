@@ -127,8 +127,24 @@ p.margin {
     padding: 5px 12px;
     margin: 8px 0;
 }
-
-
+.customerReschedule {
+    border: 1px solid #6DA9B5;
+    border-radius: 17px;
+    background-color: #6DA9B5;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 8px 0;
+}
+.customerCancel {
+    background-color: #FF6B6B;
+    color: #FFFFFF;
+    border: 1px solid #6DA9B5;
+    border-radius: 17px;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 8px 0;
+}
 
 .footer-container {
     background-color: #111111;
@@ -406,4 +422,39 @@ span img {
     .alignright.addnewRequest{
         align-self:center;
     }
+}
+
+
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: 750px;
+        margin: 1.75rem auto;
+    }
+}
+#detailsModelServiceRequest p{
+    margin:0%;
+    font-weight:500;
+}
+#detailsModelServiceRequest span {
+    font-weight: 400;
+}
+#CDSDAmount {
+    color: #1d7a8c;
+    font-weight:500;
+}
+.extraElement {
+    display: inline-grid;
+    border: 1px solid #6DA9B5;
+    border-radius: 17px;
+    width: fit-content;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 5px;
+    /*  border: 1px solid black;
+    border-radius: 30%;
+    padding: 10%;
+    margin: 5%;*/
+    /*    background-color :antiquewhite;
+
+*/
 }

@@ -6,6 +6,8 @@ using System;
 using Helperland.Models;
 using Helperland.ViewModel;
 using System.Collections.Generic;
+using PagedList;
+using PagedList.Mvc; 
 
 namespace Helperland.Controllers
 {
@@ -84,7 +86,6 @@ namespace Helperland.Controllers
                         }
 
                         dashboard.Add(dash);
-
                     }
                 }
 
@@ -98,7 +99,125 @@ namespace Helperland.Controllers
         }
 
 
+        [HttpPost]
+        public IActionResult RescheduleServiceRequest(CustomerDashboard reschedule)
+        {
+            ServiceRequest rescheduleService = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == reschedule.ServiceRequestId);
 
+            Console.WriteLine(reschedule.ServiceRequestId);
+
+            string date = reschedule.Date + " " + reschedule.StartTime;
+
+            rescheduleService.ServiceStartDate = DateTime.Parse(date);
+            rescheduleService.ServiceRequestId = reschedule.ServiceRequestId;
+            rescheduleService.ModifiedDate = DateTime.Now;
+
+            var result = _db.ServiceRequests.Update(rescheduleService);
+            _db.SaveChanges();
+
+            if (result != null)
+            {
+                return Ok(Json("true"));
+            }
+
+            return Ok(Json("false"));
+        }
+
+
+
+
+        [HttpPost]
+        public IActionResult CancelServiceRequest(ServiceRequest cancel)
+        {
+
+
+
+            Console.WriteLine(cancel.ServiceRequestId);
+            ServiceRequest cancelService = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == cancel.ServiceRequestId);
+            cancelService.Status = 4;
+            if (cancel.Comments != null)
+            {
+                cancelService.Comments = cancel.Comments;
+            }
+
+            var result = _db.ServiceRequests.Update(cancelService);
+            _db.SaveChanges();
+            if (result != null)
+            {
+                return Ok(Json("true"));
+            }
+
+            return Ok(Json("false"));
+        }
+
+
+        /*all details */
+
+        [HttpGet]
+        public JsonResult DashbordServiceDetails(CustomerDashboard ID)
+        {
+
+            CustomerDashboard Details = new CustomerDashboard();
+
+            ServiceRequest sr = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == ID.ServiceRequestId);
+            Details.ServiceRequestId = ID.ServiceRequestId;
+            Details.Date = sr.ServiceStartDate.ToString("dd/MM/yyyy");
+            Details.StartTime = sr.ServiceStartDate.ToString("HH:mm");
+            Details.Duration = (decimal)(sr.ServiceHours + sr.ExtraHours);
+            Details.EndTime = sr.ServiceStartDate.AddHours((double)sr.SubTotal).ToString("HH:mm");
+            Details.TotalCost = sr.TotalCost;
+            Details.Comments = sr.Comments;
+
+            List<ServiceRequestExtra> SRExtra = _db.ServiceRequestExtras.Where(x => x.ServiceRequestId == ID.ServiceRequestId).ToList();
+
+            foreach (ServiceRequestExtra row in SRExtra)
+            {
+                if (row.ServiceExtraId == 1)
+                {
+                    Details.Cabinet = true;
+                }
+                else if (row.ServiceExtraId == 2)
+                {
+                    Details.Oven = true;
+                }
+                else if (row.ServiceExtraId == 3)
+                {
+                    Details.Window = true;
+                }
+                else if (row.ServiceExtraId == 4)
+                {
+                    Details.Fridge = true;
+                }
+                else
+                {
+                    Details.Laundry = true;
+                }
+            }
+
+            ServiceRequestAddress Address = _db.ServiceRequestAddresses.FirstOrDefault(x => x.ServiceRequestId == ID.ServiceRequestId);
+
+            Details.Address = Address.AddressLine1 + ", " + Address.AddressLine2 + ", " + Address.City + " - " + Address.PostalCode;
+
+            Details.PhoneNo = Address.Mobile;
+            Details.Email = Address.Email;
+
+            return new JsonResult(Details);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* -------------------Book Service------------------------------*/
 
         public IActionResult BookService()
         {

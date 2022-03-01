@@ -1,310 +1,8 @@
-@model IEnumerable<Helperland.ViewModel.CustomerDashboard>;
-
-
-@{
-    int ServiceDashboardCount = 0;
-}
-<div id="dashboard" class="tab-contant">
-    <div class="clearfix">
-        <div class="d-flex justify-content-between">
-            <p class="alignleft "> Customer Service Request </p>
-
-            <a asp-controller="Customer" asp-action="BookService"> <button class="alignright ">Add new request</button></a>
-
-        </div>
-        <table class="table">
-            <thead class="table-light">
-                <tr class="text-center">
-                    <th scope="col"> Service ID</th>
-                    <th scope="col"> Service Date </th>
-                    <th scope="col"> Service Provider</th>
-                    <th scope="col"> Payment </th>
-                    <th colspan="2" scope="col"> Action </th>
-                </tr>
-            </thead>
-            <tbody>
-
-
-                @if (Model.Count() > 0)
-                {
-
-                    @foreach (var item in Model)
-                    {
-
-                        @if (item.Status == 1 || item.Status == 2)
+@model IEnumerable<Helperland.ViewModel.CustomerDashboard>;@{    String CurrentDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");}@{    int ServiceDashboardCount = 0;}<div id="dashboard" class="tab-contant">    <div class="clearfix">        <div class="d-flex justify-content-between">            <p class="alignleft "> Customer Service Request </p>            <a asp-controller="Customer" asp-action="BookService"> <button class="alignright ">Add new request</button></a>        </div>        <table id="dashbordTable" class="table">            <thead class="table-light">                <tr class="text-center">                    <th scope="col"> Service ID</th>                    <th scope="col"> Service Date </th>                    <th scope="col"> Service Provider</th>                    <th scope="col"> Payment </th>                    <th colspan="2" scope="col"> Action </th>                </tr>            </thead>            <tbody>                @if (Model.Count() > 0)
+                {                    @foreach (var item in Model)                    {                        @if (item.Status == 1 || item.Status == 2)
                         {
 
-                            ServiceDashboardCount = ServiceDashboardCount + 1;
-
-                            <tr class="text-center">
-                                <td data-label="Service ID">
-
-                                    <p>@item.ServiceRequestId</p>
-
-                                </td>
-                                <td data-label="Service Date">
-                                    <div> <img src="~/images/calendar.png" alt="calender"> @item.Date </div>
-                                    <p class="service-time"> @item.StartTime - @item.EndTime </p>
-
-                                </td>
-
-                                <td data-label="Service Provider" class="clearfix">
-                                    @if (item.ServiceProvider != null)
-                                    {
-
-                                        <div class="cap-icon"><img src="~/images/cap.png" alt=".."></div> @item.ServiceProvider
-                                        <div>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star"></span>4
-                                        </div>
-                                    }
-                                </td>
-
-
-                                <td data-label="Payment">
-                                    <p class="price">&euro; @item.TotalCost </p>
-                                </td>
-
-                                                
-                                <td data-label="Reschedule"> <button class="rate" style="float:right" data-bs-toggle="modal" data-bs-target="#rescheduleModelServiceRequest" value=@item.ServiceRequestId>Reschedule</button></td>
-                                <td data-label="Cancel" ><button class="cancel" data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest" value=@item.ServiceRequestId>Cancel</button></td>
-                            </tr>
-                        }
-                    }
-                }
-            </tbody>
-        </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        @* mobile View *@
-
-        <div class="card mobileview clearfix mx-auto" style="width:100%; padding:0% 5% 0% 5%; ">
-            @if (Model.Count() > 0)
-            {
-                @foreach (var item in Model)
-                {
-                    @if (item.Status == 1 || item.Status == 2)
-                    {
-
-                        <div class="card-body">
-                            <h6 class="d-inline pe-2">Service Id : </h6> @item.ServiceRequestId
-                            <hr />
-                            <span>
-
-
-                                <img src="~/images/calendar.png" alt="calender"><h6 class="d-inline pe-2 "> <span class="d-none d-sm-block">Service</span>  Date:</h6><span class="date mb-0">@item.Date</span><br>
-                                <img src="~/images/clock.png" alt="calender"><h6 class="pe-2 d-inline  "><span class="d-none d-sm-block">Service</span> Time:</h6> @item.StartTime - @item.EndTime
-
-
-                            </span>
-                            <hr>
-                            @if (item.ServiceProvider != null)
-                            {
-
-                                <h6 class="pe-2 ">Service Provider Name:</h6>
-                                <div class="cap-icon">  <img src="~/images/cap.png" alt="..">   </div>
-                                @item.ServiceProvider
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span>4</span>
-                                </div>
-
-                                <hr />
-
-
-
-
-                            }
-
-
-                            <p class="price"><h6 class="d-inline pe-2">Price:</h6> &euro; @item.TotalCost </p>
-                            <hr>
-                            <div class="d-flex justify-content-around">
-                                <button class="rate ms-2" value=@item.ServiceRequestId  data-bs-toggle="modal" data-bs-target="#rescheduleModelServiceRequest">Reschedule</button>
-
-                                <button class="cancel me-2" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest">Cancel</button>
-                            </div>
-                        </div>
-                    }
-                }
-
-            }
-        </div>
-    </div>
-
-    <div class="pagenum">
-        <div class="pagenum-left">
-            <p>Show</p>
-            <div class="pagenum-drop">
-                10
-            </div>
-            <p>entries</p>
-            <p style="margin-left: 8px;">Total Record:@* @Model.Count().ToString()*@ @ServiceDashboardCount</p>
-        </div>
-        <div class="pagenum-right">
-            <div class="pagenum-btn">
-                <img src="~/images/first-page.png" alt="">
-            </div>
-            <div class="pagenum-btn">
-                <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
-            </div>
-            <div class="pagenum-btn active">
-                1
-            </div>
-            <div class="pagenum-btn">
-                2
-            </div>
-            <div class="pagenum-btn">
-                3
-            </div>
-            <div class="pagenum-btn">
-                4
-            </div>
-            <div class="pagenum-btn">
-                <img class="transform_btn" src="~/images/keyboard-right-arrow-button-copy.png" alt="">
-            </div>
-            <div class="pagenum-btn">
-                <img class="transform_btn" src="~/images/first-page.png" alt="">
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-@*
-    <div class="modal" tabindex="-1" id="serviceRequestCancelModal">
-    <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-    <div class="modal-header">
-    <h4 class="modal-title">Cancel Service Request</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-    <input type="hidden" id="CancelRequestId" name="CancelRequestId" />
-    <p><label for="cancelReason">Why you want to cancel the service request?</label></p>
-    <textarea name="cancelReason" id="cancelReason" cols="30" rows="10"></textarea>
-    </div>
-    <div class="modal-footer">
-    <button type="button" class="btn cancelBtn" id="CancelRequestBtn">Cancel Now</button>
-    </div>
-    </div>
-    </div>
-    </div>
-
-*@
-@* Delete Model *@
-<div class="modal" tabindex="-1" id="deleteModelServiceRequest">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Cancel Service Request</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <label for="comment" class="form-label">Why you want to cancel the service request?</label>
-                <textarea class="form-control" id="comment" rows="3"></textarea>
-                <div class="text-center">
-                    <button type="submit" data-bs-dismiss="modal" class="mt-2 cancel" id="confirm_delete">Cancel Now</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@*All Details Model*@
-
-<div class="modal" tabindex="-1" id="detailsModelServiceRequest">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Service Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>start date</p>
-                <p>Duration: <span>3.5</span> </p>
-                <hr>
-                <p>Service id: <span>2</span></p>
-                <p>Extras: <span>inside friedge</span> </p>
-                <p>Net Amount: <span>75</span> </p>
-                <hr>
-                <p>Service Address:</p>
-                <p>Billing Address: same as cleaninng address</p>
-                <p>phone:</p>
-                <p>Email:</p>
-                <hr>
-                <p>Comments</p>
-                <hr>
-                <div class="text-center">
-                    <button class="reschedule" data-bs-toggle="modal" data-bs-target="##rescheduleModelServiceRequest" id="' '">Reschedule</button><button class="cancel" data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-@* Reschedule model*@
-<div class="modal" tabindex="-1" id="rescheduleModelServiceRequest">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Reschedule Service Request</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Select New Date & Time</p>
-                <div class="row">
-                    <div class="col-sm-6 col-12"> <input type="text" class="form-control " placeholder="calender" id="selected_date"></div>
-                    <div class="col-sm-6 col-12">
-                        <select class="form-select" id="selected_time">
-                            <option selected value="9:00">9:00</option>
-                            <option value="9:30">9:30</option>
-                            <option value="10:00">10:00</option>
-                            <option value="10:30">10:30</option>
-                            <option value='11:00'>11:00</option>
-                            <option value='11:30'>11:30</option>
-                            <option value='12:00'>12:00</option>
-                            <option value='12:30'>12:30</option>
-                            <option value='13:00'>13:00</option>
-                            <option value='13:30'>13:30</option>
-                            <option value='14:00'>14:00</option>
-                            <option value='14:30'>14:30</option>
-                            <option value='15:00'>15:00</option>
-                            <option value='15:30'>15:30</option>
-                            <option value='16:00'>16:00</option>
-                            <option value='16:30'>16:30</option>
-                            <option value='17:00'>17:00</option>
-                            <option value='17:30'>17:30</option>
-                            <option value='18:00'>18:00</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <button type="submit" data-bs-dismiss="modal" class="rate mt-2" >Update</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                            ServiceDashboardCount = ServiceDashboardCount + 1;                            <tr data-value=@item.ServiceRequestId class="text-center">                                <td data-label="Service ID">                                    <p>@item.ServiceRequestId</p>                                </td>                                <td data-label="Service Date">                                    <div> <img src="~/images/calendar.png" alt="calender"> @item.Date </div>                                    <p class="service-time"> @item.StartTime - @item.EndTime </p>                                </td>                                <td data-label="Service Provider" class="clearfix">                                    @if (item.ServiceProvider != null)                                    {                                        <div class="cap-icon"><img src="~/images/cap.png" alt=".."></div> @item.ServiceProvider                                        <div>                                            <span class="fa fa-star checked"></span>                                            <span class="fa fa-star checked"></span>                                            <span class="fa fa-star checked"></span>                                            <span class="fa fa-star checked"></span>                                            <span class="fa fa-star"></span>4                                        </div>                                    }                                </td>                                <td data-label="Payment">                                    <p class="price">&euro; @item.TotalCost </p>                                </td>                                <td data-label="Reschedule"> <button class="customerReschedule" style="float:right" data-bs-toggle="modal" data-bs-target="#rescheduleModelServiceRequest" value=@item.ServiceRequestId>Reschedule</button></td>                                <td data-label="Cancel"><button class="customerCancel" data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest" value=@item.ServiceRequestId>Cancel</button></td>                            </tr>                        }                    }                }            </tbody>        </table>        <div class="card mobileview clearfix mx-auto" style="width:100%; padding:0% 5% 0% 5%; ">            @if (Model.Count() > 0)            {                @foreach (var item in Model)
+                {                    @if (item.Status == 1 || item.Status == 2)
+                    {                        <div class="card-body">                            <h6 class="d-inline pe-2">Service Id : </h6> @item.ServiceRequestId                            <hr />                            <span>                                <img src="~/images/calendar.png" alt="calender"><h6 class="d-inline pe-2 "> <span class="d-none d-sm-block">Service</span>  Date:</h6><span class="date mb-0">@item.Date</span><br>                                <img src="~/images/clock.png" alt="calender"><h6 class="pe-2 d-inline  "><span class="d-none d-sm-block">Service</span> Time:</h6> @item.StartTime - @item.EndTime                            </span>                            <hr>                            @if (item.ServiceProvider != null)
+                            {                                <h6 class="pe-2 ">Service Provider Name:</h6>                                <div class="cap-icon">  <img src="~/images/cap.png" alt="..">   </div>                                @item.ServiceProvider                                <div>                                    <span class="fa fa-star checked"></span>                                    <span class="fa fa-star checked"></span>                                    <span class="fa fa-star checked"></span>                                    <span class="fa fa-star checked"></span>                                    <span class="fa fa-star"></span>                                    <span>4</span>                                </div>                                <hr />                            }                            <p class="price"><h6 class="d-inline pe-2">Price:</h6> &euro; @item.TotalCost </p>                            <hr>                            <div class="d-flex justify-content-around">                                <button class="rate ms-2" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#rescheduleModelServiceRequest">Reschedule</button>                                <button class="cancel me-2" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest">Cancel</button>                            </div>                        </div>                    }                }            }        </div>    </div>    <div class="pagenum">        <div class="pagenum-left">            <p>Show</p>            <div class="pagenum-drop">                10            </div>            <p>entries</p>            <p style="margin-left: 8px;">Total Record: @ServiceDashboardCount</p>        </div>        <div class="pagenum-right">            <div class="pagenum-btn">                <img src="~/images/first-page.png" alt="">            </div>            <div class="pagenum-btn">                <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">            </div>            <div class="pagenum-btn active">                1            </div>            <div class="pagenum-btn">                2            </div>            <div class="pagenum-btn">                3            </div>            <div class="pagenum-btn">                4            </div>            <div class="pagenum-btn">                <img class="transform_btn" src="~/images/keyboard-right-arrow-button-copy.png" alt="">            </div>            <div class="pagenum-btn">                <img class="transform_btn" src="~/images/first-page.png" alt="">            </div>        </div>    </div></div>@*    <div class="modal" tabindex="-1" id="serviceRequestCancelModal">    <div class="modal-dialog modal-dialog-centered">    <div class="modal-content">    <div class="modal-header">    <h4 class="modal-title">Cancel Service Request</h4>    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>    </div>    <div class="modal-body">    <input type="hidden" id="CancelRequestId" name="CancelRequestId" />    <p><label for="cancelReason">Why you want to cancel the service request?</label></p>    <textarea name="cancelReason" id="cancelReason" cols="30" rows="10"></textarea>    </div>    <div class="modal-footer">    <button type="button" class="btn cancelBtn" id="CancelRequestBtn">Cancel Now</button>    </div>    </div>    </div>    </div>*@<div class="modal" tabindex="-1" id="deleteModelServiceRequest">    <div class="modal-dialog modal-dialog-centered">        <div class="modal-content">            <input type="hidden" id="CancelRequestId" name="CancelRequestId" />            <div class="modal-header">                <h5 class="modal-title">Cancel Service Request</h5>                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>            </div>            <div class="modal-body">                <label for="comment" class="form-label">Why you want to cancel the service request?</label>                <textarea class="form-control" id="cancelReason" rows="3"></textarea>                <div class="text-center">                    <button class="customerCancel" type="button" data-bs-dismiss="modal" class="mt-2 cancel" id="CancelRequestBtn">Cancel Now</button>                </div>            </div>        </div>    </div></div>@*All Details Model*@<button id="serviceReqdetailsbtn" data-bs-toggle="modal" data-bs-target="#detailsModelServiceRequest" class="d-none">details</button><div class="modal" tabindex="-1" id="detailsModelServiceRequest">    <div class="modal-dialog modal-dialog-centered">        <div class="modal-content text-start">            <div class="modal-header">                <h5 class="modal-title">Service Details</h5>                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>            </div>            <div class="modal-body float-start">                <h4 id="CDSDDateTime">05/10/2021 08:00 - 11:30</h4>                <p>Duration: <span id="CDSDDuration"></span> </p>                <hr>                <p>Service id: <span id="CDSDId"></span></p>                <div class="row"> <p class="col-2 d-inline">Extras: </p> <div class="col-10 d-inline" id="CDSDExtra" ></div></div>                @*<p class="d-inline">Extras: </p> <div class="d-inline" id="CDSDExtra" ></div>*@                <p>Net Amount: <span  id="CDSDAmount">8750 &euro;</span> </p>                <hr>                <p>Service Address:<span  id="CDSDAddress"></span></p>                <p>Billing Address: <span>same as cleaninng address</span></p>                <p>phone:<span  id="CDSDPhone"></span></p>                <p>Email:<span  id="CDSDEmail"> </span></p>                <hr>                <p>Comments:<span  id="CDSDComment"></span></p>                <hr>                <div class="text-center  d-flex justify-content-around">                    <button class="customerReschedule" data-bs-toggle="modal" data-bs-target="#rescheduleModelServiceRequest" id="' '">Reschedule</button><button class="customerCancel" data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest">Cancel</button>                </div>            </div>        </div>    </div></div>@* Reschedule model*@<div class="modal" tabindex="-1" id="rescheduleModelServiceRequest">    <div class="modal-dialog modal-dialog-centered">        <div class="modal-content">            <div class="modal-header">                <h5 class="modal-title">Reschedule Service Request</h5>                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>            </div>            <div class="modal-body">                <p>Select New Date & Time</p>                <div class="row">                    <div class="col-sm-6 col-12"> <input id="selected_date" class="form-control" type="date" value=@CurrentDate placeholder="canlender" min=@CurrentDate></div>                    <div class="col-sm-6 col-12">                        <input type="hidden" id="updateRequestId" name="updateRequestId" />                        <select class="form-select" id="selected_time">                            <option selected value="08:00:00">8:00 </option>                            <option value="08:30:00">8:30 </option>                            <option value="09:00:00">9:00 </option>                            <option value="09:30:00">9:30 </option>                            <option value="10:00:00">10:00 </option>                            <option value="10:30:00">10:30 </option>                            <option value="11:00:00">11:00 </option>                            <option value="11:30:00">11:30 </option>                            <option value="12:00:00"> 12:00  </option>                            <option value="12:30:00">12:30 </option>                            <option value="13:00:00"> 13:00  </option>                            <option value="13:30:00">13:30 </option>                            <option value="14:00:00"> 14:00  </option>                            <option value="14:30:00">14:30 </option>                            <option value="15:00:00"> 15:00  </option>                            <option value="15:30:00">15:30 </option>                            <option value="16:00:00"> 16:00  </option>                            <option value="16:30:00">16:30 </option>                            <option value="17:00:00"> 17:00  </option>                            <option value="17:30:00">17:30 </option>                            <option value="18:00:00"> 18:00  </option>                        </select>                    </div>                </div>                <div class="text-center mt-3">                    <button id="RescheduleServiceRequest" type="submit" data-bs-dismiss="modal" class="customerReschedule">Update</button>                </div>            </div>        </div>    </div></div>

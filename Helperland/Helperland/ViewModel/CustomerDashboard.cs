@@ -4,10 +4,10 @@ namespace Helperland.ViewModel
 {
     public class CustomerDashboard
     {
-       
 
 
-       
+
+        
         public int ServiceRequestId { get; set; }
 
         public string Date { get; set; }
@@ -26,15 +26,15 @@ namespace Helperland.ViewModel
 
         public int Status { get; set; }
 
-        //public bool Cabinet { get; set; }
+        public bool Cabinet { get; set; }
 
-        //public bool Oven { get; set; }
+        public bool Oven { get; set; }
 
-        //public bool Fridge { get; set; }
+        public bool Fridge { get; set; }
 
-        //public bool Laundry { get; set; }
+        public bool Laundry { get; set; }
 
-        //public bool Window { get; set; }
+        public bool Window { get; set; }
 
         public decimal TotalCost { get; set; }
 
