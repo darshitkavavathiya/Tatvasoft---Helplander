@@ -5,10 +5,10 @@ For User
 
 For Service Status 
 
-panding /not assigned =1
-assigned	= 2
-completed	= 3	
-cancled  = 4
+case 1:new
+case 2:pending
+case 3:completed
+case 4:cancelled
 
 
 

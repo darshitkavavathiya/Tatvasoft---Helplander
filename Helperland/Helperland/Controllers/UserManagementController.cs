@@ -158,7 +158,7 @@ namespace Helperland.Controllers
                     user.IsRegisteredUser = true;
                     user.ModifiedBy = 152;
                     user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-
+                    user.UserProfilePicture = "cap.png";
                     _db.Users.Add(user);
                     _db.SaveChanges();
 

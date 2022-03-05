@@ -23,6 +23,36 @@ h1 {
 }
 
 
+.completed {
+    border: 1px solid #67b644;
+    background-color: #67b644;
+    color: #ffffff;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.cancelled {
+    border: 1px solid #ff6b6b;
+    background-color: #ff6b6b;
+    color: #ffffff;
+    font-size: 13px;
+    margin: 10px 0;
+}
+.new {
+    border: 1px solid #F2BB37;
+    background-color: #F2BB37;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 4px 11px 5px 11px;
+}
+
+.pending {
+    border: 1px solid #1FB6FF;
+    background-color: #1FB6FF;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 4px 11px 5px 11px;
+}
 
 .tab {
     float: left;
@@ -286,15 +316,39 @@ p.margin {
     float: left;
 }
 
-.completed {
-    border: 1px solid #67b644;
-    background-color: #67b644;
+
+.ServiceHistroyExport {
+    float: right;
+    background-color: #146371;
     color: #ffffff;
-    font-size: 13px;
-    margin: 10px 0;
+    font-size: 14px;
+    border-radius: 17px;
+    border: 1px solid #146371;
+    margin-right: 10px;
+    padding: 5px 12px;
+    max-height: 36px;
 }
 
 .rate {
+    border: 1px solid #146371;
+    border-radius: 17px;
+    background-color: #146371;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 8px 0;
+}
+.rateactive {
+    border: 1px solid #146371;
+    border-radius: 17px;
+    background-color: #146371;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 8px 0;
+}
+
+.rateDisabled {
     border: 1px solid #6DA9B5;
     border-radius: 17px;
     background-color: #6DA9B5;
@@ -308,13 +362,6 @@ p.margin {
     color: #ECB91C;
 }
 
-.cancelled {
-    border: 1px solid #ff6b6b;
-    background-color: #ff6b6b;
-    color: #ffffff;
-    font-size: 13px;
-    margin: 10px 0;
-}
 
 .price {
     font-size: 20px;
@@ -458,3 +505,99 @@ span img {
 
 */
 }
+
+
+
+#customer_Settings .nav-tabs .nav-link {
+    margin-bottom: -1px;
+    background: 0 0;
+    color: #525252;
+    border: 4px solid transparent !important;
+}
+#customer_Settings .nav-tabs .nav-item.show .nav-link,
+#customer_Settings .nav-tabs .nav-link.active {
+        color: #146371 !important;
+        background-color: #fff;
+        border-color: #fff #fff #146371 !important;
+  }
+
+#CSSaveDetails {
+    border: 1px solid #146371;
+    border-radius: 17px;
+    background-color: #146371;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+   
+    margin: 0px 0px 0px 20px;
+}
+
+#CSChangePassword {
+    border: 1px solid #146371;
+    border-radius: 17px;
+    background-color: #146371;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 10px 0px 0px 10px;
+}
+#addNewaddressbtn {
+    border: 1px solid #146371;
+    border-radius: 17px;
+    background-color: #146371;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 10px 0px 0px 10px;
+}
+#password_change lable {
+    margin: 5px 0px 5px 10px;
+}
+
+#alladdress button{
+    border: 1px solid transparent;
+    background: none;
+}
+.deleteiconimg{
+    width:18px;
+    height:18px;
+}
+
+#alladdress p{
+    margin: 0px 0px 0px 0px;
+}
+#addAddressSubmit {
+    border: 1px solid #146371;
+    border-radius: 17px;
+    background-color: #146371;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+  margin-right: 20px;
+}
+#updateAddressSubmit {
+    border: 1px solid #146371;
+    border-radius: 17px;
+    background-color: #146371;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin-right: 20px;
+}
+#addNewaddressModel lable {
+    /*margin: 5px 0px 5px 10px;*/
+    margin: 0px;
+}
+
+
+
+#MSDeleteAddress {
+    background-color: #FF6B6B;
+    color: #FFFFFF;
+    border: 1px solid #6DA9B5;
+    border-radius: 17px;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 8px 0;
+}
+ 

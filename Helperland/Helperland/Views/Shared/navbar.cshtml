@@ -7,7 +7,7 @@
             <img src="~/Images/logo-small.png">
         </a>
 
-
+  
 
 
         @if (ViewBag.Name != null)
@@ -33,7 +33,7 @@
                         <span id="UsernameNav">@ViewBag.Name</span>
                     </li>
                     <li><a asp-action="CustomerDashboard" asp-controller="Customer" class="dropdown-item">My Dashbord</a></li>
-                    <li><a class="dropdown-item">My Setting</a></li>
+                    <li><a class="dropdown-item"asp-controller="Customer" asp-action="CustomerDashboard"  asp-route-Tablinks="SettingsTabBtn">My Setting</a></li>
                     <li><a class="dropdown-item" asp-controller="UserManagement" asp-action="Logout" >Logout</a></li>
                 </ul>
             </div>
@@ -62,6 +62,7 @@
                         
                         <hr class="d-lg-none">
                         <li class="nav-item">
+                           
                             <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="dashboardTabBtn">Dashbord</a>
                         </li>
                         <li class="nav-item">
@@ -78,7 +79,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" >My Setting</a>
+                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard"  asp-route-Tablinks="SettingsTabBtn">My Setting</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " asp-controller="UserManagement" asp-action="Logout">Logout</a>

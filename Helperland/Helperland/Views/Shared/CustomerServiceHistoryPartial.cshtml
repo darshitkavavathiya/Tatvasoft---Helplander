@@ -1,386 +1,299 @@
- <div id="service_history" class="tab-contant">
-            <div class="clearfix">
-                <div>
-                    <p class="alignleft"> Service History </p>
-                    <button class="alignright">Export</button>
-                </div>
-                <table class="table">
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col"> Service Details <img src="~/Images/sort.png" alt="..."></th>
-                            <th scope="col"> Service Provider <img src="~/Images/sort.png" alt="..."></th>
-                            <th scope="col"> Payment <img src="~/Images/sort.png" alt="..."></th>
-                            <th scope="col"> Status <img src="~/Images/sort.png" alt="..."></th>
-                            <th scope="col"> Rate SP </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 31/03/2018</div>
-                                <p class="service-time">12:00-18:00</p>
+@model IEnumerable<Helperland.ViewModel.CustomerDashboard>;
+@{
+    int ServiceHistoryCount = 0;
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
+}
+
+<div id="service_history" class="tab-contant">
+    <div class="clearfix">
+        <div class="d-flex justify-content-between">
+            <p class="alignleft"> Service History </p>
+            <button id="export" class="ServiceHistroyExport">Export</button>
+        </div>
+        <table class="table" id="ServiceHistoryTable">
+            <thead class="table-light">
+                <tr class="text-center">
+                    <th scope="col"> Service Details @*<img src="~/Images/sort.png" alt="...">*@</th>
+                    <th scope="col"> Service Provider @*<img src="~/Images/sort.png" alt="...">*@</th>
+                    <th scope="col"> Payment @*<img src="~/Images/sort.png" alt="...">*@</th>
+                    <th scope="col"> Status @*<img src="~/Images/sort.png" alt="...">*@</th>
+                    <th scope="col"> Rate SP </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model.Count() > 0)
+                {
+
+                    @foreach (var item in Model)
+                    {
+
+                        @if (item.Status == 3 || item.Status == 4)
+                        {
+
+
+                            string disabled, rateClass, statusbtn;
+
+                            @if (item.Status == 3)
+                            {
+                                rateClass = "rateactive";
+                                statusbtn = "completed";
+                                disabled = "";
+                            }
+                            else
+                            {
+
+                                statusbtn = "cancelled";
+                                disabled = "disabled";
+                                rateClass = "rateDisabled";
+                            }
+                            ServiceHistoryCount = ServiceHistoryCount + 1;
+                            <tr data-value=@item.ServiceRequestId class="text-center">
+                                <td data-label="Service Details">
+                                    <div> <img src="~/Images/calendar.png" alt="calender"> @item.Date</div>
+                                    <p class="service-time">@item.StartTime - @item.EndTime </p>
+
+                                </td>
+
+                                <td data-label="Service Provider" class="clearfix">
+                                    @if (item.ServiceProvider != null)
+                                    {
+                                        <div class="cap-icon"> <img src=@item.UserProfilePicture alt=".."> </div>
+                                        <div style="font-weight:400" class="text-start"> @item.ServiceProvider</div>
+                                        
+                                        <div>
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                @if (i <= item.AverageRating)
+                                                {
+                                                    <i class="fa fa-star " style="color:#ECB91C;"></i>
+
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-star " style="color:silver;"></i>
+
+                                                }
+
+                                            }
+                                            <span>@item.AverageRating</span>
+                                        </div>
+                                    }
+                                </td>
+                                <td data-label="Payment">
+                                    <p class="price">&euro; @item.TotalCost </p>
+                                </td>
+
+                                <td data-label="Status">
+
+                                    <button disabled class=@statusbtn>@statusbtn</button>
+
+                                </td>
+                                <td data-label="Rate SP">
+                                    <button class=@rateClass @disabled data-bs-toggle="modal" data-bs-target="#myRatingModal">Rate</button>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+
+        <div class="card mobileview clearfix mx-auto" style="width:100%; padding:0% 5% 0% 5%; ">
+
+
+            @if (Model.Count() > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    @if (item.Status == 3 || item.Status == 4)
+                    {
+
+                        string disabled, rateClass, statusbtn;
+
+                        @if (item.Status == 3)
+                        {
+                            rateClass = "rateactive";
+                            statusbtn = "completed";
+                            disabled = "";
+                        }
+                        else
+                        {
+
+                            statusbtn = "cancelled";
+                            disabled = "disabled";
+                            rateClass = "rateDisabled";
+                        }
+
+                        <div class="card-body" data-value=@item.ServiceRequestId>
+
+                            <span>
+
+
+                                <img src="~/images/calendar.png" alt="calender"><h6 class="d-inline pe-2 "> <span class="d-none d-sm-inline-block">Service</span>  Date:</h6><span class="date mb-0">@item.Date</span><br>
+                                <img src="~/images/clock.png" alt="calender"><h6 class="pe-2 d-inline  "><span class="d-none d-sm-inline-block">Service</span> Time:</h6> @item.StartTime - @item.EndTime
+
+
+                            </span>
+                            <hr>
+                            @if (item.ServiceProvider != null)
+                            {
+
+                                <h6 class="pe-2 ">Service Provider Name:</h6>
+                                <div class="cap-icon">  <img src=@item.UserProfilePicture alt="..">   </div>
+                                @item.ServiceProvider
                                 <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="completed">completed</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 15/03/2018</div>
-                                <p class="service-time">12:00-18:00</p>
+                                    @for (int i = 1; i <= 5; i++)
+                                            {
+                                                @if (i <= item.AverageRating)
+                                                {
+                                                    <i class="fa fa-star " style="color:#ECB91C;"></i>
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="completed">completed</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 10/03/2018</div>
-                                <p class="service-time">12:00-18:00</p>
+                                                }
+                                                else
+                                                {
+                                                    <i class="fa fa-star " style="color:silver;"></i>
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="completed">completed</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 28/02/2018</div>
-                                <p class="service-time">12:00-18:00</p>
+                                                }
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
+                                            }
+                                    <span>@item.AverageRating</span>
+                                    
                                 </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="cancelled">cancelled</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 15/02/2018</div>
-                                <p class="service-time">12:00-18:00</p>
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="completed">completed</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 11/02/2018</div>
-                                <p class="service-time">12:00-18:00</p>
+                                <hr />
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="cancelled">cancelled</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 31/01/2018</div>
-                                <p class="service-time">12:00-18:00</p>
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="completed">completed</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 19/01/2018</div>
-                                <p class="service-time">12:00-18:00</p>
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="completed">completed</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 05/01/2018</div>
-                                <p class="service-time">12:00-18:00</p>
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="cancelled">cancelled</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Service Details">
-                                <div> <img src="~/Images/calendar.png" alt="calender"> 01/01/2018</div>
-                                <p class="service-time">12:00-18:00</p>
+                            }
 
-                            </td>
-                            <td data-label="Service Provider" class="clearfix">
-                                <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>4
-                                </div>
-                            </td>
-                            <td data-label="Payment">
-                                <p class="price"> &euro;63 </p>
-                            </td>
-                            <td data-label="Status"> <button class="cancelled">cancelled</button></td>
-                            <td data-label="Rate SP"><button class="rate">Rate SP</button></td>
-                        </tr>
-                    </tbody>
-                </table>
 
-                <div class="card mobileview clearfix" style="width: 100%;">
-                    <div class="card-body">
-                        <span>
-                            
-                            
-                            <img src="~/Images/calendar.png" alt="calender"><span class="date">31/03/2018</span>
-                            12:00-18:00
-                        
-                        
-                        </span>
-                        <hr>
-                        <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                        <div>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span>4</span>
+                            <p class="price"><h6 class="d-inline pe-2">Price:</h6> &euro; @item.TotalCost </p>
+                            <hr>
+                            <div class="d-flex justify-content-around">
+                                @* <button class="customerReschedule ms-2" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#rescheduleModelServiceRequest">Reschedule</button>*@
+
+                                <button disabled class=@statusbtn>@statusbtn</button>
+                                <button class=@rateClass data-bs-toggle="modal" data-bs-target="#myRatingModal" @disabled>Rate SP</button>
+
+                                @*<button class="customerCancel me-2" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest">Cancel</button>*@
+                            </div>
                         </div>
-                        <hr>
-                        <p class="price"> &euro;63 </p>
-                        <hr>
-                        <div class="text-center"><button class="completed">completed</button></div>
-                        <hr>
-                        <div class="text-center"><button class="rate">Rate SP</button></div>
-                    </div>
-                    <div class="card-body">
-                        <span>
-                            
-                            
-                            <img src="~/Images/calendar.png" alt="calender"><span class="date">15/03/2018</span>
-                            12:00-18:00
-                        
-                        
-                        </span>
-                        <hr>
-                        <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                        <div>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star"></span>
-                            <span>3</span>
+                    }
+                }
+
+            }
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<!-- rate model  -->
+
+<div class="modal" id="myRatingModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="show_rating_model" id="show_rating_model">
+
+                    <div class="row ms-2">
+
+                        <div class="col cap-icon"><img src="~/images/cap.png" alt=".."></div>
+                        <div class="col ">
+                            <div class="row service-provider-ratingmodel ps-2" style="width: 200px;">  </div>
+                            <div class="star-ratingmodel text-start">
+                            </div>
+
+
+
                         </div>
-                        <hr>
-                        <p class="price"> &euro;63 </p>
-                        <hr>
-                        <div class="text-center"><button class="cancelled">cancelled</button></div>
-                        <hr>
-                        <div class="text-center"><button class="rate">Rate SP</button></div>
-                    </div>
-                    <div class="card-body">
-                        <span>
-                            
-                            
-                            <img src="~/Images/calendar.png" alt="calender"><span class="date">10/03/2018</span>
-                            12:00-18:00
-                        
-                        
-                        </span>
-                        <hr>
-                        <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                        <div>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span>4</span>
-                        </div>
-                        <hr>
-                        <p class="price"> &euro;63 </p>
-                        <hr>
-                        <div class="text-center"><button class="completed">completed</button></div>
-                        <hr>
-                        <div class="text-center"><button class="rate">Rate SP</button></div>
-                    </div>
-                    <div class="card-body">
-                        <span>
-                            
-                            
-                            <img src="~/Images/calendar.png" alt="calender"><span class="date">28/02/2018</span>
-                            12:00-18:00
-                        
-                        
-                        </span>
-                        <hr>
-                        <div class="cap-icon"><img src="~/Images/cap.png" alt=".."></div>Lyum Watson
-                        <div>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span>4</span>
-                        </div>
-                        <hr>
-                        <p class="price"> &euro;63 </p>
-                        <hr>
-                        <div class="text-center"><button class="completed">completed</button></div>
-                        <hr>
-                        <div class="text-center"><button class="rate">Rate SP</button></div>
                     </div>
                 </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+
             </div>
+            <div class="modal-body">
+                <form>
+                    <h4 class="rateservicepro">
+                        Rate Your Service Provider
+                    </h4>
+                    <hr class="reschedulehr">
 
-            <div class="pagenum">
-                <div class="pagenum-left">
-                    <p>Show</p>
-                    <div class="pagenum-drop">
-                        10
+                    <div class="ontimearrival starratings ratingfortimearrival row ml-1">
+                        <p class="mr-2 ratingtxt">On Time Arrival</p>
+
+                        <span class="ratings1s ">
+                            <i class="fa fa-star " id="ontime1"></i>
+                            <i class="fa fa-star " id="ontime2"></i>
+                            <i class="fa fa-star " id="ontime3"></i>
+                            <i class="fa fa-star " id="ontime4"></i>
+                            <i class="fa fa-star " id="ontime5"></i>
+                            <span class="infomsg"></span>
+                        </span>
                     </div>
-                    <p>entries</p>
-                    <p style="margin-left: 8px;">Total Record: 55</p>
-                </div>
-                <div class="pagenum-right">
-                    <div class="pagenum-btn">
-                        <img src="~/Images/first-page.png" alt="">
+
+                    <div class="ontimearrival starratings ratingforfriendly row ml-1">
+                        <p class="mr-2 ratingtxt">Friendly</p>
+
+                        <span class="ratings2 ">
+                            <i class="fa fa-star " id="friendly1"></i>
+                            <i class="fa fa-star " id="friendly2"></i>
+                            <i class="fa fa-star " id="friendly3"></i>
+                            <i class="fa fa-star " id="friendly4"></i>
+                            <i class="fa fa-star " id="friendly5"></i>
+                            <span class="friendlymsg"></span>
+                        </span>
                     </div>
-                    <div class="pagenum-btn">
-                        <img src="~/Images/keyboard-right-arrow-button-copy.png" alt="">
+
+                    <div class="ontimearrival starratings ratingforquality row ml-1">
+                        <p class="mr-2 ratingtxt">Quality Of Service</p>
+
+                        <span class="ratings3 ">
+                            <i class="fa fa-star " id="quality1"></i>
+                            <i class="fa fa-star " id="quality2"></i>
+                            <i class="fa fa-star " id="quality3"></i>
+                            <i class="fa fa-star " id="quality4"></i>
+                            <i class="fa fa-star " id="quality5"></i>
+                            <span class="qualitymsg"></span>
+
+                        </span>
                     </div>
-                    <div class="pagenum-btn active">
-                        1
+
+                    <div class="form-group givefeedback">
+                        <label for="feedbackcomment">Comments</label>
+                        <textarea class="form-control" id="feedbackcomment" rows="2"></textarea>
                     </div>
-                    <div class="pagenum-btn">
-                        2
+                    <div class="text-center">
+                        <button type="submit" data-bs-dismiss="modal" class="rate" id="confirm_rating">Submit</button>
                     </div>
-                    <div class="pagenum-btn">
-                        3
-                    </div>
-                    <div class="pagenum-btn">
-                        4
-                    </div>
-                    <div class="pagenum-btn">
-                        <img class="transform_btn" src="~/Images/keyboard-right-arrow-button-copy.png" alt="">
-                    </div>
-                    <div class="pagenum-btn">
-                        <img class="transform_btn" src="~/Images/first-page.png" alt="">
-                    </div>
-                </div>
+                </form>
             </div>
 
         </div>
+    </div>
+</div>
+
+
+
+
+

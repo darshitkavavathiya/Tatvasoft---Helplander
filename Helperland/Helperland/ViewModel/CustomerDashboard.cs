@@ -7,7 +7,9 @@ namespace Helperland.ViewModel
 
 
 
-        
+
+    
+  
         public int ServiceRequestId { get; set; }
 
         public string Date { get; set; }
@@ -17,6 +19,7 @@ namespace Helperland.ViewModel
         public string EndTime { get; set; }
 
         public string ServiceProvider { get; set; }
+        public string UserProfilePicture { get; set; }
 
         public decimal SPRatings { get; set; }
 
@@ -45,6 +48,6 @@ namespace Helperland.ViewModel
         public string Email { get; set; }
 
         public string Comments { get; set; }
-
+        public float AverageRating { get; set; }
     }
 }
