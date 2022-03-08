@@ -839,3 +839,9 @@ E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\PagedList.dll
 E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\PagedList.Mvc.dll
 E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.Views.dll
 E:\dsdasd\Tatvasoft\Helperland\Helperland\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.dll
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\ServiceProvider\ServiceProviderDashboard.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SpBlockCustomer.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SpMyRating.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SpNewServiceRequest.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SpServiceHistory.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SpUpcomingService.cshtml.g.cs

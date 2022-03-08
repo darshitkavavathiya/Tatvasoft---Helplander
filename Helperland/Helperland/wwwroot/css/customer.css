@@ -60,7 +60,7 @@ h1 {
     background-color: #1d7a8c;
     width: 23%;
     font-weight: 400;
-    height: 800px;
+    height: 900px;
 }
 /*
 .hamburger {
@@ -111,7 +111,7 @@ h1 {
     float: left;
     padding: 0px 0px;
     border: 1px solid #ccc;
-    width: 75%;
+    width: 75% !important;
     margin-left: 10px;
 }
 
@@ -282,9 +282,17 @@ p.margin {
         text-align: center;
         transition: 0.2s;
     }
-    .table {
+    #dashboard .table {
         display: none;
     }
+
+    #service_history .table {
+        display: none;
+    }
+    .pagenum {
+        display: none !important;
+    }
+
 
         .tab.active {
             display: block;
@@ -411,55 +419,6 @@ span img {
     font-weight: 700;
 }
 
-.pagenum-left .pagenum-drop {
-    border: 1px solid #E1E1E1;
-    border-radius: 4px;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 5px;
-}
-
-.pagenum {
-    margin: 20px 0;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    color: #777777;
-    flex-wrap: wrap;
-}
-
-.pagenum-left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    .pagenum-left p {
-        margin-bottom: 10px;
-        margin-top: 8px;
-    }
-
-.pagenum-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.pagenum-btn {
-    padding: 10.67px 15.33px 10.33px 14.67px;
-    border-radius: 50px;
-    border: 1px solid #E1E1E1;
-    margin-left: 3px;
-    font-size: 14px;
-}
-
-.pagenum-right .active {
-    background-color: #1D7A8C;
-    color: white
-}
 
 .transform_btn {
     transform: rotate(180deg);
@@ -600,4 +559,104 @@ span img {
     padding: 5px 12px;
     margin: 8px 0;
 }
- 
+
+.pagenum-right a.current {
+    background: #1D7A8C;
+    color: white;
+}
+
+
+
+
+.pagenum-left .pagenum-drop {
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.pagenum {
+    margin: 20px 0px 10px 20px;
+    /*    display: flex;
+    justify-content: space-between;*/
+    margin-top: 10px;
+    color: #777777;
+    float: left;
+    font-size: 15px;
+    width: 73%;
+    max-width: 800px;
+    /*    flex-wrap: wrap;*/
+}
+    .pagenum select {
+        margin: 0px 15px 0px 5px;
+        border: 1px solid #E1E1E1;
+        border-radius: 4px;
+        padding:10px 5px;
+    }
+
+.pagenum-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagenum-left p {
+        margin-bottom: 10px;
+        margin-top: 8px;
+ }
+
+.pagenum-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pagenum-btn {
+    padding: 10.67px 15.33px 10.33px 14.67px;
+    border-radius: 50px;
+    border: 1px solid #E1E1E1;
+    margin-left: 3px;
+    font-size: 14px;
+}
+
+.pagenum-right .active {
+    background-color: #1D7A8C;
+    color: white
+}
+
+
+.pagenum-right a {
+    padding: 10.67px 15.33px 10.33px 14.67px;
+    border-radius: 50px;
+    color:black;
+   text-decoration:none;
+    border: 1px solid #E1E1E1;
+    margin-left: 3px;
+    font-size: 14px;
+}
+
+
+
+
+.serviceHistoryServiceDetails{
+    width:25% !important;
+}
+
+.serviceHistoryServiceProvider {
+    width: 30% !important;
+}
+
+.serviceHistoryPayment {
+    width: 15% !important;
+}
+
+.serviceHistoryStatus {
+    width: 15% !important;
+}
+
+.serviceHistoryRate{
+    width: 15% !important;
+}

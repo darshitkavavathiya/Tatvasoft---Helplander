@@ -13,7 +13,7 @@ function upcoming_service(evt, service) {
     evt.currentTarget.className += " active";
 }
 
-var vTabId = "SettingsTabBtn";
+var vTabId = "dashboardTabBtn";
 
 
 var url1 = new URLSearchParams(window.location.search);
@@ -79,21 +79,21 @@ $('.mobileview ').on('click', function (e) {
     serviceRequestId = e.target.closest("div.card-body").getAttribute("data-value");
     srId = serviceRequestId;
 
+    if (serviceRequestId != null && (e.target.classList != "customerCancel" && e.target.classList != "customerReschedule" && e.target.classList != "rateactive")) {
 
-
-    document.getElementById("serviceReqdetailsbtn").click();
-
+        document.getElementById("serviceReqdetailsbtn").click();
+    }
 });
 
 
-$('div.justify-content-around .customerReschedule').on('click', function () {
 
+
+$(' .customerReschedule').on('click', function () {
     document.getElementById("updateRequestId").value = srId;
 });
 
 
-$('div.justify-content-around .customerCancel').on('click', function () {
-
+$(' .customerCancel').on('click', function () {
     document.getElementById("CancelRequestId").value = srId;
 });
 
@@ -365,8 +365,7 @@ $(document).on('click', '.rateactive', function () {
                 var rating = parseInt(result.averageRating);
                 $('.star-ratingmodel').html("");
 
-                var rat = round(result.averageRating);
-                alert(rat);
+             
                 $('.service-provider-ratingmodel').html(result.serviceProvider);
                 $("#show_rating_model img.spavtar").attr("src", result.userProfilePicture);
                 for (var i = 0; i < 5; i++) {
@@ -1032,4 +1031,43 @@ $("#CSChangePassword").on('click', function () {
         });
     }
 
+});
+
+
+
+
+const dashbordTablepagination = new DataTable("#dashbordTable", {
+    dom: 't<"pagenum d-flex justify-content-between "<"pagenum-left"li><"pagenum-right"p>>',
+    responsive: true,
+    pagingType: "full_numbers",
+    language: {
+        paginate: {
+            first: "<img src='/Images/pagination-first.png' alt='first'/>",
+            previous: "<img src='/Images/pagination-left.png' alt='previous' />",
+            next: "<img src='/Images/pagination-left.png' alt='next' style='transform: rotate(180deg)' />",
+            last: "<img src='/Images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+        },
+        info: "Total Records : _MAX_",
+        lengthMenu: "Show  _MENU_  Entries",
+    },
+
+    columnDefs: [{ orderable: false, targets: 4 }],
+});
+
+const ServiceHistoryTablepagination = new DataTable("#ServiceHistoryTable", {
+    dom: 't<"pagenum d-flex justify-content-between "<"pagenum-left"li><"pagenum-right"p>>',
+    responsive: true,
+    pagingType: "full_numbers",
+    language: {
+        paginate: {
+            first: "<img src='/Images/pagination-first.png' alt='first'/>",
+            previous: "<img src='/Images/pagination-left.png' alt='previous' />",
+            next: "<img src='/Images/pagination-left.png' alt='next' style='transform: rotate(180deg)' />",
+            last: "<img src='/Images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+        },
+        info: "Total Records : _MAX_",
+        lengthMenu: "Show  _MENU_  Entries",
+    },
+
+    columnDefs: [{ orderable: false, targets: 4 }],
 });

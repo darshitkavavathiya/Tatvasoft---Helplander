@@ -7,7 +7,7 @@
             <img src="~/Images/logo-small.png">
         </a>
 
-  
+
 
 
         @if (ViewBag.Name != null)
@@ -32,9 +32,19 @@
                         <br />
                         <span id="UsernameNav">@ViewBag.Name</span>
                     </li>
-                    <li><a asp-action="CustomerDashboard" asp-controller="Customer" class="dropdown-item">My Dashbord</a></li>
-                    <li><a class="dropdown-item"asp-controller="Customer" asp-action="CustomerDashboard"  asp-route-Tablinks="SettingsTabBtn">My Setting</a></li>
-                    <li><a class="dropdown-item" asp-controller="UserManagement" asp-action="Logout" >Logout</a></li>
+                    @if (ViewBag.UserType == 0)
+                    {
+                        <li><a asp-controller="Customer" asp-action="CustomerDashboard" class="dropdown-item">My Dashbord</a></li>
+                        <li><a class="dropdown-item" asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="SettingsTabBtn">My Setting</a></li>
+
+                    }
+                    @if (ViewBag.UserType == 1)
+                    {
+                        <li><a asp-controller="ServiceProvider" asp-action="SPServiceRequest" class="dropdown-item">My Dashbord</a></li>
+                        <li><a class="dropdown-item" asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="SettingsTabBtn">My Setting</a></li>
+
+                    }
+                    <li><a class="dropdown-item" asp-controller="UserManagement" asp-action="Logout">Logout</a></li>
                 </ul>
             </div>
         }
@@ -55,36 +65,89 @@
                     {
 
                         <div class="d-lg-none">
-                        <li class="welcomeNav" >
+                        <li class="welcomeNav">
                             Welcome,
                             <span id="UsernameNav">@ViewBag.Name</span>
                         </li>
-                        
+
                         <hr class="d-lg-none">
+
                         <li class="nav-item">
-                           
+
                             <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="dashboardTabBtn">Dashbord</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="serviceHistroyTabBtn">Service History</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link "  asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="serviceScheduleTabBtn">Service Schedule</a>
+                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="serviceScheduleTabBtn">Service Schedule</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link "  asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="favouriteProsTabBtn">Favourite Pros</a>
+                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="favouriteProsTabBtn">Favourite Pros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link "  asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="invoiceTabBtn"> Invoices </a>
+                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="invoiceTabBtn"> Invoices </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard"  asp-route-Tablinks="SettingsTabBtn">My Setting</a>
+                            <a class="nav-link " asp-controller="Customer" asp-action="CustomerDashboard" asp-route-Tablinks="SettingsTabBtn">My Setting</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " asp-controller="UserManagement" asp-action="Logout">Logout</a>
                         </li>
+
                         <hr class="d-lg-none">
+
+                </div>
+
+                    }
+                    if (ViewBag.UserType == 1)
+                    {
+
+                <div class="d-lg-none">
+                    <li class="welcomeNav">
+                        Welcome,
+                        <span id="UsernameNav">@ViewBag.Name</span>
+                    </li>
+
+                    <hr class="d-lg-none">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="DashboardTabBtn">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="NewServiceRequestTabBtn">New Service Requests</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="UpcomingServiceTabBtn">Upcoming Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="ServiceScheduleTabBtn">Service Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="ServiceHistoryTabBtn">Service History</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="MyRatingTabBtn">My Rating</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="BlockCustomerTabBtn">Block Customer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="InvoiceTabBtn"> Invoices </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="ServiceProvider" asp-action="SPServiceRequest" asp-route-Tablinks="SettingsTabBtn">My Setting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " asp-controller="UserManagement" asp-action="Logout">Logout</a>
+                    </li>
+
+                    <hr class="d-lg-none">
+
                 </div>
 
                     }

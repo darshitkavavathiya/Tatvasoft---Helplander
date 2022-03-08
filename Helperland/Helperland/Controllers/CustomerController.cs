@@ -50,11 +50,9 @@ namespace Helperland.Controllers
 
 
 
-                //var ServiceTable = _db.ServiceRequests.Where(x => (x.UserId == user.UserId) && (x.Status == 1 || x.Status == 2)).ToList();
 
                 var ServiceTable = _db.ServiceRequests.Where(x => x.UserId == user.UserId).ToList();
 
-                //var ServiceTable = _db.ServiceRequests.Where(x=>x.UserId==user.UserId ).ToList();
                 if (ServiceTable.Any())  /*ServiceTable.Count()>0*/
                 {
                     foreach (var service in ServiceTable)
@@ -63,8 +61,6 @@ namespace Helperland.Controllers
                         CustomerDashboard dash = new CustomerDashboard();
                         dash.ServiceRequestId = service.ServiceRequestId;
                         var StartDate = service.ServiceStartDate.ToString();
-                        //dash.Date = StartDate.Substring(0, 10);
-                        //dash.StartTime = StartDate.Substring(11);
                         dash.Date = service.ServiceStartDate.ToString("dd/MM/yyyy");
                         dash.StartTime = service.ServiceStartDate.AddHours(0).ToString("HH:mm ");
                         var totaltime = (double)(service.ServiceHours + service.ExtraHours);
@@ -216,6 +212,8 @@ namespace Helperland.Controllers
             return new JsonResult(Details);
         }
 
+
+
         [HttpGet]
         public JsonResult GetRating(CustomerDashboard ID)
         {
@@ -288,9 +286,197 @@ namespace Helperland.Controllers
 
 
 
+        /*  user-settings */
 
 
-        /* -------------------Book Service------------------------------*/
+
+        [HttpGet]
+        public JsonResult GetCustomerData()
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+
+            User user = _db.Users.FirstOrDefault(x => x.UserId == Id);
+            return new JsonResult(user);
+
+        }
+
+        [HttpPost]
+        public IActionResult UpdateCustomerData(User user)
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+            User u = _db.Users.FirstOrDefault(x => x.UserId == Id);
+            u.FirstName = user.FirstName;
+            u.LastName = user.LastName;
+            u.Mobile = user.Mobile;
+            u.DateOfBirth = user.DateOfBirth;
+            u.ModifiedDate = DateTime.Now;
+
+            var result = _db.Users.Update(u);
+            _db.SaveChanges();
+            if (result != null)
+            {
+                return Ok(Json("true"));
+            }
+
+            return Ok(Json("false"));
+        }
+
+        [HttpGet]
+        public JsonResult GetUserAddress()
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+
+            List<UserAddress> Addresses = _db.UserAddresses.Where(x => x.UserId == Id && x.IsDeleted == false).ToList();
+            return new JsonResult(Addresses);
+
+
+
+        }
+
+        [HttpPost]
+        public JsonResult DeleteUserAddress(UserAddress addr)
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+            UserAddress userAddress = _db.UserAddresses.FirstOrDefault(x => x.AddressId == addr.AddressId);
+
+            userAddress.IsDeleted = true;
+            var result = _db.UserAddresses.Update(userAddress);
+            _db.SaveChanges();
+            if (result != null)
+            {
+                return new JsonResult(true);
+            }
+            else
+            {
+
+                return new JsonResult(false);
+            }
+        }
+
+        /*----- Add User Address -----*/
+        public IActionResult AddNewUserAddress(UserAddress addr)
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+            addr.UserId = (int)Id;
+            addr.IsDefault = false;
+            addr.IsDeleted = false;
+            var result = _db.UserAddresses.Add(addr);
+            _db.SaveChanges();
+            if (result != null)
+            {
+                return Ok(Json("true"));
+            }
+            else
+            {
+                return Ok(Json("false"));
+            }
+
+        }
+
+        [HttpGet]
+        public JsonResult EditAddressModel(UserAddress addr)
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+            UserAddress address = _db.UserAddresses.FirstOrDefault(x => x.AddressId == addr.AddressId);
+            return new JsonResult(address);
+
+
+        }
+
+        [HttpPost]
+        public IActionResult EditUserAddress(UserAddress addr)
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+            addr.UserId = (int)Id;
+            var result = _db.UserAddresses.Update(addr);
+            _db.SaveChanges();
+            if (result != null)
+            {
+                return Ok(Json("true"));
+            }
+            else
+            {
+                return Ok(Json("false"));
+            }
+        }
+
+        /*-- change password mysettings --*/
+
+        public IActionResult ChangePassword(ChangePassword password)
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+            User user = _db.Users.FirstOrDefault(x => x.UserId == Id);
+
+
+            if (BCrypt.Net.BCrypt.Verify(password.oldPassword, user.Password))
+            {
+                user.Password = BCrypt.Net.BCrypt.HashPassword(password.newPassword);
+                user.ModifiedDate = DateTime.Now;
+                _db.Users.Update(user);
+                _db.SaveChanges();
+                return Ok(Json("true"));
+            }
+            else
+            {
+                return Ok(Json("wrong password"));
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* -------------------Book Service-------------------------*/
 
         public IActionResult BookService()
         {
@@ -551,191 +737,6 @@ namespace Helperland.Controllers
 
             return Ok(Json("false"));
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        [HttpGet]
-        public JsonResult GetCustomerData()
-        {
-            int? Id = HttpContext.Session.GetInt32("userId");
-            if (Id == null)
-            {
-                Id = Convert.ToInt32(Request.Cookies["userId"]);
-            }
-
-            User user = _db.Users.FirstOrDefault(x => x.UserId == Id);
-            return new JsonResult(user);
-
-        }
-
-        [HttpPost]
-        public IActionResult UpdateCustomerData(User user)
-        {
-            int? Id = HttpContext.Session.GetInt32("userId");
-            if (Id == null)
-            {
-                Id = Convert.ToInt32(Request.Cookies["userId"]);
-            }
-            User u = _db.Users.FirstOrDefault(x => x.UserId == Id);
-            u.FirstName = user.FirstName;
-            u.LastName = user.LastName;
-            u.Mobile = user.Mobile;
-            u.DateOfBirth = user.DateOfBirth;
-            u.ModifiedDate = DateTime.Now;
-
-            var result = _db.Users.Update(u);
-            _db.SaveChanges();
-            if (result != null)
-            {
-                return Ok(Json("true"));
-            }
-
-            return Ok(Json("false"));
-        }
-
-        [HttpGet]
-        public JsonResult GetUserAddress()
-        {
-            int? Id = HttpContext.Session.GetInt32("userId");
-            if (Id == null)
-            {
-                Id = Convert.ToInt32(Request.Cookies["userId"]);
-            }
-
-            List<UserAddress> Addresses = _db.UserAddresses.Where(x => x.UserId == Id && x.IsDeleted == false).ToList();
-            return new JsonResult(Addresses);
-
-
-
-        }
-
-        [HttpPost]
-        public JsonResult DeleteUserAddress(UserAddress addr)
-        {
-            int? Id = HttpContext.Session.GetInt32("userId");
-            if (Id == null)
-            {
-                Id = Convert.ToInt32(Request.Cookies["userId"]);
-            }
-            UserAddress userAddress = _db.UserAddresses.FirstOrDefault(x => x.AddressId == addr.AddressId);
-
-            userAddress.IsDeleted = true;
-            var result = _db.UserAddresses.Update(userAddress);
-            _db.SaveChanges();
-            if (result != null)
-            {
-                return new JsonResult(true);
-            }
-            else
-            {
-
-                return new JsonResult(false);
-            }
-        }
-
-        /*----- Add User Address -----*/
-        public IActionResult AddNewUserAddress(UserAddress addr)
-        {
-            int? Id = HttpContext.Session.GetInt32("userId");
-            if (Id == null)
-            {
-                Id = Convert.ToInt32(Request.Cookies["userId"]);
-            }
-            addr.UserId = (int)Id;
-            addr.IsDefault = false;
-            addr.IsDeleted = false;
-            var result = _db.UserAddresses.Add(addr);
-            _db.SaveChanges();
-            if (result != null)
-            {
-                return Ok(Json("true"));
-            }
-            else
-            {
-                return Ok(Json("false"));
-            }
-
-        }
-
-        [HttpGet]
-        public JsonResult EditAddressModel(UserAddress addr)
-        {
-            int? Id = HttpContext.Session.GetInt32("userId");
-            if (Id == null)
-            {
-                Id = Convert.ToInt32(Request.Cookies["userId"]);
-            }
-            UserAddress address = _db.UserAddresses.FirstOrDefault(x => x.AddressId == addr.AddressId);
-            return new JsonResult(address);
-
-
-        }
-
-        [HttpPost]
-        public IActionResult EditUserAddress(UserAddress addr)
-        {
-            int? Id = HttpContext.Session.GetInt32("userId");
-            if (Id == null)
-            {
-                Id = Convert.ToInt32(Request.Cookies["userId"]);
-            }
-            addr.UserId = (int)Id;
-            var result = _db.UserAddresses.Update(addr);
-            _db.SaveChanges();
-            if (result != null)
-            {
-                return Ok(Json("true"));
-            }
-            else
-            {
-                return Ok(Json("false"));
-            }
-        }
-
-        /*-- change password mysettings --*/
-
-        public IActionResult ChangePassword(ChangePassword password)
-        {
-            int? Id = HttpContext.Session.GetInt32("userId");
-            if (Id == null)
-            {
-                Id = Convert.ToInt32(Request.Cookies["userId"]);
-            }
-            User user = _db.Users.FirstOrDefault(x => x.UserId == Id);
-
-
-            if (BCrypt.Net.BCrypt.Verify(password.oldPassword, user.Password))
-            {
-                user.Password = BCrypt.Net.BCrypt.HashPassword(password.newPassword);
-                user.ModifiedDate = DateTime.Now;
-                _db.Users.Update(user);
-                _db.SaveChanges();
-                return Ok(Json("true"));
-            }
-            else
-            {
-                return Ok(Json("wrong password"));
-            }
-
-
-        }
-
-
-
-
-
-
-
 
 
     }

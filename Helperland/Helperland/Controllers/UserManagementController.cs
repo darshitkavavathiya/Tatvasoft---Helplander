@@ -40,29 +40,58 @@ namespace Helperland.Controllers
 
                     var U = _db.Users.FirstOrDefault(x => x.Email == user.username);
 
-                    Console.WriteLine("1");
-
-                    if (user.remember == true)
-                    {
-                        CookieOptions cookieRemember = new CookieOptions();
-                        cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
-                        Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
-                    }
 
 
-                    HttpContext.Session.SetInt32("userId", U.UserId);
+
+
+                    ViewBag.Name = null;
+
+
+
 
 
 
                     if (U.UserTypeId == 0)
                     {
+                        if (user.remember == true)
+                        {
+                            CookieOptions cookieRemember = new CookieOptions();
+                            cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
+                            Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
+                        }
+
+
+                        HttpContext.Session.SetInt32("userId", U.UserId);
+
+
                         return RedirectToAction("CustomerDashboard", "Customer");
                     }
-                    /* else if (user.UserTypeId == 2)
-                      {
-                          return RedirectToAction("SPUpcomingService", "ServicePro");
-                      }
-                      else if (user.UserTypeId == 3)
+                    else if (U.UserTypeId == 1)
+                    {
+                        if (U.IsApproved == false)
+                        {
+                            ViewBag.Name = null;
+                            TempData["add"] = "alert show";
+                            TempData["fail"] = "You are not approved by admin, please contact admin.";
+                            return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                        }
+
+                        if (user.remember == true)
+                        {
+                            CookieOptions cookieRemember = new CookieOptions();
+                            cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
+                            Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
+                        }
+
+
+                        HttpContext.Session.SetInt32("userId", U.UserId);
+
+
+                        return RedirectToAction("SPServiceRequest", "Serviceprovider");
+                    }
+
+                    /*
+                      else if (U.UserTypeId == 3)
                       {
                           return RedirectToAction("ServiceRequest", "Admin");
                       }*/
@@ -114,7 +143,7 @@ namespace Helperland.Controllers
                     user.IsRegisteredUser = true;
                     user.ModifiedBy = 152;
                     user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-
+                    user.IsApproved = true;
                     _db.Users.Add(user);
                     _db.SaveChanges();
 
@@ -158,6 +187,7 @@ namespace Helperland.Controllers
                     user.IsRegisteredUser = true;
                     user.ModifiedBy = 152;
                     user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                    user.IsApproved = true;
                     user.UserProfilePicture = "cap.png";
                     _db.Users.Add(user);
                     _db.SaveChanges();

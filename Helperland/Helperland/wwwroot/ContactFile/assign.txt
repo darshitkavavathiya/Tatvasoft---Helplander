@@ -12,3 +12,16 @@ case 4:cancelled
 
 
 
+user profile url to db :
+  image name in db
+  cap.png
+
+
+
+  cust id password 
+  darshit26697@gmail.com
+  Dar@123
+
+  sp id password
+  sptest@gmail.com
+  Dar@123

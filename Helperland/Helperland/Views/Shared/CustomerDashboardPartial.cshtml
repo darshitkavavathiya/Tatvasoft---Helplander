@@ -20,11 +20,12 @@
         <table id="dashbordTable" class="table">
             <thead class="table-light">
                 <tr class="text-center">
-                    <th scope="col"> Service ID</th>
-                    <th scope="col"> Service Date </th>
-                    <th scope="col"> Service Provider</th>
-                    <th scope="col"> Payment </th>
-                    <th colspan="2" scope="col"> Action </th>
+                    <th scope="col" style="width:17%"> Service ID <img src="~/Images/sort.png" alt="..."></th>
+                    <th scope="col" style="width:20%"> Service Date<img src="~/Images/sort.png" alt="..."> </th>
+                    <th scope="col" style="width:30%"> Service Provider<img src="~/Images/sort.png" alt="..."></th>
+                    <th scope="col" style="width:15%"> Payment <img src="~/Images/sort.png" alt="..."></th>
+                    <th scope="col"  style="width:9%;text-align:end;padding-right:0px"> Actio </th>
+                    <th scope="col" style="width:9%;text-align:start;padding-left:0px"> n </th>
                 </tr>
             </thead>
             <tbody>
@@ -161,9 +162,9 @@
                             <p class="price"><h6 class="d-inline pe-2">Price:</h6> &euro; @item.TotalCost </p>
                             <hr>
                             <div class="d-flex justify-content-around">
-                                <button class="customerReschedule ms-2" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#rescheduleModelServiceRequest">Reschedule</button>
+                                <button class="customerReschedule" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#rescheduleModelServiceRequest">Reschedule</button>
 
-                                <button class="customerCancel me-2" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest">Cancel</button>
+                                <button class="customerCancel" value=@item.ServiceRequestId data-bs-toggle="modal" data-bs-target="#deleteModelServiceRequest">Cancel</button>
                             </div>
                         </div>
                     }
@@ -173,65 +174,10 @@
         </div>
     </div>
 
-    <div class="pagenum">
-        <div class="pagenum-left">
-            <p>Show</p>
-            <div class="pagenum-drop">
-                10
-            </div>
-            <p>entries</p>
-            <p style="margin-left: 8px;">Total Record: @ServiceDashboardCount</p>
-        </div>
-        <div class="pagenum-right">
-            <div class="pagenum-btn">
-                <img src="~/images/first-page.png" alt="">
-            </div>
-            <div class="pagenum-btn">
-                <img src="~/images/keyboard-right-arrow-button-copy.png" alt="">
-            </div>
-            <div class="pagenum-btn active">
-                1
-            </div>
-            <div class="pagenum-btn">
-                2
-            </div>
-            <div class="pagenum-btn">
-                3
-            </div>
-            <div class="pagenum-btn">
-                4
-            </div>
-            <div class="pagenum-btn">
-                <img class="transform_btn" src="~/images/keyboard-right-arrow-button-copy.png" alt="">
-            </div>
-            <div class="pagenum-btn">
-                <img class="transform_btn" src="~/images/first-page.png" alt="">
-            </div>
-        </div>
-    </div>
 
 </div>
 
 
-@*
-    <div class="modal" tabindex="-1" id="serviceRequestCancelModal">
-    <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-    <div class="modal-header">
-    <h4 class="modal-title">Cancel Service Request</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-    <input type="hidden" id="CancelRequestId" name="CancelRequestId" />
-    <p><label for="cancelReason">Why you want to cancel the service request?</label></p>
-    <textarea name="cancelReason" id="cancelReason" cols="30" rows="10"></textarea>
-    </div>
-    <div class="modal-footer">
-    <button type="button" class="btn cancelBtn" id="CancelRequestBtn">Cancel Now</button>
-    </div>
-    </div>
-    </div>
-    </div>*@
 
 
 
