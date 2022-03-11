@@ -34,7 +34,7 @@ document.getElementById(vTabId).click();
 /* for row click in dashboard */
 
 
-var srId;
+
 var serviceRequestId = "";
 $("#dashbordTable").click(function (e) {
 
@@ -42,7 +42,10 @@ $("#dashbordTable").click(function (e) {
     serviceRequestId = e.target.closest("tr").getAttribute("data-value");
 
     if (e.target.classList == "customerReschedule") {
+      
+     
         document.getElementById("updateRequestId").value = e.target.value;
+        
 
     }
     if (e.target.classList == "customerCancel") {
@@ -53,7 +56,7 @@ $("#dashbordTable").click(function (e) {
 
 
         document.getElementById("serviceReqdetailsbtn").click();
-        srId = serviceRequestId;
+      
     }
     console.log(e);
 });
@@ -68,7 +71,7 @@ $("#ServiceHistoryTable").click(function (e) {
 
 
         document.getElementById("serviceReqdetailsbtn").click();
-        srId = serviceRequestId;
+       
     }
 });
 
@@ -77,7 +80,7 @@ $("#ServiceHistoryTable").click(function (e) {
 $('.mobileview ').on('click', function (e) {
 
     serviceRequestId = e.target.closest("div.card-body").getAttribute("data-value");
-    srId = serviceRequestId;
+ 
 
     if (serviceRequestId != null && (e.target.classList != "customerCancel" && e.target.classList != "customerReschedule" && e.target.classList != "rateactive")) {
 
@@ -89,12 +92,12 @@ $('.mobileview ').on('click', function (e) {
 
 
 $(' .customerReschedule').on('click', function () {
-    document.getElementById("updateRequestId").value = srId;
+    document.getElementById("updateRequestId").value = serviceRequestId;
 });
 
 
 $(' .customerCancel').on('click', function () {
-    document.getElementById("CancelRequestId").value = srId;
+    document.getElementById("CancelRequestId").value = serviceRequestId;
 });
 
 
@@ -108,12 +111,12 @@ $(' .customerCancel').on('click', function () {
 document.getElementById("RescheduleServiceRequest").addEventListener("click", function () {
     var serviceStartDate = document.getElementById("selected_date").value;
     var serviceTime = document.getElementById("selected_time").value;
-    var serviceRequestId = document.getElementById("updateRequestId").value;
     console.log(serviceRequestId);
     var data = {};
     data.Date = serviceStartDate;
     data.startTime = serviceTime;
     data.serviceRequestId = serviceRequestId;
+   
 
     $.ajax({
         type: 'POST',
@@ -138,11 +141,10 @@ document.getElementById("RescheduleServiceRequest").addEventListener("click", fu
 
 document.getElementById("CancelRequestBtn").addEventListener("click", function () {
 
-    var ServiceRequestId = document.getElementById("CancelRequestId").value;
     var Comments = document.getElementById("cancelReason").value;
     var data = {};
 
-    data.serviceRequestId = ServiceRequestId;
+    data.serviceRequestId = serviceRequestId;
     data.comments = Comments;
 
     $.ajax({
@@ -699,6 +701,40 @@ $("#addNewaddressbtn").click(function () {
 
 /* -----   addadress submit ---- */
 
+
+/* get city name from pin code */
+function getCityFromPostalCode(zip) {
+    $.ajax({
+        method: "GET",
+        url: "https://api.postalpincode.in/pincode/" + zip,
+        dataType: 'json',
+        cache: false,
+        success: function (result) {
+            if (result[0].status == "Error" || result[0].status == "404") {
+                $("#mSaddAddressAlert").removeClass("alert-success d-none").addClass("alert-danger").text("Enter Valid PostalCode.");
+
+            }
+            else {
+                console.log(result);
+                $("#City").val(result[0].PostOffice[0].District);
+                $("#State").val(result[0].PostOffice[0].State).prop("disabled", true);
+                $("#City").prop("disabled", true);
+               // $("#State").prop("disabled", true);
+            }
+        },
+        error: function (error) {
+
+        }
+    });
+}
+
+$("#addAddressPostalCode").keyup(function () {
+    console.log($("#addAddressPostalCode").val());
+    if ($("#addAddressPostalCode").val().length == 6) {
+        getCityFromPostalCode($("#addAddressPostalCode").val());
+    }
+});
+
 $("#addAddressSubmit").on('click', function () {
 
 
@@ -709,7 +745,7 @@ $("#addAddressSubmit").on('click', function () {
     data.postalCode = document.getElementById("addAddressPostalCode").value;
     data.city = document.getElementById("City").value;
     data.mobile = document.getElementById("Mobile").value;
-
+    data.state = document.getElementById("State").value;
     var testnumber = /^ [0 - 9]{ 10}$/;
     window.setTimeout(function () {
         $('#mSaddAddressAlert').addClass('d-none');
@@ -801,6 +837,7 @@ $("#address").on('click', function (e) {
                         document.getElementById("addAddressPostalCode").value = result.postalCode;
                         document.getElementById("City").value = result.city;
                         document.getElementById("Mobile").value = result.mobile;
+                        getCityFromPostalCode(result.postalCode);
                     }
                 },
                 error: function (error) {
@@ -844,6 +881,7 @@ $("#updateAddressSubmit").on('click', function () {
     data.postalCode = document.getElementById("addAddressPostalCode").value;
     data.city = document.getElementById("City").value;
     data.mobile = document.getElementById("Mobile").value;
+    data.state = document.getElementById("State").value;
 
 
 
@@ -924,7 +962,7 @@ $("#updateAddressSubmit").on('click', function () {
 
 
 
-
+/* delete address-*/
 
 $("#MSDeleteAddress").click(function () {
     var data = {};

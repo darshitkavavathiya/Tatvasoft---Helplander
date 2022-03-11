@@ -1,4 +1,8 @@
-﻿<div id="NewServiceRequest" class="tab-contant">
+﻿@model IEnumerable<Helperland.ViewModel.SPDashboard>;
+
+
+
+<div id="NewServiceRequest" class="tab-contant">
 
     <div class="clearfix">
         <div class="d-flex justify-content-between">
@@ -15,84 +19,156 @@
 
             <thead class="table-light">
                 <tr class="text-center">
-                    <th scope="col"> Service ID</th>
-                    <th scope="col"> Service Date</th>
-                    <th scope="col"> Customer Details</th>
-                    <th scope="col"> Payment</th>
-                    <th scope="col"> Time Conflict</th>
-                    <th scope="col"> Actions</th>
+                    <th scope="col" style="width:10%">  ID</th>
+                    <th scope="col" style="width:20%"> Service Date</th>
+                    <th scope="col" style="width:30%"> Customer Details</th>
+                    <th scope="col" style="width:15%"> Payment</th>
+                    <th scope="col" style="width:15%">  Conflict</th>
+                    <th scope="col" style="width:10%"> Actions</th>
                 </tr>
             </thead>
             <tbody>
 
-                <tr>
-                    <td data-label="Service ID"> 323436</td>
-                    <td>
-                     
-                        <div>
-                            <span><img src="/images/calendar2.png" alt=""></span>
-                            <span class="upcoming-date"><b>09/04/2018</b></span>
-                        </div>
-                        <div>
-                            <span><img src="/images/timer.png" alt=""></span> 
-                            <span>12:00-18:00</span>
-                        </div>
-                    </td>
-                    <td>
-                        <div>David Bough</div>
-                        <div><span><img src="images/home.png" alt=""></span> <span class="upcoming-address">Mustrestrabe 5, 12345 Bonn</span> </div>
-                    </td>
-                    <td>
-                        <span>15</span> &euro;
-                    </td>
-                    <td>
-                    </td>
-                    <td >
-                        <a >Accept</a>
-                    </td>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var item in Model)
+                    {
 
-                </tr>
+                        <tr class="text-center" data-value=@item.ServiceRequestId>
+                            <td data-label="Service ID">@item.ServiceRequestId</td>
+                            <td data-label="Service Date">
+
+                                <div>
+                                    <span><img src="/images/calendar2.png" alt=""></span>
+                                    <span class="upcoming-date"><b>@item.Date</b></span>
+                                </div>
+                                <div>
+                                    <span><img src="/images/layer-14.png" alt=""></span>
+                                    <span>@item.StartTime - @item.EndTime</span>
+                                </div>
+                            </td>
+                            <td class="text-start" data-lable="Customer Details">
+                                <div class="ms-4">@item.CustomerName</div>
+                                <div class="d-flex"><span><img class="me-0" src="/images/layer-15.png" alt=""></span> <span>@item.Address </span></div>
+                            </td>
+
+                            <td data-lable="Payment" class="price">
+                                <span>@item.TotalCost</span> &euro;
+                            </td>
+                            <td data-lable="Time Conflict">
+                                @{
+                                    string conflictIdtemp = "Conflict" + @item.ServiceRequestId;
+                                }
+                                <a class="newReqConflictBtn d-none" id=@conflictIdtemp>Conflict</a>
+                            </td>
+                            <td data-lable="Actions">
+                                <a class="newReqAcceptBtn">Accept</a>
+                            </td>
+
+                        </tr>
+
+
+                    }
+                }
+
 
 
             </tbody>
 
 
-
-
-
-
-
         </table>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </div>
 
 
+</div>
 
 
 
 
+<!--Sp New Service requ details model -->
+
+
+<button id="spserviceReqdetailsbtn" data-bs-toggle="modal" data-bs-target="#detailsModelServiceRequest" class="d-none">details</button>
+
+
+
+<div class="modal" tabindex="-1" id="detailsModelServiceRequest">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-start" style="padding:2% !important">
+            <div class="modal-header">
+                <h5 class="modal-title">Service Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body float-start row">
+                <div class="col">
+                    <h4 id="SpServiceReqDatetime">05/10/2021 08:00 - 11:30</h4>
+                    <p>Duration: <span id="SpServiceReqDuration"> 3 hrs </span> </p>
+                    <hr>
+                    <p>Service id: <span id="SpServiceReqId"> 8852</span></p>
+                    <div class="row">
+                        <p class="col-2 d-inline">Extras: </p>
+                        <div class="col-10 d-inline" id="SpServiceReqExtra"></div>
+                    </div>
+
+                    <p>Total Payment: <span id="SpServiceReqAmount" class="price">8750 &euro;</span> </p>
+                    <hr>
+                    <p>Customer Name:<span id="SpServiceReqCustomerName"> darshit</span></p>
+                    <p>Service Address: <span id="SpServiceReqAddress">adress ,sasdsad, surat 395006</span></p>
+
+                    <hr>
+
+                    <p>Comments <span id="SpServiceReqComment"></span></p>
+
+
+
+                    <hr>
+
+
+                    <div id="detailPopUpNew"><button id="newServiceReqAccept" type="submit">Accept</button></div>
+
+                    <div id="detailPopUpUpComing">
+                        <button id="newServiceReqCompleteBtn" type="submit">Complete</button>
+                        <button id="newServiceReqCancelBtn" type="submit">Cancel</button>
+                    </div>
 
 
 
 
+                </div>
+                <div class="col" id="newServiceReqMap">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
+@* alert popup*@
+
+<button type="button" class="btn btn-primary d-none" id="acceptAlert" data-bs-toggle="modal" data-bs-target="#alertPopup">
+    alert popup
+</button>
+
+<div class="modal fade" id="alertPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h4 class="modal-title" id="NewServiceAcceptStatus">  </h4>
+                <h5 id="Model_SID"></h5>
 
 
+            </div>
 
-
+        </div>
+    </div>
 </div>

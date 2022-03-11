@@ -42,7 +42,7 @@
 
                             ServiceDashboardCount = ServiceDashboardCount + 1;
 
-                            <tr data-value=@item.ServiceRequestId class="text-center">
+                            <tr data-value = @item.ServiceRequestId  class="text-center">
                                 <td data-label="Service ID">
 
                                     <p>@item.ServiceRequestId</p>
@@ -302,7 +302,7 @@
 
 
                     <div class="text-center  d-flex justify-content-around">
-                        <button class="rate">Rate </button>
+                        <button class="rate" data-bs-toggle="modal" data-bs-target="#myRatingModal">Rate </button>
                     </div>
 
                 </span>

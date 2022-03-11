@@ -304,9 +304,7 @@ function loadAddress() {
                     '<br><span>PHONE NUMBER:</span> ' + result[i].mobile + ' <span></span></label></div> </div>');
 
                 checked = "";
-            } if (isdefaultaddress == false) {
-                document.getElementById('0').checked = true;
-            }
+            } 
             console.log(result);
         },
         error: function () {
@@ -318,13 +316,39 @@ function loadAddress() {
 
 
 /*--------- addAddressdiv Function-----------*/
+function getCityFromPostalCode(zip) {
 
+    $.ajax({
+        method: "GET",
+        url: "https://api.postalpincode.in/pincode/" + zip,
+        dataType: 'json',
+        cache: false,
+        success: function (result) {
+            if (result[0].status == "Error" || result[0].status == "404") {
+                $("#mSaddAddressAlert").removeClass("alert-success d-none").addClass("alert-danger").text("Enter Valid PostalCode.");
+
+            }
+            else {
+                console.log(result);
+                $("#City").val(result[0].PostOffice[0].District);
+                $("#State").val(result[0].PostOffice[0].State).prop("disabled", true);
+                $("#City").prop("disabled", true);
+            }
+        },
+        error: function (error) {
+
+        }
+    });
+}
 
 function addAddressdiv() {
+   
     document.getElementById('addAddressBtn').style.display = "none";
     document.getElementById('addNewaddressDiv').style.display = "block";
     document.getElementById('addAddressPostalCode').value = document.getElementById("postalcode").value;
     document.getElementById('addAddressPostalCode').disabled = true;
+    getCityFromPostalCode(document.getElementById("postalcode").value);
+
 }
 
 
@@ -339,6 +363,7 @@ function saveAddress() {
     data.PostalCode = document.getElementById("addAddressPostalCode").value;
     data.City = document.getElementById("City").value;
     data.Mobile = document.getElementById("Mobile").value;
+    data.state = document.getElementById("State").value;
 
 
     $.ajax({
@@ -363,6 +388,17 @@ function saveAddress() {
         }
     });
 }
+
+
+
+
+//$("#addAddressPostalCode").keyup(function () {
+//    console.log($("#addAddressPostalCode").val());
+//    if ($("#addAddressPostalCode").val().length == 6) {
+//        getCityFromPostalCode($("#addAddressPostalCode").val());
+//    }
+//});
+
 
 
 /*----------cancelAddress Function------------*/

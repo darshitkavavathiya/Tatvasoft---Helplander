@@ -1,3 +1,59 @@
 ﻿<div id="UpcomingService" class="tab-contant">
-<h1>Upcomming service</h1>
+	<table id="SPUpcomingServiceTable" class="table">
+				<thead class="table-light">
+					<tr>
+						<th scope="col" style="width:15%">Service ID <img src="/Images/sort.png" alt="..."></th>
+						<th scope="col"style="width:20%">Service date <img src="/Images/sort.png" alt="..."></th>
+						<th scope="col" style="width:35%">Customers details <img src="/Images/sort.png" alt="..."></th>
+						<th scope="col" style="width:15%">Completed</th>
+						<th scope="col" style="width:15%">Action</th>
+					</tr>
+				</thead>
+				<tbody id="UpcomingServiceTbody">
+					<tr data-value="1" >
+						<td data-label="Service ID">
+							<p class="margin">323436</p>
+						</td>
+						<td data-label="Service date">
+							<div><img src="/Images/calendar2.png" alt="calender"> 09/04/2018
+							</div>
+							<img src="/Images/layer-14.png" alt="clock"> 12:00-18:00
+						</td>
+						@*<td data-label="Customers details">
+							David Bough <br>
+							<img src="/Images/layer-15.png" alt="home">musterstrabe 5,12345
+							Bonn
+						</td>*@
+							<td class="text-start" data-lable="Customer Details">
+								<div class="ms-4">David Bough</div>
+								<div class="d-flex" ><span><img  class="me-0" src="/images/layer-15.png" alt=""></span> <span>musterstrabe 5,12345
+							Bonn </span></div>
+								</td>
+						<td data-label="Completed">
+							<p class="margin"><button class="CompleteService d-none">Complete</button></P>
+						</td>
+						<td data-label="Action">
+							<p class="margin"><button class="cancel">Cancel</button></P>
+						</td>
+					</tr>
+					</tbody>
+		</table>
+</div>
+
+<div class="modal" tabindex="-1" id="SPdeleteModelServiceRequest">
+	<div class="modal-dialog modal-dialog-centered" style="max-width:500px">
+		<div class="modal-content">
+			 <input type="hidden" id="CancelRequestId" name="CancelRequestId" />
+			<div class="modal-header">
+				<h5 class="modal-title">Cancel Service Request</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<h4>Are you sure, want to cancel this request</h4>
+				<div class="text-center">
+					<button class="customerCancel" type="button" data-bs-dismiss="modal" class="mt-2 cancel" id="SpCancelRequestBtn">Yes, Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
