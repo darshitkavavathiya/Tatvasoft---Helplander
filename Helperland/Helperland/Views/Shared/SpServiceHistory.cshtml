@@ -1,3 +1,42 @@
 ﻿<div id="ServiceHistory" class="tab-contant">
-<h1>Service History</h1>
+
+    <div class="d-flex justify-content-between">
+            <p class="alignleft"> Service History </p>
+            <button id="export" class="ServiceHistroyExport">Export</button>
+        </div>
+  
+    <table id="SPServiceHistoryTable" class="table">
+        <thead class="text-center table-light">
+            <tr >
+                <th scope="col">Service ID <img src="/Images/sort.png" alt="..."></th>
+                <th scope="col">Service date <img src="/Images/sort.png" alt="..."></th>
+                <th scope="col">Customers details <img src="/Images/sort.png" alt="..."></th>
+
+            </tr>
+        </thead>
+        <tbody id="ServiceHistoryTbody">
+            <tr data-value="1">
+                <td data-label="Service ID">
+                    <p class="margin">323436</p>
+                </td>
+                <td data-label="Service date">
+                    <div>
+                        <img src="/Images/calendar2.png" alt="calender"> 09/04/2018
+                    </div>
+                    <img src="/Images/layer-14.png" alt="clock"> 12:00-18:00
+                </td>
+                <td class="text-start" data-lable="Customer Details">
+                    <div class="ms-4">David Bough</div>
+                    <div class="d-flex">
+                        <span><img class="me-0" src="/images/layer-15.png" alt=""></span> <span>
+                            musterstrabe 5,12345
+                            Bonn
+                        </span>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
 </div>

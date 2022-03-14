@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NTfruc20yxvx8OaZhTieznSsH8Safcl3A0iRZwfC8fbj4TyCUVQ7WCAgCBE7Ak6f1xlKiqwJ/IK40BjUP8P/QA==",
+  "dgSpecHash": "kKOA02kEJRVdXN5cgJkkiwFLZWTK+5tTLyA/9XsRIcLQDzcyP88hvwI43xC5D0C98lZFVHopYlXGlyatziPstQ==",
   "success": true,
   "projectFilePath": "E:\\dsdasd\\Tatvasoft\\Helperland\\Helperland\\Helperland.csproj",
   "expectedPackageFiles": [
@@ -24,7 +24,7 @@
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.1.1\\microsoft.aspnetcore.http.extensions.2.1.1.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
-    "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\2.1.1\\microsoft.aspnetcore.jsonpatch.2.1.1.nupkg.sha512",
+    "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.0.0\\microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.localization\\2.1.1\\microsoft.aspnetcore.localization.2.1.1.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc\\2.1.2\\microsoft.aspnetcore.mvc.2.1.2.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc.abstractions\\2.1.2\\microsoft.aspnetcore.mvc.abstractions.2.1.2.nupkg.sha512",
@@ -34,6 +34,7 @@
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc.dataannotations\\2.1.2\\microsoft.aspnetcore.mvc.dataannotations.2.1.2.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc.formatters.json\\2.1.2\\microsoft.aspnetcore.mvc.formatters.json.2.1.2.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc.localization\\2.1.2\\microsoft.aspnetcore.mvc.localization.2.1.2.nupkg.sha512",
+    "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.0.0.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor\\2.1.2\\microsoft.aspnetcore.mvc.razor.2.1.2.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\3.1.22\\microsoft.aspnetcore.mvc.razor.extensions.3.1.22.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\3.1.22\\microsoft.aspnetcore.mvc.razor.runtimecompilation.3.1.22.nupkg.sha512",
@@ -107,8 +108,8 @@
     "C:\\Users\\acerp\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\mimekit\\3.1.1\\mimekit.3.1.1.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\acerp\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
-    "C:\\Users\\acerp\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
+    "C:\\Users\\acerp\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\acerp\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\pagedlist\\1.17.0\\pagedlist.1.17.0.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\pagedlist.mvc\\4.5.0\\pagedlist.mvc.4.5.0.nupkg.sha512",
@@ -221,7 +222,8 @@
     "C:\\Users\\acerp\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\acerp\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\acerp\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\acerp\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\acerp\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
   ],
   "logs": [
     {

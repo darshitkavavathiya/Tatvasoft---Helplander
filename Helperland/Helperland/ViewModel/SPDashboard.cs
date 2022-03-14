@@ -7,6 +7,9 @@
     
         public string Date { get; set; }
 
+        
+
+
         public string StartTime { get; set; }
 
         public string EndTime { get; set; }
@@ -37,6 +40,6 @@
        
         public bool HasPet { get; set; }
 
-
+        public bool Complete { get; set; }  
     }
 }

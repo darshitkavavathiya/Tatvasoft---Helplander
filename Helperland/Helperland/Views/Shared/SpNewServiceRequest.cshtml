@@ -5,12 +5,17 @@
 <div id="NewServiceRequest" class="tab-contant">
 
     <div class="clearfix">
-        <div class="d-flex justify-content-between">
+       @* <div class="d-flex justify-content-between">
             <p class="alignleft "> Customer Service Request </p>
 
             <a asp-controller="Customer" asp-action="BookService"> <button class="alignright ">Add new request</button></a>
 
-        </div>
+        </div>*@
+
+
+         <input type="checkbox" id="newRequestPet" style="margin-left:2%; transform: scale(1.5); " checked="checked">
+        <label for="vehicle1"> Include pet at home </label><br><br />
+
 
 
 
@@ -49,7 +54,7 @@
                             </td>
                             <td class="text-start" data-lable="Customer Details">
                                 <div class="ms-4">@item.CustomerName</div>
-                                <div class="d-flex"><span><img class="me-0" src="/images/layer-15.png" alt=""></span> <span>@item.Address </span></div>
+                                <div class="d-flex"><span><img class="me-0" src="/images/layer-15.png" alt=""></span> <span>@item.Address </span><span class="d-none">@item.HasPet </span></div>
                             </td>
 
                             <td data-lable="Payment" class="price">

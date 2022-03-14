@@ -13,6 +13,19 @@ case 4:cancelled
 
 
 
+nationality
+<option value="1">Indian</option>
+								<option value="2">American</option>
+								<option value="3">German</option>
+
+
+								gender 
+								1- male 
+								2- female 
+								3-nt 
+
+
+
 user profile url to db :
   image name in db
   cap.png

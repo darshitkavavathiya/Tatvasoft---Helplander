@@ -55,6 +55,7 @@ h1 {
 }
 
 .tab {
+  
     float: left;
     border: 1px solid #ffffff;
     background-color: #1d7a8c;
@@ -62,6 +63,8 @@ h1 {
     font-weight: 400;
     height: 900px;
 }
+
+
 /*
 .hamburger {
     display: none;
@@ -660,3 +663,5 @@ span img {
 .serviceHistoryRate{
     width: 15% !important;
 }
+
+
