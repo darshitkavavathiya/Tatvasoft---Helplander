@@ -1,5 +1,5 @@
 ﻿
-
+/* tab navigation  */
 function Sp_TabNav(evt, service) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tab-contant");
@@ -16,38 +16,36 @@ function Sp_TabNav(evt, service) {
 
 
 var vTabId = "NewServiceRequestTabBtn";
-
-
-var url1 = new URLSearchParams(window.location.search);
-var urlcust = url1.toString();
-if (urlcust.includes("=")) {
-    var indexofequl = urlcust.lastIndexOf("=");
-    vTabId = urlcust.substring(indexofequl + 1, urlcust.length);
-}
-
 document.getElementById(vTabId).click();
-
-
-
-/* ----- new service req server triger ----- */
-
-
-$(document).on('click', '#NewServiceRequestTabBtn', function () {
-
-    window.location.reload();
-
-    //$.ajax({
-    //    url: '/ServiceProvider/SPServiceRequest',
-    //    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-    //});
+$(document).ready(function () {
+    
+    
+   
+    var url1 = new URLSearchParams(window.location.search);
+    var urlcust = url1.toString();
+    if (urlcust.includes("=")) {
+        var indexofequl = urlcust.lastIndexOf("=");
+        vTabId = urlcust.substring(indexofequl + 1, urlcust.length);
+        document.getElementById(vTabId).click();
+    }
 
 });
 
 
+/* ----- new service req  ----- */
 
-/* ---- new serviceereq ----------   */
-/*  row click in  new Service req */
+$(document).on('click', '#NewServiceRequestTabBtn', function () {
+    var url = window.location.href;
+    if (url.indexOf('?') > -1) {
+        url = url.substring(0, url.indexOf('?'));
+    } 
+    window.location.href = url;
+  
+});
 
+
+
+/* has pet function */
 
 document.getElementById("newRequestPet").addEventListener("change", function () {
 
@@ -64,6 +62,10 @@ document.getElementById("newRequestPet").addEventListener("change", function () 
     }
 });
 
+
+
+/* table  row click in  new Service req */
+
 var serviceRequestId = "";
 
 $("#SPServiceRequestTable").click(function (e) {
@@ -78,7 +80,7 @@ $("#SPServiceRequestTable").click(function (e) {
 
     }
 });
-
+/* all details popup model */
 
 document.getElementById("spserviceReqdetailsbtn").addEventListener("click", function () {
 
@@ -199,6 +201,8 @@ function showAllServiceRequestDetails(result) {
     }
 }
 
+
+
 /*---map ----*/
 function getMap(zipcode) {
 
@@ -212,10 +216,17 @@ function getMap(zipcode) {
 
 }
 
+/* accept btn */
 
 $("#newServiceReqAccept").on('click', function () {
 
     var data = {};
+
+    var url = window.location.href;
+    if (url.indexOf('?') > -1) {
+        url = url.substring(0, url.indexOf('?'));
+    }
+  
     data.ServiceRequestId = parseInt(serviceRequestId);
     $.ajax({
         type: 'GET',
@@ -232,7 +243,7 @@ $("#newServiceReqAccept").on('click', function () {
 
                 window.setTimeout(function () {
                     $("#alertPopup").modal("hide");
-                    window.location.reload();
+                    window.location.href = url;
                 }, 3000);
 
 
@@ -244,7 +255,7 @@ $("#newServiceReqAccept").on('click', function () {
 
                 window.setTimeout(function () {
                     $("#alertPopup").modal("hide");
-                    window.location.reload();
+                    window.location.href = url;
                 }, 3000);
             } else if (result == "error") {
                 document.getElementById("acceptAlert").click();
@@ -253,7 +264,7 @@ $("#newServiceReqAccept").on('click', function () {
 
                 window.setTimeout(function () {
                     $("#alertPopup").modal("hide");
-                    window.location.reload();
+                    window.location.href = url;
                 }, 3000);
             } else {
                 document.getElementById("acceptAlert").click();
@@ -279,7 +290,7 @@ $("#newServiceReqAccept").on('click', function () {
 
 });
 
-
+/* conflict btn */
 
 $(".newReqConflictBtn").on('click', function () {
 
@@ -317,6 +328,11 @@ $(".newReqConflictBtn").on('click', function () {
 
 
 });
+
+
+
+
+/*  pagination control var */
 
 var pagination = [0, 0, 0];
 /* 0-upcoming 1-history  2-rating */
@@ -394,6 +410,8 @@ function getUpcomingServiceTable() {
 }
 
 
+/* complete service req */
+
 $(document).on('click', '.CompleteService', function () {
 
     alert(serviceRequestId);
@@ -429,6 +447,7 @@ $(document).on('click', '.CompleteService', function () {
 
 
 /* row click*/
+
 $("#SPUpcomingServiceTable").click(function (e) {
 
 
@@ -479,19 +498,15 @@ document.getElementById("SpCancelRequestBtn").addEventListener("click", function
 
 
 
-/*     Service Request  history */
+/*     Service   history */
 
 
-/* get data from server */
-
+/* teble click function */
 
 $("#ServiceHistoryTbody").click(function (e) {
 
 
     serviceRequestId = e.target.closest("tr").getAttribute("data-value");
-
-
-
 
     document.getElementById("spserviceReqdetailsbtn").click();
 
@@ -499,6 +514,7 @@ $("#ServiceHistoryTbody").click(function (e) {
 });
 
 
+/* get data from server */
 
 $(document).on('click', '#ServiceHistoryTabBtn', function () {
 
@@ -556,7 +572,7 @@ function getServiceHistoryTable() {
 }
 
 
-
+/* export btn */
 
 document.getElementById('export').addEventListener('click', () => {
 
@@ -571,22 +587,10 @@ document.getElementById('export').addEventListener('click', () => {
 
 
 
+/* spsettings */
 
 
-
-
-
-
-
-
-
-
-
-
-/*settings */
-
-
-
+/* year selection box */
 $(document).ready(function () {
     var currentYear = (new Date()).getFullYear();
 
@@ -599,13 +603,12 @@ $(document).ready(function () {
     }
 });
 
+/* get data  */
+
 $(document).on('click', '#SettingsTabBtn', function () {
 
     getsettingsdata();
     
-});
-$(document).ready(function () {
-    getsettingsdata();
 });
 
 function getsettingsdata() {
@@ -673,6 +676,8 @@ function getsettingsdata() {
         }
     });
 }
+
+/*  city from postal code*/
 $("#SPSettingspincode").keyup(function () {
     console.log($("#SPSettingspincode").val());
     if ($("#SPSettingspincode").val().length == 6) {
@@ -703,6 +708,8 @@ function getCityFromPostalCode(zip) {
         }
     });
 }
+
+/*  update user data */
 
 
 $("#SPSaveChange").on('click', function () {
@@ -810,7 +817,7 @@ $("#SPSaveChange").on('click', function () {
 
 
 
-
+/* change password */
 
 $("#SPChangePassword").on('click', function () {
 
@@ -965,31 +972,11 @@ $(document).on('click', '#MyRatingTabBtn', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*Block customer*/
 
 
 
-
+/* data from server */
 
 $(document).on('click', '#BlockCustomerTabBtn', function () {
 
@@ -1055,7 +1042,7 @@ $(document).on('click', '#BlockCustomerTabBtn', function () {
 
 });
 
-
+/* block cust btn click */
 
 
 $(document).on('click', '.block-cust-btn', function () {
@@ -1123,17 +1110,16 @@ $(document).on('click', '.block-cust-btn', function () {
 
 
 
-
 var Newservicerequest = new DataTable("#SPServiceRequestTable", {
     dom: 't<"pagenum d-flex justify-content-between "<"pagenum-left"li><"pagenum-right"p>>',
     responsive: true,
     pagingType: "full_numbers",
     language: {
         paginate: {
-            first: "<img src='/Images/pagination-first.png' alt='first'/>",
-            previous: "<img src='/Images/pagination-left.png' alt='previous' />",
-            next: "<img src='/Images/pagination-left.png' alt='next' style='transform: rotate(180deg)' />",
-            last: "<img src='/Images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+            first: "<img src='/Images/pagination-first.png'  'alt='first'/>",
+            previous: "<img src='/Images/pagination-left.png' alt='previous'  />",
+            next: "<img src='/Images/pagination-left.png' alt='next' style='transform: rotate(180deg)'  />",
+            last: "<img src='/Images/pagination-first.png' alt='first' style='transform: rotate(180deg) '  />",
         },
 
         info: "Total Records : _MAX_",
@@ -1152,7 +1138,7 @@ var Newservicerequest = new DataTable("#SPServiceRequestTable", {
 
 
 
-
+/*ServiceHistoryDatatable  */
 
 function ServiceHistoryDatatable() {
     $("#SPServiceHistoryTable").DataTable({
@@ -1162,6 +1148,7 @@ function ServiceHistoryDatatable() {
         pagingType: "full_numbers",
         language: {
             paginate: {
+
                 first: "<img src='/Images/pagination-first.png' alt='first'/>",
                 previous: "<img src='/Images/pagination-left.png' alt='previous' />",
                 next: "<img src='/Images/pagination-left.png' alt='next' style='transform: rotate(180deg)' />",
@@ -1183,6 +1170,8 @@ function ServiceHistoryDatatable() {
 
 }
 
+
+//upcomingserviceDatatable()
 
 
 
