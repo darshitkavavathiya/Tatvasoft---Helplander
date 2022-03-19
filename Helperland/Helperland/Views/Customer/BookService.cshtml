@@ -1,6 +1,6 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.title = "bookservice";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.title = "bookservice";
 
 
 }
@@ -18,48 +18,46 @@
 
 
 <div>
-    <img src="~/images/calculator-banner.png" class="img-fluid" alt="...">
+	<img src="~/images/calculator-banner.png" class="img-fluid" alt="...">
 </div>
 
 <section class="prices-services">
-    <div>
-        <h1 class="title text-center">Set up your cleaning services</h1>
+	<div>
+		<h1 class="title text-center">Set up your cleaning services</h1>
 
-    </div>
+	</div>
 
-    <div class="text-center">
-        <img src="~/images/faq-star.png" class="img-fluid image-seprator" alt="...">
-    </div>
+	<div class="text-center">
+		<img src="~/images/faq-star.png" class="img-fluid image-seprator" alt="...">
+	</div>
 </section>
 
 <section class="container">
-    <div class="row">
-        <div class="col-lg-8 col-md-12 clearfix">
+	<div class="row">
+		<div class="col-lg-8 col-md-12 clearfix">
 
-            <div class="tab">
-                <button class="tablinks" onclick="set_service(event, 'at1')" id="defaultOpen">
-                    <img src="~/images/setupservice.png" alt=".."> <span class="tab-text"> Setup service</span>
-                </button>
-                <button class="tablinks" onclick="set_service(event, 'at2')" id="form2Btn">
-                    <img src="~/images/schedule.png"
-                         alt=".."> <span class="tab-text">Schedule & Plan</span>
-                </button>
-                <button class="tablinks" onclick="set_service(event, 'at3')" id="form3Btn">
-                    <img src="~/images/details.png"
-                         alt=".."> <span class="tab-text">Your Details</span>
-                </button>
-                <button class="tablinks" onclick="set_service(event, 'at4')" id="form4Btn">
-                    <img src="~/images/payment.png" alt=".."><span class="tab-text">Make Payment</span> 
-                </button>
-            </div>
-
-
-            @await Html.PartialAsync("form1")
-            @await Html.PartialAsync("form2")
-            @await Html.PartialAsync("form3")
-            @await Html.PartialAsync("form4")
+			<div class="tab">
+				<button class="tablinks" onclick="set_service(event, 'at1')" id="defaultOpen">
+					<img src="~/images/setupservice.png" alt=".."> <span class="tab-text"> Setup service</span>
+				</button>
+				<button class="tablinks" onclick="set_service(event, 'at2')" id="form2Btn">
+					<img src="~/images/schedule.png"
+						 alt=".."> <span class="tab-text">Schedule & Plan</span>
+				</button>
+				<button class="tablinks" onclick="set_service(event, 'at3')" id="form3Btn">
+					<img src="~/images/details.png"
+						 alt=".."> <span class="tab-text">Your Details</span>
+				</button>
+				<button class="tablinks" onclick="set_service(event, 'at4')" id="form4Btn">
+					<img src="~/images/payment.png" alt=".."><span class="tab-text">Make Payment</span> 
+				</button>
+			</div>
 
 
+			@await Html.PartialAsync("form1")
+			@await Html.PartialAsync("form2")
+			@await Html.PartialAsync("form3")
+			@await Html.PartialAsync("form4")
 
 
 
@@ -69,196 +67,234 @@
 
 
 
-        </div>
 
-        <div class="col-lg-4 col-md-12">
 
-            <div class="card">
-                <div class="card-header">
-                    Payment Summary
-                </div>
-                <div class="card-body">
-                    <p class="card-text"> <span class="SIForDate"></span> <span class=" SIForTime "></span> <br> 1 bed, 1 bath.</p>
 
-                    <h3 class="card-text">
-                        Duration
-                    </h3>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text">
-                                Basic
-                            </p>
-                        </div>
-                        <div class="col">
-                            <p class="card-text text-end ">
-                                <span class="SIForDuration">  </span>   Hrs
-                            </p>
-                        </div>
-                    </div>
-                    <p class="card-text hidden" id="extra3">
-                        Inside cabinets <span class="extratime">30 min</span>
-                    </p>
-                    <p class="card-text hidden" id="extra5">
-                        Inside fridge  <span class="extratime"> 30 min </span>
-                    </p>
-                    <p class="card-text hidden" id="extra4">
-                        Inside oven  <span class="extratime"> 30 min </span>
-                    </p>
-                    <p class="card-text hidden" id="extra2">
-                        Laundry wash and dry   <span class="extratime"> 30 min </span>
-                    </p>
-                    <p class="card-text hidden" id="extra1">
-                        Interior windows  <span class="extratime">  30 min </span>
-                    </p>
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text total_time">
-                                Total Service Time
-                            </p>
-                        </div>
-                        <div class="col">
-                            <p class="card-text text-end price">
-                                <span id="total_hours">3</span>Hrs
 
-                            </p>
-                        </div>
-                    </div>
 
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text">
-                                Per cleaning
-                            </p>
-                        </div>
-                        <div class="col">
-                            <p class="card-text text-end price">
-                                $<span id="total_price"> 75 </span>
-                            </p>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text">
-                                Discount
-                            </p>
-                        </div>
-                        <div class="col">
-                            <p class="card-text text-end price">
-                                -$  <span id="discount"> 0</span>
-                            </p>
-                        </div>
-                    </div>
 
-                    <hr>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text total_payment">
-                                Total Payment
-                            </p>
-                        </div>
-                        <div class="col">
-                            <p class="card-text text-end total_price">
-                                $ <span id="priceAfterDiscount"> 75</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text">
-                                Effective Price
-                            </p>
-                        </div>
-                        <div class="col">
-                            <p class="card-text text-end effective_price">
-                                $<span id="priceAfterPromo"> 75 </span>
-                            </p>
-                        </div>
-                    </div>
-                    <p class="card-text saving">*You will save <span id="promo">0</span> $ according to §35a EStG.</p>
-                </div>
-                <div class="card-footer">
-                    <img src="~/images/smiley.png" alt=".."> See what is always included
-                </div>
-            </div>
+			
+<!-- Modal hidden -->
 
-            <div class="suggestion">
-                <h3 class="text-center">
-                    Questions?
-                </h3>
-                <div class="que">
-                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample1" role="button"
-                       aria-expanded="false" aria-controls="collapseExample">
-                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
-                        place?
-                    </a>
-                    <div class="collapse" id="collapseExample1">
-                        <div class="small-content">
-                            ans.
-                        </div>
-                    </div>
-                </div>
-                <div class="que">
-                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample2" role="button"
-                       aria-expanded="false" aria-controls="collapseExample">
-                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
-                        place?
-                    </a>
-                    <div class="collapse" id="collapseExample2">
-                        <div class="small-content">
-                            ans.
-                        </div>
-                    </div>
-                </div>
-                <div class="que">
+ <button type="button" class="btn btn-primary d-none" id="completemodelbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
 
-                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample3" role="button"
-                       aria-expanded="false" aria-controls="collapseExample">
-                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
-                        place?
-                    </a>
-                    <div class="collapse" id="collapseExample3">
-                        <div class="small-content">
-                            ans.
-                        </div>
-                    </div>
-                </div>
-                <div class="que">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+	<div class="modal-content">
+	  <div class="modal-header">
 
-                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample4" role="button"
-                       aria-expanded="false" aria-controls="collapseExample">
-                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
-                        place?
-                    </a>
-                    <div class="collapse" id="collapseExample4">
-                        <div class="small-content">
-                            ans.
-                        </div>
-                    </div>
-                </div>
-                <div class="que">
+		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	  </div>
+	  <div class="modal-body">
+			  <h4 class="modal-title" id="ModalLabel_SID"></h4>
+			  <h5 id="Model_SID"></h5>
+	  </div>
+	  
+	</div>
+  </div>
+</div>
+<!-- Modal hidden end -->
 
-                    <a class="large-content" data-bs-toggle="collapse" href="#collapseExample5" role="button"
-                       aria-expanded="false" aria-controls="collapseExample">
-                        <img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
-                        place?
-                    </a>
-                    <div class="collapse" id="collapseExample5">
-                        <div class="small-content">
-                            ans.
-                        </div>
-                    </div>
-                </div>
-                <div class="more">
 
-                    <a href="#"> For more help</a>
-                </div>
-            </div>
-        </div>
 
-    </div>
+
+
+
+
+
+		</div>
+
+		<div class="col-lg-4 col-md-12">
+
+			<div class="card">
+				<div class="card-header">
+					Payment Summary
+				</div>
+				<div class="card-body">
+					<p class="card-text"> <span class="SIForDate"></span> <span class=" SIForTime "></span> <br> 1 bed, 1 bath.</p>
+
+					<h3 class="card-text">
+						Duration
+					</h3>
+					<div class="row">
+						<div class="col">
+							<p class="card-text">
+								Basic
+							</p>
+						</div>
+						<div class="col">
+							<p class="card-text text-end ">
+								<span class="SIForDuration">  </span>   Hrs
+							</p>
+						</div>
+					</div>
+					<p class="card-text hidden" id="extra3">
+						Inside cabinets <span class="extratime">30 min</span>
+					</p>
+					<p class="card-text hidden" id="extra5">
+						Inside fridge  <span class="extratime"> 30 min </span>
+					</p>
+					<p class="card-text hidden" id="extra4">
+						Inside oven  <span class="extratime"> 30 min </span>
+					</p>
+					<p class="card-text hidden" id="extra2">
+						Laundry wash and dry   <span class="extratime"> 30 min </span>
+					</p>
+					<p class="card-text hidden" id="extra1">
+						Interior windows  <span class="extratime">  30 min </span>
+					</p>
+					<hr>
+					<div class="row">
+						<div class="col">
+							<p class="card-text total_time">
+								Total Service Time
+							</p>
+						</div>
+						<div class="col">
+							<p class="card-text text-end price">
+								<span id="total_hours">3</span>Hrs
+
+							</p>
+						</div>
+					</div>
+
+					<hr>
+					<div class="row">
+						<div class="col">
+							<p class="card-text">
+								Per cleaning
+							</p>
+						</div>
+						<div class="col">
+							<p class="card-text text-end price">
+								$<span id="total_price"> 75 </span>
+							</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col">
+							<p class="card-text">
+								Discount
+							</p>
+						</div>
+						<div class="col">
+							<p class="card-text text-end price">
+								-$  <span id="discount"> 0</span>
+							</p>
+						</div>
+					</div>
+
+					<hr>
+					<div class="row">
+						<div class="col">
+							<p class="card-text total_payment">
+								Total Payment
+							</p>
+						</div>
+						<div class="col">
+							<p class="card-text text-end total_price">
+								$ <span id="priceAfterDiscount"> 75</span>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<p class="card-text">
+								Effective Price
+							</p>
+						</div>
+						<div class="col">
+							<p class="card-text text-end effective_price">
+								$<span id="priceAfterPromo"> 75 </span>
+							</p>
+						</div>
+					</div>
+					<p class="card-text saving">*You will save <span id="promo">0</span> $ according to §35a EStG.</p>
+				</div>
+				<div class="card-footer">
+					<img src="~/images/smiley.png" alt=".."> See what is always included
+				</div>
+			</div>
+
+			<div class="suggestion">
+				<h3 class="text-center">
+					Questions?
+				</h3>
+				<div class="que">
+					<a class="large-content" data-bs-toggle="collapse" href="#collapseExample1" role="button"
+					   aria-expanded="false" aria-controls="collapseExample">
+						<img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+						place?
+					</a>
+					<div class="collapse" id="collapseExample1">
+						<div class="small-content">
+							ans.
+						</div>
+					</div>
+				</div>
+				<div class="que">
+					<a class="large-content" data-bs-toggle="collapse" href="#collapseExample2" role="button"
+					   aria-expanded="false" aria-controls="collapseExample">
+						<img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+						place?
+					</a>
+					<div class="collapse" id="collapseExample2">
+						<div class="small-content">
+							ans.
+						</div>
+					</div>
+				</div>
+				<div class="que">
+
+					<a class="large-content" data-bs-toggle="collapse" href="#collapseExample3" role="button"
+					   aria-expanded="false" aria-controls="collapseExample">
+						<img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+						place?
+					</a>
+					<div class="collapse" id="collapseExample3">
+						<div class="small-content">
+							ans.
+						</div>
+					</div>
+				</div>
+				<div class="que">
+
+					<a class="large-content" data-bs-toggle="collapse" href="#collapseExample4" role="button"
+					   aria-expanded="false" aria-controls="collapseExample">
+						<img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+						place?
+					</a>
+					<div class="collapse" id="collapseExample4">
+						<div class="small-content">
+							ans.
+						</div>
+					</div>
+				</div>
+				<div class="que">
+
+					<a class="large-content" data-bs-toggle="collapse" href="#collapseExample5" role="button"
+					   aria-expanded="false" aria-controls="collapseExample">
+						<img src="~/images/right-arrow.png" alt=""> Which Helperland professional will come to my
+						place?
+					</a>
+					<div class="collapse" id="collapseExample5">
+						<div class="small-content">
+							ans.
+						</div>
+					</div>
+				</div>
+				<div class="more">
+
+					<a href="#"> For more help</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </section>
 
 

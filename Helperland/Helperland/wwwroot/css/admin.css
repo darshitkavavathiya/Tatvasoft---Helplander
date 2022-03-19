@@ -85,7 +85,7 @@ h4 {
 
 .table-col {
     background-color: #0000001A;
-    padding: 20px 20px 50px 20px;
+    padding: 20px 20px 0px 20px;
 }
 
     .table-col p {
@@ -140,7 +140,6 @@ td button {
     border: 1px solid #67B644;
     background-color: #67B644;
     color: #ffffff;
-    font-size: 13px;
     padding: 4px 11px 5px 11px;
 }
 
@@ -198,10 +197,13 @@ td button {
 }
 
 .admin-pagenumber {
-    margin: 10px 0px 10px 0px;
+    background: white;
+    margin: 0px 0px 10px 0px;
+    padding: 10px;
+    width: 1240px;
+    border: 2px solid #ccc;
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
     color: #777777;
     flex-wrap: wrap;
 }
@@ -226,13 +228,13 @@ td button {
     flex-wrap: wrap;
 }
 
-.admin-pagenumber-btn {
+.admin-pagenumber-right a {
     padding: 10px 15.33px 10px 15px;
     border: 1px solid #E1E1E1;
     font-size: 14px;
 }
 
-.admin-pagenumber-right .active {
+.admin-pagenumber-right .current {
     background-color: #646464;
     color: white
 }
@@ -246,7 +248,7 @@ td button {
 .admin-table {
     margin-top: 20px;
     border: 1px solid #ccc;
-    margin-left: 10px;
+    width: 1240px !important;
     color: #646464;
     font-size: 16px;
     font-weight: 400;
@@ -274,4 +276,94 @@ td button {
     font-weight: 400;
     padding: 12px;
     margin: 0%;
+}
+
+
+/*.cap-icon {
+    width: 44px;
+    height: 44px;
+    margin-right: 5px;
+    padding: 7px 7px;
+    border: solid 1px #aaa;
+    background-color: var(--white);
+    border-radius: 50%;
+    float: left;
+}*/
+
+
+    .cap-icon img {
+        width: 44px;
+        height: 44px;
+        margin-right: 5px;
+        border: solid 1px #aaa;
+        background-color: var(--white);
+        border-radius: 50%;
+        float: left;
+    }
+
+
+
+.checked {
+    color: #ECB91C;
+}
+
+.new {
+    border: 1px solid #F2BB37;
+    background-color: #F2BB37;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 4px 11px 5px 11px;
+}
+
+.pending {
+    border: 1px solid #1FB6FF;
+    background-color: #1FB6FF;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 4px 11px 5px 11px;
+}
+
+.completed {
+    border: 1px solid #67B644;
+    background-color: #67B644;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 4px 11px 5px 11px;
+}
+
+.cancelled {
+    border: 1px solid #FF6B6B;
+    background-color: #FF6B6B;
+    color: #ffffff;
+    font-size: 13px;
+    padding: 4px 11px 5px 11px;
+}
+
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+
+.thid {
+    width: 10% !important;
+}
+.thdate {
+    width: 15% !important;
+}
+.thcust {
+    width: 25% !important;
+}
+.thsp {
+    width: 20% !important;
+}
+.thprice {
+    width: 10% !important;
+}
+.thstatus {
+    width: 10% !important;
+}
+.thaction {
+    width: 10% !important;
 }

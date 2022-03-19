@@ -47,10 +47,6 @@ namespace Helperland.Controllers
                     ViewBag.Name = null;
 
 
-
-
-
-
                     if (U.UserTypeId == 0)
                     {
                         if (user.remember == true)
@@ -89,14 +85,22 @@ namespace Helperland.Controllers
 
                         return RedirectToAction("SPServiceRequest", "Serviceprovider");
                     }
+                    else if (U.UserTypeId == 2)
+                    {
+                        if (user.remember == true)
+                        {
+                            CookieOptions cookieRemember = new CookieOptions();
+                            cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
+                            Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
+                        }
 
-                    /*
-                      else if (U.UserTypeId == 3)
-                      {
-                          return RedirectToAction("ServiceRequest", "Admin");
-                      }*/
 
-                    return RedirectToAction("CustomerDashboard", "Customer");
+                        HttpContext.Session.SetInt32("userId", U.UserId);
+
+                        return RedirectToAction("AdminPanel", "Admin");
+                    }
+
+                    //return RedirectToAction("CustomerDashboard", "Customer");
                 }
                 else
                 {
@@ -117,7 +121,7 @@ namespace Helperland.Controllers
         public IActionResult logout()
         {
             HttpContext.Session.Clear();
-          
+
             Response.Cookies.Delete("userId");
             return RedirectToAction("Index", "Public", new { logoutModal = "true" });
         }
@@ -224,7 +228,7 @@ namespace Helperland.Controllers
                 MimeMessage message = new MimeMessage();
 
                 MailboxAddress from = new MailboxAddress("Helperland",
-                "darshit2669@gmail.com");
+                "darshitkavathiya34@gmail.com");
                 message.From.Add(from);
 
                 MailboxAddress to = new MailboxAddress(user.FirstName, email);
@@ -241,7 +245,7 @@ namespace Helperland.Controllers
 
                 SmtpClient client = new SmtpClient();
                 client.Connect("smtp.gmail.com", 587, false);
-                client.Authenticate("vedantjotangiya@gmail.com", "Vedantjot@123");
+                client.Authenticate("darshitkavathiya34@gmail.com", "Dar@1234");
                 client.Send(message);
                 client.Disconnect(true);
                 client.Dispose();

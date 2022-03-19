@@ -170,6 +170,7 @@ $(document).ready(function () {
 
 
 function ClickFunction(id) {
+    alert(id);
     document.getElementById(id).click();
 
 }
@@ -479,7 +480,7 @@ function completeBookService() {
                 if (result.value == "false") {
                     $('#ModalLabel_SID').text("Opps! Something Went wrong").css("color", "red");
                     $('#Model_SID').text("Please Try again");
-                    ClickFunction("complete");
+                    ClickFunction("completemodelbtn");
 
                 }
                 else {
@@ -487,7 +488,12 @@ function completeBookService() {
 
                     $('#ModalLabel_SID').text("Service Request has been Created Successfully").css("color", "Green");
                     $('#Model_SID').text("Your service id : " + result.value);
-                    ClickFunction("complete");
+           
+                    ClickFunction("defaultOpen");
+                  
+                        ClickFunction("completemodelbtn");
+                  
+                 
                    
                 }
             },

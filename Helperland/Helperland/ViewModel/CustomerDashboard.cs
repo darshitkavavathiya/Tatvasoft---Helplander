@@ -23,6 +23,8 @@ namespace Helperland.ViewModel
         public string UserProfilePicture { get; set; }
 
         public decimal SPRatings { get; set; }
+        public float AverageRating { get; set; }
+
 
         public string SPAvatar { get; set; }
 
@@ -49,6 +51,5 @@ namespace Helperland.ViewModel
         public string Email { get; set; }
 
         public string Comments { get; set; }
-        public float AverageRating { get; set; }
     }
 }

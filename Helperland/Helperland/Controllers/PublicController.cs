@@ -32,20 +32,35 @@ namespace Helperland.Controllers
 
         public IActionResult Index()
         {
+            int? type=null;
             if (HttpContext.Session.GetInt32("userId") != null)
             {
                 var id = HttpContext.Session.GetInt32("userId");
                 User user = _db.Users.Find(id);
                 ViewBag.Name = user.FirstName;
                 ViewBag.UserType = user.UserTypeId;
-               
+                type = user.UserTypeId;
+
+
             }
             else if (Request.Cookies["userId"] != null)
             {
                 var user = _db.Users.FirstOrDefault(x => x.UserId == Convert.ToInt32(Request.Cookies["userId"]));
                 ViewBag.Name = user.FirstName;
                 ViewBag.UserType = user.UserTypeId;
+                type = user.UserTypeId;
+
             }
+            if(type != null)
+            {
+                if (type == 2)
+                {
+
+                    return RedirectToAction("AdminPanel", "Admin");
+                }
+            }
+
+
             return View();
         }
 

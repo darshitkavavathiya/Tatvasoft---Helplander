@@ -128,7 +128,7 @@ document.getElementById("RescheduleServiceRequest").addEventListener("click", fu
                 window.location.reload();
             }
             else {
-                alert("fail");
+                alert(result);
             }
         },
         error: function () {

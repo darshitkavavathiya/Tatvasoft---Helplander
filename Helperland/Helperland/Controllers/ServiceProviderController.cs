@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Helperland.ViewModel;
+using System.Threading.Tasks;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace Helperland.Controllers
 {
@@ -217,6 +220,9 @@ namespace Helperland.Controllers
 
 
         /*--------- Accept Service Req------------*/
+
+
+
         [HttpGet]
         public string acceptService(SPDashboard ID)
         {
@@ -249,11 +255,12 @@ namespace Helperland.Controllers
 
             serviceRequest.Status = 2;
             serviceRequest.ServiceProviderId = spId;
-            serviceRequest.SpacceptedDate = DateTime.Now;
             var result = _db.ServiceRequests.Update(serviceRequest);
             _db.SaveChanges();
             if (result != null)
             {
+                serviceRequest.ServiceRequestId = result.Entity.ServiceRequestId;
+                sendServiceMailtoSP(serviceRequest);
                 return "Suceess";
             }
             else
@@ -262,6 +269,93 @@ namespace Helperland.Controllers
             }
 
         }
+
+
+
+
+
+
+
+        public async Task sendServiceMailtoSP(ServiceRequest req)
+        {
+            int Id = -1;
+
+
+            if (HttpContext.Session.GetInt32("userId") != null)
+            {
+                Id = (int)HttpContext.Session.GetInt32("userId");
+            }
+            else if (Request.Cookies["userId"] != null)
+            {
+                Id = int.Parse(Request.Cookies["userId"]);
+
+            }
+
+
+
+
+            var serviceProviderList = _db.Users.Where(x => x.UserTypeId == 1 && x.IsApproved == true && x.UserId != req.ServiceProviderId).ToList();
+
+            var SpByBlocked = _db.FavoriteAndBlockeds.Where(x => x.TargetUserId == req.UserId && x.IsBlocked == true).Select(x => x.UserId).ToList();
+
+
+
+
+            await Task.Run(() =>
+            {
+                foreach (var temp in serviceProviderList)
+                {
+                    if (!SpByBlocked.Contains(temp.UserId))
+                    {
+                        MimeMessage message = new MimeMessage();
+
+                        MailboxAddress from = new MailboxAddress("Helperland",
+                        "darshitkavathiya34@gmail.com");
+                        message.From.Add(from);
+
+                        MailboxAddress to = new MailboxAddress(temp.FirstName, temp.Email);
+                        message.To.Add(to);
+
+                        message.Subject = "New Service Request";
+
+                        BodyBuilder bodyBuilder = new BodyBuilder();
+                        bodyBuilder.HtmlBody = "<h1>A service with ID number " + req.ServiceRequestId + " is no more avaliable</h1>";
+
+
+
+                        message.Body = bodyBuilder.ToMessageBody();
+
+                        SmtpClient client = new SmtpClient();
+                        client.Connect("smtp.gmail.com", 587, false);
+                    mailto: client.Authenticate("darshitkavathiya34@gmail.com", "Dar@1234");
+                        client.Send(message);
+                        client.Disconnect(true);
+                        client.Dispose();
+                    }
+                }
+
+
+            });
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public string ConflictDetails(SPDashboard ID)

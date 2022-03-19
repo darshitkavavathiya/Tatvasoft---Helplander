@@ -1,0 +1,170 @@
+﻿ <div class="col-10  table-col tab-contant" id="AdminServiceReq">
+
+                <div class="row">
+
+
+                    <div class="col">
+                        <h4>Service Request</h4>
+
+                    </div>
+
+
+
+
+                </div>
+                <br>
+                <div class="row  form">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" id="filterServiceReqId"
+                                       placeholder="Service ID">
+
+                            </div>
+                             <div class="col">
+                                <input type="number" class="form-control" id="filterPincode"
+                                       placeholder="Pincode">
+
+                            </div>
+                               <div class="col">
+                                <input type="text" class="form-control"
+                                       placeholder="E-mail" id="filterEmail">
+
+                            </div>
+                            
+                           <div class="col">
+                                <input type="text" class="form-control"
+                                       placeholder="Customer" id="filterCustomer">
+
+                            </div>
+                           <div class="col">
+                                <input type="text" class="form-control"
+                                       placeholder="ServiceProvider" id="filterSp">
+
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <select class="form-select" aria-label="" id="filterStatus">
+                                    <option value=null selected>Status</option>
+                                    <option value="1">new</option>
+                                    <option value="2">panding</option>
+                                    <option value="3">completed</option>
+                                    <option value="4">canceled</option>
+                                </select>
+                            </div>
+
+                            <div class="col">
+                                <input type="date" class="form-control" placeholder="From Date" id="filterFromdate">
+                            </div>
+                            <div class="col">
+                                <input type="date" class="form-control" placeholder="To Date" id="filterTodate">
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-primary form-search me-4" id="filterSubmit">Serach</a>
+                                      <button type="reset" class="btn btn-primary form-clear" id="filterclear">Clear</button>
+
+                            </div>
+                <div class="col"></div>
+                            </div>
+                    </form>
+                </div>
+                <div class="row  table">
+
+                    <table id="adminservicereqtable" class="admin-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col" class="thid" >
+                                    Service Id<img src="/Images/sort.png" alt="...">
+                                </th>
+                                <th scope="col" class="thdate">
+                                    Service date <img src="/Images/sort.png"
+                                                      alt="...">
+                                </th>
+                                <th scope="col" class="thcust">
+                                    Customer details<img src="/Images/sort.png"
+                                                         alt="...">
+                                </th>
+                                <th scope="col" class="thsp">
+                                    Service provider<img src="/Images/sort.png"
+                                                         alt="...">
+                                </th>
+                                <th scope="col" class="thprice">Price<img src="/Images/sort.png" alt="..."></th>
+                                <th scope="col" class="thstatus">Status<img src="/Images/sort.png" alt="..."></th>
+                                <th scope="col" class="thaction">Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id= "adminServicereqTbody">
+                            <tr>
+                                <td data-label="Service ID">
+                                    <p>323436</p>
+                                </td>
+                                <td data-label="Service date">
+                                    <p>
+                                        <img src="/Images/calendar2.png" alt="calender">
+                                        09/04/2018 <br>
+                                        <img src="/Images/layer-14.png" alt="clock">
+                                        12:00-18:00
+                                    </p>
+                                </td>
+                                <td data-label="Customers details">
+                                    <p>
+                                        David Bough <br>
+                                        <img src="/Images/layer-15.png"
+                                             alt="home">musterstrabe 5,12345 Bonn
+                                    </p>
+                                </td>
+                                    <td>
+                                    <div class="cap-icon">
+                                        <img src="/Images/cap.png"
+                                             alt="..">
+                                    </div>Lyum Watson
+                                    <div>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span>4</span>
+                                    </div>
+                                </td>
+                                <td data-label=" Status">
+                                    <button class="new">New</button>
+                                </td>
+                                <td data-label = "Price"> 100 &euro;  </td>
+
+                                <td data-label="Actions">
+                                    <div class="popup" onclick="reply_click(this.id)"
+                                         id="a">
+                                        <img src="/Images/group-38.png" alt="...">
+                                        <div class="popuptext" id="a_popup">
+                                            <p>Edit & Reschedule </p>
+                                                   
+                                            <p>Cancel </p>
+                                             <p>Refund</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                           
+
+
+                        </tbody>
+
+                    </table>
+                     
+                                   
+                           
+                    <span class="copyright">
+                        ©2018 Helperland. All rights reserved.
+                    </span>
+
+                </div>
+
+            </div>

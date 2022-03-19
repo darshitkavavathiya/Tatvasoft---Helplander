@@ -9,20 +9,23 @@ For Service Status
 case 1:new
 case 2:pending
 case 3:completed
-case 4:cancelled
+case 4:cancell
+
 
 
 
 nationality
-<option value="1">Indian</option>
-								<option value="2">American</option>
-								<option value="3">German</option>
+
+1-Indian
+2-American
+3-German
 
 
-								gender 
-								1- male 
-								2- female 
-								3-nt 
+ 
+ gender  
+ 1- male  
+ 2- female  
+ 3-nt 
 
 
 
@@ -33,9 +36,33 @@ user profile url to db :
 
 
   cust id password 
-  darshit26697@gmail.com
+
   Dar@123
 
   sp id password
-  sptest@gmail.com
+ 
   Dar@123
+
+
+  admin
+
+  admintest1@yopmail.com
+  Dar@1234
+
+
+
+
+
+  
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+           
+        },
+        error: function () {
+            alert("error");
+        }
+    });

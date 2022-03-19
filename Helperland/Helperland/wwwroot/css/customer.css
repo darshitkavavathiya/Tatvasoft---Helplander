@@ -316,16 +316,18 @@ p.margin {
     }
 }
 
-.cap-icon {
+.cap-icon img {
     width: 44px;
     height: 44px;
+  
     margin-right: 5px;
-    padding: 7px 7px;
+  
     border: solid 1px #aaa;
     background-color: var(--white);
     border-radius: 50%;
     float: left;
 }
+
 
 
 .ServiceHistroyExport {
