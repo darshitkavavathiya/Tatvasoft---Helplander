@@ -877,6 +877,9 @@ $("#SPChangePassword").on('click', function () {
             data: data,
             success: function (result) {
                 if (result.value == "true") {
+
+                    
+
                     $("#mSchangePasswordAlert").removeClass("alert-danger d-none").addClass("alert-success").text("Password Changed Successfully.");
                 }
                 else if (result.value == "wrong password") {

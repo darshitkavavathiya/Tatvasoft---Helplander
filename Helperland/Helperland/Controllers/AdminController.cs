@@ -1,17 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Helperland.Models.Data;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System;
 using Helperland.Models;
 using Helperland.ViewModel;
 using System.Collections.Generic;
-using PagedList;
-using PagedList.Mvc;
 using System.Threading.Tasks;
 using MimeKit;
 using MailKit.Net.Smtp;
+
 
 namespace Helperland.Controllers
 {
@@ -63,10 +61,12 @@ namespace Helperland.Controllers
 
             List<AdminservicereqDTO> tabledata = new List<AdminservicereqDTO>();
 
-            var serviceRequestsList = _db.ServiceRequests.ToList();
+            var serviceRequestsList = _db.ServiceRequests.ToList().OrderByDescending(x=> x.ServiceRequestId);
 
             foreach (ServiceRequest temp in serviceRequestsList)
             {
+
+                Console.WriteLine(temp.ServiceRequestId);
                 if (checkServiceRequest(temp, filter))
                 {
 
@@ -234,10 +234,138 @@ namespace Helperland.Controllers
 
 
 
+        public JsonResult GetEditPopupData(ServiceRequest Id)
+        {
+            Console.WriteLine(Id.ServiceRequestId);
+
+
+            AdminPopUpDTO adminPopUpDTO = new AdminPopUpDTO();
+
+            adminPopUpDTO.address = _db.ServiceRequestAddresses.FirstOrDefault(x => x.ServiceRequestId == Id.ServiceRequestId);
+
+            DateTime starttime = _db.ServiceRequests.Where(x => x.ServiceRequestId == Id.ServiceRequestId).Select(x => x.ServiceStartDate).FirstOrDefault();
+            Console.WriteLine(starttime.ToString());
+            adminPopUpDTO.Date = starttime.ToString("MM-dd-yyyy");
+
+            adminPopUpDTO.StartTime = starttime.ToString("HH:mm:ss");
+
+            Console.WriteLine(adminPopUpDTO.StartTime);
+
+            return Json(adminPopUpDTO);
+
+
+
+        }
+
+
+
+        public JsonResult UpdateServiceReq(AdminPopUpDTO DTO)
+        {
+            ServiceRequest serviceRequest = _db.ServiceRequests.FirstOrDefault(x=> x.ServiceRequestId == DTO.ServiceRequestId);
+
+            DateTime dateTime= Convert.ToDateTime(DTO.Date);
+            Console.Write("269"+dateTime.ToString());
+            serviceRequest.ServiceStartDate =dateTime;
+
+ 
+            
+
+
+
+            ServiceRequestAddress serviceRequestAddress = _db.ServiceRequestAddresses.FirstOrDefault(x => x.ServiceRequestId == DTO.ServiceRequestId);
+            Console.WriteLine(DTO.ServiceRequestId);
+
+
+            serviceRequestAddress.AddressLine1 = DTO.address.AddressLine1;
+            serviceRequestAddress.AddressLine2 = DTO.address.AddressLine2;
+
+            serviceRequestAddress.PostalCode = DTO.address.PostalCode;
+            serviceRequestAddress.City= DTO.address.City;
+            serviceRequestAddress.State = DTO.address.State;
+       
+            var result2 = _db.ServiceRequestAddresses.Update(serviceRequestAddress);
+            _db.SaveChanges();
+            var result1 = _db.ServiceRequests.Update(serviceRequest);
+            _db.SaveChanges();
+
+            if (result1 != null&& result2 != null)
+            {
+                return Json("true");
+            }
+            else
+            {
+                return Json("false");
+            }
+            
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> CencleServiceReq(ServiceRequest cancel)
+        {
+
+
+
+            Console.WriteLine(cancel.ServiceRequestId);
+            ServiceRequest cancelService = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == cancel.ServiceRequestId);
+            cancelService.Status = 4;
+           
+
+            var result = _db.ServiceRequests.Update(cancelService);
+            _db.SaveChanges();
+            if (result != null)
+            {
+
+                await Task.Run(() =>
+                {
+
+                    if (cancelService.ServiceProviderId != null)
+                    {
+
+                        User temp = _db.Users.FirstOrDefault(x => x.UserId == cancelService.ServiceProviderId);
+
+
+                        MimeMessage message = new MimeMessage();
+
+                        MailboxAddress from = new MailboxAddress("Helperland",
+                        "darshitkavathiya34@gmail.com");
+                        message.From.Add(from);
+
+                        MailboxAddress to = new MailboxAddress(temp.FirstName, temp.Email);
+                        message.To.Add(to);
+
+                        message.Subject = "Service Request cancelled ";
+
+                        BodyBuilder bodyBuilder = new BodyBuilder();
+                        bodyBuilder.HtmlBody = "<h1>Service request with Id=" + cancelService.ServiceRequestId + ", has been cancled </ h1 > ";
+
+
+
+                        message.Body = bodyBuilder.ToMessageBody();
+
+                        SmtpClient client = new SmtpClient();
+                        client.Connect("smtp.gmail.com", 587, false);
+                    mailto: client.Authenticate("darshitkavathiya34@gmail.com", "Dar@1234");
+                        client.Send(message);
+                        client.Disconnect(true);
+                        client.Dispose();
+
+                    }
 
 
 
 
+                });
+
+
+
+
+                return Ok(Json("true"));
+            }
+
+            return Ok(Json("false"));
+        }
 
 
 

@@ -17,6 +17,30 @@ function reply_click(clicked_id) {
 
 }
 
+
+
+
+
+
+
+
+
+
+//$("#adminservicereqtable").click(function (e) {
+
+//    if (e.target.classList != "popup") {
+//        var popuphide = document.getElementsByClassName("popuptext show");
+
+
+//        for (i = 0; i < popuphide.length; i++) {
+
+//            popuphide[i].classList.remove("show");
+//        }
+//    }
+
+//});
+
+
 //function reply(clicked_id) {
 //    var id = clicked_id + "_popup"
 //    var obj = document.getElementById(id);
@@ -88,7 +112,7 @@ $(document).on("click", "#filterclear", function () {
     window.setTimeout(function () {
         getadminservicereq();
     }, 500);
-  
+
 
 });
 
@@ -110,7 +134,7 @@ function getadminservicereq() {
         type: 'GET',
         url: '/Admin/GetServiceRequest',
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        data:data,
+        data: data,
         success: function (result) {
 
 
@@ -118,7 +142,7 @@ function getadminservicereq() {
 
             $("#adminServicereqTbody").empty();
 
-            
+
 
             for (var i = 0; i < result.length; i++) {
 
@@ -127,9 +151,8 @@ function getadminservicereq() {
                 var popupfield = "";
                 var display = "";
 
-                if (result[i].userProfilePicture == null)
-                {
-                    result[i].userProfilePicture = "cap.png" ;
+                if (result[i].userProfilePicture == null) {
+                    result[i].userProfilePicture = "cap.png";
                 }
 
                 if (result[i].serviceProvider == null) {
@@ -149,62 +172,64 @@ function getadminservicereq() {
                     }
 
                 }
-                star +=" "+ result[i].averageRating;
+                star += " " + result[i].averageRating;
 
-               
-                 
+
+
                 switch (result[i].status) {
 
                     case 1: /*new */
                         varStatus = "new";
-                        popupfield = ' <p>Edit & Reschedule </p>           <p>Cancel </p>  '
+                        popupfield = ' <p  class="AdminEdit" data-value=' + result[i].serviceRequestId + '>Edit & Reschedule </p>   '
+                            + '<p class="AdminCancle" data-value=' + result[i].serviceRequestId + '> Cancel </p>  ';
                         break;
                     case 2: /*pending */
                         varStatus = "pending";
-                        popupfield = ' <p>Edit & Reschedule </p>           <p>Cancel </p>  '
+                        popupfield = ' <p  class="AdminEdit" data-value=' + result[i].serviceRequestId + '>Edit & Reschedule </p> '
+                            + '<p class="AdminCancle" data-value=' + result[i].serviceRequestId + '> Cancel </p>  ';
                         break;
                     case 3: /*completed */
                         varStatus = "completed";
-                        popupfield = '    <p> Refund</p>  '
+                        popupfield = '    <p> Refund</p>  ';
                         break;
                     case 4: /*cancelled*/
                         varStatus = "cancelled";
-                        popupfield = '    <p> Refund</p>  '
+                        popupfield = '    <p> Refund</p>  ';
                         break;
                     default: /*other status */
                         varStatus = "invalid";
                 }
-                                                         
+
                 var html = '' +
-                    '<tr>' +
+                    '<tr >' +
                     '    <td data-label="Service ID" class="text-center">' +
-                    '        ' + result[i].serviceRequestId + 
+                    '        ' + result[i].serviceRequestId +
                     '    </td>' +
                     '    <td data-label="Service date">' +
                     '        <p>' +
                     '            <img src="/Images/calendar2.png" alt="calender">' +
                     '                ' + result[i].date + ' <br>' +
                     '                    <img src="/Images/layer-14.png" alt="clock">' +
-                    '                      ' + result[i].startTime + '-' + result[i].endTime +'</p>' +
+                    '                      ' + result[i].startTime + '-' + result[i].endTime + '</p>' +
                     '                                </td>' +
                     '                <td data-label="Customers details">' +
                     '                    <p>' +
-                    '                       '+result[i].customerName +' <br>' +
+                    '                       ' + result[i].customerName + ' <br>' +
                     '                            <img src="/Images/layer-15.png"' +
-                    '                                alt="home">'+result[i].address+'' +
+                    '                                alt="home">' + result[i].address + '' +
                     '                                    </p>' +
                     '                                </td>' +
                     '                        <td>' +
-                    '                            <div class="cap-icon '+ display +'">' +
-                    '                                <img src="/Images/' + result[i].userProfilePicture +'"' +
+                    '                            <div class="cap-icon ' + display + '">' +
+                    '                                <img src="/Images/' + result[i].userProfilePicture + '"' +
                     '                                    alt="..">' +
-                    '                                    </div>' + result[i].serviceProvider   +
-                    '                                <div class='+display+'>' + star +
+                    '                                    </div>' + result[i].serviceProvider +
+                    '                                <div class=' + display + '>' + star +
                     '                                </div>' +
                     '                        </td>' +
                     '                            <td data-label="Price"> ' + result[i].totalCost + ' &euro;  </td>' +
                     '                            <td data-label=" Status">' +
-                    '                                <button class="'+ varStatus +'">'+ varStatus + '</button>' +
+                    '                                <button class="' + varStatus + '">' + varStatus + '</button>' +
                     '                            </td>' +
                     '                            <td data-label="Actions">' +
                     '                                <div class="popup" onclick="reply_click(this.id)"' +
@@ -223,7 +248,7 @@ function getadminservicereq() {
                 $("#adminServicereqTbody").append(html);
             }
 
-      
+
 
 
             adminserviceDatatable();
@@ -238,14 +263,295 @@ function getadminservicereq() {
 }
 
 
+var serviceReqId;
+var state;
+$(document).on('click', '.AdminEdit', function () {
+
+    console.log("edit click 241");
+    $("#AdminEditModelBtn").click();
+    serviceReqId = this.getAttribute("data-value");
+    console.log(serviceReqId);
+    FillEditPopup();
+});
 
 
 
+
+
+
+function FillEditPopup() {
+
+    var data = {};
+    data.ServiceRequestId = parseInt(serviceReqId);
+
+    $.ajax({
+        type: 'GET',
+        url: '/Admin/GetEditPopupData',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+
+
+
+
+
+
+
+            console.log("suceess" + result.startTime);
+            console.log("suceess" + result.date);
+            console.log("suceess" + result.address.addressLine1);
+
+
+
+            document.querySelector('option[value="' + result.startTime + '"]').selected = true;
+
+            var temp = new Date(result.date);
+            console.log("suceess" + temp);
+
+
+            temp.setDate(temp.getDate() + 1);
+            console.log("suceessful" + temp);
+            document.getElementById('AdminEditPopupDate').valueAsDate = temp;
+
+
+
+
+
+
+            document.getElementById('AdminEditPopupStreet').value = result.address.addressLine2;
+            document.getElementById('AdminEditPopupHouse').value = result.address.addressLine1;
+            document.getElementById('AdminEditPopupPostalCode').value = result.address.postalCode;
+
+
+            document.getElementById('AdminEditPopupInvoiceStreet').value = result.address.addressLine2;
+            document.getElementById('AdminEditPopupInvoiceHouse').value = result.address.addressLine1;
+            document.getElementById('AdminEditPopupInvoicePostalCode').value = result.address.postalCode;
+
+            getCityFromPostalCode(result.address.postalCode, "#AdminEditPopupCity");
+            getCityFromPostalCode(result.address.postalCode, "#AdminEditPopupInvoiceCity");
+
+
+
+
+
+        },
+        error: function () {
+            alert("error");
+        }
+    });
+
+}
+
+
+
+
+
+/*  city from postal code*/
+$("#AdminEditPopupPostalCode").keyup(function () {
+    if ($("#AdminEditPopupPostalCode").val().length == 6) {
+        getCityFromPostalCode($("#AdminEditPopupPostalCode").val(), "#AdminEditPopupCity");
+    }
+});
+
+
+$("#AdminEditPopupInvoicePostalCode").keyup(function () {
+    if ($("#AdminEditPopupInvoicePostalCode").val().length == 6) {
+        getCityFromPostalCode($("#AdminEditPopupInvoicePostalCode").val(), "#AdminEditPopupInvoiceCity");
+    }
+});
+
+
+
+
+
+
+$(document).on('click', '#AdminEditModalUpdateBtn', function () {
+
+
+    var data = {};
+    data.address = {};
+    data.ServiceRequestId = parseInt(serviceReqId);
+    data.address.addressLine2 = document.getElementById('AdminEditPopupStreet').value;
+
+    data.address.addressLine1 = document.getElementById('AdminEditPopupHouse').value;
+    data.address.postalCode = document.getElementById('AdminEditPopupPostalCode').value;
+    data.address.city = document.getElementById('AdminEditPopupCity').value;
+    data.address.state = state;
+    var temp = document.getElementById("AdminEditPopupDate").value;
+    data.date = temp + " " + document.getElementById("AdminEditPopupTime").value;
+
+
+
+
+
+
+
+    var testnumber = /^[0-9]{10}$/;
+    var testpin = /^[1-9][0-9]{5}$/;
+    var popup = document.getElementById("AdminEditModal");
+
+    window.setTimeout(function () {
+        $('#AdminEditPopupAlert').addClass('d-none');
+    }, 5000);
+
+   if (data.address.addressLine1 == "") {
+       $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("House no. is Required.");
+       popup.scrollTop = 0;
+       $("#AdminEditPopupHouse").focus();
+    }
+    else if (data.address.addressLine2 == "") {
+       $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("Street name is Required.");
+       popup.scrollTop = 0;
+       $("#AdminEditPopupStreet").focus();
+    }
+    else if (!testpin.test(data.address.postalCode)) {
+       $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("postalcode  is Invalid.");
+       popup.scrollTop = 0;
+       $("#AdminEditPopupPostalCode").focus();
+    }
+    else {
+
+        $.ajax({
+            type: 'POST',
+            url: '/Admin/UpdateServiceReq',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: data,
+            success: function (result) {
+
+                $("#AdminEditPopupAlert").removeClass("alert-danger d-none").addClass("alert-success").text("Service Request Edit Suceessful.");
+             
+
+               
+                popup.scrollTop = 0;
+
+
+                window.setTimeout(function () {
+                    $("#AdminEditModalClose").click();
+                    $("#filterSubmit").click();
+                }, 3000);
+
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+
+    }
+
+});
+
+
+
+
+
+//City from pincode
+function getCityFromPostalCode(zip, Id) {
+    $.ajax({
+        method: "GET",
+        url: "https://api.postalpincode.in/pincode/" + zip,
+        dataType: 'json',
+        cache: false,
+        success: function (result) {
+            if (result[0].status == "Error" || result[0].status == "404") {
+                $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("Enter Valid PostalCode.");
+
+            }
+            else {
+                $(Id).val(result[0].PostOffice[0].District).prop("disabled", true);
+
+                state = result[0].PostOffice[0].State;
+
+
+            }
+        },
+        error: function (error) {
+
+        }
+    });
+}
+
+
+
+
+
+$(document).on('click', '.AdminCancle', function () {
+
+    console.log("cancle click 241");
+
+    serviceReqId = this.getAttribute("data-value");
+
+    var data = {};
+    data.ServiceRequestId = parseInt(serviceReqId);
+
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/CencleServiceReq',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+
+            $("#filterSubmit").click();
+
+
+            $('#ModalLabel_SID').text("Service Cancled").css("color", "red");
+            $("#complete").click();
+
+
+
+            //window.setTimeout(function () {
+              
+      
+            //}, 3000);
+
+        },
+        error: function () {
+            alert("error");
+        }
+    });
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Data Table */
 function adminserviceDatatable() {
 
-   
+
     $("#adminservicereqtable").DataTable({
-      
+
         dom: 't<"admin-pagenumber"<"admin-pagenumber-left"li><"admin-pagenumber-right"p>>',
         responsive: true,
         pagingType: "full_numbers",
@@ -267,8 +573,8 @@ function adminserviceDatatable() {
         aLengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
 
         columnDefs: [{ orderable: false, targets: 4 }],
+        order: [[0, "desc"]],
 
-       
 
 
     });

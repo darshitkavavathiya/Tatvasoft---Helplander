@@ -1,0 +1,62 @@
+
+<div class="modal" tabindex="-1" id="addNewaddressModel">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content text-start">
+			<div class="modal-header">
+				<h5 class="modal-title" id="settingsaddressmodeltitel">Add New Address</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body float-start">
+			  
+					<form action="" class="address_form">
+						 <div class="alert alert-danger d-none mt-3 d-flex justify-content-center" style="max-width:800px" id="mSaddAddressAlert" role="alert">
+				</div>
+				<div class="row mb-3 mt-3">
+					
+					<div class="col-md-6 col-sm-12">
+						<label for="housenumber" class="form-label">House number</label>
+						<input id="AddressLine1" type="text" class="form-control houseno" name="housenumber" placeholder="House number" required  />
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<label for="streetname" class="form-label">Street name</label>
+						<input id="AddressLine2"  type="text" class="form-control street" name="streetname" placeholder="Street name" required  />
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6 col-sm-12">
+						<label for="postalcode" class="form-label">Postal Code</label>
+						<input  id="addAddressPostalCode" type="text" class="form-control" name="postalcode" maxlength="6" placeholder="Postal Code" required  />
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<label for="City" class="form-label">City</label>
+						<input id="City" type="text"  class="form-control addressCity" name="city" placeholder="City" required  />
+					</div>
+				</div>
+				<div class="row mb-3">
+					<div class="col-md-6 col-sm-12">
+						<label for="phonenumber" class="form-label ">Phone number</label>
+						<div class="input-group">
+							<div class="input-group-text">+49</div>
+							<input  maxlength="10" id="Mobile" type="text" class="form-control mobilenum" name="phonenumber" placeholder="Mobile Number" required  />
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<label for="State" class="form-label">City</label>
+						<input id="State" type="text"  class="form-control addressCity" name="State" placeholder="State" required  />
+					</div>
+				
+				</div>
+
+				<div>
+					<button type="button" class="btn save" id="addAddressSubmit"  >Save</button>
+					<button type="button" class="btn save" id="updateAddressSubmit"  >Update</button>
+					<button id="addressCancelBtn" type="reset" class="btn cancel d-none" >Cancel</button>
+				</div>
+			</form>
+
+				
+
+			</div>
+		</div>
+	</div>
+</div>

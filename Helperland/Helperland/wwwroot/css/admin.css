@@ -367,3 +367,22 @@ td button {
 .thaction {
     width: 10% !important;
 }
+
+
+
+
+
+#AdminEditModal .form-label {
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+}
+
+
+.popuptext p{
+
+    padding : 5px 0px !important;
+}
+.popuptext p:hover{
+    background-color:beige;
+   /*     color:white;*/
+}

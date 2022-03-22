@@ -10,8 +10,7 @@
 
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-		crossorigin="anonymous">
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 
 	<link rel="stylesheet" href="css/about.css" />
@@ -36,62 +35,143 @@
 
 
 
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+		Launch demo modal
+	</button>
 
-
-	<button id="serviceReqdetailsbtn" data-bs-toggle="modal" data-bs-target="#detailsModelServiceRequest"
-		class="">details</button>
-
-
-	<div class="modal" tabindex="-1" id="detailsModelServiceRequest">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content text-start">
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" style="max-width: 550px;">
+			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Service Details</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
+					<h5 class="modal-title" id="exampleModalLabel">Edit Service Request</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body float-start row">
-					<div class="col">
-						<h4 id="SpServiceReqDatetime">05/10/2021 08:00 - 11:30</h4>
-						<p>Duration: <span id="SpServiceReqDuration"> 3 hrs </span> </p>
-						<hr>
-						<p>Service id: <span id="SpServiceReqId"> 8852</span></p>
-						<div class="row">
-							<p class="col-2 d-inline">Extras: </p>
-							<div class="col-10 d-inline" id="SpServiceReqExtra"></div>
-						</div>
-
-						<p>Total Payment: <span id="SpServiceReqAmount" class="price">8750
-								&euro;</span> </p>
-						<hr>
-						<p>Customer Name:<span id="SpServiceReqAddress"> darshit</span></p>
-						<p>Service Address: <span>adress ,sasdsad, surat 395006</span></p>
-
-						<hr>
-
-						<p>Comments <span id="SpServiceReqComment"></span></p>
-
-
-
-						<hr>
-
-
-
-
-						<button class="rate" data-bs-toggle="modal"
-							data-bs-target="#myRatingModal">Accept </button>
-
-
-					</div>
-					<div class="col" id="map">
+				<div class="modal-body">
+					
 						
+							<div class="row">
+								<div class="col-md-6">
+									<label for="AdminEditpopupDate" class="form-label">Date</label>
+									<input type="date" class="form-control" name="date" id="AdminEditPopupDate">
+								</div>
+								<div class="col-md-6">
+									<label class="form-label" for="AdminEditPopupTime">Time</label>
+									<select class="form-select" id="AdminEditPopupTime"
+										aria-label="Default select example">
 
-					</div>
+										<option selected value="08:00:00">8:00 </option>
+										<option value="08:30:00">8:30 </option>
+										<option value="09:00:00">9:00 </option>
+										<option value="09:30:00">9:30 </option>
+										<option value="10:00:00">10:00 </option>
+										<option value="10:30:00">10:30 </option>
+										<option value="11:00:00">11:00 </option>
+										<option value="11:30:00">11:30 </option>
+										<option value="12:00:00"> 12:00 </option>
+										<option value="12:30:00">12:30 </option>
+										<option value="13:00:00"> 13:00 </option>
+										<option value="13:30:00">13:30 </option>
+										<option value="14:00:00"> 14:00 </option>
+										<option value="14:30:00">14:30 </option>
+										<option value="15:00:00"> 15:00 </option>
+										<option value="15:30:00">15:30 </option>
+										<option value="16:00:00"> 16:00 </option>
+										<option value="16:30:00">16:30 </option>
+										<option value="17:00:00"> 17:00 </option>
+										<option value="17:30:00">17:30 </option>
+										<option value="18:00:00"> 18:00 </option>
+									</select>
+								</div>
+							</div>
 
+
+
+
+
+
+
+							<label class="form-label mt-4"> Service Address</label>
+
+							<div class="row">
+								<div class="col-md-6">
+									<label for="AdminEditPopupStreet" class="form-label">Street Name</label>
+									<input type="text" class="form-control" name="Street" id="AdminEditPopupStreet">
+								</div>
+								<div class="col-md-6">
+									<label for="AdminEditPopupHouse" class="form-label">House No</label>
+									<input type="text" class="form-control" name="House" id="AdminEditPopupHouse">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="AdminEditPopupPostalCode" class="form-label">PostalCode</label>
+									<input type="text" class="form-control" name="PostalCode"
+										id="AdminEditPopupPostalCode">
+								</div>
+								<div class="col-md-6">
+									<label for="AdminEditPopupCity" class="form-label">City</label>
+									<input type="text" class="form-control" name="City" id="AdminEditPopupCity">
+
+								</div>
+							</div>
+							<label class="form-label mt-4"> Invoice Address</label>
+
+							<div class="row">
+								<div class="col-md-6">
+									<label for="AdminEditPopupInvoiceStreet" class="form-label">Street Name</label>
+									<input type="text" class="form-control" name="Street"
+										id="AdminEditPopupInvoiceStreet">
+								</div>
+								<div class="col-md-6">
+									<label for="AdminEditPopupInvoiceHouse" class="form-label">House No</label>
+									<input type="text" class="form-control" name="House"
+										id="AdminEditPopupInvoiceHouse">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="AdminEditPopupInvoicePostalCode" class="form-label">PostalCode</label>
+									<input type="text" class="form-control" name="PostalCode"
+										id="AdminEditPopupInvoicePostalCode">
+								</div>
+								<div class="col-md-6">
+									<label for="AdminEditPopupInvoiceCity" class="form-label">City</label>
+									<input type="text" class="form-control" name="City" id="AdminEditPopupInvoiceCity">
+
+								</div>
+							</div>
+
+						
+						<!-- 1 col  -->
+						<div class="row">
+
+							<div class="row mt-4">
+								<label for="AdminEditPopupWhyEdit" class="form-label "> Why do you want to
+									reSchedule Service req?</label>
+								<textarea  class="form-control ms-2" name="City" id="AdminEditPopupWhyEdit"
+									placeholder="Why do you want to reSchedule Service req?"></textarea>
+							</div>
+							<div class="row mt-4">
+								<label for="AdminEditPopupWhyCall" class="form-label"> Call Center EMP Notes
+								</label>
+								<textarea  class="form-control ms-2" name="City" id="AdminEditPopupWhyCall"
+									placeholder="Enter Notes"></textarea>
+							</div>
+							<div class="row mt-4 mb-2"><button type="button" class=" ms-2 btn btn-primary ">Update</button></div>
+							
+						</div>
+					
 				</div>
+
+
+
+
 			</div>
 		</div>
 	</div>
+	
 
 
 
@@ -112,20 +192,10 @@
 	<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
 	<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
-<script>
-$(document).ready( function(){
-    var addr = '365601';
-    
+	<script>
 
-        var embed= "<iframe width='100%25' height='100%25'  frameborder='0'  scrolling='no' marginheight='0' marginwidth='0'     src='https://maps.google.com/maps?&amp;q="+   
-        encodeURIComponent( addr ) +  
-        "&amp;output=embed'><a href='https://www.gps.ie/car-satnav-gps/''>sat navs</a></iframe>";  
 
-        $('#map').html(embed);
-    
-});
-
-</script>	
+	</script>
 </body>
 
 </html>
