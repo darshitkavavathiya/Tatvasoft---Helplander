@@ -290,6 +290,7 @@ namespace Helperland.Controllers
 
             if (result1 != null&& result2 != null)
             {
+                sendMail(serviceRequest);
                 return Json("true");
             }
             else
@@ -366,6 +367,228 @@ namespace Helperland.Controllers
 
             return Ok(Json("false"));
         }
+
+
+
+
+
+
+
+
+
+        public JsonResult GetUserData(AdminUserFilterDTO filterDto)
+        {
+
+            var user = _db.Users.ToList();
+
+            List<User> result = new List<User>();
+
+            foreach (User temp in user)
+            {
+                if (checkUserFilter(temp, filterDto))
+                {
+
+                    result.Add(temp);
+                }
+            }
+
+
+            return Json(result);
+
+
+
+
+
+        }
+
+        public bool checkUserFilter(User user, AdminUserFilterDTO filter)
+        {
+
+            //Console.WriteLine(filter.ToDate);
+            //Console.WriteLine(user.CreatedDate);
+
+            if (filter.Name != null)
+            {
+
+                var name = user.FirstName + " " + user.LastName;
+                if (!name.Contains(filter.Name))
+                {
+                    return false;
+                }
+            }
+
+            if (filter.UserType != null)
+            {
+                if (user.UserTypeId != filter.UserType)
+                {
+                    return false;
+                }
+            }
+
+            if (filter.Phone != null)
+            {
+                var phone = user.Mobile;
+                if (!phone.Contains(filter.Phone))
+                {
+                    return false;
+                }
+            }
+
+            if (filter.PostalCode != null)
+            {
+                if (user.ZipCode != filter.PostalCode)
+                {
+                    return false;
+                }
+            }
+
+
+            if (filter.Email != null)
+            {
+                var email = user.Email;
+                if (!email.Contains(filter.Email))
+                {
+                    return false;
+                }
+            }
+
+
+
+
+            if (filter.FromDate != null)
+            {
+                DateTime dateTime = Convert.ToDateTime(filter.FromDate);
+                if (!(user.CreatedDate >= dateTime))
+                {
+                    return false;
+                }
+
+            }
+
+            if (filter.ToDate != null)
+            {
+                DateTime dateTime = Convert.ToDateTime(filter.ToDate);
+                if (!(user.CreatedDate <= dateTime))
+                {
+                    return false;
+                }
+
+            }
+
+
+
+            return true;
+
+        }
+
+
+
+        public string UserEdit(User Id)
+        {
+            Console.WriteLine(Id.UserId);
+            User user = _db.Users.FirstOrDefault(x => x.UserId == Id.UserId);
+
+            var resultString = "Error";
+
+            if (user.IsApproved == false)
+            {
+                user.IsApproved = true;
+                user.IsActive = true;
+
+                resultString = "Service Provider Approved and Activated";
+            }
+            else if (user.IsActive == false)
+            {
+                user.IsActive = true;
+
+                resultString = "User Activated";
+            }
+            else
+            {
+                user.IsActive = false;
+
+                resultString = "User Deactivated";
+            }
+
+            var result = _db.Users.Update(user);
+            _db.SaveChanges();
+
+            if (result != null)
+            {
+                return resultString;
+            }
+
+            return "Error occured in DataBase, try again";
+
+
+        }
+
+
+        public async Task sendMail(ServiceRequest req)
+        {
+
+
+
+
+
+
+            List<User> users = new List<User>();
+
+            users.Add(_db.Users.FirstOrDefault(x => x.UserId == req.UserId));
+
+            if (req.Status != 1)
+            {
+                users.Add(_db.Users.FirstOrDefault(x => x.UserId == req.ServiceProviderId));
+            }
+
+
+
+
+
+
+            await Task.Run(() =>
+            {
+                foreach (var temp in users)
+                {
+
+                    MimeMessage message = new MimeMessage();
+
+                    MailboxAddress from = new MailboxAddress("Helperland",
+                    "mailto:vedantjotangiya@gmail.com");
+                    message.From.Add(from);
+
+                    MailboxAddress to = new MailboxAddress(temp.FirstName, temp.Email);
+                    message.To.Add(to);
+
+                    message.Subject = "Service Request Updated";
+
+                    BodyBuilder bodyBuilder = new BodyBuilder();
+                    bodyBuilder.HtmlBody = "<h1>A service with ID number " + req.ServiceRequestId + " has been updated</h1><br>" + "<h2>With time : " + req.ServiceStartDate + "</h2>";
+
+
+
+                    message.Body = bodyBuilder.ToMessageBody();
+
+                    SmtpClient client = new SmtpClient();
+                    client.Connect("smtp.gmail.com", 587, false);
+                mailto: client.Authenticate("vedantjotangiya@gmail.com", "Vedantjot@123");
+                    client.Send(message);
+                    client.Disconnect(true);
+                    client.Dispose();
+
+                }
+
+
+            });
+
+
+
+        }
+
+
+
+
+
 
 
 

@@ -47,8 +47,17 @@ namespace Helperland.Controllers
                     ViewBag.Name = null;
 
 
+
                     if (U.UserTypeId == 0)
                     {
+                        if (U.IsActive == false)
+                        {
+                            ViewBag.Name = null;
+                            TempData["add"] = "alert show";
+                            TempData["fail"] = "You are deactivated by admin, please contact admin.";
+                            return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                        }
+
                         if (user.remember == true)
                         {
                             CookieOptions cookieRemember = new CookieOptions();
@@ -64,7 +73,7 @@ namespace Helperland.Controllers
                     }
                     else if (U.UserTypeId == 1)
                     {
-                        if (U.IsApproved == false)
+                        if (U.IsApproved == false || U.IsActive == false)
                         {
                             ViewBag.Name = null;
                             TempData["add"] = "alert show";
@@ -85,8 +94,17 @@ namespace Helperland.Controllers
 
                         return RedirectToAction("SPServiceRequest", "Serviceprovider");
                     }
+
                     else if (U.UserTypeId == 2)
                     {
+                        if (U.IsActive == false)
+                        {
+                            ViewBag.Name = null;
+                            TempData["add"] = "alert show";
+                            TempData["fail"] = "You are deactivated by admin, please contact admin.";
+                            return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                        }
+
                         if (user.remember == true)
                         {
                             CookieOptions cookieRemember = new CookieOptions();
@@ -99,7 +117,6 @@ namespace Helperland.Controllers
 
                         return RedirectToAction("AdminPanel", "Admin");
                     }
-
                     //return RedirectToAction("CustomerDashboard", "Customer");
                 }
                 else
@@ -148,6 +165,7 @@ namespace Helperland.Controllers
                     user.ModifiedBy = 152;
                     user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
                     user.IsApproved = true;
+                    user.IsActive = true;   
                     _db.Users.Add(user);
                     _db.SaveChanges();
 
@@ -191,7 +209,8 @@ namespace Helperland.Controllers
                     user.IsRegisteredUser = true;
                     user.ModifiedBy = 152;
                     user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                    user.IsApproved = true;
+                    user.IsApproved = false;
+                    user.IsActive = false;
                     user.UserProfilePicture = "cap.png";
                     _db.Users.Add(user);
                     _db.SaveChanges();

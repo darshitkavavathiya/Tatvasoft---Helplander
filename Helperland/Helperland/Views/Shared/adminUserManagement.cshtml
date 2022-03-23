@@ -1,14 +1,142 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿
  <div class="col-10  table-col tab-contant" id="Usermanagement">
 
 
-                    hello
-                    hellohellohellohello
+    
 
+            <div class="row">
+
+
+                <div class="col">
+                    <h4>User management</h4>
+
+                </div>
+
+                <div class="col " style=" text-align:right">
+                    <button class=" adduser"><span>+</span> Add new call center</button>
+
+                </div>
+
+
+
+            </div>
+            <br>
+            <div class="row  form">
+                <form action="#">
+                    <div class="row">
+                        <div class="row">
+
+
+                        <div class="col">
+                            
+                            <input id="UserFilterName" type="text" class="form-control  " placeholder="User Name">
+                        </div>
+                        <div class="col">
+                            <select  id="UserFilterRole" class="form-select" aria-label="Default select example">
+                                <option selected value=null>User Role</option>
+                                <option value="0">customer</option>
+                                <option value="1">Service provider</option>
+                                <option value="2">Admin</option>
+                            </select>
+                        </div>
+                        <div class="input-group col">
+                            <span class="input-group-text  " id="basic-addon1">+45</span>
+                            <input id="UserFilterPhone" type="text" class="form-control  " placeholder="Mobile number">
+                        </div>
+                        <div class="col">
+                            <input id="UserFilterPostalCode" type="text" class="form-control  " placeholder="Zip code">
+
+                        </div>
+
+                        </div>
+
+
+                        <div class="row mt-4">
+
+                             <div class="col">
+                            
+                            <input id="UserFilterEmail" type="text" class="form-control  " placeholder="Email">
+                        </div>
+
+                            <div class="col">
+                                <input  id="UserFilterFromDate"  type="text" class="form-control" placeholder="From Date"   onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}"  >
+                            </div>
+                            <div class="col">
+                                <input id="UserFilterToDate" type="text" class="form-control" placeholder="To Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
+                            </div>
+                         <div class="col">
+                                <a  id="UserFilterSearch"  class="btn btn-primary form-search me-4" id="filterSubmit">Serach</a>
+                                      <button id="UserFilterClear" type="reset" class="btn btn-primary form-clear" id="filterclear">Clear</button>
+
+                            </div>
+                <div class="col"></div>
+                            </div>
+
+                        
+                       
+                        
+                            
+                    </div>
+                </form>
+            </div>
+            <div class="row  table">
+
+                <table class="admin-table" id="adminUserTable">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="thdate" scope="col">User Name<img src="/Images/sort.png" alt="..."></th>
+                            <th  class="thsp" scope="col">Date of Registration<img src="/Images/sort.png" alt="..."></th>
+                            <th  class="thdate" scope="col">User Type<img src="/Images/sort.png" alt="..."></th>
+                            <th  class="thdate" scope="col">Phone<img src="/Images/sort.png" alt="..."></th>
+                            <th  class="thdate" scope="col">Postal Code<img src="/Images/sort.png" alt="..."></th>
+                            <th class="thstatus" scope="col">Status<img src="/Images/sort.png" alt="..."></th>
+                            <th  class="thstatus" scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="AdminUserTbody">
+                        <tr>
+                            <td data-label="User Name">
+                                <p>Lyum Watson</p>
+
+                            </td>
+                            <td data-label="Role">
+                                <p>  </p>
+                            </td>
+                            <td data-label="Date of Registration">
+                                <p> <img src="/Images/calendar2.png" alt="calender"> 29/12/2000 </p>
+                            </td>
+                            <td data-label="User Type">
+                                <p>Customer</p>
+                            </td>
+
+                            <td data-label="Phone">
+                                <p>8141657947</p>
+                            </td>
+                            <td data-label="Postal Code">
+                                <p>365601</p>
+                            </td>
+                            <td data-label="Status">
+                                <button class="active">Active</button>
+                                </td>
+                            <td data-label="Actions">
+                                <div class="popup" onclick="reply_click(this.id)" id="a"><img
+                                        src="/Images/group-38.png" alt="...">
+                                    <div class="popuptext" id="a_popup">
+                                        <p>Active </p>
+                                        <p>Deactive</p>
+                                        <p>Approve</p>
+                                        <p>DisApprove</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                       </tbody>
+
+                </table>
+               <span class="copyright"> ©2018 Helperland. All rights reserved.
+               </span>
+
+            </div>
 
 
 

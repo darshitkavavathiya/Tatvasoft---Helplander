@@ -26,27 +26,27 @@ function reply_click(clicked_id) {
 
 
 
-//$("#adminservicereqtable").click(function (e) {
+$("#adminservicereqtable").click(function (e) {
 
-//    if (e.target.classList != "popup") {
-//        var popuphide = document.getElementsByClassName("popuptext show");
-
-
-//        for (i = 0; i < popuphide.length; i++) {
-
-//            popuphide[i].classList.remove("show");
-//        }
-//    }
-
-//});
+    if (e.target.classList != "popup") {
+        var popuphide = document.getElementsByClassName("popuptext show");
 
 
-//function reply(clicked_id) {
-//    var id = clicked_id + "_popup"
-//    var obj = document.getElementById(id);
+        for (i = 0; i < popuphide.length; i++) {
 
-//    obj.classList.toggle("show");
-//}
+            popuphide[i].classList.remove("show");
+        }
+    }
+
+});
+
+
+function reply(clicked_id) {
+    var id = clicked_id + "_popup"
+    var obj = document.getElementById(id);
+
+    obj.classList.toggle("show");
+}
 
 
 
@@ -61,10 +61,10 @@ function adminTab(evt, service) {
     }
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace(" Active", "");
     }
     document.getElementById(service).style.display = "block";
-    evt.currentTarget.className += " active";
+    evt.currentTarget.className += " Active";
 }
 
 $(document).ready(function () {
@@ -394,20 +394,20 @@ $(document).on('click', '#AdminEditModalUpdateBtn', function () {
         $('#AdminEditPopupAlert').addClass('d-none');
     }, 5000);
 
-   if (data.address.addressLine1 == "") {
-       $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("House no. is Required.");
-       popup.scrollTop = 0;
-       $("#AdminEditPopupHouse").focus();
+    if (data.address.addressLine1 == "") {
+        $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("House no. is Required.");
+        popup.scrollTop = 0;
+        $("#AdminEditPopupHouse").focus();
     }
     else if (data.address.addressLine2 == "") {
-       $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("Street name is Required.");
-       popup.scrollTop = 0;
-       $("#AdminEditPopupStreet").focus();
+        $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("Street name is Required.");
+        popup.scrollTop = 0;
+        $("#AdminEditPopupStreet").focus();
     }
     else if (!testpin.test(data.address.postalCode)) {
-       $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("postalcode  is Invalid.");
-       popup.scrollTop = 0;
-       $("#AdminEditPopupPostalCode").focus();
+        $("#AdminEditPopupAlert").removeClass("alert-success d-none").addClass("alert-danger").text("postalcode  is Invalid.");
+        popup.scrollTop = 0;
+        $("#AdminEditPopupPostalCode").focus();
     }
     else {
 
@@ -419,9 +419,9 @@ $(document).on('click', '#AdminEditModalUpdateBtn', function () {
             success: function (result) {
 
                 $("#AdminEditPopupAlert").removeClass("alert-danger d-none").addClass("alert-success").text("Service Request Edit Suceessful.");
-             
 
-               
+
+
                 popup.scrollTop = 0;
 
 
@@ -499,8 +499,8 @@ $(document).on('click', '.AdminCancle', function () {
 
 
             //window.setTimeout(function () {
-              
-      
+
+
             //}, 3000);
 
         },
@@ -515,8 +515,258 @@ $(document).on('click', '.AdminCancle', function () {
 
 
 
+/*User */
+
+$(document).on("click", "#usermanagementtabbtn", function () {
+    console.log("521 ");
+    if ($.fn.DataTable.isDataTable("#adminUserTable")) {
+        $('#adminUserTable').DataTable().clear().destroy();
+    }
+    getAdminUserData();
+
+});
 
 
+
+$(document).on("click", "#UserFilterSearch", function () {
+    
+    if ($.fn.DataTable.isDataTable("#adminUserTable")) {
+        $('#adminUserTable').DataTable().clear().destroy();
+    }
+    getAdminUserData()
+
+});
+
+$(document).on("click", "#UserFilterClear", function () {
+   
+    if ($.fn.DataTable.isDataTable("#adminUserTable")) {
+        $('#adminUserTable').DataTable().clear().destroy();
+    }
+    window.setTimeout(function () {
+        getAdminUserData()
+    }, 500);
+
+
+});
+
+
+
+
+function getAdminUserData() {
+
+
+
+    var data = {};
+
+
+    data.name = document.getElementById("UserFilterName").value;
+    data.userType = document.getElementById("UserFilterRole").value;
+    data.postalCode = document.getElementById("UserFilterPostalCode").value;
+    data.phone = document.getElementById("UserFilterPhone").value;
+    data.email = document.getElementById("UserFilterEmail").value;
+    data.fromDate = document.getElementById("UserFilterFromDate").value;
+    data.toDate = document.getElementById("UserFilterToDate").value;
+    // console.log(data.serviceRequestId + data.zipCode + data.email + data.customerName + data.serviceProviderName + data.status + data.fromDate + data.toDate);
+    console.log(data.toDate);
+    console.log(data.fromDate);
+    $.ajax({
+        type: 'GET',
+        url: '/Admin/GetUserData',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+
+
+
+
+            $("#AdminUserTbody").empty();
+
+
+
+            for (var i = 0; i < result.length; i++) {
+
+
+                //for date
+
+              
+
+                var createdDateTemp = new Date(result[i].createdDate.toString());
+                var yyyy = createdDateTemp.getFullYear();
+                var mm = createdDateTemp.getMonth() + 1; // Months start at 0!
+                var dd = createdDateTemp.getDate();
+
+                if (dd < 10) dd = '0' + dd;
+                if (mm < 10) mm = '0' + mm;
+
+                var createdDateTemp = dd + '/' + mm + '/' + yyyy;
+
+
+                //for user type
+
+                var userTypeTemp = "Customer";
+
+                if (result[i].userTypeId == 1) {
+                    userTypeTemp = "ServiceProvider";
+                }
+                else if (result[i].userTypeId == 2) {
+                    userTypeTemp = "Admin";
+                }
+
+                //for active disactive
+
+                var statusTemp = "Active";
+
+                if (result[i].isActive == false) {
+                    statusTemp = "InActive";
+                }
+
+                //popup
+
+
+               
+                    var popup;
+
+                if (result[i].userTypeId !=1) {
+                    if (result[i].isActive == true) {
+                        popup = '<p>Deactive</p>';
+                    }
+                    else {
+
+                        popup = '<p>Activate</p>';
+
+                    }
+                }
+                else if (result[i].userTypeId == 1) {
+                    if (result[i].isApproved == false) {
+                        popup = '<p>Approve</p>'
+                    }
+                    else {
+                        if (result[i].isActive == true) {
+                            popup = '<p>Deactive</p>';
+                        }
+                        else {
+
+                            popup = '<p>Activate</p>';
+
+                        }
+                    }
+
+                }
+               
+
+                //switch (result[i].status) {
+
+                //    case 1: /*new */
+                //        varStatus = "new";
+                //        popupfield = ' <p  class="AdminEdit" data-value=' + result[i].serviceRequestId + '>Edit & Reschedule </p>   '
+                //            + '<p class="AdminCancle" data-value=' + result[i].serviceRequestId + '> Cancel </p>  ';
+                //        break;
+                //    case 2: /*pending */
+                //        varStatus = "pending";
+                //        popupfield = ' <p  class="AdminEdit" data-value=' + result[i].serviceRequestId + '>Edit & Reschedule </p> '
+                //            + '<p class="AdminCancle" data-value=' + result[i].serviceRequestId + '> Cancel </p>  ';
+                //        break;
+                //    case 3: /*completed */
+                //        varStatus = "completed";
+                //        popupfield = '    <p> Refund</p>  ';
+                //        break;
+                //    case 4: /*cancelled*/
+                //        varStatus = "cancelled";
+                //        popupfield = '    <p> Refund</p>  ';
+                //        break;
+                //    default: /*other status */
+                //        varStatus = "invalid";
+                //}
+
+                var html = ' <tr>' +
+                    '                            <td data-label="User Name">' +
+                    '                                <p>' + result[i].firstName + '</p>' +
+                    '' +
+                    '                            </td>' +
+                    '                            <td data-label="Date of Registration">' +
+                    '                                <p> <img class="me-2" src="/Images/calendar2.png" alt="calender">' + createdDateTemp+'</p>' +
+                    '                            </td>' +
+                    '                            <td data-label="User Type">' +
+                    '                                <p>' + userTypeTemp+ '</p>' +
+                    '                            </td>' +
+                    '' +
+                    '                            <td data-label="Phone">' +
+                    '                                <p>'+result[i].mobile+'</p>' +
+                    '                            </td>' +
+                    '                            <td data-label="Postal Code">' +
+                    '                                <p>' + result[i].zipCode + '</p>' +
+                    '                            </td>' +
+                    '                            <td data-label="Status">' +
+                    '                                <button class="' + statusTemp +'">'+statusTemp+'</button>' +
+                    '                                </td>' +
+                    '                            <td data-label="Actions">' +
+                    '                                <div class="popup" onclick="reply_click(this.id)" id="U' + result[i].userId + '"><img' +
+                    '                                        src="/Images/group-38.png" alt="...">' +
+                    '                                    <div class="popuptext userpopup" data-value="' + result[i].userId+'" id="U'+result[i].userId+'_popup">' +
+                                                                popup+
+                    '                                    </div>' +
+                    '                                </div>' +
+                    '                            </td>' +
+                    '                        </tr>';
+
+
+
+
+
+                $("#AdminUserTbody").append(html);
+            }
+
+
+
+
+            adminUserDatatable()
+
+
+
+        },
+        error: function () {
+            alert("error");
+        }
+    });
+}
+
+
+
+
+
+
+$(document).on("click", ".popuptext.userpopup", function () {
+
+    var id = this.getAttribute("data-value");
+    var data = {};
+    data.UserId = parseInt(id);
+
+    $.ajax({
+        type: 'POST',
+        url: '/Admin/UserEdit',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+
+            $("#UserFilterSearch").click();
+
+
+            $('#ModalLabel_SID').text(result).css("color", "Green");
+            $("#complete").click();
+
+
+
+            
+
+        },
+        error: function () {
+            alert("error");
+        }
+    });
+
+  
+
+});
 
 
 
@@ -572,7 +822,7 @@ function adminserviceDatatable() {
         iDisplayLength: 10,
         aLengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
 
-        columnDefs: [{ orderable: false, targets: 4 }],
+        columnDefs: [{ orderable: false, targets: 6 }],
         order: [[0, "desc"]],
 
 
@@ -582,9 +832,38 @@ function adminserviceDatatable() {
 }
 
 
+function adminUserDatatable() {
+
+
+    $("#adminUserTable").DataTable({
+
+        dom: 't<"admin-pagenumber"<"admin-pagenumber-left"li><"admin-pagenumber-right"p>>',
+        responsive: true,
+        pagingType: "full_numbers",
+        language: {
+            paginate: {
+                first: "<img src='/Images/pagination-first.png' alt='first'/>",
+                previous: "<img src='/Images/pagination-left.png' alt='previous' />",
+                next: "<img src='/Images/pagination-left.png' alt='next' style='transform: rotate(180deg)' />",
+                last: "<img src='/Images/pagination-first.png' alt='first' style='transform: rotate(180deg) ' />",
+            },
+
+            info: "Total Records : _MAX_",
+
+            lengthMenu: "Show  _MENU_  Entries",
+
+
+        },
+        iDisplayLength: 10,
+        aLengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
+
+        columnDefs: [{ orderable: false, targets: 6 }],
+        order: [[0, "desc"]],
 
 
 
+    });
 
+}
 
 
