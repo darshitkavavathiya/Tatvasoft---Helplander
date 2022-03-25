@@ -850,3 +850,4 @@ E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Sh
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AdminPanel.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\adminServiceReq.cshtml.g.cs
 E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\adminUserManagement.cshtml.g.cs
+E:\dsdasd\Tatvasoft\Helperland\Helperland\obj\Debug\netcoreapp3.1\Razor\Views\Shared\SpServiceSchedule.cshtml.g.cs

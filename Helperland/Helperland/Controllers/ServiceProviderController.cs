@@ -330,7 +330,8 @@ namespace Helperland.Controllers
 
                         SmtpClient client = new SmtpClient();
                         client.Connect("smtp.gmail.com", 587, false);
-                    mailto: client.Authenticate("darshitkavathiya34@gmail.com", "Dar@1234");
+                    client.Authenticate("darshitkavathiya34@gmail.com", "Dar@1234");
+
                         client.Send(message);
                         client.Disconnect(true);
                         client.Dispose();
@@ -918,6 +919,61 @@ namespace Helperland.Controllers
 
 
         }
+
+
+
+
+        //service schedule 
+
+        public JsonResult GetServiceSchedule()
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+
+
+            if (Id != null)
+            {
+                List<CustomerDashboard> dashbord = new List<CustomerDashboard>();
+
+                var table = _db.ServiceRequests.Where(x => x.ServiceProviderId == Id && (x.Status == 2 || x.Status == 3)).ToList();
+                foreach (var data in table)
+                {
+                    CustomerDashboard sr = new CustomerDashboard();
+                    sr.ServiceRequestId = data.ServiceRequestId;
+
+                    sr.Date = data.ServiceStartDate.ToString("yyyy-MM-dd");
+                    sr.StartTime = data.ServiceStartDate.ToString("HH:mm");
+                    sr.EndTime = data.ServiceStartDate.AddHours((double)data.SubTotal).ToString("HH:mm");
+
+                    sr.Status = (int)data.Status;
+
+                    dashbord.Add(sr);
+                }
+
+                return new JsonResult(dashbord);
+            }
+            return new JsonResult("false");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

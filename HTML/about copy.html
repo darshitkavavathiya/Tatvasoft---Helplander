@@ -1,194 +1,149 @@
-<!doctype html>
-
-<html lang="en">
-
+<html>
 <head>
+<style>
+th{
+  background-color: #E8EEFA; border: 1px solid black; font-size: 12.75px;font-weight:bold; 
+}
+td{
+font-size: 13.5px;
 
-
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-
-	<link rel="stylesheet" href="css/about.css" />
-	<link rel="stylesheet" href="css/home.css" />
-	<title>ABOUT</title>
-	<style>
-		@media (min-width: 576px) {
-			.modal-dialog {
-				max-width: 60%;
-				margin: 1.75rem auto;
-			}
-		}
-
-
-
-		/*      cssss */
-
-		.w500 {
-			font-weight: 500;
-		}
-
-		.w700 {
-			font-weight: 700;
-		}
-
-		label {
-			margin-top: 0.5rem;
-		}
-	</style>
-
+}
+</style>
 </head>
+<body style="line-height: 70%;">
+<div style="margin: 10px 270px 10px 270px;">
+<table style=" border-collapse: collapse;">
+<tr>
+<td><img src="logo.png" align="left"></td>
+<td  style="font-size:30px;text-align:right;color:Navy;margin-top:40px;font-weight:bold;">&nbsp&nbsp&nbsp&nbsp&nbspGujarat Technological Unversity Ahmedabad</td>
+</tr>
+</table>
+<hr style="background-color: red; height:1px">
+<table style=" border-collapse: collapse;">
+<tr>
+<td>
+<div style="border: 1px solid #DDDDE6">
+<div style="border: 3px solid white; height: 150px; width: 395px; background-color: #E8EEFA; ">
+<h7 style="text-align:left;font-weight:bold;"> &nbsp&nbspSERCH</h7>
+<form style="font-size: 12px; font-family:Verdana; font-weight: bold">
+<pre ><b>Session</b>       Summer 2020
+<b>Exam</b>         <select id="exam">
+		        <option id="be">....BE sem 4 regular 2020</option>
+                                           <option id="be3">....BE sem 5 regular 2020</option>
+		       </select>
+<b>Enroll NO.</b>   <input type="text" id="enroll">OR
+<b>Seat NO.</b>     <input type="text" id="enroll">(e.g. _12345)
+<b>Code:</b>          
+               <lable style="border: 1px solid black; padding: 8px 20px;">AJ5D9</lable>  <input type="text id="capta" style="height: 28px; width: 70px;"> <button style="background-color: navy;color: white;">Search</button>
+</pre>
+</form>
+</div>
+</div>
+</td>
+<td>
+<div style="border: 1px solid #DDDDE6">
+<div style="border: 2px solid white;  height: 150px; width: 395px; background-color: #E8EEFA;">
+<h7 style="text-align:left;font-weight:bold;"> &nbsp&nbspSERCH RESULT</h7>
+<div style="font-size: 12px">
+<pre>
+<b>Name:</b>             VEDANT JOTANGIYA SURESHBHAI
 
-<body>
+<b>Enroll NO.</b>        180210116022
 
+<b>Exam Seat No.</b>     E408713    <b>Declaration ON</b>  24 JUL 2020 
 
-	<!-- header section -->
+<b>Exam</b>              BE SEM 4 - Regular (MAY 2020)
+<b>Branch</b>            INFORMATION TECHNOLOGY
+</pre>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<div>
+</tr>
+</table>
+<hr style="background-color: gray; height: 1px">
+<table align="center"  border="1" style="border-collapse: collapse; width: 100%;">
+<tr>
+<th>SUBJECT<br>CODE</th>
+<th style="padding: 0px 55px">SUBJECT NAME</th>
+<th>ESE<br>ABSENT</th>
+<th style="padding: 0px 40px">&nbsp&nbspTheory Grade&nbsp&nbsp<br>ESE&nbsp&nbsp&nbsp&nbspPA&nbsp&nbsp&nbsp&nbspTOTAL</th>
+<th style="padding: 0px 40px">Practical Grade&nbsp&nbsp<br>ESE&nbsp&nbsp&nbsp&nbspPA&nbsp&nbsp&nbsp&nbspTOTAL</th>
+<th>Subject<br>  Grade </th>
+</tr>
 
+<tr>
+<td >3140005</td>
+<td>Design Engineering 1B</td>
+<td>-</td>
+<td style="padding: 0px 50px">-&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp-</td>
+<td style="padding: 0px 50px">AA&nbsp&nbsp&nbsp&nbspAA&nbsp&nbsp&nbsp&nbspAA</td>
+<td >AA</td>
+</tr>
 
+<tr>
+<td >3140705</td>
+<td>Object Oriented Programming -I</td>
+<td>-</td>
+<td style="padding: 0px 50px">AA&nbsp&nbsp&nbsp&nbspAB&nbsp&nbsp&nbsp&nbspAA</td>
+<td style="padding: 0px 50px">AA&nbsp&nbsp&nbsp&nbspAA&nbsp&nbsp&nbsp&nbspAB</td>
+<td >AA</td>
+</tr>
 
+<tr>
+<td >3140707</td>
+<td>Computer Organization & Achitecture</td>
+<td>-</td>
+<td style="padding: 0px 50px">BB&nbsp&nbsp&nbsp&nbspAA&nbsp&nbsp&nbsp&nbspAA</td>
+<td style="padding: 0px 50px">AA&nbsp&nbsp&nbsp&nbspAB&nbsp&nbsp&nbsp&nbspAA</td>
+<td >AB</td>
+</tr>
 
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" id="RefundModelBtn" data-bs-toggle="modal"
-		data-bs-target="#RefundModel">
+<tr>
+<td >3140708</td>
+<td>Discrete Mathematics</td>
+<td>-</td>
+<td style="padding: 0px 50px">AA&nbsp&nbsp&nbsp&nbspAB&nbsp&nbsp&nbsp&nbspAA</td>
+<td style="padding: 0px 50px">BB&nbsp&nbsp&nbsp&nbspAA&nbsp&nbsp&nbsp&nbspAA</td>
+<td >AB</td>
+</tr>
 
-	</button>
+<tr>
+<td >3140709</td>
+<td>Principles of Economics and Management</td>
+<td>-</td>
+<td style="padding: 0px 50px">CD&nbsp&nbsp&nbsp&nbspAA&nbsp&nbsp&nbsp&nbspAB</td>
+<td style="padding: 0px 50px">AA&nbsp&nbsp&nbsp&nbspBB&nbsp&nbsp&nbsp&nbspAA</td>
+<td >AA</td>
+</tr>
 
-	<!-- Modal -->
-	<div class="modal fade" id="RefundModel" tabindex="-1">
-		<div class="modal-dialog modal-dialog-centered" style="max-width: 550px;">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title w700" id="exampleModalLabel">Refund Amount</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
+<tr>
+<td >3140601</td>
+<td>Operating System and Virtulization</td>
+<td>-</td>
+<td style="padding: 0px 50px">AA&nbsp&nbsp&nbsp&nbspAA&nbsp&nbsp&nbsp&nbspAA</td>
+<td style="padding: 0px 50px">AB&nbsp&nbsp&nbsp&nbspAA&nbsp&nbsp&nbsp&nbspAB</td>
+<td >AB</td>
+</tr>
+</table>
+<br>
+<table align="center"  border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+<tr>
+<td>Current Sem. Backlog: <b>0</b></td>
+<td>Total Backlog: <b>0</b></td>
+<td>SPI: <b>9.55</b></td>
+<td>CPI: <b>9.2</b></td>
 
-					<div class="row ps-3">
-						<div class="col-3 w500">
-							<div class="row">Paid Amount </div>
-							<span id="PaidAmount">5400</span>&euro;
-						</div>
-						<div class="col-4 w500">
-							<div class="row">Refund Amount </div>
-							<span id="RefundAmount">0</span>  &euro;
-								</div>
-						<div class="col-5 w500">
-							<div class="row">In Balance Amount </div>
-						<span id="BalanceAmount">5400</span> &euro;
-						</div>
-
-					</div>
-
-					<div class="row mt-4">
-						<div class="col-6">
-							<label class="form-label w500">Amount</label>
-
-							<div class="input-group">
-
-								<input type="number" class="form-control" value="0" id="RefundPercentage">
-								<span class="input-group-text" >Percentage</span>
-							</div>
-						
-						</div>
-						<div class="col-6">
-							<label class="form-label w500">Calculate</label>
-
-							<div class="input-group mb-3">
-								<span class="input-group-text"> Calculate</span>
-								<input type="text"  id="CalculateAmount" class="form-control" disabled>
-
-							</div>
-						</div>
-					</div>
-
-					<label class="form-label w500 mt-3">Why you want to refund amount?</label>
-					<textarea name="" class="form-control" id="WhyRefund"
-						placeholder="Why you want to refund amount?"></textarea>
-
-					<label class="form-label w500 mt-3">Call Center EMP Notes</label>
-					<textarea name="" class="form-control" id="CallNotes" placeholder="Enter Notes"></textarea>
-
-
-
-
-					<div class="row my-3 px-3">
-						<button class="btn btn-primary" style="background-color:#1FB6FF; border-radius: 0%;"
-							type="button" id="RefundSubmit">Refund </button>
-
-					</div>
-
-
-
-
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-
-
-	<!-- script -->
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
-
-
-	<script type="text/javascript"
-		src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"></script>
-	<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
-	<script>
-
-
-	</script> 
-
-
-	<script>
-		
-		$('#RefundPercentage').on('keyup', function () {
-        var mobileNum = $(this).val();
-		 mobileNum= parseInt(mobileNum);
-		 
-		if(mobileNum>=0 && mobileNum <= 100){
-			var	totalprice = $("#PaidAmount").html();
-			refundAmount = parseInt((totalprice*mobileNum)/100);
-			balanceAmount = parseInt(totalprice-refundAmount);
-			$("#CalculateAmount").val(refundAmount);
-			$("#RefundAmount").html(refundAmount);
-			$("#BalanceAmount").html(balanceAmount);
-			$("#RefundSubmit").removeAttr('disabled');
-		}else{
-			$("#CalculateAmount").val("Invalid");
-			$("#RefundAmount").html("Invalid");
-			$("#BalanceAmount").html("Invalid");
-
-			$("#RefundSubmit").attr('disabled','disabled');
-		}
-
-    	});
-
-		$("#RefundSubmit").on('click',function(){
-			alert("hello");
-		});
-
-
-
-	</script>
-
-
-
-
-	</body>
-
+</tr>
+</table>
+<br>
+<div style="border: 1px solid orange; height: 110px; width: 100%;font-size:14px;text-align:center;font-family:Verdana,sans-serif;line-height: 80%;">
+<p style="color: green;">Congratulation!! You have <b>pased</b> this exam.</p>
+<h6 style="border: 1px dotted #800080; color: maroon">This is a Computer generated provisional result, please consider the Hard-copy Gradesheet as final result.</h6>
+<p style="font-size: 10px;">Security code: 2e4bc835-3fa6-4452-895d-c5ad38b49f98 | URL: http://gturesults.in/Default.aspx?ext=S2020&rof=2398 | Date: 30-Jul-2020 21:07 | IP : 1.38.160.16</p>
+</div>
+</div>
+</body>
 </html>

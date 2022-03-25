@@ -152,6 +152,11 @@ function showAllServiceRequestDetails(result) {
             newServiceBtn = "d-none";
             upcomingServiceBtn = "d-none";
             break;
+        case 4: /*cencled */
+
+            newServiceBtn = "d-none";
+            upcomingServiceBtn = "d-none";
+            break;
 
         default: /*other status */
             alert("invalid status ")
@@ -1101,6 +1106,105 @@ $(document).on('click', '.block-cust-btn', function () {
 
 
 });
+
+
+
+
+
+
+
+
+//service schedule
+
+
+$(document).on('click', '#ServiceScheduleTabBtn', function () {
+    addServiceSchedule();
+});
+
+
+
+
+var calendarEl = document.getElementById('calendar');
+var calendar;
+
+function addServiceSchedule() {
+
+    $.ajax({
+        type: 'GET',
+        url: "/ServiceProvider/GetServiceSchedule",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+
+        success: function (result) {
+            console.log(result);
+            var events = [];
+            if (result != "false") {
+
+                for (let i = 0; i < result.length; i++) {
+                    var bgColor = "#555";
+                    if (result[i].status == 3) {
+                        bgColor = "#146371";
+                    }
+
+                    events.push({
+                        id: result[i].serviceRequestId,
+                        start: result[i].date,
+                        title: result[i].startTime + "-" + result[i].endTime,
+                        backgroundColor: bgColor,
+                        borderColor: "#fff",
+                    });
+                }
+
+                console.log(events);
+
+                calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                   
+                    headerToolbar: {
+                        left: 'prev,next',
+                        center: 'title',
+                        right: ''
+                    },
+                    events: events,
+                    eventClick: function (info) {
+
+                        console.log(info.event.id);
+                        serviceRequestId = info.event.id;
+                        $("#spserviceReqdetailsbtn").click();
+                    },
+                });
+                calendar.render();
+            }
+            else {
+                alert("something went wrong!");
+            }
+        },
+        error: function (error) {
+            alert(error);
+        },
+
+        beforeSend: function () {
+            $("#loadingAnimation").removeClass("d-none");
+
+        },
+
+        complete: function () {
+            setTimeout(function () {
+                $("#loadingAnimation").addClass("d-none");
+            }, 500);
+        },
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
