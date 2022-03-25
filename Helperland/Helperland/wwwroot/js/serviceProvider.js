@@ -1182,16 +1182,16 @@ function addServiceSchedule() {
             alert(error);
         },
 
-        beforeSend: function () {
-            $("#loadingAnimation").removeClass("d-none");
+        //beforeSend: function () {
+        //    $("#loadingAnimation").removeClass("d-none");
 
-        },
+        //},
 
-        complete: function () {
-            setTimeout(function () {
-                $("#loadingAnimation").addClass("d-none");
-            }, 500);
-        },
+        //complete: function () {
+        //    setTimeout(function () {
+        //        $("#loadingAnimation").addClass("d-none");
+        //    }, 500);
+        //},
     });
 }
 
