@@ -114,10 +114,10 @@ namespace Helperland.Controllers
         {
             ServiceRequest rescheduleService = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == reschedule.ServiceRequestId);
 
-            Console.WriteLine(reschedule.ServiceRequestId);
+            //Console.WriteLine(reschedule.ServiceRequestId);
 
             string date = reschedule.Date + " " + reschedule.StartTime;
-            Console.WriteLine(reschedule.Date);
+            //Console.WriteLine(reschedule.Date);
 
             rescheduleService.ServiceStartDate = DateTime.Parse(date);
             rescheduleService.ServiceRequestId = reschedule.ServiceRequestId;
@@ -200,12 +200,12 @@ namespace Helperland.Controllers
 
 
             String reqdate = request.ServiceStartDate.ToString("yyyy-MM-dd");
-            Console.WriteLine(reqdate);
+            //Console.WriteLine(reqdate);
 
             String startDateStr = reqdate + " 00:00:00.000";
             String endDateStr = reqdate + " 23:59:59.999";
 
-            Console.WriteLine(startDateStr);
+            //Console.WriteLine(startDateStr);
 
             DateTime startDate = DateTime.ParseExact(startDateStr, "yyyy-MM-dd HH:mm:ss.fff",
                                        System.Globalization.CultureInfo.InvariantCulture);
@@ -219,8 +219,8 @@ namespace Helperland.Controllers
             DateTime endTimeRequest = request.ServiceStartDate.AddMinutes(mins + 60);
 
             request.ServiceStartDate = request.ServiceStartDate.AddMinutes(-60);
-            Console.WriteLine(endTimeRequest);
-            Console.WriteLine(request.ServiceStartDate);
+            //Console.WriteLine(endTimeRequest);
+            //Console.WriteLine(request.ServiceStartDate);
             foreach (ServiceRequest booked in list)
             {
                 mins = ((double)(booked.ServiceHours + booked.ExtraHours)) * 60;
@@ -267,7 +267,7 @@ namespace Helperland.Controllers
 
 
 
-            Console.WriteLine(cancel.ServiceRequestId);
+            //Console.WriteLine(cancel.ServiceRequestId);
             ServiceRequest cancelService = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == cancel.ServiceRequestId);
             cancelService.Status = 4;
             if (cancel.Comments != null)
@@ -349,8 +349,8 @@ namespace Helperland.Controllers
             Details.Comments = sr.Comments;
             Details.Status = (int)sr.Status;
 
-            Console.WriteLine("helo");
-            Console.WriteLine(Details.Status);
+            //Console.WriteLine("helo");
+            //Console.WriteLine(Details.Status);
             List<ServiceRequestExtra> SRExtra = _db.ServiceRequestExtras.Where(x => x.ServiceRequestId == ID.ServiceRequestId).ToList();
 
             foreach (ServiceRequestExtra row in SRExtra)
@@ -438,7 +438,7 @@ namespace Helperland.Controllers
                 ServiceRequest sr = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == rating.ServiceRequestId);
                 rating.RatingTo = (int)sr.ServiceProviderId;
                 rating.RatingFrom = (int)Id;
-                Console.WriteLine(rating.Ratings);
+                //Console.WriteLine(rating.Ratings);
 
                 var result = _db.Ratings.Add(rating);
                 _db.SaveChanges();
@@ -935,9 +935,13 @@ namespace Helperland.Controllers
 
             }
 
-
             var serviceProviderList = _db.Users.Where(x => x.UserTypeId == 1 && x.IsApproved == true).ToList();
-            var SpByBlocked = _db.FavoriteAndBlockeds.Where(x => x.TargetUserId == Id && x.IsBlocked == true).Select(x => x.UserId).ToList();
+            var BlockedBySp = _db.FavoriteAndBlockeds.Where(x => x.TargetUserId == Id && x.IsBlocked == true).Select(x => x.UserId).ToList();
+            var SpBlockedByCust = _db.FavoriteAndBlockeds.Where(x => x.UserId == Id && x.IsBlocked == true).Select(x => x.TargetUserId).ToList();
+
+            BlockedBySp.AddRange(SpBlockedByCust);
+            var blocked = BlockedBySp;
+
 
 
 
@@ -946,7 +950,7 @@ namespace Helperland.Controllers
             {
                 foreach (var temp in serviceProviderList)
                 {
-                    if (!SpByBlocked.Contains(temp.UserId))
+                    if (!blocked.Contains(temp.UserId))
                     {
                         MimeMessage message = new MimeMessage();
 
@@ -983,5 +987,156 @@ namespace Helperland.Controllers
 
 
 
+        //Block Sp
+
+        public JsonResult getSP()
+        {
+
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+
+            List<int?> SPID = _db.ServiceRequests.Where(x => x.UserId == Id && x.Status == 3).Select(u => u.ServiceProviderId).ToList();
+
+
+            var SPSetId = new HashSet<int?>(SPID);
+
+            List<BlockCustomerData> blockData = new List<BlockCustomerData>();
+
+            foreach (int temp in SPSetId)
+            {
+
+
+
+
+
+                User user = _db.Users.FirstOrDefault(x => x.UserId == temp);
+
+
+
+                FavoriteAndBlocked FB = _db.FavoriteAndBlockeds.FirstOrDefault(x => x.UserId == Id && x.TargetUserId == temp);
+
+
+                BlockCustomerData blockCustomerData = new BlockCustomerData();
+                blockCustomerData.user = user;
+                blockCustomerData.favoriteAndBlocked = FB;
+            
+                if (_db.Ratings.Where(x => x.RatingTo == user.UserId).Count() > 0)
+                {
+                    blockCustomerData.AverageRating = (float)_db.Ratings.Where(x => x.RatingTo == user.UserId).Average(x => x.Ratings);
+                }
+                else
+                {
+                    blockCustomerData.AverageRating = 0;
+                }
+               
+
+
+
+
+
+
+                blockData.Add(blockCustomerData);
+
+
+
+            }
+
+
+
+            return Json(blockData);
+
+
+        }
+
+        /* favourite or block action */
+        public string BlockUnblockFavUnFavSp(BlockDTO temp)
+        {
+            int? Id = HttpContext.Session.GetInt32("userId");
+            if (Id == null)
+            {
+                Id = Convert.ToInt32(Request.Cookies["userId"]);
+            }
+
+            FavoriteAndBlocked obj = _db.FavoriteAndBlockeds.FirstOrDefault(x => x.UserId == Id && x.TargetUserId == temp.Id);
+
+
+            if (obj == null)
+            {
+                obj = new FavoriteAndBlocked();
+                obj.UserId = (int)Id;
+                obj.TargetUserId = temp.Id;
+            }
+
+
+            var resultstr = "";
+
+            /* for block */
+            if (temp.Req == "B")
+            {
+
+
+                obj.IsBlocked = true;
+                resultstr = "Block Success";
+
+            }
+            else if (temp.Req == "U")
+            {
+                obj.IsBlocked = false;
+                resultstr = "Un-Block Success";
+            }
+
+
+            /* for favourite */
+            if (temp.Req == "F")
+            {
+                 obj.IsFavorite = true;
+                resultstr = "Favourite Success";
+            }
+            else if (temp.Req == "N")
+            {
+                obj.IsFavorite = false;
+                resultstr = "Un-Favourite Success";
+
+            }
+
+
+
+
+            var result = _db.FavoriteAndBlockeds.Update(obj);
+            _db.SaveChanges();
+            if (result != null)
+            {
+                return resultstr;
+            }
+            else
+            {
+                return "error";
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* method ends*/
     }
 }

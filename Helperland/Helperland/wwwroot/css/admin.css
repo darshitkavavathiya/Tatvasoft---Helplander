@@ -385,3 +385,21 @@ td button {
     background-color:beige;
    /*     color:white;*/
 }
+
+
+
+
+
+
+
+.w500 {
+    font-weight: 500;
+}
+
+.w700 {
+    font-weight: 700;
+}
+
+label {
+    margin-top: 0.5rem;
+}

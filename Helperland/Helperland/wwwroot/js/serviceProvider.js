@@ -403,7 +403,7 @@ function getUpcomingServiceTable() {
 
         },
         error: function (error) {
-            console.log(error);
+            //console.log(error);
         }
     });
 
@@ -565,7 +565,7 @@ function getServiceHistoryTable() {
 
         },
         error: function (error) {
-            console.log(error);
+            //console.log(error);
         }
     });
 
@@ -648,7 +648,7 @@ function getsettingsdata() {
 
                 var dateOfBirth = result.user.dateOfBirth.split('T');
                 var dateOfBirthArray = dateOfBirth[0].split("-");
-                console.log(dateOfBirthArray);
+                //console.log(dateOfBirthArray);
                 $("#dateofbirth").val(dateOfBirthArray[2]);
                 $("#dateofmonth").val(dateOfBirthArray[1]);
                 $("#dobyear").val(dateOfBirthArray[0]);
@@ -679,7 +679,7 @@ function getsettingsdata() {
 
 /*  city from postal code*/
 $("#SPSettingspincode").keyup(function () {
-    console.log($("#SPSettingspincode").val());
+    //console.log($("#SPSettingspincode").val());
     if ($("#SPSettingspincode").val().length == 6) {
         getCityFromPostalCode($("#SPSettingspincode").val());
     }
@@ -696,7 +696,7 @@ function getCityFromPostalCode(zip) {
 
             }
             else {
-                console.log(result);
+                //console.log(result);
                 $("#SPSettingscity").val(result[0].PostOffice[0].District).prop("disabled", true);
                 $("#SPSettingsState").val(result[0].PostOffice[0].State).prop("disabled", true);
                 
@@ -1035,7 +1035,7 @@ $(document).on('click', '#BlockCustomerTabBtn', function () {
 
         },
         error: function (error) {
-            console.log(error);
+            //console.log(error);
         }
     });
 

@@ -1,114 +1,142 @@
 ﻿@{
 
-	 Layout = "~/Views/Shared/_Layout.cshtml";
-	ViewData["Title"] = "customer Service history ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "customer Service history ";
 
 }
-@section Css 
+@section Css
 {
-	<link rel="stylesheet" href="~/css/customer.css" />
+<link rel="stylesheet" href="~/css/customer.css" />
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 }
 
 
 
 
- 
-
-	<h1>Welcome <span> @ViewBag.Name </span></h1>
-
-	<section class="main_service  clearfix" >
-
-		<!-- tab -->
-
-	   
-		<div class="tab " id="verticaltab">
 
 
-			<button class="tablinks" onclick="upcoming_service(event, 'dashboard')" id="dashboardTabBtn">Dashboard</button>
+<h1>Welcome <span> @ViewBag.Name </span></h1>
+
+<section class="main_service  clearfix">
+
+    <!-- tab -->
 
 
-			<button class="tablinks" onclick="upcoming_service(event, 'service_history')" id="serviceHistroyTabBtn">
-				
-				
-				Service
-				History
-			
-			
-			</button>
-			<button class="tablinks" onclick="upcoming_service(event, 'service_schedule')"id="serviceScheduleTabBtn">
-				
-				
-				Service
-				Schedule
-			
-			
-			</button>
-
-			<button class="tablinks" onclick="upcoming_service(event, 'favourite_pros')" id="favouriteProsTabBtn"> Favourite Pros </button>
-			<button class="tablinks" onclick="upcoming_service(event, 'invoices')" id="invoiceTabBtn">Invoices</button>
-			<button class="tablinks" onclick="upcoming_service(event, 'notification')" id="notificationTabBtn"> Notifications</button>
-			<button class="tablinks d-none" onclick="upcoming_service(event, 'customer_Settings')" id="SettingsTabBtn"> settings </button>
+    <div class="tab " id="verticaltab">
 
 
-		</div>
-
-		<!-- table -->
+        <button class="tablinks" onclick="upcoming_service(event, 'dashboard')" id="dashboardTabBtn">Dashboard</button>
 
 
-
-		
-		@await Html.PartialAsync("CustomerDashboardPartial")
-	   @await Html.PartialAsync("CustomerServiceHistoryPartial")
-		@await Html.PartialAsync("CustomerSettingsPartial")
-		<div id="service_schedule" class="tab-contant">
-			<h3>-----------------Service Schedule-----------------</h3>
-		</div>
-	   
+        <button class="tablinks" onclick="upcoming_service(event, 'service_history')" id="serviceHistroyTabBtn">
 
 
-		<div id="favourite_pros" class="tab-contant">
-			<h3>---------------New Service Request--------------</h3>
+            Service
+            History
 
-		</div>
 
-		<div id="invoices" class="tab-contant">
-			<h3>---------------Invoice--------------</h3>
-		</div>
+        </button>
+        <button class="tablinks" onclick="upcoming_service(event, 'service_schedule')" id="serviceScheduleTabBtn">
 
-		<div id="notification" class="tab-contant">
-			<h3>-----------------Block Customers-----------------</h3>
-		</div>
-	</section>
+
+            Service
+            Schedule
+
+
+        </button>
+
+        <button class="tablinks" onclick="upcoming_service(event, 'favouritePros')" id="favouriteProsTabBtn"> Favourite Pros </button>
+        <button class="tablinks" onclick="upcoming_service(event, 'invoices')" id="invoiceTabBtn">Invoices</button>
+        <button class="tablinks" onclick="upcoming_service(event, 'notification')" id="notificationTabBtn"> Notifications</button>
+        <button class="tablinks d-none" onclick="upcoming_service(event, 'customer_Settings')" id="SettingsTabBtn"> settings </button>
+
+
+    </div>
+
+    <!-- table -->
+    @await Html.PartialAsync("CustomerDashboardPartial")
+    @await Html.PartialAsync("CustomerServiceHistoryPartial")
+    @await Html.PartialAsync("CustomerSettingsPartial")
 
 
 
 
 
 
-
-	<!--footer-->
-
-
-
-
-	<!-- script -->
+    <div id="service_schedule" class="tab-contant">
+        <h3>-----------------Service Schedule-----------------</h3>
+    </div>
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+    <div id="favouritePros" class="tab-contant">
+
+        <div class="row" id="favouriteProsGrid">
+        </div>
+
+    </div>
+
+    <div id="invoices" class="tab-contant">
+        <h3>---------------Invoice--------------</h3>
+    </div>
+
+    <div id="notification" class="tab-contant">
+        <h3>-----------------Block Customers-----------------</h3>
+    </div>
+</section>
 
 
-	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"></script>
-	<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
-		
-   
-	<script src="~/js/CustomerDashboard.js"></script>
-	<img src='/Images/pagination-left.png' />
-		
+
+
+@*//alert popup*@
+
+<button type="button" class="btn btn-primary d-none" id="acceptAlert" data-bs-toggle="modal" data-bs-target="#alertPopup">
+    alert popup
+</button>
+
+<div class="modal fade" id="alertPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:500px">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <h4 class="modal-title" id="NewServiceAcceptStatus">  </h4>
+                <h5 id="Model_SID"></h5>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!--footer-->
+<!-- script -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+
+
+<script src="~/js/CustomerDashboard.js"></script>
+<img src='/Images/pagination-left.png' />
+
 
 
 

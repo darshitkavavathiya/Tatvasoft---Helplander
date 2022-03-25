@@ -646,6 +646,59 @@ span img {
 
 
 
+
+
+
+
+
+
+
+
+/*Block section*/
+
+.blockCard {
+    border: 2px solid grey;
+    padding: 2%;
+    margin: 2%;
+    text-align: center;
+    max-height: 241px;
+    max-width: 240px;
+}
+
+
+
+#favouritePros .cap-icon {
+    width: 50px;
+    height: 50px;
+    border: solid 1px #aaa;
+    background-color: var(--white);
+    border-radius: 50%;
+    float: none;
+}
+
+.block-sp-btn {
+    border: 1px solid #FF6B6B;
+    border-radius: 17px;
+    background-color: #FF6B6B;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 2%;
+}
+
+.fav-sp-btn {
+    border: 1px solid #FF6B6B;
+    border-radius: 17px;
+    background-color: #2b8799;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 5px 12px;
+    margin: 2%;
+}
+
+
+
+
 .serviceHistoryServiceDetails{
     width:25% !important;
 }

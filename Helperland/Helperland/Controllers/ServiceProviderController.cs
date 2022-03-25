@@ -57,7 +57,9 @@ namespace Helperland.Controllers
 
             var BlockedCustomer = _db.FavoriteAndBlockeds.Where(x => x.UserId == Id && x.IsBlocked == true).Select(x => x.TargetUserId).ToList();
 
-            Console.WriteLine(BlockedCustomer.ToString());
+            var SPBlocked = _db.FavoriteAndBlockeds.Where(x => x.TargetUserId == Id && x.IsBlocked == true).Select(x => x.UserId).ToList();
+
+            BlockedCustomer.AddRange(SPBlocked);
 
             if (ServiceRequest.Any())
             {
@@ -113,6 +115,7 @@ namespace Helperland.Controllers
                             {
                                 temp.Laundry = true;
                             }
+
                         }
 
 
@@ -360,7 +363,7 @@ namespace Helperland.Controllers
 
         public string ConflictDetails(SPDashboard ID)
         {
-            Console.WriteLine(ID.ServiceRequestId);
+            //Console.WriteLine(ID.ServiceRequestId);
 
             int conflict = CheckConflict(ID.ServiceRequestId);
 
@@ -411,8 +414,8 @@ namespace Helperland.Controllers
             DateTime endTimeRequest = request.ServiceStartDate.AddMinutes(mins + 60);
 
             request.ServiceStartDate = request.ServiceStartDate.AddMinutes(-60);
-            Console.WriteLine(endTimeRequest);
-            Console.WriteLine(request.ServiceStartDate);
+            //Console.WriteLine(endTimeRequest);
+            //Console.WriteLine(request.ServiceStartDate);
             foreach (ServiceRequest booked in list)
             {
                 mins = ((double)(booked.ServiceHours + booked.ExtraHours)) * 60;

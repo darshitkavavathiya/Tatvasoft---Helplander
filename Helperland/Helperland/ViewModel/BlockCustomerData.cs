@@ -9,5 +9,10 @@ namespace Helperland.ViewModel
         public  User user { get; set; }
       
         public FavoriteAndBlocked favoriteAndBlocked { get; set; }
+
+
+ 
+
+        public float AverageRating { get; set; }
     }
 }

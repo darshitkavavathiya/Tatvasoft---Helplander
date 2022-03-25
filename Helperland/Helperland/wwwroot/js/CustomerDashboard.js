@@ -58,7 +58,7 @@ $("#dashbordTable").click(function (e) {
         document.getElementById("serviceReqdetailsbtn").click();
       
     }
-    console.log(e);
+    //console.log(e);
 });
 
 /* for row click in cs */
@@ -111,7 +111,7 @@ $(' .customerCancel').on('click', function () {
 document.getElementById("RescheduleServiceRequest").addEventListener("click", function () {
     var serviceStartDate = document.getElementById("selected_date").value;
     var serviceTime = document.getElementById("selected_time").value;
-    console.log(serviceRequestId);
+    //console.log(serviceRequestId);
     var data = {};
     data.Date = serviceStartDate;
     data.startTime = serviceTime;
@@ -327,7 +327,7 @@ document.getElementById("confirm_rating").addEventListener("click", function () 
         success: function (result) {
             if (result.value == "true") {
                 $("#myRatingModal").modal("hide");
-                console.log("submited");
+                //console.log("submited");
 
             }
             else {
@@ -382,7 +382,7 @@ $(document).on('click', '.rateactive', function () {
         },
         error: function () {
             alert('failed to receive the data');
-            console.log('failed ');
+            //console.log('failed ');
         }
     });
 });
@@ -545,12 +545,12 @@ $(document).ready(function () {
             Msphoneno.value = result.mobile;
 
 
-            console.log(result.dateOfBirth);
+            //console.log(result.dateOfBirth);
 
             if (result.dateOfBirth != null) {
                 var dateOfBirth = result.dateOfBirth.split('T');
                 var dateOfBirthArray = dateOfBirth[0].split("-");
-                console.log(dateOfBirthArray);
+                //console.log(dateOfBirthArray);
                 $("#dobday").val(dateOfBirthArray[2]);
                 $("#dobmonth").val(dateOfBirthArray[1]);
                 $("#dobyear").val(dateOfBirthArray[0]);
@@ -579,7 +579,7 @@ $("#CSSaveDetails").on('click', function () {
     data.mobile = document.getElementById("mSphonenumber").value;
     data.dateOfBirth = $("#dobday").val() + "-" + $("#dobmonth").val() + "-" + $("#dobyear").val();
 
-    console.log(data.dateOfBirth);
+    //console.log(data.dateOfBirth);
     window.setTimeout(function () {
         $('#mSmyDetailsAlert').addClass('d-none');
     }, 5000);
@@ -653,7 +653,7 @@ function getAddress() {
 
         success: function (result) {
             if (result != false) {
-                console.log(result);
+                //console.log(result);
 
                 $("#alladdress").empty();
                 for (var i = 0; i < result.length; i++) {
@@ -715,7 +715,7 @@ function getCityFromPostalCode(zip) {
 
             }
             else {
-                console.log(result);
+                //console.log(result);
                 $("#City").val(result[0].PostOffice[0].District);
                 $("#State").val(result[0].PostOffice[0].State).prop("disabled", true);
                 $("#City").prop("disabled", true);
@@ -729,7 +729,7 @@ function getCityFromPostalCode(zip) {
 }
 
 $("#addAddressPostalCode").keyup(function () {
-    console.log($("#addAddressPostalCode").val());
+    //console.log($("#addAddressPostalCode").val());
     if ($("#addAddressPostalCode").val().length == 6) {
         getCityFromPostalCode($("#addAddressPostalCode").val());
     }
@@ -813,11 +813,11 @@ var addressId;
 $("#address").on('click', function (e) {
     var element = e.target.closest("button");
 
-    console.log(element);
+    //console.log(element);
     if (element != null) {
         if (element.classList.contains("myAddressEditBtn")) {
             addressId = element.getAttribute("data-value");
-            console.log("editaddress");
+            //console.log("editaddress");
 
             //------------- Get Address Data To Modal -----------------
 
@@ -850,14 +850,14 @@ $("#address").on('click', function (e) {
             $("#updateAddressSubmit").removeClass("d-none");
             $("#addAddressSubmit").addClass("d-none");
             $("#settingsaddressmodeltitel").text("Edit Address");
-            console.log(addressId);
+            //console.log(addressId);
             $("#addNewaddressModel").modal("show");
 
 
 
         }
         if (element.classList.contains("myAddressDeleteBtn")) {
-            console.log("delete");
+            //console.log("delete");
             addressId = element.getAttribute("data-value");
             $("#MSDeleteAddressModalBtn").click();
         }
@@ -1109,3 +1109,173 @@ const ServiceHistoryTablepagination = new DataTable("#ServiceHistoryTable", {
 
     columnDefs: [{ orderable: false, targets: 4 }],
 });
+
+
+
+
+/*         nice to have */
+
+
+
+
+//Block-fav Sp
+
+
+$(document).on('click', '#favouriteProsTabBtn', function () {
+
+
+
+    $.ajax({
+        type: "GET",
+        url: '/Customer/getSP',
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        success: function (result) {
+            $('#favouriteProsGrid').empty();
+
+
+
+            for (var i = 0; i < result.length; i++) {
+
+                var unblock = "d-none";
+                var block = ""
+                if (result[i].favoriteAndBlocked != null) {
+
+                    var status = result[i].favoriteAndBlocked.isBlocked;
+
+                    if (status == true) {
+                        block = "d-none";
+                        unblock = "";
+
+                    }
+
+
+                }
+
+
+                var fav = "";
+                var unfav = "d-none"
+                if (result[i].favoriteAndBlocked != null) {
+
+                    var status = result[i].favoriteAndBlocked.isFavorite;
+
+                    if (status == true) {
+
+                        fav = "d-none";
+                        unfav = "";
+
+                    }
+
+
+                }
+
+
+                //for (var i = 0; i < 5; i++) {
+                //    if (i < rating) {
+                //        SpRating +='<i class="fa fa-star " style="color:#ECB91C;" ></i>';
+                //    } else {
+                //        SpRating +='<i class="fa fa-star " style="color:silver;"></i>';
+                //    }
+                //}
+                //SpRating +=result.averageRating);
+
+
+
+                $('#favouriteProsGrid').append('<div  class="col-4 blockCard ">' +
+                    '<div>' +
+                    '<img class= "cap-icon" src = "/images/' + result[i].user.userProfilePicture+' " alt = ".." >' +
+                    '</div >' +
+                 
+                    '<h3 class="mt-2"> ' + result[i].user.firstName + '  </h3>' +
+
+                   /* '<div>' + result[i].averageRating+'</div>'+*/
+                    '<br/>' +
+                    '<button id="' + result[i].user.userId + 'F" class="' + fav + ' spFBBtn fav-sp-btn">Favourite</button>' +
+                    '<button id="' + result[i].user.userId + 'N" class="' + unfav + ' spFBBtn fav-sp-btn">Un-Favourite</button>' +
+                    '<button id="' + result[i].user.userId + 'B" class="' + block + ' spFBBtn block-sp-btn">Block</button>' +
+                    '<button id="' + result[i].user.userId + 'U" class="' + unblock + ' spFBBtn block-sp-btn">Un-Block</button>' +
+
+                    '</div >'
+                )
+            }
+
+
+
+
+
+
+
+
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+
+
+
+
+
+});
+
+
+
+
+$(document).on('click', '.spFBBtn', function () {
+
+    var combine = this.id;
+
+
+    var req = combine.substring(combine.length - 1, combine.length);
+    var Id = combine.substring(0, combine.length - 1);
+
+
+
+    var data = {};
+    data.Id = parseInt(Id);
+    data.Req = req;
+
+
+    $.ajax({
+        type: 'GET',
+        url: '/Customer/BlockUnblockFavUnFavSp',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+
+            document.getElementById("favouriteProsTabBtn").click();
+
+            document.getElementById("acceptAlert").click();
+
+
+
+            if (result == "UnFavourite Success" || result == "Block Success") {
+                $('#NewServiceAcceptStatus').text(result).css("color", "red");
+            } else {
+                $('#NewServiceAcceptStatus').text(result).css("color", "green");
+            }
+
+         
+
+
+
+
+            window.setTimeout(function () {
+                $("#alertPopup").modal("hide");
+
+            }, 7000);
+
+
+
+
+
+        },
+        error: function () {
+
+            alert("error");
+        }
+    });
+
+
+
+});
+

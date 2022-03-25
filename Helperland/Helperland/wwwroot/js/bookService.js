@@ -170,7 +170,7 @@ $(document).ready(function () {
 
 
 function ClickFunction(id) {
-    alert(id);
+   
     document.getElementById(id).click();
 
 }
@@ -222,7 +222,7 @@ function postalSubmit() {
         error: function () {
             alert('Failed to receive the Data');
 
-            console.log('Failed ');
+            //console.log('Failed ');
         }
     });
 
@@ -246,7 +246,7 @@ function postalSubmit() {
 function scheduleSubmit() {
 
     var data = $("#form2").serialize();
-    console.log(data);
+    //console.log(data);
 
 
 
@@ -267,7 +267,7 @@ function scheduleSubmit() {
         },
         error: function () {
             alert('Failed to receive the Data');
-            console.log('Failed ');
+            //console.log('Failed ');
         }
     });
 }
@@ -306,11 +306,11 @@ function loadAddress() {
 
                 checked = "";
             } 
-            console.log(result);
+            //console.log(result);
         },
         error: function () {
             alert('failed to receive the data');
-            console.log('failed ');
+            //console.log('failed ');
         }
     });
 }
@@ -330,7 +330,7 @@ function getCityFromPostalCode(zip) {
 
             }
             else {
-                console.log(result);
+                //console.log(result);
                 $("#City").val(result[0].PostOffice[0].District);
                 $("#State").val(result[0].PostOffice[0].State).prop("disabled", true);
                 $("#City").prop("disabled", true);
@@ -385,7 +385,7 @@ function saveAddress() {
         },
         error: function () {
             alert('Failed to receive the Data');
-            console.log('Failed ');
+            //console.log('Failed ');
         }
     });
 }
@@ -394,7 +394,7 @@ function saveAddress() {
 
 
 //$("#addAddressPostalCode").keyup(function () {
-//    console.log($("#addAddressPostalCode").val());
+//    //console.log($("#addAddressPostalCode").val());
 //    if ($("#addAddressPostalCode").val().length == 6) {
 //        getCityFromPostalCode($("#addAddressPostalCode").val());
 //    }
@@ -499,7 +499,7 @@ function completeBookService() {
             },
             error: function () {
                 alert('failed to receive the data');
-                console.log('failed ');
+                //console.log('failed ');
             }
         });
     }

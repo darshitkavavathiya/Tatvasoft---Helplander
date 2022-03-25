@@ -23,6 +23,22 @@
 				margin: 1.75rem auto;
 			}
 		}
+
+
+
+		/*      cssss */
+
+		.w500 {
+			font-weight: 500;
+		}
+
+		.w700 {
+			font-weight: 700;
+		}
+
+		label {
+			margin-top: 0.5rem;
+		}
 	</style>
 
 </head>
@@ -36,143 +52,83 @@
 
 
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-		Launch demo modal
+	<button type="button" class="btn btn-primary" id="RefundModelBtn" data-bs-toggle="modal"
+		data-bs-target="#RefundModel">
+
 	</button>
 
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="RefundModel" tabindex="-1">
 		<div class="modal-dialog modal-dialog-centered" style="max-width: 550px;">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Edit Service Request</h5>
+					<h4 class="modal-title w700" id="exampleModalLabel">Refund Amount</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					
-						
-							<div class="row">
-								<div class="col-md-6">
-									<label for="AdminEditpopupDate" class="form-label">Date</label>
-									<input type="date" class="form-control" name="date" id="AdminEditPopupDate">
-								</div>
-								<div class="col-md-6">
-									<label class="form-label" for="AdminEditPopupTime">Time</label>
-									<select class="form-select" id="AdminEditPopupTime"
-										aria-label="Default select example">
 
-										<option selected value="08:00:00">8:00 </option>
-										<option value="08:30:00">8:30 </option>
-										<option value="09:00:00">9:00 </option>
-										<option value="09:30:00">9:30 </option>
-										<option value="10:00:00">10:00 </option>
-										<option value="10:30:00">10:30 </option>
-										<option value="11:00:00">11:00 </option>
-										<option value="11:30:00">11:30 </option>
-										<option value="12:00:00"> 12:00 </option>
-										<option value="12:30:00">12:30 </option>
-										<option value="13:00:00"> 13:00 </option>
-										<option value="13:30:00">13:30 </option>
-										<option value="14:00:00"> 14:00 </option>
-										<option value="14:30:00">14:30 </option>
-										<option value="15:00:00"> 15:00 </option>
-										<option value="15:30:00">15:30 </option>
-										<option value="16:00:00"> 16:00 </option>
-										<option value="16:30:00">16:30 </option>
-										<option value="17:00:00"> 17:00 </option>
-										<option value="17:30:00">17:30 </option>
-										<option value="18:00:00"> 18:00 </option>
-									</select>
-								</div>
-							</div>
-
-
-
-
-
-
-
-							<label class="form-label mt-4"> Service Address</label>
-
-							<div class="row">
-								<div class="col-md-6">
-									<label for="AdminEditPopupStreet" class="form-label">Street Name</label>
-									<input type="text" class="form-control" name="Street" id="AdminEditPopupStreet">
-								</div>
-								<div class="col-md-6">
-									<label for="AdminEditPopupHouse" class="form-label">House No</label>
-									<input type="text" class="form-control" name="House" id="AdminEditPopupHouse">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<label for="AdminEditPopupPostalCode" class="form-label">PostalCode</label>
-									<input type="text" class="form-control" name="PostalCode"
-										id="AdminEditPopupPostalCode">
-								</div>
-								<div class="col-md-6">
-									<label for="AdminEditPopupCity" class="form-label">City</label>
-									<input type="text" class="form-control" name="City" id="AdminEditPopupCity">
-
-								</div>
-							</div>
-							<label class="form-label mt-4"> Invoice Address</label>
-
-							<div class="row">
-								<div class="col-md-6">
-									<label for="AdminEditPopupInvoiceStreet" class="form-label">Street Name</label>
-									<input type="text" class="form-control" name="Street"
-										id="AdminEditPopupInvoiceStreet">
-								</div>
-								<div class="col-md-6">
-									<label for="AdminEditPopupInvoiceHouse" class="form-label">House No</label>
-									<input type="text" class="form-control" name="House"
-										id="AdminEditPopupInvoiceHouse">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<label for="AdminEditPopupInvoicePostalCode" class="form-label">PostalCode</label>
-									<input type="text" class="form-control" name="PostalCode"
-										id="AdminEditPopupInvoicePostalCode">
-								</div>
-								<div class="col-md-6">
-									<label for="AdminEditPopupInvoiceCity" class="form-label">City</label>
-									<input type="text" class="form-control" name="City" id="AdminEditPopupInvoiceCity">
-
-								</div>
-							</div>
-
-						
-						<!-- 1 col  -->
-						<div class="row">
-
-							<div class="row mt-4">
-								<label for="AdminEditPopupWhyEdit" class="form-label "> Why do you want to
-									reSchedule Service req?</label>
-								<textarea  class="form-control ms-2" name="City" id="AdminEditPopupWhyEdit"
-									placeholder="Why do you want to reSchedule Service req?"></textarea>
-							</div>
-							<div class="row mt-4">
-								<label for="AdminEditPopupWhyCall" class="form-label"> Call Center EMP Notes
-								</label>
-								<textarea  class="form-control ms-2" name="City" id="AdminEditPopupWhyCall"
-									placeholder="Enter Notes"></textarea>
-							</div>
-							<div class="row mt-4 mb-2"><button type="button" class=" ms-2 btn btn-primary ">Update</button></div>
-							
+					<div class="row ps-3">
+						<div class="col-3 w500">
+							<div class="row">Paid Amount </div>
+							<span id="PaidAmount">5400</span>&euro;
 						</div>
-					
+						<div class="col-4 w500">
+							<div class="row">Refund Amount </div>
+							<span id="RefundAmount">0</span>  &euro;
+								</div>
+						<div class="col-5 w500">
+							<div class="row">In Balance Amount </div>
+						<span id="BalanceAmount">5400</span> &euro;
+						</div>
+
+					</div>
+
+					<div class="row mt-4">
+						<div class="col-6">
+							<label class="form-label w500">Amount</label>
+
+							<div class="input-group">
+
+								<input type="number" class="form-control" value="0" id="RefundPercentage">
+								<span class="input-group-text" >Percentage</span>
+							</div>
+						
+						</div>
+						<div class="col-6">
+							<label class="form-label w500">Calculate</label>
+
+							<div class="input-group mb-3">
+								<span class="input-group-text"> Calculate</span>
+								<input type="text"  id="CalculateAmount" class="form-control" disabled>
+
+							</div>
+						</div>
+					</div>
+
+					<label class="form-label w500 mt-3">Why you want to refund amount?</label>
+					<textarea name="" class="form-control" id="WhyRefund"
+						placeholder="Why you want to refund amount?"></textarea>
+
+					<label class="form-label w500 mt-3">Call Center EMP Notes</label>
+					<textarea name="" class="form-control" id="CallNotes" placeholder="Enter Notes"></textarea>
+
+
+
+
+					<div class="row my-3 px-3">
+						<button class="btn btn-primary" style="background-color:#1FB6FF; border-radius: 0%;"
+							type="button" id="RefundSubmit">Refund </button>
+
+					</div>
+
+
+
+
 				</div>
-
-
-
-
 			</div>
 		</div>
-	</div>
-	
 
+	</div>
 
 
 
@@ -184,7 +140,7 @@
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="js/upcoming.js"></script>
+	
 
 
 	<script type="text/javascript"
@@ -195,7 +151,44 @@
 	<script>
 
 
+	</script> 
+
+
+	<script>
+		
+		$('#RefundPercentage').on('keyup', function () {
+        var mobileNum = $(this).val();
+		 mobileNum= parseInt(mobileNum);
+		 
+		if(mobileNum>=0 && mobileNum <= 100){
+			var	totalprice = $("#PaidAmount").html();
+			refundAmount = parseInt((totalprice*mobileNum)/100);
+			balanceAmount = parseInt(totalprice-refundAmount);
+			$("#CalculateAmount").val(refundAmount);
+			$("#RefundAmount").html(refundAmount);
+			$("#BalanceAmount").html(balanceAmount);
+			$("#RefundSubmit").removeAttr('disabled');
+		}else{
+			$("#CalculateAmount").val("Invalid");
+			$("#RefundAmount").html("Invalid");
+			$("#BalanceAmount").html("Invalid");
+
+			$("#RefundSubmit").attr('disabled','disabled');
+		}
+
+    	});
+
+		$("#RefundSubmit").on('click',function(){
+			alert("hello");
+		});
+
+
+
 	</script>
-</body>
+
+
+
+
+	</body>
 
 </html>

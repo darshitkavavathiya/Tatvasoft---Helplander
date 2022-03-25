@@ -53,16 +53,39 @@ user profile url to db :
 
 
 
-  
-    $.ajax({
-        type: 'POST',
-        url: '/Admin/',
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        data: data,
-        success: function (result) {
-           
-        },
-        error: function () {
-            alert("error");
-        }
-    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    helperlandcustomer1@yopmail.com       
+    helperlandcustomer2@yopmail.com
+    helperlandcustomer3@yopmail.com
+    helperlandcustomer4@yopmail.com
+    helperlandcustomer5@yopmail.com
+    helperlandcustomer6@yopmail.com
+
+
+    helperlandsp1@yopmail.com
+    helperlandsp2@yopmail.com
+    helperlandsp3@yopmail.com
+    helperlandsp4@yopmail.com
+    helperlandsp5@yopmail.com
+    helperlandsp6@yopmail.com
+
+
+
+
+    helperlandadmin1@yopmail.com
+    helperlandadmin2@yopmail.com
+    helperlandadmin3@yopmail.com
+ 

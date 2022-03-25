@@ -86,7 +86,7 @@ $(document).ready(function () {
 
 
 $(document).on("click", "#servicertabbtn", function () {
-    console.log("45 get adminservicereq()");
+    ////console.log("45 get adminservicereq()");
     if ($.fn.DataTable.isDataTable("#adminservicereqtable")) {
         $('#adminservicereqtable').DataTable().clear().destroy();
     }
@@ -96,7 +96,7 @@ $(document).on("click", "#servicertabbtn", function () {
 
 
 $(document).on("click", "#filterSubmit", function () {
-    console.log("83 submit get adminservicereq()");
+    ////console.log("83 submit get adminservicereq()");
     if ($.fn.DataTable.isDataTable("#adminservicereqtable")) {
         $('#adminservicereqtable').DataTable().clear().destroy();
     }
@@ -105,7 +105,7 @@ $(document).on("click", "#filterSubmit", function () {
 });
 
 $(document).on("click", "#filterclear", function () {
-    console.log("83 submit get adminservicereq()");
+    //console.log("83 submit get adminservicereq()");
     if ($.fn.DataTable.isDataTable("#adminservicereqtable")) {
         $('#adminservicereqtable').DataTable().clear().destroy();
     }
@@ -129,7 +129,7 @@ function getadminservicereq() {
     data.status = document.getElementById("filterStatus").value;
     data.fromDate = document.getElementById("filterFromdate").value;
     data.toDate = document.getElementById("filterTodate").value;
-    console.log(data.serviceRequestId + data.zipCode + data.email + data.customerName + data.serviceProviderName + data.status + data.fromDate + data.toDate);
+    //console.log(data.serviceRequestId + data.zipCode + data.email + data.customerName + data.serviceProviderName + data.status + data.fromDate + data.toDate);
     $.ajax({
         type: 'GET',
         url: '/Admin/GetServiceRequest',
@@ -190,11 +190,11 @@ function getadminservicereq() {
                         break;
                     case 3: /*completed */
                         varStatus = "completed";
-                        popupfield = '    <p> Refund</p>  ';
+                        popupfield = '    <p  class="AdminRefund" data-value=' + result[i].serviceRequestId + '> Refund</p>  ';
                         break;
                     case 4: /*cancelled*/
                         varStatus = "cancelled";
-                        popupfield = '    <p> Refund</p>  ';
+                        popupfield = '    <p  class="AdminRefund" data-value=' + result[i].serviceRequestId + '> Refund</p>  ';
                         break;
                     default: /*other status */
                         varStatus = "invalid";
@@ -267,10 +267,10 @@ var serviceReqId;
 var state;
 $(document).on('click', '.AdminEdit', function () {
 
-    console.log("edit click 241");
+    //console.log("edit click 241");
     $("#AdminEditModelBtn").click();
     serviceReqId = this.getAttribute("data-value");
-    console.log(serviceReqId);
+    //console.log(serviceReqId);
     FillEditPopup();
 });
 
@@ -297,20 +297,20 @@ function FillEditPopup() {
 
 
 
-            console.log("suceess" + result.startTime);
-            console.log("suceess" + result.date);
-            console.log("suceess" + result.address.addressLine1);
+            //console.log("suceess" + result.startTime);
+            //console.log("suceess" + result.date);
+            //console.log("suceess" + result.address.addressLine1);
 
 
 
             document.querySelector('option[value="' + result.startTime + '"]').selected = true;
 
             var temp = new Date(result.date);
-            console.log("suceess" + temp);
+            //console.log("suceess" + temp);
 
 
             temp.setDate(temp.getDate() + 1);
-            console.log("suceessful" + temp);
+            //console.log("suceessful" + temp);
             document.getElementById('AdminEditPopupDate').valueAsDate = temp;
 
 
@@ -476,7 +476,7 @@ function getCityFromPostalCode(zip, Id) {
 
 $(document).on('click', '.AdminCancle', function () {
 
-    console.log("cancle click 241");
+    //console.log("cancle click 241");
 
     serviceReqId = this.getAttribute("data-value");
 
@@ -518,7 +518,7 @@ $(document).on('click', '.AdminCancle', function () {
 /*User */
 
 $(document).on("click", "#usermanagementtabbtn", function () {
-    console.log("521 ");
+    //console.log("521 ");
     if ($.fn.DataTable.isDataTable("#adminUserTable")) {
         $('#adminUserTable').DataTable().clear().destroy();
     }
@@ -566,9 +566,9 @@ function getAdminUserData() {
     data.email = document.getElementById("UserFilterEmail").value;
     data.fromDate = document.getElementById("UserFilterFromDate").value;
     data.toDate = document.getElementById("UserFilterToDate").value;
-    // console.log(data.serviceRequestId + data.zipCode + data.email + data.customerName + data.serviceProviderName + data.status + data.fromDate + data.toDate);
-    console.log(data.toDate);
-    console.log(data.fromDate);
+    // //console.log(data.serviceRequestId + data.zipCode + data.email + data.customerName + data.serviceProviderName + data.status + data.fromDate + data.toDate);
+    //console.log(data.toDate);
+    //console.log(data.fromDate);
     $.ajax({
         type: 'GET',
         url: '/Admin/GetUserData',
@@ -767,6 +767,135 @@ $(document).on("click", ".popuptext.userpopup", function () {
   
 
 });
+
+
+
+
+
+//Good to have
+
+
+//Refund
+
+
+
+$(document).on('click', '.AdminRefund', function () {
+
+    $("#RefundModelBtn").click();
+    serviceReqId = this.getAttribute("data-value");
+
+    $("#RefundPercentage").val(0);
+    $("#WhyRefund").val("");
+    $("#CallNotes").val("");
+    $("#CalculateAmount").val("");
+
+    var data = {};
+    data.ServiceRequestId = parseInt(serviceReqId);
+
+    $.ajax({
+        type: 'GET',
+        url: '/Admin/GetAdminRefundData',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {    
+            
+            if (result.refundAmount == null) {
+                $("#RefundSubmit").removeAttr('disabled');
+                $("#RefundPercentage").removeAttr('disabled');
+                $("#AdminRefundAlert").removeClass("alert-danger alert-success").addClass(" d-none");
+                result.refundAmount = 0;
+            } else {
+                $("#AdminRefundAlert").removeClass("alert-danger d-none").addClass("alert-success").text("Refund had been given.");
+
+                $("#RefundSubmit").attr('disabled', 'disabled');
+                $("#RefundPercentage").attr('disabled', 'disabled');
+
+            }
+
+           
+            
+            $("#PaidAmount").html(result.totalCost);
+            $("#RefundAmount").html(result.refundAmount);
+            $("#BalanceAmount").html(result.totalCost-result.refundAmount);
+
+
+
+
+        },
+        error: function () {
+            alert("error");
+        }
+    });
+
+
+});
+
+
+
+$('#RefundPercentage').on('change keyup', function () {
+    var paidAmount = $(this).val();
+    paidAmount = parseFloat(paidAmount).toFixed(2);
+
+    if (paidAmount >= 0 && paidAmount <= 100) {
+        var totalprice = $("#PaidAmount").html();
+        refundAmount = parseFloat((totalprice * paidAmount) / 100).toFixed(2);
+        balanceAmount = parseFloat(totalprice - refundAmount).toFixed(2);
+        $("#CalculateAmount").val(refundAmount);
+        $("#RefundAmount").html(refundAmount);
+        $("#BalanceAmount").html(balanceAmount);
+        $("#RefundSubmit").removeAttr('disabled');
+    } else {
+        $("#CalculateAmount").val("Invalid");
+        $("#RefundAmount").html("Invalid");
+        $("#BalanceAmount").html("Invalid");
+
+        $("#RefundSubmit").attr('disabled', 'disabled');
+    }
+
+});
+
+
+$("#RefundSubmit").on('click', function () {
+    var data = {};
+    data.ServiceRequestId = parseInt(serviceReqId);
+    data.RefundedAmount = parseFloat($("#CalculateAmount").val());
+
+    $.ajax({
+        type: 'GET',
+        url: '/Admin/AdminRefundUpdate',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        data: data,
+        success: function (result) {
+
+            if (result == "true") {
+                $("#AdminRefundAlert").removeClass("alert-danger d-none").addClass("alert-success").text("Refund has been initiated.");
+                $("#RefundSubmit").attr('disabled', 'disabled');
+                $("#RefundPercentage").attr('disabled', 'disabled');
+
+            }
+            else {
+                $("#AdminRefundAlert").removeClass("alert-success d-none").addClass("alert-danger").text("opps! Something went wrong.");
+
+            }
+
+        },
+        error: function () {
+            alert("error");
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MimeKit;
 using MailKit.Net.Smtp;
-
+using Newtonsoft.Json;
 
 namespace Helperland.Controllers
 {
@@ -57,7 +57,7 @@ namespace Helperland.Controllers
 
         public JsonResult GetServiceRequest(AdminServiceFilterDTO filter)
         {
-            Console.WriteLine(filter.ServiceRequestId);
+            //Console.WriteLine(filter.ServiceRequestId);
 
             List<AdminservicereqDTO> tabledata = new List<AdminservicereqDTO>();
 
@@ -66,7 +66,7 @@ namespace Helperland.Controllers
             foreach (ServiceRequest temp in serviceRequestsList)
             {
 
-                Console.WriteLine(temp.ServiceRequestId);
+                //Console.WriteLine(temp.ServiceRequestId);
                 if (checkServiceRequest(temp, filter))
                 {
 
@@ -236,7 +236,7 @@ namespace Helperland.Controllers
 
         public JsonResult GetEditPopupData(ServiceRequest Id)
         {
-            Console.WriteLine(Id.ServiceRequestId);
+            //Console.WriteLine(Id.ServiceRequestId);
 
 
             AdminPopUpDTO adminPopUpDTO = new AdminPopUpDTO();
@@ -244,12 +244,12 @@ namespace Helperland.Controllers
             adminPopUpDTO.address = _db.ServiceRequestAddresses.FirstOrDefault(x => x.ServiceRequestId == Id.ServiceRequestId);
 
             DateTime starttime = _db.ServiceRequests.Where(x => x.ServiceRequestId == Id.ServiceRequestId).Select(x => x.ServiceStartDate).FirstOrDefault();
-            Console.WriteLine(starttime.ToString());
+            //Console.WriteLine(starttime.ToString());
             adminPopUpDTO.Date = starttime.ToString("MM-dd-yyyy");
 
             adminPopUpDTO.StartTime = starttime.ToString("HH:mm:ss");
 
-            Console.WriteLine(adminPopUpDTO.StartTime);
+            //Console.WriteLine(adminPopUpDTO.StartTime);
 
             return Json(adminPopUpDTO);
 
@@ -264,7 +264,7 @@ namespace Helperland.Controllers
             ServiceRequest serviceRequest = _db.ServiceRequests.FirstOrDefault(x=> x.ServiceRequestId == DTO.ServiceRequestId);
 
             DateTime dateTime= Convert.ToDateTime(DTO.Date);
-            Console.Write("269"+dateTime.ToString());
+            //Console.Write("269"+dateTime.ToString());
             serviceRequest.ServiceStartDate =dateTime;
 
  
@@ -273,7 +273,7 @@ namespace Helperland.Controllers
 
 
             ServiceRequestAddress serviceRequestAddress = _db.ServiceRequestAddresses.FirstOrDefault(x => x.ServiceRequestId == DTO.ServiceRequestId);
-            Console.WriteLine(DTO.ServiceRequestId);
+            //Console.WriteLine(DTO.ServiceRequestId);
 
 
             serviceRequestAddress.AddressLine1 = DTO.address.AddressLine1;
@@ -308,7 +308,7 @@ namespace Helperland.Controllers
 
 
 
-            Console.WriteLine(cancel.ServiceRequestId);
+            //Console.WriteLine(cancel.ServiceRequestId);
             ServiceRequest cancelService = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == cancel.ServiceRequestId);
             cancelService.Status = 4;
            
@@ -404,8 +404,8 @@ namespace Helperland.Controllers
         public bool checkUserFilter(User user, AdminUserFilterDTO filter)
         {
 
-            //Console.WriteLine(filter.ToDate);
-            //Console.WriteLine(user.CreatedDate);
+            ////Console.WriteLine(filter.ToDate);
+            ////Console.WriteLine(user.CreatedDate);
 
             if (filter.Name != null)
             {
@@ -485,7 +485,7 @@ namespace Helperland.Controllers
 
         public string UserEdit(User Id)
         {
-            Console.WriteLine(Id.UserId);
+            //Console.WriteLine(Id.UserId);
             User user = _db.Users.FirstOrDefault(x => x.UserId == Id.UserId);
 
             var resultString = "Error";
@@ -553,8 +553,7 @@ namespace Helperland.Controllers
 
                     MimeMessage message = new MimeMessage();
 
-                    MailboxAddress from = new MailboxAddress("Helperland",
-                    "mailto:vedantjotangiya@gmail.com");
+                    MailboxAddress from = new MailboxAddress("Helperland","darshitkavathiya34@gmail.com");
                     message.From.Add(from);
 
                     MailboxAddress to = new MailboxAddress(temp.FirstName, temp.Email);
@@ -571,7 +570,7 @@ namespace Helperland.Controllers
 
                     SmtpClient client = new SmtpClient();
                     client.Connect("smtp.gmail.com", 587, false);
-                mailto: client.Authenticate("vedantjotangiya@gmail.com", "Vedantjot@123");
+                mailto: client.Authenticate("darshitkavathiya34@gmail.com", "Dar@1234");
                     client.Send(message);
                     client.Disconnect(true);
                     client.Dispose();
@@ -587,6 +586,49 @@ namespace Helperland.Controllers
 
 
 
+        /*   Good To Have */
+
+        public JsonResult GetAdminRefundData(ServiceRequest Id)
+        {
+
+
+            Console.WriteLine(Id.ServiceRequestId);
+            var req = _db.ServiceRequests.FirstOrDefault(x => x.ServiceRequestId == Id.ServiceRequestId);
+
+
+            var myData = new
+            {
+                TotalCost = req.TotalCost,
+                RefundAmount = req.RefundedAmount             
+               
+            };
+           
+            return Json(myData);
+        }
+
+        public string AdminRefundUpdate(ServiceRequest req)
+        {
+            Console.WriteLine(req.RefundedAmount);
+            Console.WriteLine(req.ServiceRequestId);
+
+
+            ServiceRequest obj = _db.ServiceRequests.FirstOrDefault(x=>x.ServiceRequestId == req.ServiceRequestId);
+
+            
+            obj.RefundedAmount = req.RefundedAmount;
+            
+            var result = _db.ServiceRequests.Update(obj);
+
+            _db.SaveChanges();
+
+            if(result != null)
+            {
+
+                return "true";
+            }
+
+            return "error";
+        }
 
 
 
