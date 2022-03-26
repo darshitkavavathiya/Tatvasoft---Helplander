@@ -283,7 +283,11 @@ $("#newServiceReqAccept").on('click', function () {
                     $("#alertPopup").modal("hide");
 
                 }, 3000);
-                alert(result);
+
+
+
+
+                alert("290 line"+result);
             }
 
         },
@@ -419,11 +423,9 @@ function getUpcomingServiceTable() {
 
 $(document).on('click', '.CompleteService', function () {
 
-    alert(serviceRequestId);
 
     var data = {};
     data.ServiceRequestId = parseInt(serviceRequestId);
-    alert(data.ServiceRequestId);
     $.ajax({
         type: 'GET',
         url: '/ServiceProvider/CompleteService',
@@ -432,8 +434,14 @@ $(document).on('click', '.CompleteService', function () {
         success: function (result) {
 
             if (result == "true") {
-                alert("Service Request marked as completed");
+
+             
                 window.location.reload();
+
+
+
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("Service Request marked as completed").css("color", "Green");
 
             }
             else {
@@ -1182,16 +1190,7 @@ function addServiceSchedule() {
             alert(error);
         },
 
-        //beforeSend: function () {
-        //    $("#loadingAnimation").removeClass("d-none");
-
-        //},
-
-        //complete: function () {
-        //    setTimeout(function () {
-        //        $("#loadingAnimation").addClass("d-none");
-        //    }, 500);
-        //},
+      
     });
 }
 

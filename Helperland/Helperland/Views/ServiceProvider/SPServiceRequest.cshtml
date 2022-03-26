@@ -1,2 +1,82 @@
-﻿@{    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewData["Title"] = "ServiceProviderPage ";}@section Css {<link rel="stylesheet" href="~/css/ServiceProvider.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css"> }<h1>Welcome <span> @ViewBag.Name </span></h1><section class="main_service clearfix">    <!-- tab -->    <div class="tab" id="verticaltab">        <button class="tablinks" id="DashboardTabBtn">Dashboard</button>        <button class="tablinks" onclick="Sp_TabNav(event, 'NewServiceRequest')" id="NewServiceRequestTabBtn">New Service Request</button>        <button class="tablinks" onclick="Sp_TabNav(event, 'UpcomingService')" id="UpcomingServiceTabBtn">Upcoming Service</button>        <button class="tablinks" onclick="Sp_TabNav(event, 'ServiceSchedule')" id="ServiceScheduleTabBtn"> Service Schedule </button>        <button class="tablinks" onclick="Sp_TabNav(event, 'ServiceHistory')" id="ServiceHistoryTabBtn">Service History</button>        <button class="tablinks" onclick="Sp_TabNav(event, 'MyRating')" id="MyRatingTabBtn">My Rating</button>        <button class="tablinks " onclick="Sp_TabNav(event, 'BlockCustomer')" id="BlockCustomerTabBtn">Block Customer</button>        <button class="tablinks " id="InvoiceTabBtn">Invoice</button>        <button class="tablinks" id="NotificationTabBtn">Notification</button>        <button class="tablinks" onclick="Sp_TabNav(event, 'SPSettings')" id="SettingsTabBtn">Settings</button>    </div>    <!-- table -->    @await Html.PartialAsync("SpUpcomingService")    @await Html.PartialAsync("SpServiceHistory")    @await Html.PartialAsync("SpNewServiceRequest")    @await Html.PartialAsync("SpMyRating")    @await Html.PartialAsync("SpBlockCustomer")    @await Html.PartialAsync("SpSettings")    @await Html.PartialAsync("SpServiceSchedule")</section><!-- script --><script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script><script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"></script><script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script><script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script><script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script><script src="~/js/serviceProvider.js"></script>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "ServiceProviderPage ";
+}
+
+
+
+@section Css
+ {
+<link rel="stylesheet" href="~/css/ServiceProvider.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css">
+ }
+
+
+
+
+
+<h1>Welcome <span> @ViewBag.Name </span></h1>
+
+<section class="main_service clearfix">
+
+    <!-- tab -->
+
+
+    <div class="tab" id="verticaltab">
+
+
+        <button class="tablinks" id="DashboardTabBtn">Dashboard</button>
+
+
+        <button class="tablinks" onclick="Sp_TabNav(event, 'NewServiceRequest')" id="NewServiceRequestTabBtn">New Service Request</button>
+        <button class="tablinks" onclick="Sp_TabNav(event, 'UpcomingService')" id="UpcomingServiceTabBtn">Upcoming Service</button>
+
+        <button class="tablinks" onclick="Sp_TabNav(event, 'ServiceSchedule')" id="ServiceScheduleTabBtn"> Service Schedule </button>
+        <button class="tablinks" onclick="Sp_TabNav(event, 'ServiceHistory')" id="ServiceHistoryTabBtn">Service History</button>
+        <button class="tablinks" onclick="Sp_TabNav(event, 'MyRating')" id="MyRatingTabBtn">My Rating</button>
+        <button class="tablinks " onclick="Sp_TabNav(event, 'BlockCustomer')" id="BlockCustomerTabBtn">Block Customer</button>
+        <button class="tablinks " id="InvoiceTabBtn">Invoice</button>
+        <button class="tablinks" id="NotificationTabBtn">Notification</button>
+        <button class="tablinks" onclick="Sp_TabNav(event, 'SPSettings')" id="SettingsTabBtn">Settings</button>
+
+    </div>
+
+
+    <!-- table -->
+    @await Html.PartialAsync("SpUpcomingService")
+    @await Html.PartialAsync("SpServiceHistory")
+    @await Html.PartialAsync("SpNewServiceRequest")
+    @await Html.PartialAsync("SpMyRating")
+    @await Html.PartialAsync("SpBlockCustomer")
+    @await Html.PartialAsync("SpSettings")
+    @await Html.PartialAsync("SpServiceSchedule")
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- script -->
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/r-2.2.9/rg-1.1.4/datatables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+
+
+
+<script src="~/js/serviceProvider.js"></script>

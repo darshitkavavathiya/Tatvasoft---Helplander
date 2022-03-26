@@ -987,7 +987,7 @@ function adminUserDatatable() {
         aLengthMenu: [[5, 10, 15, -1], [5, 10, 15, "All"]],
 
         columnDefs: [{ orderable: false, targets: 6 }],
-        order: [[0, "desc"]],
+        order: [[1, "desc"]],
 
 
 

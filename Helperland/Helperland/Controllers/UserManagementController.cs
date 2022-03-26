@@ -32,99 +32,117 @@ namespace Helperland.Controllers
             if (ModelState.IsValid)
             {
 
-                string password = _db.Users.FirstOrDefault(x => x.Email == user.username).Password;
+                var U = _db.Users.FirstOrDefault(x => x.Email == user.username);
 
-                bool pass = BCrypt.Net.BCrypt.Verify(user.password, password);
-                if (_db.Users.Where(x => x.Email == user.username && pass).Count() > 0)
+                if (U == null) 
                 {
-
-                    var U = _db.Users.FirstOrDefault(x => x.Email == user.username);
-
-
-
-
-
                     ViewBag.Name = null;
-
-
-
-                    if (U.UserTypeId == 0)
-                    {
-                        if (U.IsActive == false)
-                        {
-                            ViewBag.Name = null;
-                            TempData["add"] = "alert show";
-                            TempData["fail"] = "You are deactivated by admin, please contact admin.";
-                            return RedirectToAction("Index", "Public", new { loginModal = "true" });
-                        }
-
-                        if (user.remember == true)
-                        {
-                            CookieOptions cookieRemember = new CookieOptions();
-                            cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
-                            Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
-                        }
-
-
-                        HttpContext.Session.SetInt32("userId", U.UserId);
-
-
-                        return RedirectToAction("CustomerDashboard", "Customer");
-                    }
-                    else if (U.UserTypeId == 1)
-                    {
-                        if (U.IsApproved == false || U.IsActive == false)
-                        {
-                            ViewBag.Name = null;
-                            TempData["add"] = "alert show";
-                            TempData["fail"] = "You are not approved by admin, please contact admin.";
-                            return RedirectToAction("Index", "Public", new { loginModal = "true" });
-                        }
-
-                        if (user.remember == true)
-                        {
-                            CookieOptions cookieRemember = new CookieOptions();
-                            cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
-                            Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
-                        }
-
-
-                        HttpContext.Session.SetInt32("userId", U.UserId);
-
-
-                        return RedirectToAction("SPServiceRequest", "Serviceprovider");
-                    }
-
-                    else if (U.UserTypeId == 2)
-                    {
-                        if (U.IsActive == false)
-                        {
-                            ViewBag.Name = null;
-                            TempData["add"] = "alert show";
-                            TempData["fail"] = "You are deactivated by admin, please contact admin.";
-                            return RedirectToAction("Index", "Public", new { loginModal = "true" });
-                        }
-
-                        if (user.remember == true)
-                        {
-                            CookieOptions cookieRemember = new CookieOptions();
-                            cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
-                            Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
-                        }
-
-
-                        HttpContext.Session.SetInt32("userId", U.UserId);
-
-                        return RedirectToAction("AdminPanel", "Admin");
-                    }
-                    //return RedirectToAction("CustomerDashboard", "Customer");
+                    TempData["add"] = "alert show";
+                    TempData["fail"] = "Username is Incorrect!";
+                    return RedirectToAction("Index", "Public", new { loginModal = "true" });
                 }
                 else
                 {
-                    TempData["add"] = "alert show";
-                    TempData["fail"] = "username and password are invalid";
-                    return RedirectToAction("Index", "Public", new { loginFail = "true" });
+                    string password = _db.Users.FirstOrDefault(x => x.Email == user.username).Password;
 
+                    bool pass = BCrypt.Net.BCrypt.Verify(user.password, password);
+                    if (_db.Users.Where(x => x.Email == user.username && pass).Count() > 0)
+                    {
+
+
+
+
+
+
+
+                        ViewBag.Name = null;
+
+
+
+                        if (U.UserTypeId == 0)
+                        {
+                            if (U.IsActive == false)
+                            {
+                                ViewBag.Name = null;
+                                TempData["add"] = "alert show";
+                                TempData["fail"] = "You are deactivated by admin, please contact admin.";
+                                return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                            }
+
+                            if (user.remember == true)
+                            {
+                                CookieOptions cookieRemember = new CookieOptions();
+                                cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
+                                Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
+                            }
+
+
+                            HttpContext.Session.SetInt32("userId", U.UserId);
+
+
+                            return RedirectToAction("CustomerDashboard", "Customer");
+                        }
+                        else if (U.UserTypeId == 1)
+                        {
+                            if (U.IsApproved == false)
+                            {
+                                ViewBag.Name = null;
+                                TempData["add"] = "alert show";
+                                TempData["fail"] = "You are not approved by admin, please contact admin.";
+                                return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                            }
+                            else if (U.IsActive == false)
+                            {
+                                ViewBag.Name = null;
+                                TempData["add"] = "alert show";
+                                TempData["fail"] = "You are deactivated by admin, please contact admin, please contact admin.";
+                                return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                            }
+                            if (user.remember == true)
+                            {
+                                CookieOptions cookieRemember = new CookieOptions();
+                                cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
+                                Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
+                            }
+
+
+                            HttpContext.Session.SetInt32("userId", U.UserId);
+
+
+                            return RedirectToAction("SPServiceRequest", "Serviceprovider");
+                        }
+
+                        else if (U.UserTypeId == 2)
+                        {
+                            if (U.IsActive == false)
+                            {
+                                ViewBag.Name = null;
+                                TempData["add"] = "alert show";
+                                TempData["fail"] = "You are deactivated by admin, please contact admin.";
+                                return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                            }
+
+                            if (user.remember == true)
+                            {
+                                CookieOptions cookieRemember = new CookieOptions();
+                                cookieRemember.Expires = DateTime.Now.AddSeconds(604800);
+                                Response.Cookies.Append("userId", Convert.ToString(U.UserId), cookieRemember);
+                            }
+
+
+                            HttpContext.Session.SetInt32("userId", U.UserId);
+
+                            return RedirectToAction("AdminPanel", "Admin");
+                        }
+                        //return RedirectToAction("CustomerDashboard", "Customer");
+                    }
+                    else
+                    {
+                        TempData["add"] = "alert show";
+                        TempData["fail"] = "username and password are invalid";
+                        return RedirectToAction("Index", "Public", new { loginFail = "true" });
+
+                    }
                 }
             }
 
@@ -242,33 +260,39 @@ namespace Helperland.Controllers
             if (email != null)
             {
                 var user = _db.Users.FirstOrDefault(x => x.Email == email);
+                if (user == null)
+                {
+                    TempData["add"] = "alert show";
+                    TempData["msg"] = "email address is incorrect";
+                    return RedirectToAction("Index", "Public", new { loginModal = "true" });
+                }
+                {
+                    MimeMessage message = new MimeMessage();
+
+                    MailboxAddress from = new MailboxAddress("Helperland",
+                    "darshitkavathiya34@gmail.com");
+                    message.From.Add(from);
+
+                    MailboxAddress to = new MailboxAddress(user.FirstName, user.Email);
+                    message.To.Add(to);
+
+                    message.Subject = "Reset Password";
+
+                    BodyBuilder bodyBuilder = new BodyBuilder();
+                    bodyBuilder.HtmlBody = "<h1>Reset your password by click below link</h1>" +
+                        "<a href='" + Url.Action("ResetPassword", "UserManagement", new { userId = user.UserId }, "http") + "'>Reset Password</a>";
 
 
-                MimeMessage message = new MimeMessage();
+                    message.Body = bodyBuilder.ToMessageBody();
 
-                MailboxAddress from = new MailboxAddress("Helperland",
-                "darshitkavathiya34@gmail.com");
-                message.From.Add(from);
-
-                MailboxAddress to = new MailboxAddress(user.FirstName, email);
-                message.To.Add(to);
-
-                message.Subject = "Reset Password";
-
-                BodyBuilder bodyBuilder = new BodyBuilder();
-                bodyBuilder.HtmlBody = "<h1>Reset your password by click below link</h1>" +
-                    "<a href='" + Url.Action("ResetPassword", "UserManagement", new { userId = user.UserId }, "http") + "'>Reset Password</a>";
-
-
-                message.Body = bodyBuilder.ToMessageBody();
-
-                SmtpClient client = new SmtpClient();
-                client.Connect("smtp.gmail.com", 587, false);
-                client.Authenticate("darshitkavathiya34@gmail.com", "Dar@1234");
-                client.Send(message);
-                client.Disconnect(true);
-                client.Dispose();
-                return RedirectToAction("Index", "Public", new { mailSended = "true" });
+                    SmtpClient client = new SmtpClient();
+                    client.Connect("smtp.gmail.com", 587, false);
+                    client.Authenticate("darshitkavathiya34@gmail.com", "Dar@1234");
+                    client.Send(message);
+                    client.Disconnect(true);
+                    client.Dispose();
+                    return RedirectToAction("Index", "Public", new { mailSended = "true" });
+                }
             }
             return RedirectToAction("Index", "Public");
         }

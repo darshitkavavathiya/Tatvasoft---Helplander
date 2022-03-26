@@ -310,8 +310,8 @@ p.margin {
     }
     .main_service {
         padding-top: 31px;
-        margin-left: 15%;
-        margin-right: 15%;
+        margin-left: 10%;
+        margin-right: 12%;
         padding-bottom: 30px;
     }
 }
@@ -720,3 +720,89 @@ span img {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+/*===== Service Schedule ====*/
+
+.fc-toolbar-chunk {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.fc-toolbar-title {
+    color: #646464;
+    font-weight: normal;
+}
+
+
+.fc-daygrid-day-number {
+    color: #646464;
+    text-decoration: none;
+}
+
+.fc-button-primary {
+    background-color: #fff !important;
+    border: 1px solid #646464 !important;
+    color: #646464 !important;
+}
+
+.fc-col-header-cell-cushion {
+    color: #646464;
+    text-decoration: none;
+}
+
+
+
+.ScheduleServiceLabels {
+    /*    position: absolute;
+    right: 0;
+    top: 0;*/
+    position: relative;
+    top: 50px;
+    padding: 20px;
+    display: flex;
+    justify-content: end;
+    align-content: end;
+    gap: 10px;
+    color: #646464;
+}
+
+.GrayLabel {
+    width: 15px;
+    height: 15px;
+    background-color: #777777;
+    border: 1px solid #e1e1e1;
+    margin: auto;
+}
+
+.GreenLabel {
+    width: 15px;
+    height: 15px;
+    background-color: #146371;
+    border: 1px solid #e1e1e1;
+    margin: auto;
+    padding: 4px;
+}
+
+.ScheduleLabel {
+    display: flex;
+    align-content: center;
+    gap: 5px;
+}
+
+.fc-daygrid-body fc-daygrid-body-unbalanced {
+    width: 100% !important;
+}
+
+.presentation {
+    width: 100% !important;
+}

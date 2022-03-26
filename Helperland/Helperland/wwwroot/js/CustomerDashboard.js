@@ -124,11 +124,17 @@ document.getElementById("RescheduleServiceRequest").addEventListener("click", fu
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         data: data,
         success: function (result) {
-            if (result.value == "true") {
+            if (result == "true") {
                 window.location.reload();
+
+               
+
             }
             else {
-                alert(result);
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text(result).css("color", "Red");
+                $('#Model_SID').text("Please Try again").css("color", "gray");
+              
             }
         },
         error: function () {
@@ -331,7 +337,11 @@ document.getElementById("confirm_rating").addEventListener("click", function () 
 
             }
             else {
-                alert("you have alredy given rating ");
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("you have alredy given rating").css("color", "Green");
+                $('#Model_SID').text("Please Try again").css("color", "gray");
+
+              
             }
         },
         error: function (error) {
@@ -633,6 +643,17 @@ $("#CSSaveDetails").on('click', function () {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 /* settings addresss starts  */
 
 
@@ -671,9 +692,7 @@ function getAddress() {
 
 
             }
-            else {
-                alert("something wrong");
-            }
+           
         },
         error: function () {
             alert("error");
@@ -1258,7 +1277,6 @@ $(document).on('click', '.spFBBtn', function () {
 
 
 
-
             window.setTimeout(function () {
                 $("#alertPopup").modal("hide");
 
@@ -1278,4 +1296,88 @@ $(document).on('click', '.spFBBtn', function () {
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+//service schedule
+
+
+$(document).on('click', '#serviceScheduleTabBtn', function () {
+   
+    addServiceSchedule();
+});
+
+
+
+
+var calendarEl = document.getElementById('calendar');
+var calendar;
+
+function addServiceSchedule() {
+
+    $.ajax({
+        type: 'GET',
+        url: "/Customer/GetServiceSchedule",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+
+        success: function (result) {
+            console.log(result);
+            var events = [];
+            if (result != "false") {
+
+                for (let i = 0; i < result.length; i++) {
+                    var bgColor = "#555";
+                    if (result[i].status == 3) {
+                        bgColor = "#146371";
+                    }
+
+                    events.push({
+                        id: result[i].serviceRequestId,
+                        start: result[i].date,
+                        title: result[i].startTime + "-" + result[i].endTime,
+                        backgroundColor: bgColor,
+                        borderColor: "#fff",
+                    });
+                }
+
+                console.log(events);
+
+                calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+
+                    headerToolbar: {
+                        left: 'prev,next',
+                        center: 'title',
+                        right: ''
+                    },
+                    events: events,
+                    eventClick: function (info) {
+
+                        console.log(info.event.id);
+                        serviceRequestId = info.event.id;
+                        $("#serviceReqdetailsbtn").click();
+                    },
+                });
+                calendar.render();
+            }
+            else {
+                alert("something went wrong!");
+            }
+        },
+        error: function (error) {
+            alert(error);
+        },
+
+
+    });
+}
+
 

@@ -833,7 +833,7 @@ namespace Helperland.Controllers
             sp.UserProfilePicture = sPSettings.user.UserProfilePicture; 
             sp.ModifiedDate = DateTime.Now;
             sp.ModifiedBy = 1;
-
+            sp.ZipCode = sPSettings.address.PostalCode;   
 
             var userresult= _db.Users.Update(sp);
 

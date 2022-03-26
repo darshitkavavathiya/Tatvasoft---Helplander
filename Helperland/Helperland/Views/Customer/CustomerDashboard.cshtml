@@ -7,6 +7,7 @@
 @section Css
 {
 <link rel="stylesheet" href="~/css/customer.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 }
@@ -64,8 +65,17 @@
 
 
 
-    <div id="service_schedule" class="tab-contant">
-        <h3>-----------------Service Schedule-----------------</h3>
+    <div id="service_schedule" class="tab-contant" style="margin-left: 300px">
+        <div class="ScheduleServiceLabels">
+            <div class="ScheduleLabel">
+                <div class="GrayLabel"></div><div>Upcoming</div>
+            </div>
+            <div class="ScheduleLabel">
+                <div class="GreenLabel"></div><div>completed</div>
+            </div>
+        </div>
+
+        <div id='calendar'></div>
     </div>
 
 
@@ -120,8 +130,11 @@
 
 
 
+
+
 <!--footer-->
 <!-- script -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
