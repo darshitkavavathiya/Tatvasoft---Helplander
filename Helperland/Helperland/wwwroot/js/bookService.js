@@ -226,7 +226,8 @@ function postalSubmit() {
             }
         },
         error: function () {
-            alert('Failed to receive the Data');
+            document.getElementById("acceptAlert").click();
+            $('#NewServiceAcceptStatus').text("failed to receive the data").css("color", "Red");
 
             //console.log('Failed ');
         }
@@ -277,7 +278,8 @@ function scheduleSubmit() {
             }
         },
         error: function () {
-            alert('Failed to receive the Data');
+            document.getElementById("acceptAlert").click();
+            $('#NewServiceAcceptStatus').text("failed to receive the data").css("color", "Red");
             //console.log('Failed ');
         }
     });
@@ -302,12 +304,26 @@ function loadAddress() {
                 ClickFunction("addAddressBtn");
             }
             var isdefaultaddress = false;
+
+
+
+            var checked = "checked";
+
+
+
+
             for (let i = 0; i < result.length; i++) {
-                var checked = "";
+               
+               
                 if (result[i].isDefault == true) {
                     checked = "checked";
                     isdefaultaddress = true;
                 }
+                //if (i == (result.length - 1)) {
+                //    if (isdefaultaddress == false) {
+                //        checked = "checked";
+                //    }
+                //}
 
 
                 address.append(' <div class="row radiobutton">' +
@@ -315,12 +331,15 @@ function loadAddress() {
                     ' <div class="col-11"><label for="' + i + '"><span>Address:</span><br><span>' + result[i].addressLine1 + '</span>,&nbsp;<span>' + result[i].addressLine2 + '</span><br><span>' + result[i].city + '</span>&nbsp;<span>' + result[i].postalCode + '</span>' +
                     '<br><span>PHONE NUMBER:</span> ' + result[i].mobile + ' <span></span></label></div> </div>');
 
+
                 checked = "";
+              
             } 
             //console.log(result);
         },
         error: function () {
-            alert('failed to receive the data');
+            document.getElementById("acceptAlert").click();
+            $('#NewServiceAcceptStatus').text("failed to receive the data").css("color", "Red");
             //console.log('failed ');
         }
     });
@@ -365,6 +384,92 @@ function addAddressdiv() {
 
 
 
+
+
+
+
+
+
+
+/*----------------Validation For form-3------------*/
+var saveaddvalidation = {};
+
+$(document).ready(function () {
+
+
+    // Street Validation
+    $('.street').on('focusout change keyup', function () {
+        var Streetname = $(this).val();
+        var validName = /^[a-zA-Z ]*$/;
+        if (Streetname.length == 0) {
+            $('.street-msg').addClass('Validation-Error').text("Street is required")
+
+            saveaddvalidation.street = false;
+        }
+        else if (!validName.test(Streetname)) {
+            $('.street-msg').addClass('Validation-Error').text('please enter valid input');
+
+            saveaddvalidation.street = false;
+        }
+        else {
+            $('.street-msg').empty();
+            saveaddvalidation.street = true;
+        }
+    });
+
+
+
+
+    //   Phone Number validation
+    $('.mobilenum').on('focusout change keyup', function () {
+        var mobileNum = $(this).val();
+        var validNumber = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
+        if (mobileNum.length == 0) {
+            $('.mobile-msg').addClass('Validation-Error').text('Mobile Number is required');
+            saveaddvalidation.mobileNum = false;
+        }
+        else if (!validNumber.test(mobileNum)) {
+            saveaddvalidation.mobileNum = false;
+            $('.mobile-msg').addClass('Validation-Error').text('Invalid Mobile Number');
+        }
+        else {
+            $('.mobile-msg').empty();
+            saveaddvalidation.mobileNum = true;
+        }
+    });
+
+
+    //   house Number validation
+    $('.houseno').on('focusout change keyup', function () {
+        var houseNum = $(this).val();
+        var validNumber = /^\d*$/;
+        if (houseNum.length == 0) {
+            saveaddvalidation.house = false;
+            $('.house-msg').addClass('Validation-Error').text('House Number is required');
+
+        }
+        else if (!validNumber.test(houseNum)) {
+            saveaddvalidation.house = false;
+            $('.house-msg').addClass('Validation-Error').text('Enter Valid House Number');
+        }
+        else {
+            $('.house-msg').empty();
+            saveaddvalidation.house = true;
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
 /*----------saveAddress Function-----------*/
 
 
@@ -378,27 +483,31 @@ function saveAddress() {
     data.state = document.getElementById("State").value;
 
 
-    $.ajax({
-        type: 'POST',
-        url: '/Customer/AddNewAddress',
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        data: data,
-        success: function (result) {
-            if (result.value == "true") {
+    if (saveaddvalidation.mobileNum == true && saveaddvalidation.house == true && saveaddvalidation.street == true) {
 
-                ClickFunction("addressCancelBtn");
-                loadAddress();
+        $.ajax({
+            type: 'POST',
+            url: '/Customer/AddNewAddress',
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            data: data,
+            success: function (result) {
+                if (result.value == "true") {
 
+                    ClickFunction("addressCancelBtn");
+                    loadAddress();
+
+                }
+                else {
+                    $("#detailServiceAlert").removeClass("d-none").text("Sorry! Something went wrong please try again later.");
+                }
+            },
+            error: function () {
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("failed to receive the data").css("color", "Red");
+                //console.log('Failed ');
             }
-            else {
-                $("#detailServiceAlert").removeClass("d-none").text("Sorry! Something went wrong please try again later.");
-            }
-        },
-        error: function () {
-            alert('Failed to receive the Data');
-            //console.log('Failed ');
-        }
-    });
+        });
+    }
 }
 
 
@@ -428,7 +537,7 @@ function cancelAddress() {
 function completeBookService() {
 
     if (!$('#tac').is(':checked')) {
-        document.getElementById("completemodelbtn").click();
+        document.getElementById("acceptAlert").click();
         $('#NewServiceAcceptStatus').text("please accept terms and condition").css("color", "Red");
         $('#Model_SID').text("").css("color", "gray");
        
@@ -494,7 +603,7 @@ function completeBookService() {
                 if (result.value == "false") {
                     $('#NewServiceAcceptStatus').text("Opps! Something Went wrong").css("color", "red");
                     $('#Model_SID').text("Please Try again");
-                    ClickFunction("completemodelbtn");
+                    ClickFunction("acceptAlert");
 
                 }
                 else {
@@ -505,14 +614,16 @@ function completeBookService() {
            
                     ClickFunction("defaultOpen");
                   
-                        ClickFunction("completemodelbtn");
+                    ClickFunction("acceptAlert");
                   
                  
                    
                 }
             },
             error: function () {
-                alert('failed to receive the data');
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("failed to receive the data").css("color", "Red");
+         
                 //console.log('failed ');
             }
         });
@@ -521,103 +632,3 @@ function completeBookService() {
 
 
 
-
-
-/*----------------Validation For form-3------------*/
-
-
-$(document).ready(function () {
-
-    Counter = 0;
-    Disable("addAddressSubmit");
-    // Street Validation
-    $('.street').on('focusout', function () {
-        var Streetname = $(this).val();
-        var validName = /^[a-zA-Z ]*$/;
-        if (Streetname.length == 0) {
-            $('.street-msg').addClass('Validation-Error').text("Street is required")
-            Disable("addAddressSubmit");
-
-        }
-        else if (!validName.test(Streetname)) {
-            $('.street-msg').addClass('Validation-Error').text('please enter valid input');
-            Disable("addAddressSubmit");
-
-        }
-        else {
-            $('.street-msg').empty();
-            Counter = Counter + 1;
-            if (Counter == 4) {
-                Clickable("addAddressSubmit")
-            }
-        }
-    });
-
-    // city Validation
-    $('.addressCity').on('focusout', function () {
-        var Streetname = $(this).val();
-        var validName = /^[a-zA-Z ]*$/;
-        if (Streetname.length == 0) {
-            $('.city-msg').addClass('Validation-Error').text("city is required")
-            Disable("addAddressSubmit");
-
-        }
-        else if (!validName.test(Streetname)) {
-            $('.city-msg').addClass('Validation-Error').text('please enter valid input');
-            Disable("addAddressSubmit");
-
-        }
-        else {
-            $('.city-msg').empty();
-            Counter = Counter + 1;
-            if (Counter == 4) {
-                Clickable("addAddressSubmit")
-            }
-        }
-    });
-
-
-    //   Phone Number validation
-    $('.mobilenum').on('focusout', function () {
-        var mobileNum = $(this).val();
-        var validNumber = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/;
-        if (mobileNum.length == 0) {
-            Disable("addAddressSubmit");
-            $('.mobile-msg').addClass('Validation-Error').text('Mobile Number is required');
-        }
-        else if (!validNumber.test(mobileNum)) {
-            Disable("addAddressSubmit");
-            $('.mobile-msg').addClass('Validation-Error').text('Invalid Mobile Number');
-        }
-        else {
-            $('.mobile-msg').empty();
-            Counter = Counter + 1;
-            if (Counter == 4) {
-                Clickable("addAddressSubmit")
-            }
-        }
-    });
-
-
-    //   house Number validation
-    $('.houseno').on('focusout', function () {
-        var houseNum = $(this).val();
-        var validNumber = /^\d*$/;
-        if (houseNum.length == 0) {
-            Disable("addAddressSubmit");
-            $('.house-msg').addClass('Validation-Error').text('House Number is required');
-
-        }
-        else if (!validNumber.test(houseNum)) {
-            Disable("addAddressSubmit");
-            $('.house-msg').addClass('Validation-Error').text('Enter Valid House Number');
-        }
-        else {
-            $('.house-msg').empty();
-            Counter = Counter + 1;
-            if (Counter == 4) {
-                Clickable("addAddressSubmit")
-            }
-        }
-    });
-});

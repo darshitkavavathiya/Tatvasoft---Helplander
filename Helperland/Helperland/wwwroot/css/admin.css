@@ -302,6 +302,11 @@ td button {
 
 
 
+.dataTables_info {
+    margin-top: 3%;
+    margin-left: 5px;
+}
+
 .checked {
     color: #ECB91C;
 }

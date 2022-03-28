@@ -136,8 +136,8 @@
                     <div id="detailPopUpNew"><button id="newServiceReqAccept" type="submit">Accept</button></div>
 
                     <div id="detailPopUpUpComing">
-                        <button id="newServiceReqCompleteBtn" type="submit">Complete</button>
-                        <button id="newServiceReqCancelBtn" type="submit">Cancel</button>
+                        <button id="newServiceReqCompleteBtn" type="submit" class="CompleteService">Complete</button>
+                        <button id="newServiceReqCancelBtn" type="submit" data-bs-toggle="modal" data-bs-target="#SPdeleteModelServiceRequest">Cancel</button>
                     </div>
 
 
@@ -153,28 +153,3 @@
 </div>
 
 
-
-@* alert popup*@
-
-<button type="button" class="btn btn-primary d-none" id="acceptAlert" data-bs-toggle="modal" data-bs-target="#alertPopup">
-    alert popup
-</button>
-
-<div class="modal fade" id="alertPopup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" style="max-width:500px">
-        <div class="modal-content">
-            <div class="modal-header">
-
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <h4 class="modal-title" id="NewServiceAcceptStatus">  </h4>
-                <h5 id="Model_SID"></h5>
-
-
-            </div>
-
-        </div>
-    </div>
-</div>

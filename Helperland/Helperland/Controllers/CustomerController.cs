@@ -732,6 +732,8 @@ namespace Helperland.Controllers
         }
 
 
+
+
         [HttpGet]
         public IActionResult DetailsService(PostalCode obj)
         {
@@ -771,6 +773,8 @@ namespace Helperland.Controllers
         }
 
 
+
+
         [HttpPost]
         public ActionResult AddNewAddress(UserAddress useradd)
         {
@@ -788,8 +792,16 @@ namespace Helperland.Controllers
             }
 
 
+
+           var allAddress = _db.UserAddresses.Where(x => x.UserId == Id).ToList();
+
+             allAddress.ForEach(x => x.IsDefault = false);
+            _db.SaveChanges();
+
+
+
             useradd.UserId = Id;
-            useradd.IsDefault = false;
+            useradd.IsDefault = true;
             useradd.IsDeleted = false;
             User user = _db.Users.Where(x => x.UserId == Id).FirstOrDefault();
             useradd.Email = user.Email;
@@ -803,6 +815,8 @@ namespace Helperland.Controllers
 
             return Ok(Json("false"));
         }
+
+
 
 
 
@@ -935,7 +949,7 @@ namespace Helperland.Controllers
 
             }
 
-            var serviceProviderList = _db.Users.Where(x => x.UserTypeId == 1 && x.ZipCode == ZipCode).ToList();
+            var serviceProviderList = _db.Users.Where(x => x.UserTypeId == 1 && x.IsActive==true && x.ZipCode == ZipCode).ToList();
             var BlockedBySp = _db.FavoriteAndBlockeds.Where(x => x.TargetUserId == Id && x.IsBlocked == true).Select(x => x.UserId).ToList();
             var SpBlockedByCust = _db.FavoriteAndBlockeds.Where(x => x.UserId == Id && x.IsBlocked == true).Select(x => x.TargetUserId).ToList();
 

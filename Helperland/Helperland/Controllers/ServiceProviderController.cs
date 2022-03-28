@@ -33,7 +33,7 @@ namespace Helperland.Controllers
                 Id = Convert.ToInt32(Request.Cookies["userId"]);
             }
 
-            if (Id == null)
+            if (Id == null ||Id == 0)
             {
                 return RedirectToAction("Index", "Public", new { loginFail = "true" });
             }

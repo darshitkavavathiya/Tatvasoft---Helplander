@@ -287,7 +287,6 @@ $("#newServiceReqAccept").on('click', function () {
 
 
 
-                alert("290 line"+result);
             }
 
         },
@@ -445,7 +444,10 @@ $(document).on('click', '.CompleteService', function () {
 
             }
             else {
-                alert("opps! something went wrong");
+
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("opps! something went wrong").css("color", "red");
+    
 
             }
 
@@ -497,7 +499,9 @@ document.getElementById("SpCancelRequestBtn").addEventListener("click", function
                 window.location.reload();
             }
             else {
-                alert("fail");
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("fail").css("color", "Red");
+                
             }
         },
         error: function () {
@@ -1149,7 +1153,7 @@ function addServiceSchedule() {
 
                 for (let i = 0; i < result.length; i++) {
                     var bgColor = "#555";
-                    if (result[i].status == 3) {
+                    if (result[i].status == 2) {
                         bgColor = "#146371";
                     }
 
@@ -1183,7 +1187,10 @@ function addServiceSchedule() {
                 calendar.render();
             }
             else {
-                alert("something went wrong!");
+
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("something went wrong!").css("color", "Red");
+             
             }
         },
         error: function (error) {

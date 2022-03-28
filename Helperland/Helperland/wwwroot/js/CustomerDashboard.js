@@ -163,7 +163,9 @@ document.getElementById("CancelRequestBtn").addEventListener("click", function (
                 window.location.reload();
             }
             else {
-                alert("fail");
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("fail").css("color", "Red");
+                
             }
         },
         error: function () {
@@ -193,7 +195,8 @@ function getAllServiceDetails() {
 
             }
             else {
-                alert("result is null");
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("result is null").css("color", "Red");
             }
 
         },
@@ -391,7 +394,10 @@ $(document).on('click', '.rateactive', function () {
             }
         },
         error: function () {
-            alert('failed to receive the data');
+
+            document.getElementById("acceptAlert").click();
+            $('#NewServiceAcceptStatus').text("failed to receive the data").css("color", "Red");
+    
             //console.log('failed ');
         }
     });
@@ -811,7 +817,10 @@ $("#addAddressSubmit").on('click', function () {
                     $("#addNewaddressModel").modal("hide");
                 }
                 else {
-                    alert("not saved");
+
+                    document.getElementById("acceptAlert").click();
+                    $('#NewServiceAcceptStatus').text("not saved").css("color", "Red");
+                    
                 }
 
             },
@@ -958,7 +967,9 @@ $("#updateAddressSubmit").on('click', function () {
                     
                 }
                 else {
-                    alert("not saved");
+                    document.getElementById("acceptAlert").click();
+                    $('#NewServiceAcceptStatus').text("not saved").css("color", "Red");
+                 
                 }
                 $("#updateAddressSubmit").addClass("d-none");
                 $("#addAddressSubmit").removeClass("d-none");
@@ -1369,7 +1380,9 @@ function addServiceSchedule() {
                 calendar.render();
             }
             else {
-                alert("something went wrong!");
+                document.getElementById("acceptAlert").click();
+                $('#NewServiceAcceptStatus').text("something went wrong!").css("color", "Red");
+              
             }
         },
         error: function (error) {
